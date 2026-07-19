@@ -54,23 +54,28 @@
   .cs-social { display:inline-flex; align-items:center; gap:8px; justify-content:center; width:38px; height:38px; border:1px solid #1F1F1D; color:#F4F1EA; transition:background .2s, color .2s, border-color .2s; }
   .cs-social:hover { background:#F4F1EA; color:#0A0A0A; border-color:#F4F1EA; }
   .cs-social--pod { width:auto; padding:0 14px; gap:9px; }
+  .cs-burger { display:none; width:44px; height:44px; align-items:center; justify-content:center; background:transparent; border:1px solid #D9D5CC; color:#0A0A0A; font-size:22px; line-height:1; cursor:pointer; }
   @media (max-width: 820px) {
     html, body { font-size: 16px; }
-    /* header: wrap + horizontally scrollable nav */
-    header > div { height: auto !important; padding: 12px 18px !important; flex-wrap: wrap !important; gap: 8px 16px !important; }
-    header nav { width: 100%; order: 3; overflow-x: auto; -webkit-overflow-scrolling: touch; gap: 20px !important; padding-bottom: 4px; }
-    header nav a { white-space: nowrap; }
-    /* collapse multi-column grids */
+    header > div { position: relative; height: 64px !important; padding: 0 18px !important; }
+    .cs-burger { display: inline-flex; }
+    .cs-nav { display: none !important; position: absolute; top: 100%; left: 0; right: 0; background: #F4F1EA; border-bottom: 1px solid #D9D5CC; flex-direction: column !important; align-items: stretch !important; gap: 0 !important; padding: 6px 18px 14px !important; box-shadow: 0 24px 40px -28px rgba(10,10,10,0.35); }
+    .cs-nav--open { display: flex !important; }
+    .cs-nav a { padding: 15px 2px !important; border-bottom: 1px solid #ECE7DB; font-size: 15px; }
+    header .cs-btn--sec { display: none; }
+    /* collapse multi-column grids to single */
     [style*="repeat(4,1fr)"], [style*="repeat(3,1fr)"], [style*="repeat(2,1fr)"],
     [style*="grid-template-columns:1.6fr"], [style*="grid-template-columns:1.4fr"], [style*="grid-template-columns:1.3fr"],
     [style*="grid-template-columns:1fr 1fr"], [style*="grid-template-columns:1fr auto"] { grid-template-columns: 1fr !important; }
-    /* tighten the centered page gutters */
+    /* tighten centered page gutters */
     [style*="margin:0 auto"] { padding-left: 20px !important; padding-right: 20px !important; }
-    /* multi-column text columns to single */
     [style*="columns:2"] { columns: 1 !important; }
+    /* reduce very large hero type a touch on small screens */
+    h1 { line-height: .95 !important; }
   }
   @media (max-width: 500px) {
     .cs-btn { width: 100%; }
+    [style*="padding:96px 48px"], [style*="padding:104px 48px"], [style*="padding:88px 48px"], [style*="padding:64px 56px"], [style*="padding:56px 48px"] { padding-top: 56px !important; padding-bottom: 56px !important; }
   }
 </style>
 </helmet>
@@ -81,7 +86,8 @@
       <a href="#home" style="display:flex; align-items:center; gap:14px;">
         <img src="assets/CentreStage-Solid-Black.png" alt="CentreStage" style="height:22px;">
       </a>
-      <nav style="display:flex; gap:30px; align-items:center;">
+      <button class="cs-burger" aria-label="Menu" onClick="{{ toggleMenu }}">{{ burgerIcon }}</button>
+      <nav class="{{ navOpenClass }}" style="display:flex; gap:30px; align-items:center;">
         <a class="cs-nav-a" href="#home" style="{{ navHome }}">Home</a>
         <a class="cs-nav-a" href="#tickets" style="{{ navTickets }}">Tickets</a>
         <a class="cs-nav-a" href="#about" style="{{ navAbout }}">About</a>
@@ -1267,7 +1273,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { route: "home", slug: null, data: null, sent: false, a11yOpen: false, a11y: { scale: 1, contrast: false, underline: false, font: false, motion: false } };
+  state = { route: "home", slug: null, data: null, sent: false, menuOpen: false, a11yOpen: false, a11y: { scale: 1, contrast: false, underline: false, font: false, motion: false } };
 
   componentDidMount() {
     this._onHash = () => {
@@ -1278,6 +1284,7 @@ class Component extends DCLogic {
         this.setState({ route: h || "home", slug: null, sent: false });
       }
       window.scrollTo(0, 0);
+      this.setState({ menuOpen: false });
     };
     window.addEventListener("hashchange", this._onHash);
     this._onHash();
@@ -1394,6 +1401,10 @@ class Component extends DCLogic {
       ],
 
       navHome: this.navStyle("home"),
+      menuOpen: this.state.menuOpen,
+      navOpenClass: this.state.menuOpen ? "cs-nav cs-nav--open" : "cs-nav",
+      burgerIcon: this.state.menuOpen ? "\u2715" : "\u2261",
+      toggleMenu: () => this.setState((s) => ({ menuOpen: !s.menuOpen })),
       navTickets: this.navStyle("tickets"), navAbout: this.navStyle("about"),
       navEducation: this.navStyle("education"), navHealth: this.navStyle("health"), navBlog: this.navStyle("blog"),
       navMedia: this.navStyle("media"),
