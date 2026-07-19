@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CentreStage — Policy &amp; Safeguarding Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  doc-page:not(:defined){visibility:hidden}
+  html{ -webkit-font-smoothing:antialiased; }
+  body{ margin:0; font-family:Arial, Helvetica, sans-serif; color:#0A0A0A; }
+  doc-page{ --ink:#0A0A0A; --paper:#F4F1EA; --mid:#6B6B68; --hair:#D9D5CC; --spot:#E8472B; }
+  h1,h2{ font-family:'Arial Black', Arial, sans-serif; letter-spacing:-.02em; }
+  .eyebrow{ font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--spot); }
+  .lede{ font-size:15px; line-height:1.62; color:#2A2A28; max-width:64ch; }
+  .sec{ break-before:page; padding-top:8px; }
+  .sec h2{ font-size:26px; line-height:1.02; margin:8px 0 6px; }
+  .sec h3{ font-family:Arial; font-weight:bold; font-size:12.5px; letter-spacing:.02em; text-transform:uppercase; color:var(--ink); margin:16px 0 4px; }
+  .sec .num{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--spot); letter-spacing:.1em; }
+  .sec p{ font-size:12.5px; line-height:1.6; color:#2A2A28; margin:7px 0 9px; max-width:70ch; }
+  .sec ul{ margin:4px 0 9px; padding-left:0; list-style:none; }
+  .sec li{ font-size:12px; line-height:1.5; color:#2A2A28; padding:5px 0 5px 20px; position:relative; border-bottom:1px solid #ECE8DF; }
+  .sec li:last-child{ border-bottom:0; }
+  .sec li::before{ content:"/"; position:absolute; left:2px; top:5px; color:var(--spot); font-weight:700; font-family:'Arial Black',Arial; }
+  .rule{ height:2px; background:var(--ink); border:0; margin:0; }
+  .toc{ columns:2; column-gap:40px; margin-top:18px; }
+  .toc a{ display:block; font-size:12.5px; color:#0A0A0A; text-decoration:none; padding:5px 0; border-bottom:1px solid var(--hair); break-inside:avoid; }
+  .toc a .n{ font-family:'JetBrains Mono',monospace; color:var(--mid); margin-right:10px; }
+  .meta-row{ display:flex; gap:28px; flex-wrap:wrap; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--mid); text-transform:uppercase; letter-spacing:.08em; margin-top:14px; }
+  .cover{ min-height:8.6in; display:flex; flex-direction:column; }
+  .cover .fill{ flex:1; }
+  .badge{ display:inline-flex; align-items:center; gap:8px; border:1px solid var(--ink); padding:6px 12px; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; }
+  .hdr{ display:flex; justify-content:space-between; align-items:center; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--mid); padding-bottom:6px; border-bottom:1px solid var(--hair); }
+  .ftr{ display:flex; justify-content:space-between; align-items:center; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--mid); padding-top:6px; border-top:1px solid var(--hair); }
+  .wm{ font-family:'Arial Black',Arial; font-size:12px; letter-spacing:-.02em; color:#0A0A0A; text-transform:none; }
+  .wm i{ color:var(--spot); font-style:normal; }
+  .note{ background:#0A0A0A; color:#F4F1EA; padding:14px 18px; font-size:12px; line-height:1.55; margin:12px 0 0; }
+  .note a{ color:#8FD3F4; }
+  .defn{ font-size:12.5px; line-height:1.6; color:#2A2A28; margin:7px 0 9px; }
+</style>
+</head>
+<body>
+<doc-page size="a4" orientation="portrait" margin="0.7in">
+
+  <div slot="header" class="hdr"><span class="wm">Centre<i>/</i>Stage</span><span>Policy &amp; Safeguarding Library</span></div>
+  <div slot="footer" class="ftr"><span>CentreStage Pty Ltd · Geelong · Wadawurrung Country</span><span>david@centrestage.org.au · (03) 5272 1775</span></div>
+
+  <!-- COVER -->
+  <section class="cover">
+    <div class="badge">Established 2010 · Version 2026.1</div>
+    <div class="fill" style="min-height:1.2in;"></div>
+    <div class="eyebrow" style="color:#E8472B;">Governance · Safeguarding · Wellbeing</div>
+    <h1 style="font-size:52px; line-height:.94; margin:12px 0 0;">Policy &amp; Safeguarding Library.</h1>
+    <p class="lede" style="margin-top:22px;">CentreStage is more than a theatre company. We are educators, mentors, producers and advocates working with hundreds of young people each year. This library brings together the policies, plans and procedures that keep every performer, student, volunteer and family safe, seen and supported.</p>
+    <p class="lede" style="margin-top:10px;"><strong>Our values guide every policy:</strong> We Belong. We Create. We Listen. We Care.</p>
+    <div class="meta-row">
+      <span>Approved by the Board</span><span>Managing Director · David Greenwood OAM</span><span>Review cycle · Annual</span>
+    </div>
+    <div class="fill"></div>
+    <hr class="rule">
+    <div class="meta-row" style="margin-top:10px;">
+      <span>Victorian Child Safe Standards</span><span>Child Employment Act</span><span>Worker Screening Act</span><span>Children, Youth &amp; Families Act</span>
+    </div>
+  </section>
+
+  <!-- CONTENTS -->
+  <section class="sec">
+    <div class="eyebrow">Contents</div>
+    <h2 style="font-size:26px; margin:8px 0 0;">What's inside.</h2>
+    <nav class="toc">
+      <a href="#child-safety"><span class="n">01</span>Child Safety Plan</a>
+      <a href="#we-are-people"><span class="n">02</span>We Are People Plan</a>
+      <a href="#first-nations-rap"><span class="n">03</span>Reconciliation Action Plan</a>
+      <a href="#code-of-conduct"><span class="n">04</span>Code of Conduct</a>
+      <a href="#working-with-children"><span class="n">05</span>Working with Children</a>
+      <a href="#anti-bullying"><span class="n">06</span>Anti-Bullying &amp; Harassment</a>
+      <a href="#diversity-inclusion"><span class="n">07</span>Diversity &amp; Inclusion</a>
+      <a href="#lgbtqia-inclusion"><span class="n">08</span>LGBTQIA+ Inclusion</a>
+      <a href="#disability-access"><span class="n">09</span>Disability Access &amp; Adjustment</a>
+      <a href="#complaints"><span class="n">10</span>Complaints &amp; Grievance</a>
+      <a href="#privacy"><span class="n">11</span>Privacy &amp; Data Protection</a>
+      <a href="#social-media"><span class="n">12</span>Social Media &amp; Communication</a>
+      <a href="#photography-consent"><span class="n">13</span>Photography &amp; Image Consent</a>
+      <a href="#emergency-management"><span class="n">14</span>Emergency Management</a>
+      <a href="#first-aid"><span class="n">15</span>First Aid &amp; Injury Response</a>
+      <a href="#anaphylaxis"><span class="n">16</span>Anaphylaxis &amp; Allergy</a>
+      <a href="#rehearsal-safety"><span class="n">17</span>Rehearsal &amp; Performance Safety</a>
+      <a href="#props-safety"><span class="n">18</span>Costume, Set &amp; Props Safety</a>
+      <a href="#excursion"><span class="n">19</span>Excursion &amp; Off-Site Activity</a>
+      <a href="#volunteer-handbook"><span class="n">20</span>Volunteer Handbook</a>
+      <a href="#wellbeing-pledge"><span class="n">21</span>Health &amp; Wellbeing Pledge</a>
+      <a href="#mental-health-first-aid"><span class="n">22</span>Mental Health First Aid</a>
+      <a href="#injury-prevention"><span class="n">23</span>Injury Prevention &amp; Warm-Up</a>
+      <a href="#sun-smart"><span class="n">24</span>Sun Smart &amp; Hydration</a>
+      <a href="#vocal-hearing"><span class="n">25</span>Vocal &amp; Hearing Health</a>
+      <a href="#cultural-framework"><span class="n">26</span>Cultural Framework Policy</a>
+      <a href="#incident-reporting"><span class="n">27</span>Incident Reporting</a>
+    </nav>
+    <p style="margin-top:18px; font-size:12px; color:#6B6B68;">Each policy in this library is reviewed at least annually, or sooner where legislation, guidance or our own practice changes. Questions and suggestions are welcomed at any time &mdash; write to david@centrestage.org.au.</p>
+  </section>
+
+  <section class="sec" id="child-safety">
+    <div class="num">01</div><h2>Child Safety Plan</h2>
+    <p>Child safety is not a box to tick at CentreStage &mdash; it is a promise we uphold every day. We are educators, mentors, producers and advocates who work with hundreds of young people each year across our education programs, mainstage productions and talent agency. This plan sets out how we create and maintain environments in which children and young people are safe, and feel safe, at every point of contact with our organisation.</p>
+    <p>This plan applies to all staff, contractors, creatives, volunteers, board members, students and families. It is aligned with the Victorian Child Safe Standards, the Child Employment Act, the Worker Screening Act and the Children, Youth and Families Act, and with best-practice principles for working with young people in the performing arts. It sits alongside, and draws its values from, our We Are People Plan: We Belong, We Create, We Listen, We Care.</p>
+    <h3>Our commitment to child safety and wellbeing</h3>
+    <p>CentreStage has zero tolerance for child abuse and is committed to acting in the best interests of children and to keeping them safe from harm. We regard the care, safety and wellbeing of children and young people as a paramount responsibility shared by everyone connected to our work. We are equally committed to the cultural safety of Aboriginal children, the cultural safety of children from culturally and linguistically diverse backgrounds, the safety of children with disability, and the safety of LGBTQIA+ young people.</p>
+    <h3>What the plan requires</h3>
+    <ul>
+      <li>Approved communication channels only &mdash; no private direct messages and no unsupervised one-to-one contact between staff and young people.</li>
+      <li>An emergency response framework with practical steps for crisis situations, medical events and disclosures of harm.</li>
+      <li>Inclusion and adjustment support for neurodiverse children, students with disability, EAL learners and culturally diverse young people.</li>
+      <li>Documented risk assessments for rehearsals, performances, excursions and after-hours programming, reviewed for each production.</li>
+      <li>Mandatory Child Safety training via the Department of Education for every staff member and volunteer, refreshed annually.</li>
+      <li>Current Working with Children Checks held and verified before any contact with young people.</li>
+      <li>Clear guidance on illness, hygiene, attendance and respectful reporting, including our lice and infectious-illness practices.</li>
+    </ul>
+    <h3>Empowering children and young people</h3>
+    <p>Child voice is central to how we work. We actively listen to children, take their views seriously, and involve them in decisions that affect them. Students are taught, in age-appropriate ways, what safe and respectful behaviour looks like, who they can talk to, and how to raise a concern. Families are given clear information about our expectations and about how to contact us.</p>
+    <h3>Responding and reporting</h3>
+    <p>Any person who believes a child is at immediate risk must call 000. All staff and volunteers are mandatory reporters within their roles and must report concerns to the Child Safety Officer without delay, who will act in accordance with legal obligations, including reporting to Victoria Police and child-protection authorities where required. Reports are handled promptly, fairly and confidentially, and no one who raises a genuine concern will be disadvantaged for doing so.</p>
+    <h3>Roles, monitoring and review</h3>
+    <p>The Managing Director and Board hold ultimate accountability for child safety. A designated Child Safety Officer coordinates training, screening, risk assessment and response. Compliance is monitored through record audits, incident review and community feedback. This plan is reviewed at least annually and after any significant incident, and the current version is published for parents, carers, staff, students and community members to read.</p>
+  </section>
+
+  <section class="sec" id="we-are-people">
+    <div class="num">02</div><h2>We Are People Plan</h2>
+    <p>The We Are People Plan is CentreStage's corporate social responsibility framework and the source of our organisational values. It draws on those values and introduces the cultural characteristics and indicators that anchor our people's everyday experiences and interactions. Its purpose is to ensure our company reflects a culture that is shared and proudly embraced by all people &mdash; including Aboriginal and Torres Strait Islander people and non-Indigenous people alike &mdash; and to make sure our intentions translate into meaningful action and positive outcomes.</p>
+    <p>This plan applies across the whole organisation: our productions, our education academy, our talent agency and our administration. It is the plan from which our Child Safety Plan, Cultural Framework, health and wellbeing commitments and inclusion policies all take direction. Our culture must continually shift to match the desired behaviours of a high-performing, values-led workforce, and that requires strategies that build trust, transparency and accountability across all of our relationships.</p>
+    <h3>Our four values</h3>
+    <ul>
+      <li><strong>We Belong</strong> &mdash; an inclusive community where every person, regardless of background, ability or experience, has a place on our stage.</li>
+      <li><strong>We Create</strong> &mdash; ambitious, professional-quality theatre that fosters new talent and develops existing skills.</li>
+      <li><strong>We Listen</strong> &mdash; we consult within community and government forums, use benchmarks and surveys, and act on what we hear.</li>
+      <li><strong>We Care</strong> &mdash; a comprehensive commitment to the health, wellbeing and safety of our people, students and families.</li>
+    </ul>
+    <h3>What the plan commits us to</h3>
+    <p>Our CSR strategy translates these values into practical, measurable areas of action that build a stronger relationship with families and community and help us do better each day:</p>
+    <ul>
+      <li>Reducing our carbon footprint and investing in environmentally conscious strategies.</li>
+      <li>Engaging in charity work and regular donations to community organisations.</li>
+      <li>Purchasing locally to support the Geelong economy wherever we can.</li>
+      <li>Improving industry wages and rewarding staff when we achieve our targets.</li>
+      <li>A comprehensive mental-health commitment for staff, volunteers, performers, students and families.</li>
+      <li>Access programs that help community groups &mdash; including people with disability, people in aged care, schools and clubs &mdash; attend and take part in the arts.</li>
+    </ul>
+    <h3>Accountability and review</h3>
+    <p>We are clever, creative and connected, and we hold ourselves to account for living these values rather than simply stating them. Progress is measured through surveys, benchmarks and community consultation, and feedback is collated and verified with our community partners before each updated version is released. As custodians of a shared cultural ecosystem, management also brings its partners and suppliers on this journey. This plan is reviewed annually.</p>
+    <div class="note">The full We Are People Plan is also published as a PDF. <a href="https://www.centrestage.org.au/_files/ugd/35cad6_6cc8b5faad5549c6827b2e30c15f1096.pdf">Download the full plan &rarr;</a></div>
+  </section>
+
+  <section class="sec" id="first-nations-rap">
+    <div class="num">03</div><h2>Reconciliation Action Plan</h2>
+    <p>CentreStage's first Reconciliation Action Plan (RAP) is a formal commitment to truth-telling, relationship-building and the creation of meaningful opportunities for Aboriginal and Torres Strait Islander Peoples across every area of our organisation. We are based on Wadawurrung Country in Geelong, and our work is led in part by creatives with First Nations heritage from the Palawa people of Lutruwita (Tasmania). We have long recognised the role of theatre in celebrating culture, challenging injustice and giving voice to untold stories, and this plan embeds reconciliation into how we cast, educate, lead, perform and partner.</p>
+    <p>&ldquo;Reconciliation is not a side project &mdash; it's centre stage,&rdquo; says Managing Director David Greenwood OAM. &ldquo;Every spotlight we turn on must illuminate not only talent, but truth. This plan challenges us to listen deeply, act humbly, and honour the stories that have been told on this Country for over 60,000 years.&rdquo;</p>
+    <h3>Our three pillars</h3>
+    <p>Over the life of this plan, our actions are organised under three pillars &mdash; Relationships, Respect and Opportunities &mdash; each with measurable deliverables and named owners.</p>
+    <h3>Key commitments</h3>
+    <ul>
+      <li>Inclusive casting processes that amplify First Nations performers and creatives.</li>
+      <li>Annual scholarships and mentorship for Aboriginal and Torres Strait Islander youth.</li>
+      <li>Cultural awareness training for all staff, board members and volunteers.</li>
+      <li>Partnerships with the Wadawurrung Traditional Owners Aboriginal Corporation and the Wathaurong Co-operative.</li>
+      <li>Integration of Indigenous stories, languages and perspectives across our programming and education.</li>
+      <li>Cultural exchange projects with Palawa artists and storytellers, and observance of NAIDOC Week and National Reconciliation Week.</li>
+    </ul>
+    <h3>Visible commitment</h3>
+    <p>Over time our community will see reconciliation reflected in Wadawurrung-named spaces and signage, commissioned Indigenous artworks, and performances aligned with significant cultural dates. Acknowledgement of Country is embedded into our productions, classes and events, and we work to ensure our physical and cultural environments are safe and welcoming for Aboriginal and Torres Strait Islander people.</p>
+    <h3>Why it matters, and how we stay accountable</h3>
+    <p>For CentreStage, reconciliation is not only about representation &mdash; it is about responsibility. As one of the largest amateur musical theatre companies in the country and a significant contributor to Victoria's creative landscape, we believe we have a role in shifting how stories are shared, how stages are built and how futures are shaped. Our progress is monitored, publicly reported and shaped by feedback from our First Nations stakeholders, ensuring we are not just saying the right things but doing them, with community guidance and cultural authority. This plan is reviewed with our partners and renewed at the end of each cycle.</p>
+  </section>
+
+  <section class="sec" id="code-of-conduct">
+    <div class="num">04</div><h2>Code of Conduct</h2>
+    <p>This Code of Conduct describes the behaviour CentreStage expects of every person connected to our organisation: staff, contractors, creatives, board members, volunteers, performers, students and the families who support them. It exists to protect the safety, dignity and wellbeing of everyone in our community and to uphold the professional reputation of CentreStage as a place where people are treated with respect and care.</p>
+    <p>The Code applies at all CentreStage activities &mdash; classes, rehearsals, performances, auditions, meetings, events, tours and online interactions &mdash; and to conduct outside those activities where it affects the safety of our community or the standing of the organisation. It should be read together with our Child Safety Plan, Anti-Bullying &amp; Harassment Policy and Social Media &amp; Communication Policy.</p>
+    <h3>Expected behaviours</h3>
+    <ul>
+      <li>Treat every person with respect, courtesy and fairness, free from discrimination, harassment or intimidation.</li>
+      <li>Model the professional standards of a working theatre &mdash; punctuality, preparation, reliability and care for shared spaces and equipment.</li>
+      <li>Maintain clear and appropriate boundaries with children and young people at all times, on and off site.</li>
+      <li>Use only approved, transparent channels to communicate with young people, and never private messaging.</li>
+      <li>Respect the diversity of our community, including cultural background, disability, gender identity and sexuality.</li>
+      <li>Follow reasonable direction from directors, teachers, stage management and staff, and follow all safety instructions.</li>
+    </ul>
+    <h3>Behaviours that are not acceptable</h3>
+    <p>The following are never acceptable and may result in removal from a program or production and, where appropriate, referral to authorities: any form of abuse, bullying, harassment or discrimination; attending under the influence of alcohol or illicit substances; unsafe conduct on stage, backstage or in the pit; possession of weapons; developing an inappropriate relationship with a child; and using CentreStage platforms to promote personal businesses or products.</p>
+    <h3>Responsibilities</h3>
+    <p>All staff and volunteers are role models and are held to the highest standard, particularly around young people. Parents and carers support the Code by reinforcing respectful behaviour and by raising concerns early. Directors and coordinators are responsible for setting the tone of their rooms and for addressing breaches consistently and fairly.</p>
+    <h3>Breaches and review</h3>
+    <p>Suspected breaches should be reported to a coordinator or to the office. Concerns involving child safety are escalated immediately under the Child Safety Plan. Responses are proportionate to the breach and may range from a conversation to suspension or exclusion. This Code is reviewed annually and provided to every new member of the CentreStage community on induction.</p>
+  </section>
+
+  <section class="sec" id="working-with-children">
+    <div class="num">05</div><h2>Working with Children Policy</h2>
+    <p>This policy sets out the screening, supervision and training requirements that apply to everyone at CentreStage who works with, or may come into contact with, children and young people. Its purpose is to ensure that only suitable people work with children, that they are properly supervised and supported, and that our practices meet and exceed the requirements of Victorian law, including the Worker Screening Act and the Child Employment Act.</p>
+    <p>It applies to all staff, contractors, creatives, board members, volunteers and any other person engaged in CentreStage activities involving people under 18. It works hand in hand with our Child Safety Plan and Code of Conduct.</p>
+    <h3>Screening and clearances</h3>
+    <ul>
+      <li>A valid Working with Children Check is mandatory before any contact with young people and is verified and recorded by CentreStage.</li>
+      <li>Relevant qualifications, references and identity are checked as part of recruitment for paid and volunteer roles.</li>
+      <li>Clearances are monitored for currency, and lapsed checks mean immediate removal from child-related duties until renewed.</li>
+      <li>Where required, child-employment permits are obtained for young performers, and the associated conditions are followed.</li>
+    </ul>
+    <h3>Training and induction</h3>
+    <p>Everyone working with children completes Child Safety Mandatory Training via the Department of Education on induction, and refreshes it annually. Induction also covers this policy, the Code of Conduct, our reporting procedures and the specific expectations of the role. Staff and volunteers are supported with ongoing guidance and are encouraged to ask questions whenever they are unsure.</p>
+    <h3>Supervision and safe practice</h3>
+    <ul>
+      <li>Appropriate adult-to-child ratios and line-of-sight supervision are maintained at every session.</li>
+      <li>Two-adult principles apply to change rooms, transport and one-to-one tuition wherever practicable.</li>
+      <li>Toileting, costume changes and physical contact for choreography follow clear, communicated protocols.</li>
+      <li>Late collection, absences and drop-off arrangements are managed with families in advance.</li>
+    </ul>
+    <h3>Responsibilities, monitoring and review</h3>
+    <p>The Child Safety Officer maintains the register of checks and training and audits it regularly. Coordinators ensure supervision arrangements are in place for their activities. Any concern about a person's suitability to work with children is treated seriously, may result in immediate stand-down pending review, and is reported to authorities where required. This policy is reviewed at least annually.</p>
+  </section>
+  <section class="sec" id="anti-bullying">
+    <div class="num">06</div><h2>Anti-Bullying &amp; Harassment Policy</h2>
+    <p>CentreStage takes a zero-tolerance approach to bullying, harassment, discrimination and victimisation of any kind. This policy exists to ensure that our classes, rehearsals, performances, workplaces and online spaces are psychologically safe for students, performers, staff, volunteers and families, and that anyone who experiences or witnesses unacceptable behaviour knows how to raise it and will be supported when they do.</p>
+    <p>It applies to everyone connected to CentreStage and to all CentreStage settings, including social media and messaging. It should be read together with our Code of Conduct, Child Safety Plan and Complaints &amp; Grievance Procedure.</p>
+    <h3>Definitions</h3>
+    <p class="defn"><strong>Bullying</strong> is repeated, unreasonable behaviour directed at a person or group that creates a risk to health, safety or wellbeing. <strong>Harassment</strong> is unwelcome conduct that offends, humiliates or intimidates, including on the basis of a protected attribute. <strong>Discrimination</strong> is treating a person unfavourably because of an attribute such as race, disability, age, sex, gender identity or sexuality. <strong>Victimisation</strong> is subjecting a person to detriment because they have raised, or supported, a complaint.</p>
+    <h3>Our commitments</h3>
+    <ul>
+      <li>We foster a culture of respect where difference is welcomed and cruelty is never excused as &ldquo;banter&rdquo;.</li>
+      <li>We provide multiple safe ways to report, including confidentially and, where possible, anonymously.</li>
+      <li>We respond to every report promptly, impartially and proportionately.</li>
+      <li>We support anyone affected, and protect them and any witnesses from retaliation.</li>
+      <li>We build education about respectful conduct and bystander action into our programs.</li>
+      <li>We keep records of reports and outcomes to identify and address patterns.</li>
+    </ul>
+    <h3>What to do if it happens</h3>
+    <p>Anyone who experiences or witnesses bullying or harassment is encouraged to raise it with a teacher, director, coordinator or the office as soon as possible. Where it is safe and comfortable to do so, telling the person their behaviour is unwelcome can resolve matters early; but no one is ever required to do this, and concerns can be brought straight to staff. Concerns involving a child's safety are escalated immediately under the Child Safety Plan.</p>
+    <h3>How we respond</h3>
+    <p>We assess each report, gather relevant information fairly, and act according to the seriousness of the behaviour. Responses may include facilitated conversations, formal warnings, additional supervision, suspension or exclusion, and referral to authorities where the law requires. We keep the people involved informed appropriately and check in afterwards.</p>
+    <h3>Responsibilities and review</h3>
+    <p>All members of our community share responsibility for a respectful culture. Staff and volunteers must model it and act on concerns. Leaders are accountable for the climate of their rooms. This policy is reviewed annually and communicated to every new member on induction.</p>
+  </section>
+
+  <section class="sec" id="diversity-inclusion">
+    <div class="num">07</div><h2>Diversity &amp; Inclusion Policy</h2>
+    <p>CentreStage is driven by a desire to provide access to the arts to as many people in our community as possible. This policy sets out how we make our stages, our classes and our workplace genuinely welcoming to all people, regardless of background, ability, age, cultural or linguistic heritage, faith, gender identity or sexuality. Inclusion is not an add-on for us: we are owned and managed by a person with disability and members of the LGBTQIA+ community, and our team includes people who identify as First Nations and from a range of minority groups.</p>
+    <p>This policy applies to casting, recruitment, teaching, audience access and every interaction across the organisation. It gives effect to our We Are People Plan value that We Belong, and works with our LGBTQIA+ Inclusion, Disability Access and Cultural Framework policies.</p>
+    <h3>Our commitments</h3>
+    <ul>
+      <li>Casting and recruitment practices that actively reflect the diversity of our community.</li>
+      <li>Access programs and subsidised opportunities for community groups, schools and people experiencing disadvantage.</li>
+      <li>Support for community service partners so people with disability and people in aged care can attend productions.</li>
+      <li>Culturally safe practices and observance of significant cultural dates.</li>
+      <li>Accessible venues, materials and communications wherever practicable.</li>
+      <li>Ongoing consultation with community and government forums to set and raise our benchmarks.</li>
+    </ul>
+    <h3>Inclusive practice in the room</h3>
+    <p>Teachers, directors and staff create environments where every participant can take part fully. That means offering reasonable adjustments, using inclusive language, being flexible about how skills are demonstrated, and being alert to barriers &mdash; financial, physical, sensory or cultural &mdash; that might prevent someone from joining in. We do not pre-cast, and we design open-entry programs so that participation is not gated by prior experience or means.</p>
+    <h3>Responsibilities</h3>
+    <p>Leadership sets the strategy and resources it; staff and volunteers put it into practice; and all members of our community are asked to help maintain a welcoming culture. Concerns about exclusion or discrimination are handled under our Complaints &amp; Grievance Procedure.</p>
+    <h3>Monitoring and review</h3>
+    <p>We use surveys, benchmarks and community feedback to measure how inclusive we really are, and we report on and act on what we learn. This policy is reviewed at least annually.</p>
+  </section>
+
+  <section class="sec" id="lgbtqia-inclusion">
+    <div class="num">08</div><h2>LGBTQIA+ Inclusion Policy</h2>
+    <p>CentreStage is proud to be a safe, affirming home for LGBTQIA+ artists, students, staff, volunteers and audiences. This policy makes explicit our commitment to celebrating LGBTQIA+ lives and to ensuring that everyone in our community can participate as their authentic selves, free from discrimination, exclusion or harm. That commitment is not theoretical: it is embedded in how we cast, teach, tell stories and run our organisation, and it is reflected in our leadership.</p>
+    <p>This policy applies to all CentreStage settings and all members of our community. It complements our Diversity &amp; Inclusion Policy, Anti-Bullying &amp; Harassment Policy and Child Safety Plan, and reflects our value that We Belong.</p>
+    <h3>Our commitments</h3>
+    <ul>
+      <li>Respect for chosen names and pronouns across all programs, records and communications.</li>
+      <li>Access to inclusive facilities, and costuming and choreography approaches that respect gender identity.</li>
+      <li>Storytelling and casting that affirm and celebrate LGBTQIA+ experiences.</li>
+      <li>Zero tolerance for homophobia, biphobia, transphobia or exclusion of any kind.</li>
+      <li>Partnerships and outreach with LGBTQIA+ community organisations.</li>
+      <li>Support for young people exploring their identity, delivered sensitively and in line with child-safety practice.</li>
+    </ul>
+    <h3>Inclusive practice</h3>
+    <p>Our staff use inclusive language as standard and are supported with guidance and training. We are mindful that visibility and privacy are personal choices; we never &ldquo;out&rdquo; anyone, and we hold information about a person's identity in confidence. Productions that centre LGBTQIA+ stories &mdash; such as our staging of & Juliet &mdash; are approached with authenticity, community consultation and care for the performers involved.</p>
+    <h3>Responsibilities, support and review</h3>
+    <p>All staff and volunteers are responsible for upholding an affirming environment, and leaders are accountable for it. Anyone who experiences or witnesses discrimination can raise it with staff or through our Complaints &amp; Grievance Procedure, and will be supported. Where a young person needs additional support, we connect families with appropriate services. This policy is reviewed at least annually.</p>
+  </section>
+
+  <section class="sec" id="disability-access">
+    <div class="num">09</div><h2>Disability Access &amp; Adjustment Policy</h2>
+    <p>CentreStage believes everyone has the potential to be a great performer, and access to the arts should not depend on ability or disability. This policy sets out how we make reasonable adjustments so that performers, students, volunteers, staff and audience members with disability can take part fully in what we do. As an organisation owned and managed by a person with disability, accessibility is part of our identity, not an afterthought.</p>
+    <p>It applies across our education programs, productions, agency and venues, and reflects our obligations under the Disability Discrimination Act and Victorian equal-opportunity law. It should be read with our Diversity &amp; Inclusion Policy and Child Safety Plan.</p>
+    <h3>Our commitments</h3>
+    <ul>
+      <li>Individual access and adjustment plans developed in partnership with students and families.</li>
+      <li>Accessible entries, seating, amenities and rehearsal spaces at our venues wherever possible.</li>
+      <li>Sensory-considered sessions and relaxed performances offered on request.</li>
+      <li>Support for assistance animals, carers and companion-card holders.</li>
+      <li>Flexible approaches to how skills are taught, practised and demonstrated.</li>
+      <li>Accessible information, including large-print and plain-language materials on request.</li>
+    </ul>
+    <h3>Making adjustments</h3>
+    <p>We work with each person to understand what they need to participate and succeed, and we put reasonable adjustments in place. Adjustments might include modified choreography, additional support in the room, adapted schedules, quiet spaces, or changes to how auditions are run. We keep this information confidential and use it only to support the individual.</p>
+    <h3>Audiences</h3>
+    <p>We aim to make attending a CentreStage production welcoming for everyone, and we support community partners so that people with disability and people in aged care can attend. Patrons with access requirements are encouraged to contact us before booking so we can plan the best possible experience.</p>
+    <h3>Responsibilities and review</h3>
+    <p>Coordinators arrange adjustments for their activities with support from the office; leadership ensures venues and programs are as accessible as practicable. Barriers or concerns can be raised at any time and are addressed under our Complaints &amp; Grievance Procedure. This policy is reviewed at least annually.</p>
+  </section>
+
+  <section class="sec" id="complaints">
+    <div class="num">10</div><h2>Complaints &amp; Grievance Procedure</h2>
+    <p>CentreStage welcomes feedback and takes concerns seriously. This procedure provides clear, fair and accessible steps for raising and resolving complaints, so that issues are heard, understood and addressed quickly, and so that our community can have confidence in how we respond. Raising a concern helps us improve, and no one will be disadvantaged for doing so in good faith.</p>
+    <p>It applies to complaints from students, families, performers, volunteers, staff, audiences and community members about any aspect of our activities. Concerns that involve the safety of a child are dealt with immediately under the Child Safety Plan and are not delayed by this procedure.</p>
+    <h3>How to raise a concern</h3>
+    <ul>
+      <li>Speak with the teacher, director or coordinator involved, or contact the office in person, by phone or in writing.</li>
+      <li>Tell us what happened, who was involved, and what outcome you are seeking.</li>
+      <li>You may bring a support person, and you can ask for adjustments to make the process accessible.</li>
+      <li>If a concern is about a staff member you would rather not approach, you can bring it straight to the Managing Director.</li>
+    </ul>
+    <h3>How we respond</h3>
+    <p>We acknowledge complaints within two business days. We handle them impartially and confidentially, gathering relevant information and giving anyone the complaint is about a fair opportunity to respond. We aim to resolve most matters quickly and informally, and we keep the complainant informed of progress and outcome. Where a matter is complex, we will explain the likely timeframe.</p>
+    <h3>Escalation and external options</h3>
+    <p>If you are not satisfied with the outcome, you can ask for the matter to be escalated to the Managing Director or the Board for review. You also retain the right to contact external bodies &mdash; such as the relevant Commission, regulator or, for child-safety matters, Victoria Police and child-protection authorities &mdash; at any time.</p>
+    <h3>Records, responsibilities and review</h3>
+    <p>Complaints and their outcomes are recorded confidentially and used to identify patterns and improve our practice. Coordinators handle day-to-day concerns; the Managing Director oversees serious or escalated matters. This procedure is reviewed at least annually.</p>
+  </section>
+
+  <section class="sec" id="privacy">
+    <div class="num">11</div><h2>Privacy &amp; Data Protection Policy</h2>
+    <p>CentreStage collects and holds personal information about students, families, performers, members, staff, volunteers and audiences in order to run our programs, productions and agency. This policy explains what we collect, how we use and protect it, and the choices you have. It is designed to meet our obligations under the Privacy Act and the Australian Privacy Principles, and it reflects the trust our community places in us.</p>
+    <p>It applies to all personal information we handle, however it is collected &mdash; through enrolment, ticketing, auditions, employment, our website or our communication tools.</p>
+    <h3>What we collect and why</h3>
+    <ul>
+      <li>Contact and identity details, to administer enrolments, bookings, memberships and employment.</li>
+      <li>Health, access and emergency information, to keep participants safe and provide reasonable adjustments.</li>
+      <li>Working with Children Checks and clearances, to meet our child-safety obligations.</li>
+      <li>Images and recordings, in line with our Photography &amp; Image Consent Policy.</li>
+      <li>Payment information, processed securely through our providers.</li>
+    </ul>
+    <h3>How we protect it</h3>
+    <p>We collect only what we need, store it securely, and restrict access to those who require it for their role. We take reasonable steps to protect information from misuse, loss and unauthorised access, and we hold sensitive information &mdash; such as health and child-safety records &mdash; with particular care. We retain information only as long as necessary or as required by law, and then dispose of it securely.</p>
+    <h3>Sharing information</h3>
+    <p>We never sell personal information. We share it only where necessary to deliver our services (for example, with venues or licensing bodies), where you have consented, or where the law requires or permits &mdash; including sharing child-safety information with authorities to protect a child.</p>
+    <h3>Your rights, responsibilities and review</h3>
+    <p>You can request access to the information we hold about you and ask us to correct it if it is wrong. Concerns about privacy can be raised with the office and, if unresolved, escalated under our Complaints &amp; Grievance Procedure or to the Office of the Australian Information Commissioner. Staff and volunteers are responsible for handling information in line with this policy, which is reviewed at least annually.</p>
+  </section>
+  <section class="sec" id="social-media">
+    <div class="num">12</div><h2>Social Media &amp; Communication Policy</h2>
+    <p>This policy sets out approved, transparent ways for CentreStage to communicate with young people and families, and how our staff, volunteers and members should conduct themselves on social media and messaging platforms. Its purpose is to keep communication safe, professional and consistent with our child-safety obligations, while allowing us to share the excitement of our productions and programs with our community.</p>
+    <p>It applies to all official CentreStage channels and to the conduct of staff, volunteers and contractors where it relates to CentreStage. It works alongside our Child Safety Plan, Code of Conduct and Photography &amp; Image Consent Policy, and covers our approved education tools such as StudioPro and Seesaw.</p>
+    <h3>Communicating with young people</h3>
+    <ul>
+      <li>All communication with students goes through approved, monitored channels &mdash; never personal accounts or private direct messages.</li>
+      <li>Parents and carers are included in communication about their children wherever appropriate.</li>
+      <li>Staff do not connect with, or follow, students on personal social media.</li>
+      <li>Approved platforms are used for class updates, and their settings are configured for privacy and safety.</li>
+    </ul>
+    <h3>Official channels</h3>
+    <p>Only authorised people post on CentreStage's official accounts. Content is respectful, accurate and consistent with our brand and values, and it protects the privacy of children in line with our image-consent practice. We do not use our platforms to promote unrelated personal businesses or products, and we correct mistakes promptly and transparently.</p>
+    <h3>Personal use</h3>
+    <p>Staff, volunteers and members are welcome to enjoy social media personally, but should not post material that identifies children in our care without consent, that brings CentreStage into disrepute, or that breaches confidentiality. Comments that are discriminatory, harassing or abusive are never acceptable and may be dealt with under our Code of Conduct.</p>
+    <h3>Responsibilities, moderation and review</h3>
+    <p>Nominated staff manage and moderate official channels and respond to messages within business hours. Concerns about online conduct or content can be reported to the office and, where they involve a child's safety, are escalated immediately. This policy is reviewed at least annually as platforms and tools change.</p>
+  </section>
+
+  <section class="sec" id="photography-consent">
+    <div class="num">13</div><h2>Photography &amp; Image Consent Policy</h2>
+    <p>Photographs and recordings are a wonderful way to celebrate our performers and promote our work, but they must be captured and used with care and consent, especially where children are involved. This policy explains how CentreStage manages the taking, storage, use and sharing of images and recordings, and how consent is obtained and can be withdrawn.</p>
+    <p>It applies to all photography and recording at CentreStage classes, rehearsals, productions and events, whether by staff, official photographers, families or media. It supports our Child Safety Plan, Privacy Policy and Social Media Policy.</p>
+    <h3>Consent</h3>
+    <ul>
+      <li>Written consent is obtained from parents or carers before images of children are used publicly.</li>
+      <li>Consent is specific about how images may be used &mdash; for example, marketing, social media or programs.</li>
+      <li>Consent can be declined or withdrawn at any time, without affecting a child's participation.</li>
+      <li>Adults provide their own consent for the use of their images.</li>
+    </ul>
+    <h3>How images are used and protected</h3>
+    <p>We do not publish identifying details &mdash; such as full names, schools or contact information &mdash; alongside images of children. Images are stored securely, used only for the purposes consented to, and retained no longer than necessary. We take particular care with images of children who may be in vulnerable circumstances, and we will not use an image where doing so could compromise a child's safety.</p>
+    <h3>Recording at performances</h3>
+    <p>To protect the privacy and safety of all performers, and to respect licensing conditions, personal photography and recording during productions is managed and may be restricted. Where audience photography is permitted, we ask that images of other people's children are not shared publicly without their families' consent.</p>
+    <h3>Responsibilities and review</h3>
+    <p>Coordinators ensure consents are collected and respected for their activities, and official photographers are briefed on this policy. Concerns about the use of an image can be raised with the office and will be acted on promptly. This policy is reviewed at least annually.</p>
+  </section>
+
+  <section class="sec" id="emergency-management">
+    <div class="num">14</div><h2>Emergency Management Plan</h2>
+    <p>This plan sets out how CentreStage prepares for, and responds to, emergencies at the venues we use for classes, rehearsals and performances. Its purpose is to protect the safety of students, performers, staff, volunteers and audiences through clear procedures, defined responsibilities and regular practice. Being prepared means that if something goes wrong, our people know exactly what to do.</p>
+    <p>It applies to all CentreStage sites and activities, including off-site and touring activity, and is supported by our First Aid, Child Safety and Excursion policies.</p>
+    <h3>Preparedness</h3>
+    <ul>
+      <li>Clear evacuation routes, exits and assembly points identified at each site.</li>
+      <li>Named wardens and a defined chain of responsibility for every session and performance.</li>
+      <li>Emergency contacts, site information and, where relevant, individual support plans kept accessible.</li>
+      <li>Procedures for fire, medical emergencies, lockdown, severe weather and utility failure.</li>
+      <li>Consideration of the needs of children and people with disability in every evacuation plan.</li>
+    </ul>
+    <h3>Responding to an emergency</h3>
+    <p>In any emergency, the first priority is life safety: call 000 where there is immediate risk, then follow the site procedure. Wardens direct evacuation or shelter as appropriate, account for everyone at the assembly point &mdash; with particular attention to children and those needing assistance &mdash; and do not allow re-entry until the site is declared safe. Families are notified as soon as it is safe to do so.</p>
+    <h3>Communication and continuity</h3>
+    <p>We communicate clearly and calmly during an emergency and provide accurate information to families and authorities. After an incident we support those affected, arrange alternative arrangements for programs where needed, and manage any media contact centrally through the Managing Director.</p>
+    <h3>Responsibilities, drills and review</h3>
+    <p>Coordinators are responsible for knowing the emergency procedures for their venue and briefing participants. Drills are conducted periodically, and every emergency and drill is reviewed to improve the plan. This plan is reviewed at least annually and whenever we take on a new venue.</p>
+  </section>
+
+  <section class="sec" id="first-aid">
+    <div class="num">15</div><h2>First Aid &amp; Injury Response Policy</h2>
+    <p>Performing and rehearsing are physical activities, and injuries and illness can happen. This policy ensures that trained first-aiders and appropriate equipment are available at CentreStage activities, and that there is a clear, calm response when someone is hurt or unwell. Prompt, competent first aid protects our community and reflects our duty of care.</p>
+    <p>It applies to all classes, rehearsals, performances and events, and works with our Emergency Management Plan, Anaphylaxis policy and Child Safety Plan.</p>
+    <h3>Our commitments</h3>
+    <ul>
+      <li>Qualified first-aiders rostered to classes, rehearsals and performances.</li>
+      <li>Stocked, checked first-aid kits and accessible emergency contacts at every site.</li>
+      <li>Access to auto-injectors and asthma relief where students' plans require them.</li>
+      <li>Documented injury reporting and prompt notification of families.</li>
+      <li>Clear guidance on when to call 000 and when to seek follow-up care.</li>
+    </ul>
+    <h3>Responding to injury or illness</h3>
+    <p>A trained first-aider assesses the situation, provides appropriate care, and calls 000 where there is any doubt about the seriousness of an injury or medical event. For children, a parent or carer is contacted as soon as possible, and a staff member stays with the child throughout. We follow individual health and anaphylaxis plans, and we never move a seriously injured person unless they are in danger.</p>
+    <h3>Recording and follow-up</h3>
+    <p>Every injury and significant illness is recorded on an incident form with the date, people involved and action taken. We review incidents to identify hazards and prevent recurrence, and we provide return-to-activity guidance so participants come back safely after an injury.</p>
+    <h3>Responsibilities and review</h3>
+    <p>Coordinators ensure a first-aider and kit are present for their activities and that health information is to hand. The office maintains first-aid qualifications and kit supplies. This policy is reviewed at least annually.</p>
+  </section>
+
+  <section class="sec" id="anaphylaxis">
+    <div class="num">16</div><h2>Anaphylaxis &amp; Allergy Management</h2>
+    <p>Anaphylaxis is a severe and potentially life-threatening allergic reaction that requires an immediate response. This policy sets out how CentreStage keeps students, performers and staff with severe allergies safe across our classes, rehearsals and productions, and how our people are prepared to recognise and respond to a reaction. It reflects best-practice guidance for community and education settings.</p>
+    <p>It applies to all CentreStage activities and to everyone who supervises participants, and it works alongside our First Aid and Child Safety policies.</p>
+    <h3>Prevention and preparation</h3>
+    <ul>
+      <li>Individual anaphylaxis management plans, prepared with families and medical practitioners, are held for at-risk participants.</li>
+      <li>Staff and volunteers are trained to recognise the signs of anaphylaxis and to administer an adrenaline auto-injector.</li>
+      <li>Auto-injectors are kept accessible, in date, and taken to off-site activities and performances.</li>
+      <li>Allergen-aware practices apply to catering, shared food, props and craft materials.</li>
+      <li>Participants' allergies are known to the relevant supervising staff, while respecting privacy.</li>
+    </ul>
+    <h3>Responding to a reaction</h3>
+    <p>If anaphylaxis is suspected, staff act immediately: lay the person flat, administer the auto-injector without delay, call 000, and give a second dose if there is no improvement and another injector is available. A staff member stays with the person, notes the time of administration, and ensures the ambulance and family are informed. Every reaction is treated as an emergency, even if symptoms seem mild at first.</p>
+    <h3>After an incident</h3>
+    <p>We complete an incident record, review what happened, replace any used auto-injector, and check that the individual's plan remains appropriate. We support the person and their family and any staff or students who witnessed the event.</p>
+    <h3>Responsibilities and review</h3>
+    <p>Coordinators ensure plans and auto-injectors are present and that staff know who is at risk. The office maintains training currency. This policy is reviewed at least annually and whenever a participant's medical needs change.</p>
+  </section>
+
+  <section class="sec" id="rehearsal-safety">
+    <div class="num">17</div><h2>Rehearsal &amp; Performance Safety Policy</h2>
+    <p>Theatre involves working with staging, lighting, rigging, effects, height and sometimes darkness, and the safety of everyone on stage, backstage and in the orchestra pit is paramount. This policy sets out how CentreStage assesses and controls the risks of rehearsal and performance so that productions are exciting and safe in equal measure.</p>
+    <p>It applies to all productions and rehearsals and to cast, crew, musicians, creatives and volunteers. It is supported by our Costume, Set &amp; Props Safety Policy, First Aid Policy and Emergency Management Plan.</p>
+    <h3>Risk assessment and safe practice</h3>
+    <ul>
+      <li>Pre-production risk assessments for staging, lighting, rigging, automation and any special effects.</li>
+      <li>Safe systems for working at height, manual handling, and moving scenery and equipment.</li>
+      <li>Managed blackout and scene-change procedures, with marked exits, glow tape and clear sightlines.</li>
+      <li>Appropriate supervision of young performers backstage at all times.</li>
+      <li>Sensible call times, breaks and rest to prevent fatigue during production periods.</li>
+      <li>Clear rules for the orchestra pit, including access, cabling and hearing protection.</li>
+    </ul>
+    <h3>Roles and inductions</h3>
+    <p>Everyone involved in a production receives a safety briefing appropriate to their role before they begin. Stage management maintains order backstage and enforces safe practice; the production team ensures set, rigging and effects are designed and operated safely; and performers follow direction and report hazards. Children are always supervised backstage by cleared adults in line with our Child Safety Plan.</p>
+    <h3>Hazards, incidents and review</h3>
+    <p>Hazards must be reported and addressed promptly, and anyone may stop an unsafe activity. Incidents and near-misses are recorded and reviewed to improve future productions. This policy is reviewed at least annually and applied afresh to each production's specific requirements.</p>
+  </section>
+
+  <section class="sec" id="props-safety">
+    <div class="num">18</div><h2>Costume, Set &amp; Props Safety Policy</h2>
+    <p>CentreStage builds, stores and hires costumes, sets and props &mdash; including through our costume and set hire service for other companies, schools and organisations. This policy ensures those production elements are made, handled and stored safely, protecting performers, crew, staff and the people who hire from us.</p>
+    <p>It applies to all construction, use, storage and hire of costumes, sets and props, and works with our Rehearsal &amp; Performance Safety Policy.</p>
+    <h3>Safe materials and construction</h3>
+    <ul>
+      <li>Fire-retardant treatment and testing of drapes and materials where appropriate.</li>
+      <li>Set pieces designed and built to carry their intended loads and to move safely.</li>
+      <li>Safe finishes, fixings and edges on costumes, props and scenery.</li>
+      <li>Careful control of any weapon props, flame, smoke or pyrotechnic effects, used only by trained people.</li>
+      <li>Costumes checked for trip, fire and mobility hazards, especially for children and quick changes.</li>
+    </ul>
+    <h3>Handling and storage</h3>
+    <p>Sets and heavy props are lifted and moved using safe manual-handling practices and, where needed, more than one person or mechanical aids. Storage areas are kept clean, organised and clear of obstructions, with heavy items stored low and walkways maintained. Electrical props and practical lights are tested and tagged in line with requirements.</p>
+    <h3>Hire service</h3>
+    <p>Items offered for hire are inspected before and after hire, and hirers are given any relevant safety information. Our hire service is available to theatre companies, schools, organisations and individuals, but is not offered for private parties or dress-up events; this focus helps us keep the service safe, well-maintained and genuinely useful to the sector.</p>
+    <h3>Responsibilities and review</h3>
+    <p>The production and wardrobe teams are responsible for the safety of the elements they create and manage, and the office oversees the hire service. Hazards are reported and addressed promptly. This policy is reviewed at least annually.</p>
+  </section>
+
+  <section class="sec" id="excursion">
+    <div class="num">19</div><h2>Excursion &amp; Off-Site Activity Policy</h2>
+    <p>From time to time CentreStage students and performers take part in activities away from our usual sites &mdash; performances at other venues such as the Geelong Arts Centre, showcases, workshops and events. This policy sets out how we maintain supervision and duty of care during off-site and touring activity so that participants are as safe away from base as they are at home.</p>
+    <p>It applies to all off-site activities involving CentreStage participants, especially those involving people under 18, and is supported by our Child Safety Plan, Emergency Management Plan and First Aid Policy.</p>
+    <h3>Planning and consent</h3>
+    <ul>
+      <li>A risk assessment is completed for every off-site activity, covering the venue, travel and the activity itself.</li>
+      <li>Written consent and up-to-date health and emergency information are collected from families in advance.</li>
+      <li>Supervision ratios are planned and maintained, with regular headcounts.</li>
+      <li>Transport arrangements, meeting points and collection procedures are confirmed and communicated.</li>
+      <li>First-aid provision and access to individual medication (such as auto-injectors and asthma relief) is arranged.</li>
+    </ul>
+    <h3>On the day</h3>
+    <p>Supervising staff confirm the venue is safe before students arrive, brief participants on expectations and emergency procedures, and maintain line-of-sight supervision appropriate to the setting. The same child-safety standards that apply at our sites apply off-site, including rules about communication, one-to-one contact and change facilities. Any incident is managed under our First Aid and Emergency Management arrangements and reported.</p>
+    <h3>Working with host venues</h3>
+    <p>When we perform at partner venues, we cooperate with their safety and emergency procedures while maintaining our own duty of care to our participants. Responsibilities are clarified in advance so there are no gaps in supervision.</p>
+    <h3>Responsibilities and review</h3>
+    <p>The activity coordinator is responsible for planning, consent and supervision, with oversight from the office. This policy is reviewed at least annually and applied to the specifics of each activity.</p>
+  </section>
+  <section class="sec" id="volunteer-handbook">
+    <div class="num">20</div><h2>Volunteer Handbook</h2>
+    <p>Volunteers are the heart of CentreStage. We could not stage seven to eleven productions a year, run our education academy or support our community without the people who give their time. This handbook sets out everything our volunteers need to feel supported, valued and safe, and what we ask of them in return. We respect our volunteers and are committed to a positive, rewarding volunteering experience.</p>
+    <p>It applies to everyone who volunteers with CentreStage in any capacity &mdash; backstage, front of house, wardrobe, sets, committee and beyond &mdash; and works with our Code of Conduct, Child Safety Plan and Working with Children Policy.</p>
+    <h3>Getting started</h3>
+    <ul>
+      <li>A friendly induction covering your role, the site, and who to go to for help.</li>
+      <li>Clear role descriptions so you know what is expected and what is not.</li>
+      <li>Any checks and training your role requires, including a Working with Children Check where relevant.</li>
+      <li>Introduction to the policies that keep our community safe.</li>
+    </ul>
+    <h3>What you can expect from us</h3>
+    <p>We will treat you with respect, give you meaningful work and the information you need to do it, and keep your workload reasonable. We will provide a safe environment, recognise your contribution, welcome your feedback, and offer opportunities to develop new skills and take on new challenges. Reasonable out-of-pocket expenses are handled fairly, and your wellbeing matters to us as much as anyone's.</p>
+    <h3>What we ask of you</h3>
+    <p>We ask volunteers to uphold our Code of Conduct, follow safety and child-safety requirements, be reliable and communicate if plans change, respect confidentiality, and help maintain the warm, inclusive culture that makes CentreStage special. Volunteers working with young people follow the same child-safety expectations as staff.</p>
+    <h3>Support, recognition and review</h3>
+    <p>Every volunteer has a point of contact for questions, concerns or support, and can raise issues through our Complaints &amp; Grievance Procedure. We celebrate our volunteers and the difference they make. This handbook is reviewed at least annually with input from volunteers themselves.</p>
+  </section>
+
+  <section class="sec" id="wellbeing-pledge">
+    <div class="num">21</div><h2>Health &amp; Wellbeing Pledge</h2>
+    <p>Performing can be a physically exhausting and emotionally draining pursuit, and everyone in our community is only human. This pledge sets out CentreStage's commitment to caring for the whole person &mdash; our staff, volunteers, performers, students and families &mdash; and reflects the We Care value at the centre of our We Are People Plan.</p>
+    <p>It applies across all of our activities and sits alongside our Mental Health First Aid Policy, First Aid Policy and Child Safety Plan.</p>
+    <h3>Our pledge</h3>
+    <ul>
+      <li>A named Health &amp; Wellbeing Manager available to our community for support and referral.</li>
+      <li>Psychologically safe rehearsal rooms where people are treated with respect and kindness.</li>
+      <li>Realistic schedules, adequate breaks, and awareness of the pressures of production periods.</li>
+      <li>Clear pathways to professional support, and partnerships with wellbeing services.</li>
+      <li>Proactive check-ins during long or demanding productions.</li>
+      <li>A comprehensive mental-health commitment for staff, volunteers, performers, students and families.</li>
+    </ul>
+    <h3>How we live it</h3>
+    <p>We build wellbeing into how we work, not just what we say. Leaders are encouraged to model healthy behaviour, to notice when someone is struggling, and to respond with care. We normalise conversations about mental health, we respect the demands people carry outside CentreStage, and we make adjustments where we reasonably can. We recognise the particular pressures on young performers and on those balancing performance with study, work and family.</p>
+    <h3>Getting help</h3>
+    <p>Anyone who needs support is encouraged to speak with the Health &amp; Wellbeing Manager or a trusted staff member. In an emergency, or where someone is at immediate risk, we call 000. We keep a current list of external helplines and services available to our community, and we connect people to professional help when that is what is needed.</p>
+    <h3>Responsibilities and review</h3>
+    <p>Leadership resources and champions this pledge; everyone in our community helps uphold a caring culture. This pledge is reviewed at least annually.</p>
+  </section>
+
+  <section class="sec" id="mental-health-first-aid">
+    <div class="num">22</div><h2>Mental Health First Aid Policy</h2>
+    <p>Mental health is as important as physical health, and early, compassionate support can make a real difference. This policy sets out how CentreStage recognises and responds to mental-health needs across our community, and how we support people to access professional help. It gives practical effect to the care we pledge in our We Are People Plan.</p>
+    <p>It applies to all CentreStage settings and to everyone in our community, and is supported by our Health &amp; Wellbeing Pledge and Child Safety Plan.</p>
+    <h3>Our commitments</h3>
+    <ul>
+      <li>Trained Mental Health First Aiders among our staff who can offer initial support.</li>
+      <li>Confidential, non-judgemental conversations and clear referral to professional services.</li>
+      <li>Awareness of the pressures unique to performers, creatives and students.</li>
+      <li>Reasonable adjustments for people experiencing periods of poor mental health.</li>
+      <li>Care for the wellbeing of staff and volunteers who support others.</li>
+    </ul>
+    <h3>Recognising and responding</h3>
+    <p>Our people are encouraged to notice signs that someone may be struggling &mdash; changes in mood, participation or behaviour &mdash; and to check in with warmth and without judgement. A Mental Health First Aider can listen, offer reassurance, and help the person connect with appropriate support, whether that is a family member, a GP such as our local partner practice, or a specialist service. We respond to disclosures involving a child's safety under our Child Safety Plan.</p>
+    <h3>Confidentiality and boundaries</h3>
+    <p>We treat what people share in confidence, sharing only what is necessary to keep someone safe. We are clear that mental-health first aid is initial support, not a substitute for professional care, and we help people reach that care. In an emergency, or where there is risk to life, we call 000.</p>
+    <h3>Responsibilities and review</h3>
+    <p>The Health &amp; Wellbeing Manager coordinates support and maintains referral information; leaders foster a supportive climate. This policy is reviewed at least annually.</p>
+  </section>
+
+  <section class="sec" id="injury-prevention">
+    <div class="num">23</div><h2>Injury Prevention &amp; Warm-Up Guidelines</h2>
+    <p>Dancing, singing and performing place real physical demands on the body, and sensible preparation prevents most common injuries. These guidelines set out CentreStage's best-practice approach to warm-ups and load management so that our performers &mdash; from our youngest students to our adult casts &mdash; stay healthy and perform at their best.</p>
+    <p>They apply to all classes, rehearsals and performances involving physical activity, and are supported by our First Aid, Rehearsal Safety and Vocal &amp; Hearing Health policies.</p>
+    <h3>Our commitments</h3>
+    <ul>
+      <li>Structured warm-ups before every dance and movement session, appropriate to age and ability.</li>
+      <li>Graduated increases in intensity and complexity across a rehearsal period, not sudden spikes.</li>
+      <li>Appropriate footwear, safe flooring and suitable spaces for physical work.</li>
+      <li>Cool-downs and stretching to aid recovery.</li>
+      <li>Rest and recovery guidance to prevent overuse injuries.</li>
+      <li>Encouragement to report niggles early, before they become injuries.</li>
+    </ul>
+    <h3>Safe practice in the room</h3>
+    <p>Teachers and choreographers lead warm-ups, teach safe technique, and adjust choreography to the abilities in the room. They watch for signs of fatigue or strain, build in breaks and water stops, and never push a performer beyond what is safe. Skills that carry more risk &mdash; lifts, jumps and acrobatic movement &mdash; are taught progressively and supervised closely.</p>
+    <h3>Managing injury and load</h3>
+    <p>Where a performer is carrying an injury or returning from one, we work with them and their family on a safe, graded return to activity, in line with any medical advice. During intensive production periods we manage total load &mdash; rehearsal hours, performances and other commitments &mdash; to reduce the risk of overuse.</p>
+    <h3>Responsibilities and review</h3>
+    <p>Teaching and production staff apply these guidelines; participants and families support them by sharing relevant health information. These guidelines are reviewed at least annually.</p>
+  </section>
+
+  <section class="sec" id="sun-smart">
+    <div class="num">24</div><h2>Sun Smart &amp; Hydration Policy</h2>
+    <p>Some CentreStage activities take place outdoors or during Victoria's warmer months, when sun exposure and heat can pose real risks. This policy sets out simple, sensible measures to keep performers, students, staff and volunteers safe from sunburn, heat illness and dehydration.</p>
+    <p>It applies to outdoor activities, summer programming and any indoor activity in hot conditions, and supports our First Aid Policy and duty of care.</p>
+    <h3>Our commitments</h3>
+    <ul>
+      <li>Shade, sunscreen and hats encouraged and provided for outdoor activities where practicable.</li>
+      <li>Regular hydration breaks and easy access to water during warm conditions.</li>
+      <li>Scheduling that avoids the hottest part of the day for strenuous outdoor activity.</li>
+      <li>Rescheduling or moving activity indoors during extreme heat.</li>
+      <li>Awareness of the signs of heat illness and a prompt response.</li>
+    </ul>
+    <h3>Managing hot conditions</h3>
+    <p>On hot days, supervising staff monitor conditions and participants, build in more frequent breaks, reduce the intensity of physical work, and ensure water is always available. Costumes and rehearsal clothing are considered in the heat, particularly for children. We take particular care with participants who may be more vulnerable to heat, and we do not hesitate to modify or postpone activity when conditions require it.</p>
+    <h3>Responding to heat illness</h3>
+    <p>If someone shows signs of heat exhaustion or heat stroke, staff move them to a cool place, provide water if they are able to drink, cool them, and seek medical help &mdash; calling 000 for any serious or worsening case. The incident is recorded and families are notified.</p>
+    <h3>Responsibilities and review</h3>
+    <p>Coordinators apply this policy to their activities and check forecasts when planning outdoor work. This policy is reviewed at least annually.</p>
+  </section>
+
+  <section class="sec" id="vocal-hearing">
+    <div class="num">25</div><h2>Vocal &amp; Hearing Health Guidelines</h2>
+    <p>Voices and hearing are precious tools for singers, actors and musicians, and they need protection. These guidelines set out how CentreStage looks after the vocal and hearing health of performers and musicians, so that our people can enjoy long, healthy involvement in the arts.</p>
+    <p>They apply to all singing, speaking and instrumental activity across classes, rehearsals and performances, and are supported by our Injury Prevention and Rehearsal Safety policies.</p>
+    <h3>Protecting the voice</h3>
+    <ul>
+      <li>Safe vocal technique and warm-ups led by qualified vocal staff.</li>
+      <li>Sensible use of the voice in rehearsal, avoiding strain and &ldquo;marking&rdquo; where appropriate to save the voice.</li>
+      <li>Hydration, rest and awareness of the effect of illness on the voice.</li>
+      <li>Vocal-rest guidance during heavy performance runs, and no pushing through vocal pain.</li>
+    </ul>
+    <h3>Protecting hearing</h3>
+    <p>We monitor rehearsal and performance volumes and take reasonable steps to manage exposure, particularly in the orchestra pit and around amplified sound and effects. Hearing protection is available and encouraged for musicians and crew who need it, and we position people and equipment with hearing safety in mind.</p>
+    <h3>Care for young and developing performers</h3>
+    <p>We are especially mindful of young and developing voices, teaching age-appropriate technique and repertoire and never demanding more than a young performer's voice can safely give. Teachers watch for signs of vocal fatigue or strain and adjust accordingly.</p>
+    <h3>Responsibilities and review</h3>
+    <p>Vocal and musical staff apply these guidelines and model healthy practice; performers are encouraged to report vocal or hearing concerns early. Where a persistent problem arises, we encourage professional assessment. These guidelines are reviewed at least annually.</p>
+  </section>
+
+  <section class="sec" id="cultural-framework">
+    <div class="num">26</div><h2>Cultural Framework Policy</h2>
+    <p>Our Cultural Framework describes the cultural characteristics and indicators that anchor our people's everyday experiences and interactions, and it guides how we build a high-performing, values-led organisation. It exists because we believe that the culture of CentreStage &mdash; how we treat one another and how we work &mdash; is the foundation on which consistently strong, inclusive theatre is built.</p>
+    <p>It applies across the whole organisation and to everyone connected to it, and it draws directly on our We Are People Plan values: We Belong, We Create, We Listen, We Care.</p>
+    <h3>The behaviours we value</h3>
+    <ul>
+      <li>Shared behaviours that build trust, transparency and accountability in all our relationships.</li>
+      <li>Respect for volunteers, staff and performers as the people who shape our future.</li>
+      <li>A commitment to creating ongoing, sustainable theatre rather than chasing short-term wins.</li>
+      <li>Ethical conduct that remains true to the Geelong spirit.</li>
+      <li>A refusal to pre-cast, so opportunity is genuinely open.</li>
+      <li>A drive to raise the standards of amateur theatre and to create a real &ldquo;buzz&rdquo; for theatre in Victoria.</li>
+    </ul>
+    <h3>How the culture is maintained</h3>
+    <p>Our culture must continually shift to match the behaviours of a supported, high-performing team. We use benchmarks and surveys to understand our culture and to constantly improve, and we consult our community and government forums to help us set new standards. Management models the framework and brings partners and suppliers along on the journey, recognising our role as custodians of a shared creative ecosystem.</p>
+    <h3>Accountability and review</h3>
+    <p>Feedback is collated and verified with our community partners, and progress is reported and acted upon. Living the framework is a shared responsibility, with leadership accountable for setting the tone. This policy is reviewed at least annually.</p>
+    <div class="note">The full Cultural Framework Policy is also published as a PDF. <a href="https://www.centrestage.org.au/_files/ugd/35cad6_c00e533357184223987c70347b0f1eee.pdf">Download the full policy &rarr;</a></div>
+  </section>
+
+  <section class="sec" id="incident-reporting">
+    <div class="num">27</div><h2>Incident Reporting</h2>
+    <p>Clear, prompt reporting of incidents, injuries, hazards and concerns is essential to keeping our community safe and to continually improving how we work. This procedure explains how to report at CentreStage, what happens to a report, and how we use what we learn. Every report is taken seriously, and no one will be disadvantaged for raising a genuine concern.</p>
+    <p>It applies to all incidents, near-misses, injuries, hazards and safety or child-safety concerns arising from CentreStage activities, and it underpins our First Aid, Emergency Management and Child Safety policies.</p>
+    <h3>What to report</h3>
+    <ul>
+      <li>Any injury or illness requiring first aid or medical attention.</li>
+      <li>Any near-miss that could have caused harm.</li>
+      <li>Any hazard or unsafe condition, so it can be fixed before someone is hurt.</li>
+      <li>Any child-safety concern, disclosure or breach of the Code of Conduct.</li>
+      <li>Any emergency, evacuation or significant property or equipment issue.</li>
+    </ul>
+    <h3>How to report</h3>
+    <p>Report immediately to the staff member, teacher or coordinator on site. Complete an incident record with the date, time, people involved, what happened and what action was taken. If you cannot report in person, contact the office on (03) 5272 1775 or email david@centrestage.org.au. Child-safety concerns are escalated to the Child Safety Officer without delay, and serious matters are reported to the relevant authorities as required by law.</p>
+    <h3>What happens next</h3>
+    <p>We make the situation safe, care for anyone affected, and notify families where a child is involved. We review each report to understand the cause and to prevent recurrence, and we track hazards through to resolution. Patterns across reports inform improvements to our risk assessments, training and policies.</p>
+    <h3>Responsibilities and review</h3>
+    <p>Coordinators ensure incidents at their activities are recorded and escalated; the office maintains the incident register and oversees review. This procedure is reviewed at least annually.</p>
+    <div class="note">To report an incident, contact the office on <strong>(03) 5272 1775</strong> or email <a href="mailto:david@centrestage.org.au">david@centrestage.org.au</a>. In an emergency, always call <strong>000</strong> first.</div>
+  </section>
+</doc-page>
+<script src="doc-page.js"></script>
+</body>
+</html>

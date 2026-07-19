@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="description" content="CentreStage in the media — award-winning Geelong theatre. Order of Australia recognition, Geelong Business Excellence Hall of Fame, $1M+ raised for charity, and press coverage of Priscilla, Les Misérables and more.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CentreStage">
+<meta property="og:title" content="CentreStage — Theatre, Education & Agency, Geelong">
+<meta property="og:description" content="Award-winning Geelong theatre since 2010. Ambitious productions, a performing arts academy for ages 4–18, and talent representation.">
+<meta property="og:url" content="https://centrestage.org.au/">
+<meta property="og:image" content="https://centrestage.org.au/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CentreStage — Theatre, Education & Agency, Geelong">
+<meta name="twitter:description" content="Award-winning Geelong theatre since 2010. Ambitious productions, a performing arts academy for ages 4–18, and talent representation.">
+<meta name="twitter:image" content="https://centrestage.org.au/assets/og-image.jpg">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #F4F1EA; color: #0A0A0A; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  img { display: block; max-width: 100%; }
+  a { color: #0A0A0A; text-decoration: none; }
+  a:hover { text-decoration: none; }
+  ::selection { background: #0A0A0A; color: #F4F1EA; }
+  @keyframes cs-pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+  @keyframes cs-fade { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  .cs-fade { animation: cs-fade .5s cubic-bezier(.2,.6,.2,1) both; }
+  .cs-link-u:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .cs-imgz { overflow: hidden; }
+  .cs-imgz img { transition: transform .6s cubic-bezier(.2,.6,.2,1); }
+  .cs-imgz:hover img { transform: scale(1.03); }
+  .cs-row:hover { background: #ECE7DB; }
+  .cs-prod:hover { background: #0A0A0A; color: #F4F1EA; }
+  .cs-prod:hover .cs-prod-y { color: #A8A59E; }
+  .cs-btn { display:inline-flex; align-items:center; justify-content:center; white-space:nowrap; gap:8px; height:48px; padding:0 24px; border:1px solid #0A0A0A; background:#0A0A0A; color:#F4F1EA; font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; transition:background .24s cubic-bezier(.2,.6,.2,1),color .24s,transform .12s; }
+  .cs-btn:hover { background:#F4F1EA; color:#0A0A0A; }
+  .cs-btn:active { transform:scale(.985); }
+  .cs-btn--sec { background:transparent; color:#0A0A0A; }
+  .cs-btn--sec:hover { background:#0A0A0A; color:#F4F1EA; }
+  .cs-btn--inv { background:#F4F1EA; color:#0A0A0A; border-color:#F4F1EA; }
+  .cs-btn--inv:hover { background:transparent; color:#F4F1EA; }
+  .cs-nav-a { font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding-bottom:4px; border-bottom:2px solid transparent; transition:border-color .2s; }
+  .cs-nav-a:hover { border-bottom-color:#0A0A0A; }
+  .cs-social { display:inline-flex; align-items:center; gap:8px; justify-content:center; width:38px; height:38px; border:1px solid #1F1F1D; color:#F4F1EA; transition:background .2s, color .2s, border-color .2s; }
+  .cs-social:hover { background:#F4F1EA; color:#0A0A0A; border-color:#F4F1EA; }
+  .cs-social--pod { width:auto; padding:0 14px; gap:9px; }
+  @media (max-width: 820px) {
+    html, body { font-size: 16px; }
+    /* header: wrap + horizontally scrollable nav */
+    header > div { height: auto !important; padding: 12px 18px !important; flex-wrap: wrap !important; gap: 8px 16px !important; }
+    header nav { width: 100%; order: 3; overflow-x: auto; -webkit-overflow-scrolling: touch; gap: 20px !important; padding-bottom: 4px; }
+    header nav a { white-space: nowrap; }
+    /* collapse multi-column grids */
+    [style*="repeat(4,1fr)"], [style*="repeat(3,1fr)"], [style*="repeat(2,1fr)"],
+    [style*="grid-template-columns:1.6fr"], [style*="grid-template-columns:1.4fr"], [style*="grid-template-columns:1.3fr"],
+    [style*="grid-template-columns:1fr 1fr"], [style*="grid-template-columns:1fr auto"] { grid-template-columns: 1fr !important; }
+    /* tighten the centered page gutters */
+    [style*="margin:0 auto"] { padding-left: 20px !important; padding-right: 20px !important; }
+    /* multi-column text columns to single */
+    [style*="columns:2"] { columns: 1 !important; }
+  }
+  @media (max-width: 500px) {
+    .cs-btn { width: 100%; }
+  }
+</style>
+</helmet>
+<div style="min-height:100vh; display:flex; flex-direction:column;">
+
+  <header style="position:sticky; top:0; z-index:50; background:#F4F1EA; border-bottom:1px solid #D9D5CC;">
+    <div style="max-width:1600px; margin:0 auto; padding:0 48px; height:76px; display:flex; align-items:center; justify-content:space-between;">
+      <a href="#home" style="display:flex; align-items:center; gap:14px;">
+        <img src="assets/CentreStage-Solid-Black.png" alt="CentreStage" style="height:22px;">
+      </a>
+      <nav style="display:flex; gap:30px; align-items:center;">
+        <a class="cs-nav-a" href="#home" style="{{ navHome }}">Home</a>
+        <a class="cs-nav-a" href="#tickets" style="{{ navTickets }}">Tickets</a>
+        <a class="cs-nav-a" href="#about" style="{{ navAbout }}">About</a>
+        <a class="cs-nav-a" href="#education" style="{{ navEducation }}">Education</a>
+        <a class="cs-nav-a" href="#health" style="{{ navHealth }}">Health</a>
+        <a class="cs-nav-a" href="#blog" style="{{ navBlog }}">Journal</a>
+        <a class="cs-nav-a" href="#media" style="{{ navMedia }}">Media</a>
+        <a class="cs-nav-a" href="https://www.centrestageagency.org.au" target="_blank" rel="noopener">Agency ↗</a>
+      </nav>
+      <a class="cs-btn cs-btn--sec" href="#contact" style="height:40px; padding:0 18px;">Contact</a>
+    </div>
+  </header>
+
+  <main style="flex:1;">
+
+  <!-- ══════════════ HOME ══════════════ -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <div class="cs-fade">
+    <section style="position:relative; background:#0A0A0A; color:#F4F1EA; overflow:hidden;">
+      <div class="cs-imgz" style="position:absolute; inset:0; opacity:.34;">
+        <img src="https://static.wixstatic.com/media/35cad6_29eb8dbd9ee34f07b1cb29cd9bc81de9~mv2_d_2048_1365_s_2.jpg/v1/fill/w_2000,h_1333,al_c,q_85,enc_avif,quality_auto/file.avif" alt="On stage" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div style="position:relative; max-width:1600px; margin:0 auto; padding:120px 48px 96px;">
+        <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;">
+          <span style="width:8px; height:8px; background:#F2D65A; border-radius:50%; animation:cs-pulse 2s infinite;"></span>
+          <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#F4F1EA;">Established 2010 <span style="color:#6B6B68; margin:0 .2em;">/</span> Geelong</span>
+          <div style="flex:1; height:1px; background:#1F1F1D;"></div>
+          <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#A8A59E;">Theatre / Education / Agency</span>
+        </div>
+        <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(56px,9.5vw,150px); letter-spacing:-.03em; line-height:.9; margin:0; text-wrap:balance;">Experience the magic of live theatre.</h1>
+        <div style="margin-top:56px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:end;">
+          <p style="font-size:19px; line-height:1.55; max-width:46ch; margin:0; color:#F4F1EA;">Where imagination knows no bounds. Theatre, education and agency representation — we create ambitious productions, train the next generation, and represent talent across stage and screen.</p>
+          <div style="display:flex; gap:16px; justify-content:flex-end; flex-wrap:wrap;">
+            <a class="cs-btn cs-btn--inv" href="#tickets">What's on →</a>
+            <a class="cs-btn" href="#education" style="border-color:#F4F1EA; color:#F4F1EA;">Learn with us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frozen spotlight -->
+    <section style="background:linear-gradient(135deg,#0A2646 0%,#123f79 52%,#1E63AE 100%); color:#EAF4FF;">
+      <div style="max-width:1600px; margin:0 auto; padding:80px 48px;">
+        <div style="display:flex; align-items:center; gap:16px; margin-bottom:44px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#9FC6EE;">01 / 06</span>
+          <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#EAF4FF;">Now booking</span>
+          <div style="flex:1; height:1px; background:rgba(255,255,255,.22);"></div>
+          <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#9FC6EE;">Geelong Arts Centre</span>
+        </div>
+        <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:56px; align-items:center;">
+          <div class="cs-imgz" style="box-shadow:0 30px 70px -30px rgba(0,0,0,.7);">
+            <img src="assets/frozen-keyart.png" alt="Disney's Frozen — The Broadway Musical" style="width:100%; aspect-ratio:3/2; object-fit:cover;">
+          </div>
+          <div>
+            <img src="assets/frozen-title-light.png" alt="Frozen — The Broadway Musical" style="width:min(380px,82%); margin-bottom:26px;">
+            <div style="display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(255,255,255,.4); padding:6px 10px; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#EAF4FF;"><span style="width:8px;height:8px;background:#7FD3FF;border-radius:50%; animation:cs-pulse 2s infinite;"></span>Spotlight production · March 2027</div>
+            <p style="font-size:20px; line-height:1.55; max-width:44ch; margin:22px 0 0; color:#EAF4FF;">It's time to LET IT GO. CentreStage's most ambitious production yet takes the stage from 5–21 March 2027. Tickets available exclusively via the Geelong Arts Centre.</p>
+            <div style="display:flex; gap:16px; margin-top:30px; flex-wrap:wrap;">
+              <a class="cs-btn" href="https://geelongartscentre.org.au/whats-on/all-events/frozen-centrestage" target="_blank" rel="noopener" style="background:#EAF4FF; color:#0A2646; border-color:#EAF4FF;">Book now →</a>
+              <a class="cs-btn" href="#post/frozencreativeteam" style="background:transparent; color:#EAF4FF; border-color:rgba(255,255,255,.5);">Meet the creatives</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div style="height:1px; background:#D9D5CC; max-width:1600px; margin:0 auto;"></div>
+
+    <!-- Three pillars -->
+    <section style="max-width:1600px; margin:0 auto; padding:96px 48px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:56px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68;">02 / 06</span>
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">Learn / Work / Enjoy</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <a href="#education" class="cs-row" style="background:#F4F1EA; padding:36px 36px 48px; display:block; border-top:4px solid #2E6FB7; transition:background .2s;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#2E6FB7; font-weight:600;">01 — Learn</div>
+          <h3 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:44px; letter-spacing:-.02em; margin:20px 0 16px;">Learn</h3>
+          <p style="font-size:16px; line-height:1.55; color:#3A3A37; margin:0;">Start your education journey. Weekly group classes, private vocal and piano lessons, and dance for ages 4 to 18.</p>
+          <div style="margin-top:24px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#2E6FB7;">Start now →</div>
+        </a>
+        <a href="https://www.centrestageagency.org.au" target="_blank" rel="noopener" class="cs-row" style="background:#F4F1EA; padding:36px 36px 48px; display:block; border-top:4px solid #E8472B; transition:background .2s;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#E8472B; font-weight:600;">02 — Work</div>
+          <h3 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:44px; letter-spacing:-.02em; margin:20px 0 16px;">Work</h3>
+          <p style="font-size:16px; line-height:1.55; color:#3A3A37; margin:0;">Interested in professional acting, musical theatre and commercial opportunities? Audition for CentreStage Agency.</p>
+          <div style="margin-top:24px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#E8472B;">Visit the agency ↗</div>
+        </a>
+        <a href="#tickets" class="cs-row" style="background:#F4F1EA; padding:36px 36px 48px; display:block; border-top:4px solid #2E8B6B; transition:background .2s;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#2E8B6B; font-weight:600;">03 — Enjoy</div>
+          <h3 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:44px; letter-spacing:-.02em; margin:20px 0 16px;">Enjoy</h3>
+          <p style="font-size:16px; line-height:1.55; color:#3A3A37; margin:0;">Staging 7 to 11 productions annually, your chance to live and breathe musical theatre is only a click away.</p>
+          <div style="margin-top:24px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#2E8B6B;">Search events →</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Stats band -->
+    <section style="background:#0A0A0A; color:#F4F1EA;">
+      <div style="max-width:1600px; margin:0 auto; padding:72px 48px;">
+        <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#9FC6EE;">03 / 06</span>
+          <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#F4F1EA;">By the numbers</span>
+          <div style="flex:1; height:1px; background:#1F1F1D;"></div>
+          <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#9FC6EE;">Trusted since 2010</span>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:#1F1F1D; border:1px solid #1F1F1D;">
+          <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+            <div style="background:#0A0A0A; padding:36px 28px;">
+              <div style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(40px,5vw,68px); letter-spacing:-.03em; color:{{ s.color }}; line-height:1;">{{ s.n }}</div>
+              <div style="font-size:14px; color:#A8A59E; margin-top:12px; line-height:1.45;">{{ s.l }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:28px; display:flex; flex-wrap:wrap; gap:10px;">
+          <sc-for list="{{ accreditations }}" as="a" hint-placeholder-count="7">
+            <span style="border:1px solid #1F1F1D; padding:9px 14px; font-size:12px; font-weight:700; letter-spacing:.04em; color:#EAF4FF;">{{ a }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <!-- About strip -->
+    <section style="background:#ECE7DB;">
+      <div style="max-width:1600px; margin:0 auto; padding:96px 48px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;">
+        <div class="cs-imgz">
+          <img src="https://static.wixstatic.com/media/35cad6_dd683cd9ea004041b4a57aac77f4b5a7~mv2.jpg/v1/fill/w_1200,h_900,al_c,q_85,enc_avif,quality_auto/file.avif" alt="CentreStage company" style="width:100%; aspect-ratio:4/3; object-fit:cover;">
+        </div>
+        <div>
+          <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">04 / 06 &nbsp;/&nbsp; Proudly Geelong</span>
+          <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(40px,4.6vw,64px); letter-spacing:-.02em; line-height:.98; margin:20px 0 24px;">Do you hear the people sing?</h2>
+          <p style="font-size:18px; line-height:1.6; color:#0A0A0A; max-width:52ch; margin:0 0 18px;">We're proudly Geelong — that's our secret to creating consistently strong theatre. Our aim is to create inspiring projects that foster new talent and develop existing skills within our teams.</p>
+          <p style="font-size:18px; line-height:1.6; color:#3A3A37; max-width:52ch; margin:0 0 28px;">CentreStage is driven by a desire to provide access to the arts, through musical theatre, to as many people in our community as possible. We support the inclusion of all people and offer opportunities to community groups to access the arts.</p>
+          <a class="cs-btn cs-btn--sec" href="#about">Read our story →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Journal preview -->
+    <section style="max-width:1600px; margin:0 auto; padding:96px 48px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:8px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68;">05 / 06</span>
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">Latest news</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+        <a class="cs-link-u" href="#blog" style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">All posts →</a>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:36px; margin-top:40px;">
+        <sc-for list="{{ homePosts }}" as="p" hint-placeholder-count="3">
+          <a href="#post/{{ p.slug }}" style="display:block;">
+            <div class="cs-imgz"><img src="{{ p.img }}" alt="{{ p.title }}" style="width:100%; aspect-ratio:4/3; object-fit:cover;"></div>
+            <div style="display:flex; gap:10px; align-items:center; margin-top:16px;"><span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68;">{{ p.date }}</span><span style="font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#fff; background:{{ p.catColor }}; padding:3px 8px;">{{ p.cat }}</span></div>
+            <h3 style="font-size:21px; font-weight:700; letter-spacing:-.01em; line-height:1.2; margin:10px 0 0; text-wrap:pretty;">{{ p.title }}</h3>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- Featured in / members -->
+    <section style="border-top:1px solid #D9D5CC; max-width:1600px; margin:0 auto; padding:64px 48px 96px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68;">06 / 06</span>
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">As featured in</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:14px;">
+        <sc-for list="{{ featuredIn }}" as="f" hint-placeholder-count="6">
+          <span style="border:1px solid #D9D5CC; padding:12px 20px; font-size:13px; font-weight:700; letter-spacing:.04em; color:#3A3A37;">{{ f }}</span>
+        </sc-for>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ══════════════ TICKETS ══════════════ -->
+  <sc-if value="{{ isTickets }}">
+  <div class="cs-fade">
+    <section style="max-width:1600px; margin:0 auto; padding:64px 48px 0;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">What's on</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68;">2026 / 2027 season</span>
+      </div>
+      <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(64px,10vw,144px); letter-spacing:-.03em; line-height:.9; margin:0;">Upcoming shows.</h1>
+      <p style="font-size:19px; line-height:1.55; max-width:52ch; margin:32px 0 0; color:#3A3A37;">We can't wait to see you at one of our upcoming productions. Below you'll find ticketing information for each show.</p>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:64px 48px 96px; display:flex; flex-direction:column; gap:1px; background:#D9D5CC; border-top:1px solid #D9D5CC; border-bottom:1px solid #D9D5CC;">
+      <sc-for list="{{ shows }}" as="s" hint-placeholder-count="4">
+        <div style="background:{{ s.bg }}; color:{{ s.fg }}; padding:48px; display:grid; grid-template-columns:1fr 1.4fr auto; gap:48px; align-items:center;">
+          <div class="cs-imgz"><img src="{{ s.img }}" alt="{{ s.title }}" style="width:100%; aspect-ratio:3/2; object-fit:cover;"></div>
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:{{ s.meta }}; margin-bottom:14px;">{{ s.when }} &nbsp;/&nbsp; {{ s.venue }}</div>
+            <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(36px,4.4vw,64px); letter-spacing:-.02em; line-height:.95; margin:0;">{{ s.title }}</h2>
+            <p style="font-size:17px; line-height:1.55; max-width:48ch; margin:18px 0 0; color:{{ s.body }};">{{ s.blurb }}</p>
+          </div>
+          <a class="cs-btn {{ s.btnClass }}" href="{{ s.href }}" target="_blank" rel="noopener" style="white-space:nowrap;">{{ s.cta }} →</a>
+        </div>
+      </sc-for>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ══════════════ ABOUT ══════════════ -->
+  <sc-if value="{{ isAbout }}">
+  <div class="cs-fade">
+    <section style="max-width:1600px; margin:0 auto; padding:64px 48px 0;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">About CentreStage</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(48px,7vw,112px); letter-spacing:-.03em; line-height:.92; margin:0; max-width:16ch;">Creating consistently strong theatre through the Geelong region.</h1>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:64px 48px 96px; display:grid; grid-template-columns:1.3fr 1fr; gap:80px; align-items:start;">
+      <div style="font-size:18px; line-height:1.7; color:#0A0A0A;">
+        <p style="margin:0 0 22px; font-size:24px; line-height:1.45; font-weight:700; letter-spacing:-.01em;">"Do you hear the people sing?" We live and breathe our values every day. That's how we create consistently strong and inclusive theatre.</p>
+        <p style="margin:0 0 22px;">Welcome to CentreStage, Australia's premier theatre and education provider. Since our inception in 2010, we have been dedicated to fostering the performing arts while maintaining a strong sense of community involvement. What started as a small idea with big dreams has now grown into one of the largest theatre and education providers in the country.</p>
+        <p style="margin:0 0 22px;">We pride ourselves on our commitment to inclusivity and diversity. We are owned and managed by a person with a disability and the LGBTQIA+ community, and our management team includes individuals who identify as First Nations and represent various minority groups. We believe that everyone should have access to the performing arts and strive to make our productions and classes as inclusive as possible.</p>
+        <p style="margin:0 0 22px;">To date, we have produced over 70 shows, including such standouts as We Will Rock You, The Sound of Music, Les Miserables, Puffs, and Singin' In The Rain. Our productions have been enjoyed by audiences of all ages and have received critical acclaim.</p>
+        <p style="margin:0;">At CentreStage we continue to celebrate the stories that educate, entertain and inspire us; just as the Wadawurrung people have done for thousands of years.</p>
+      </div>
+      <div>
+        <div class="cs-imgz" style="margin-bottom:32px;"><img src="https://static.wixstatic.com/media/35cad6_792ff69df28f4a63b3cbaafa561b7276~mv2.jpg/v1/fill/w_1000,h_1200,al_c,q_85,enc_avif,quality_auto/file.avif" alt="On stage" style="width:100%; aspect-ratio:4/5; object-fit:cover;"></div>
+        <div style="border:1px solid #0A0A0A; padding:32px;">
+          <div style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:20px;">At CentreStage, we</div>
+          <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; font-size:16px;">
+            <li style="display:flex; gap:12px;"><span style="color:#6B6B68;">/</span>respect our volunteers, staff and performers</li>
+            <li style="display:flex; gap:12px;"><span style="color:#6B6B68;">/</span>create ongoing and sustainable theatre</li>
+            <li style="display:flex; gap:12px;"><span style="color:#6B6B68;">/</span>use benchmarks and surveys to constantly improve</li>
+            <li style="display:flex; gap:12px;"><span style="color:#6B6B68;">/</span>remain ethical and true to that Geelong spirit</li>
+            <li style="display:flex; gap:12px;"><span style="color:#6B6B68;">/</span>don't pre-cast</li>
+            <li style="display:flex; gap:12px;"><span style="color:#6B6B68;">/</span>create a 'buzz' for theatre in Victoria</li>
+            <li style="display:flex; gap:12px;"><span style="color:#6B6B68;">/</span>improve the standards in amateur theatre</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section style="border-top:1px solid #D9D5CC; max-width:1600px; margin:0 auto; padding:96px 48px;">
+      <div style="display:grid; grid-template-columns:auto 1fr; gap:56px; align-items:start;">
+        <span style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:130px; line-height:.6; color:#2E6FB7;">/</span>
+        <div>
+          <p style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(24px,2.8vw,38px); letter-spacing:-.02em; line-height:1.2; margin:0 0 28px; text-wrap:balance;">“Small opportunities are often the beginning of great enterprises. At CentreStage we value new ideas, innovative team members and outcomes that will drive our team to become a truly iconic organisation that benefits the entire Geelong community.”</p>
+          <div style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">David Greenwood OAM &nbsp;/&nbsp; Managing Director</div>
+        </div>
+      </div>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:0 48px 96px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:48px;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">Our story so far</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68;">2010 → 2027</span>
+      </div>
+      <div style="border-top:1px solid #D9D5CC;">
+        <sc-for list="{{ milestones }}" as="m" hint-placeholder-count="8">
+          <div class="cs-row" style="display:grid; grid-template-columns:140px 1fr; gap:32px; align-items:baseline; padding:22px 12px; border-bottom:1px solid #D9D5CC; transition:background .2s;">
+            <span style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:28px; letter-spacing:-.02em; color:#2E6FB7;">{{ m.y }}</span>
+            <span style="font-size:18px; line-height:1.5;">{{ m.t }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+    <section style="background:#0A0A0A; color:#F4F1EA;">
+      <div style="max-width:1600px; margin:0 auto; padding:96px 48px;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#A8A59E;">We Are People Plan &nbsp;/&nbsp; Corporate social responsibility</span>
+        <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(36px,4.4vw,64px); letter-spacing:-.02em; line-height:1; margin:20px 0 40px; max-width:20ch;">Our culture, shared and proudly embraced by all people.</h2>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#1F1F1D; border:1px solid #1F1F1D;">
+          <sc-for list="{{ csr }}" as="c" hint-placeholder-count="6">
+            <div style="background:#0A0A0A; padding:32px 28px;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#F2D65A; margin-bottom:14px;">{{ c.n }}</div>
+              <div style="font-size:17px; line-height:1.5; color:#F4F1EA;">{{ c.t }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+    <section style="background:#ECE7DB;">
+      <div style="max-width:1600px; margin:0 auto; padding:96px 48px;">
+        <div style="display:flex; align-items:center; gap:16px; margin-bottom:48px;">
+          <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">Our values</span>
+          <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68;">We Are People Plan</span>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px;">
+          <sc-for list="{{ values }}" as="v" hint-placeholder-count="4">
+            <div style="background:#F4F1EA; border-top:5px solid {{ v.color }}; padding:32px 28px 36px;">
+              <h3 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:26px; letter-spacing:-.02em; margin:0 0 14px; color:{{ v.color }};">{{ v.k }}</h3>
+              <p style="font-size:15px; line-height:1.55; color:#3A3A37; margin:0;">{{ v.d }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+    <section style="background:#0A0A0A; color:#F4F1EA;">
+      <div style="max-width:1600px; margin:0 auto; padding:96px 48px;">
+        <div style="display:flex; align-items:center; gap:16px; margin-bottom:48px;">
+          <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#A8A59E;">Community &amp; partnerships</span>
+          <div style="flex:1; height:1px; background:#1F1F1D;"></div>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#A8A59E;">Clever, creative, connected</span>
+        </div>
+        <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(32px,4vw,56px); letter-spacing:-.02em; line-height:1; margin:0 0 44px; max-width:22ch;">We build careers slowly, and we do it together.</h2>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#1F1F1D; border:1px solid #1F1F1D;">
+          <sc-for list="{{ partners }}" as="p" hint-placeholder-count="6">
+            <div style="background:#0A0A0A; padding:32px 28px;">
+              <h3 style="font-size:19px; font-weight:700; letter-spacing:-.01em; margin:0 0 10px;">{{ p.t }}</h3>
+              <p style="font-size:15px; line-height:1.55; color:#A8A59E; margin:0;">{{ p.d }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:96px 48px 0;">
+      <div style="border:1px solid #0A0A0A; padding:56px 48px; display:grid; grid-template-columns:1fr auto; gap:48px; align-items:center;">
+        <div>
+          <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">Costume &amp; set hire</span>
+          <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(28px,3.4vw,44px); letter-spacing:-.02em; line-height:1.02; margin:14px 0 14px;">The perfect solution to Geelong costume hire.</h2>
+          <p style="font-size:17px; line-height:1.6; color:#3A3A37; max-width:60ch; margin:0;">You may not know this — but CentreStage does costume and set hire, available to theatre companies, schools, organisations and individuals. (Please note this service is not available for private hire such as parties or dress-up days.)</p>
+        </div>
+        <a class="cs-btn" href="#contact">Enquire about hire →</a>
+      </div>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:96px 48px;">
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <a href="#health" class="cs-row" style="background:#F4F1EA; padding:40px 36px; display:block; transition:background .2s;">
+          <h3 style="font-size:24px; font-weight:700; letter-spacing:-.01em; margin:0 0 12px;">Health, Wellbeing &amp; Inclusion</h3>
+          <p style="font-size:15px; color:#3A3A37; margin:0 0 20px; line-height:1.55;">Resources, helplines and our cultural framework for a safe and supportive environment.</p>
+          <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">Explore →</span>
+        </a>
+        <a href="#productions" class="cs-row" style="background:#F4F1EA; padding:40px 36px; display:block; transition:background .2s;">
+          <h3 style="font-size:24px; font-weight:700; letter-spacing:-.01em; margin:0 0 12px;">Previous Productions</h3>
+          <p style="font-size:15px; color:#3A3A37; margin:0 0 20px; line-height:1.55;">Over 70 shows since 2010. Browse the full history of the CentreStage stage.</p>
+          <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">See the list →</span>
+        </a>
+        <a href="#involved" class="cs-row" style="background:#F4F1EA; padding:40px 36px; display:block; transition:background .2s;">
+          <h3 style="font-size:24px; font-weight:700; letter-spacing:-.01em; margin:0 0 12px;">How to Get Involved</h3>
+          <p style="font-size:15px; color:#3A3A37; margin:0 0 20px; line-height:1.55;">Paid roles, orchestra, volunteering, work experience and internships. There's a place for you.</p>
+          <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">Join us →</span>
+        </a>
+      </div>
+    </section>
+    <section style="max-width:1100px; margin:0 auto; padding:0 48px 96px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">Frequently asked</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <div style="border-top:1px solid #D9D5CC;">
+        <sc-for list="{{ faqGeneral }}" as="f" hint-placeholder-count="4">
+          <div style="border-bottom:1px solid #D9D5CC; padding:26px 0; display:grid; grid-template-columns:1fr 1.4fr; gap:40px; align-items:start;">
+            <h3 style="font-size:19px; font-weight:700; letter-spacing:-.01em; margin:0;">{{ f.q }}</h3>
+            <p style="font-size:16px; line-height:1.6; color:#3A3A37; margin:0;">{{ f.a }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ══════════════ EDUCATION ══════════════ -->
+  <sc-if value="{{ isEducation }}">
+  <div class="cs-fade">
+    <section style="background:#0A0A0A; color:#F4F1EA;">
+      <div style="max-width:1600px; margin:0 auto; padding:96px 48px;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#A8A59E;">CentreStage Performing Arts Academy (CPAA)</span>
+        <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(56px,9vw,140px); letter-spacing:-.03em; line-height:.9; margin:20px 0 0;">Education.</h1>
+        <div style="margin-top:40px; display:grid; grid-template-columns:1fr auto; gap:48px; align-items:end;">
+          <p style="font-size:19px; line-height:1.6; max-width:56ch; margin:0; color:#F4F1EA;">Geelong's largest theatre tuition programme. Start your education journey with weekly group classes or private 1:1 lessons — for young performers aged 4 to 18.</p>
+          <a class="cs-btn cs-btn--inv" href="mailto:cpaa@centrestage.org.au">Register for 2026 →</a>
+        </div>
+      </div>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:80px 48px 0;">
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <sc-for list="{{ classes }}" as="c" hint-placeholder-count="3">
+          <a href="{{ c.href }}" class="cs-row" style="background:#F4F1EA; padding:40px 36px 48px; display:block; transition:background .2s;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68;">{{ c.n }}</div>
+            <h3 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:34px; letter-spacing:-.02em; margin:18px 0 14px;">{{ c.t }}</h3>
+            <p style="font-size:16px; line-height:1.55; color:#3A3A37; margin:0 0 22px;">{{ c.d }}</p>
+            <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">{{ c.cta }} →</span>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:80px 48px 96px; display:grid; grid-template-columns:1.3fr 1fr; gap:80px; align-items:start;">
+      <div style="font-size:18px; line-height:1.7;">
+        <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(32px,3.6vw,48px); letter-spacing:-.02em; line-height:1; margin:0 0 28px;">Weekly musical theatre classes.</h2>
+        <p style="margin:0 0 22px;">CentreStage has always recognised the importance of an educational platform that caters to both the local Geelong and broader Australian theatre markets. Our mission is to provide outstanding and measurable learning outcomes, developed by some of Geelong's most respected educators and performers.</p>
+        <p style="margin:0 0 22px;">Our Performing Arts Academy is designed to meet the needs of young people aged 4 to 18, offering a comprehensive programme that enhances not only performance skills but also theatre etiquette, practical skills like costumes and makeup, and the opportunity to work alongside some of Australia's leading theatre professionals.</p>
+        <p style="margin:0 0 22px;">As Geelong's largest theatre tuition programme, we are proud to operate with DET and DHHS-approved guidelines. Parents can have peace of mind knowing that their children are being taught by registered staff, including VIT-accredited teachers and industry professionals.</p>
+        <p style="margin:0;">As a CPAA member, you'll learn new skills and develop a performance portfolio, participate in a variety of musical theatre performances, and build a strong network of theatre friends and professionals.</p>
+        <div style="display:flex; gap:16px; margin-top:32px; flex-wrap:wrap;">
+          <a class="cs-btn" href="https://dancestudio-pro.com/online/signup.php?account_id=26523" target="_blank" rel="noopener">Register now →</a>
+          <a class="cs-btn" href="assets/CentreStage-CPAA-Booklet-2026.pdf" target="_blank" rel="noopener">Download booklet</a>
+        </div>
+      </div>
+      <div class="cs-imgz"><img src="https://static.wixstatic.com/media/35cad6_a767e0cb242746359b846997445396e8~mv2.jpg/v1/fill/w_1000,h_1250,al_c,q_85,enc_avif,quality_auto/file.avif" alt="CPAA students" style="width:100%; aspect-ratio:4/5; object-fit:cover;"></div>
+    </section>
+
+    <!-- Troupes -->
+    <section style="max-width:1600px; margin:0 auto; padding:0 48px 24px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">Three troupes, one academy</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+        <sc-for list="{{ troupes }}" as="t" hint-placeholder-count="3">
+          <div style="border:1px solid #D9D5CC; border-top:5px solid {{ t.color }}; padding:32px 28px 36px; display:flex; flex-direction:column;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:{{ t.color }}; font-weight:600;">{{ t.age }}</div>
+            <h3 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:30px; letter-spacing:-.02em; margin:14px 0 12px;">{{ t.n }}</h3>
+            <p style="font-size:15px; line-height:1.55; color:#3A3A37; margin:0 0 20px;">{{ t.d }}</p>
+            <div style="margin-top:auto; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:{{ t.color }};">{{ t.show }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- What's included + facts -->
+    <section style="max-width:1600px; margin:0 auto; padding:64px 48px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;">
+      <div>
+        <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(28px,3.4vw,42px); letter-spacing:-.02em; margin:0 0 24px;">What's included.</h2>
+        <div style="display:flex; flex-direction:column;">
+          <sc-for list="{{ eduIncluded }}" as="i" hint-placeholder-count="6">
+            <div style="display:flex; gap:14px; padding:14px 0; border-top:1px solid #D9D5CC; font-size:16px; line-height:1.5;"><span style="color:#2E6FB7; font-weight:900;">/</span><span>{{ i }}</span></div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <sc-for list="{{ eduFacts }}" as="f" hint-placeholder-count="4">
+          <div style="background:#F4F1EA; padding:28px 24px;">
+            <div style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:22px; letter-spacing:-.02em; margin-bottom:8px;">{{ f.n }}</div>
+            <div style="font-size:14px; line-height:1.5; color:#3A3A37;">{{ f.d }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- Private & group tuition -->
+    <section style="max-width:1600px; margin:0 auto; padding:0 48px 24px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">Private &amp; group tuition</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <sc-for list="{{ privateLessons }}" as="p" hint-placeholder-count="3">
+          <a href="{{ p.href }}" class="cs-row" style="background:#F4F1EA; padding:36px 32px; display:block; border-bottom:4px solid {{ p.color }}; transition:background .2s;">
+            <h3 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:26px; letter-spacing:-.02em; margin:0 0 12px;">{{ p.t }}</h3>
+            <p style="font-size:15px; line-height:1.55; color:#3A3A37; margin:0 0 20px;">{{ p.d }}</p>
+            <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:{{ p.color }};">Find out more →</span>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- Safety strip -->
+    <section style="background:#0A0A0A; color:#F4F1EA;">
+      <div style="max-width:1600px; margin:0 auto; padding:72px 48px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
+        <div>
+          <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#7FD3FF;">Safe, inclusive, accountable</span>
+          <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(30px,3.6vw,48px); letter-spacing:-.02em; line-height:1.02; margin:18px 0 0;">Child safety is at the centre of everything we do.</h2>
+        </div>
+        <div style="font-size:17px; line-height:1.7; color:#EAF4FF;">
+          <p style="margin:0 0 18px;">We operate under the Victorian Child Safe Standards. All staff complete Child Safety Mandatory Training and hold Working with Children Checks, and our classes are led by VIT-registered educators under DET and DHHS-approved guidelines.</p>
+          <p style="margin:0 0 24px;">Our published Child Safety Plan and We Are People Plan set out our commitment to every young performer: We Belong, We Create, We Listen, We Care.</p>
+          <div style="display:flex; gap:14px; flex-wrap:wrap;">
+            <a class="cs-btn cs-btn--inv" href="#post/child-safety-plan">Read our Child Safety Plan →</a>
+            <a class="cs-btn" href="#health" style="background:transparent; color:#EAF4FF; border-color:rgba(255,255,255,.5);">Health &amp; wellbeing</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education FAQ -->
+    <section style="max-width:1100px; margin:0 auto; padding:80px 48px 96px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">Frequently asked</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <div style="border-top:1px solid #D9D5CC;">
+        <sc-for list="{{ faqEdu }}" as="f" hint-placeholder-count="5">
+          <div style="border-bottom:1px solid #D9D5CC; padding:26px 0; display:grid; grid-template-columns:1fr 1.4fr; gap:40px; align-items:start;">
+            <h3 style="font-size:19px; font-weight:700; letter-spacing:-.01em; margin:0;">{{ f.q }}</h3>
+            <p style="font-size:16px; line-height:1.6; color:#3A3A37; margin:0;">{{ f.a }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ══════════════ HEALTH ══════════════ -->
+  <sc-if value="{{ isHealth }}">
+  <div class="cs-fade">
+    <section style="max-width:1600px; margin:0 auto; padding:64px 48px 0;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">Health, Wellbeing &amp; Inclusion</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68;">2 × Healthy Workplace Award</span>
+      </div>
+      <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(48px,7vw,112px); letter-spacing:-.03em; line-height:.92; margin:0; max-width:16ch;">It's always okay to ask for help.</h1>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:56px 48px 80px; display:grid; grid-template-columns:1.2fr 1fr; gap:80px; align-items:start;">
+      <div style="font-size:18px; line-height:1.7; color:#0A0A0A;">
+        <p style="margin:0 0 22px;">As a company, we are only as good as our people. Our volunteers, students, performers and staff are all valuable members of our community — and part of that is recognising the importance of our people's health and wellbeing.</p>
+        <p style="margin:0 0 22px;">Through a revised cultural framework, we made a pledge to work tirelessly to identify, support and accommodate the needs of our theatre community from a health perspective. To achieve this, we have partnered with Beyond Blue and the Arts Wellbeing Collective.</p>
+        <p style="margin:0;">Performing can be a physically exhausting and emotionally draining job, and you're only human. For more information, please contact our Health and Wellbeing Manager, Marnie Parkinson.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:32px;">
+          <a class="cs-btn cs-btn--sec" href="https://www.centrestage.org.au/_files/ugd/35cad6_6cc8b5faad5549c6827b2e30c15f1096.pdf" target="_blank" rel="noopener">We Are People Plan</a>
+          <a class="cs-btn cs-btn--sec" href="CentreStage-Policies.html#child-safety" target="_blank" rel="noopener">Child Safety Plan</a>
+          <a class="cs-btn cs-btn--sec" href="CentreStage-Policies.html#first-nations-rap" target="_blank" rel="noopener">First Nations RAP</a>
+          <a class="cs-btn cs-btn--sec" href="CentreStage-Policies.html#disability-access" target="_blank" rel="noopener">Disability Plan</a>
+        </div>
+      </div>
+      <div style="background:#0A0A0A; color:#F4F1EA; padding:40px;">
+        <div style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#F2D65A; margin-bottom:8px;">Get help now</div>
+        <p style="font-size:14px; color:#A8A59E; margin:0 0 24px; line-height:1.5;">If you or someone you know is at immediate risk, call 000.</p>
+        <div style="display:flex; flex-direction:column;">
+          <sc-for list="{{ helplines }}" as="h" hint-placeholder-count="9">
+            <div style="display:flex; justify-content:space-between; align-items:baseline; gap:16px; padding:14px 0; border-top:1px solid #1F1F1D;">
+              <div><div style="font-size:15px; font-weight:700;">{{ h.t }}</div><div style="font-size:12px; color:#A8A59E;">{{ h.note }}</div></div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:15px; white-space:nowrap;">{{ h.n }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:0 48px 80px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:36px;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">Policies &amp; documents</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68;">Download</span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <sc-for list="{{ policies }}" as="p" hint-placeholder-count="8">
+          <a href="{{ p.href }}" target="_blank" rel="noopener" class="cs-row" style="background:#F4F1EA; padding:28px 26px; display:flex; flex-direction:column; justify-content:space-between; gap:24px; min-height:150px; transition:background .2s;">
+            <span style="font-size:17px; font-weight:700; letter-spacing:-.01em; line-height:1.3;">{{ p.t }}</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#2E6FB7;">{{ p.kind }} ↓</span>
+          </a>
+        </sc-for>
+      </div>
+      <div style="margin-top:32px; border:1px solid #0A0A0A; padding:32px 36px; display:grid; grid-template-columns:1fr auto; gap:32px; align-items:center;">
+        <div>
+          <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">Local help partner</span>
+          <h3 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:26px; letter-spacing:-.02em; margin:12px 0 8px;">Park Street General Practice</h3>
+          <p style="font-size:16px; line-height:1.55; color:#3A3A37; margin:0; max-width:64ch;">The doctors at Park St understand the demands of working within the arts. For emergency appointments, please mention that you are associated with CentreStage. 16 Park St, Geelong VIC 3220 &nbsp;·&nbsp; (03) 5223 2722</p>
+        </div>
+        <a class="cs-btn cs-btn--sec" href="https://www.parkstgp.com.au" target="_blank" rel="noopener">Visit Park St ↗</a>
+      </div>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:0 48px 96px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:36px;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">Policy library</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68;">20 policies</span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <sc-for list="{{ policyLibrary }}" as="p" hint-placeholder-count="20">
+          <a href="{{ p.href }}" target="_blank" rel="noopener" class="cs-row" style="background:#F4F1EA; padding:26px 24px 30px; border-top:4px solid #2E6FB7; display:flex; flex-direction:column; gap:10px; text-decoration:none; color:inherit; transition:background .2s;">
+            <h3 style="font-size:16px; font-weight:700; letter-spacing:-.01em; line-height:1.25; margin:0;">{{ p.t }}</h3>
+            <p style="font-size:13px; line-height:1.5; color:#3A3A37; margin:0;">{{ p.d }}</p>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#2E6FB7; margin-top:2px;">Read →</span>
+          </a>
+        </sc-for>
+      </div>
+      <p style="margin-top:24px; font-size:14px; color:#6B6B68;">Full copies of any policy are available on request &mdash; <a class="cs-link-u" href="#contact" style="font-weight:700;">contact our team</a>.</p>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:0 48px 96px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:36px;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">Digital wellbeing resources</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <sc-for list="{{ resources }}" as="r" hint-placeholder-count="6">
+          <a href="{{ r.href }}" class="cs-row" style="background:#F4F1EA; padding:26px 32px; display:flex; justify-content:space-between; align-items:center; gap:16px; transition:background .2s;">
+            <span style="font-size:17px; font-weight:700; letter-spacing:-.01em;">{{ r.t }}</span>
+            <span style="font-size:18px;">↗</span>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ══════════════ PREVIOUS PRODUCTIONS ══════════════ -->
+  <sc-if value="{{ isProductions }}">
+  <div class="cs-fade">
+    <section style="max-width:1600px; margin:0 auto; padding:64px 48px 0;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">Our history</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68;">{{ prodCount }} productions since 2010</span>
+      </div>
+      <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(56px,9vw,144px); letter-spacing:-.03em; line-height:.9; margin:0;">Previous<br>productions.</h1>
+      <p style="font-size:19px; line-height:1.55; max-width:52ch; margin:32px 0 0; color:#3A3A37;">We're pretty proud of the shows we've produced. Browse the list below, or visit our <a class="cs-link-u" href="https://www.facebook.com/centrestageaus" target="_blank" rel="noopener" style="font-weight:700;">Facebook page</a> to view the full albums.</p>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:56px 48px 96px; border-top:1px solid #D9D5CC;">
+      <sc-for list="{{ productions }}" as="p" hint-placeholder-count="12">
+        <div class="cs-prod" style="display:grid; grid-template-columns:110px 1fr auto; gap:24px; align-items:baseline; padding:22px 12px; border-bottom:1px solid #D9D5CC; transition:background .2s,color .2s;">
+          <span class="cs-prod-y" style="font-family:'JetBrains Mono',monospace; font-size:14px; color:#6B6B68; transition:color .2s;">{{ p.y }}</span>
+          <span style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(22px,2.6vw,34px); letter-spacing:-.02em;">{{ p.t }}</span>
+          <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; opacity:.5;">{{ p.tag }}</span>
+        </div>
+      </sc-for>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ══════════════ GET INVOLVED ══════════════ -->
+  <sc-if value="{{ isInvolved }}">
+  <div class="cs-fade">
+    <section style="max-width:1600px; margin:0 auto; padding:64px 48px 0;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">How to get involved</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(48px,7.5vw,120px); letter-spacing:-.03em; line-height:.9; margin:0; max-width:14ch;">Be part of the CentreStage family.</h1>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:56px 48px 96px; display:grid; grid-template-columns:1.2fr 1fr; gap:80px; align-items:start;">
+      <div style="font-size:18px; line-height:1.7;">
+        <p style="margin:0 0 22px; font-size:22px; font-weight:700; letter-spacing:-.01em; line-height:1.4;">We're always looking for fresh new ideas and supportive people to join our team.</p>
+        <p style="margin:0 0 22px;">We are thrilled to offer a wide range of opportunities for anyone who loves the theatre, whether you are a seasoned professional or just starting out. Our company is committed to creating exceptional performances that inspire and delight our audiences.</p>
+        <p style="margin:0 0 22px;">We believe in nurturing and developing talent at every level, and we welcome anyone who is passionate about theatre to join us. We offer a variety of roles, including paid positions, orchestra, volunteering opportunities, work experience, and internships.</p>
+        <p style="margin:0;">Whether you are an actor, musician, technician, or just someone who loves the theatre, we invite you to get in touch and join our vibrant community. Together, we can create something truly magical on stage.</p>
+        <a class="cs-btn" href="#contact" style="margin-top:32px;">Register your interest →</a>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr; gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <sc-for list="{{ roles }}" as="r" hint-placeholder-count="5">
+          <div style="background:#F4F1EA; padding:24px 28px;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68; margin-bottom:6px;">{{ r.n }}</div>
+            <div style="font-size:19px; font-weight:700; letter-spacing:-.01em;">{{ r.t }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ══════════════ BLOG INDEX ══════════════ -->
+  <sc-if value="{{ isBlog }}">
+  <div class="cs-fade">
+    <section style="max-width:1600px; margin:0 auto; padding:64px 48px 0;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">The Journal</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68;">{{ postCount }} posts</span>
+      </div>
+      <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(64px,10vw,160px); letter-spacing:-.03em; line-height:.9; margin:0;">Latest news.</h1>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:64px 48px 96px;">
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:40px 36px;">
+        <sc-for list="{{ posts }}" as="p" hint-placeholder-count="9">
+          <a href="#post/{{ p.slug }}" style="display:block;">
+            <div class="cs-imgz"><img src="{{ p.img }}" alt="{{ p.title }}" style="width:100%; aspect-ratio:4/3; object-fit:cover;"></div>
+            <div style="display:flex; gap:10px; align-items:center; margin-top:16px;"><span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68;">{{ p.date }}</span><span style="font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#fff; background:{{ p.catColor }}; padding:3px 8px;">{{ p.cat }}</span></div>
+            <h3 style="font-size:22px; font-weight:700; letter-spacing:-.01em; line-height:1.2; margin:10px 0 12px; text-wrap:pretty;">{{ p.title }}</h3>
+            <p style="font-size:15px; line-height:1.55; color:#3A3A37; margin:0;">{{ p.excerpt }}</p>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ══════════════ POST ══════════════ -->
+  <sc-if value="{{ isPost }}">
+  <div class="cs-fade">
+    <article style="max-width:820px; margin:0 auto; padding:48px 48px 0;">
+      <a class="cs-link-u" href="#blog" style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">← Back to the Journal</a>
+      <div style="display:flex; gap:12px; margin-top:36px; font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B68;"><span>{{ post.date }}</span><span style="color:#A8A59E;">/</span><span>{{ post.cat }}</span><span style="color:#A8A59E;">/</span><span>{{ post.read }}</span></div>
+      <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(34px,4.6vw,60px); letter-spacing:-.02em; line-height:1; margin:20px 0 24px; text-wrap:balance;">{{ post.title }}</h1>
+      <div style="font-size:13px; color:#6B6B68; font-family:'JetBrains Mono',monospace;">By {{ post.author }}</div>
+    </article>
+    <div style="max-width:1100px; margin:40px auto 0; padding:0 48px;">
+      <img src="{{ post.img }}" alt="{{ post.title }}" style="width:100%; aspect-ratio:16/9; object-fit:cover;">
+    </div>
+    <article style="max-width:820px; margin:0 auto; padding:56px 48px 40px; font-size:19px; line-height:1.7;">
+      <p style="font-size:24px; line-height:1.5; font-weight:700; letter-spacing:-.01em; margin:0 0 28px;">{{ post.excerpt }}</p>
+      <sc-for list="{{ post.body }}" as="para" hint-placeholder-count="4">
+        <p style="margin:0 0 24px;">{{ para }}</p>
+      </sc-for>
+      <sc-if value="{{ post.noBody }}">
+        <div style="border-top:1px solid #D9D5CC; margin-top:8px; padding-top:28px;">
+          <p style="font-size:16px; color:#6B6B68; margin:0 0 20px;">This article is part of the CentreStage Journal. Read the complete piece on our current site.</p>
+          <a class="cs-btn cs-btn--sec" href="{{ post.url }}" target="_blank" rel="noopener">Continue reading →</a>
+        </div>
+      </sc-if>
+    </article>
+    <div style="max-width:820px; margin:0 auto; padding:0 48px 96px;">
+      <div style="border-top:1px solid #D9D5CC; padding-top:28px; display:flex; justify-content:space-between; align-items:center; gap:16px;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">Share the stage</span>
+        <a class="cs-btn cs-btn--sec" href="#blog">More from the Journal →</a>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ══════════════ WEEKLY CLASSES ══════════════ -->
+  <sc-if value="{{ isWeekly }}">
+  <div class="cs-fade">
+    <section style="position:relative; background:#0A0A0A; color:#F4F1EA; overflow:hidden;">
+      <img src="https://static.wixstatic.com/media/35cad6_6b4dd2a6fd4047c092bae0ebc5631deb~mv2_d_2048_1365_s_2.jpg/v1/fill/w_1920,h_900,al_c,q_85,enc_avif,quality_auto/file.avif" alt="CentreStage students" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.34;">
+      <div style="position:relative; max-width:1600px; margin:0 auto; padding:104px 48px;">
+        <a class="cs-link-u" href="#education" style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#F2D65A;">← Education</a>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#C9C6BF; margin-top:24px;">CentreStage Performing Arts Academy</div>
+        <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(48px,7.5vw,120px); letter-spacing:-.03em; line-height:.92; margin:16px 0 0;">Weekly Musical<br>Theatre Classes.</h1>
+        <p style="font-size:20px; line-height:1.55; max-width:58ch; margin:28px 0 0; color:#E6E3DC;">Weekly group tuition for young performers aged 4 to 18, across four terms aligned with the school year — acting, singing and dance, taught by registered educators and industry professionals.</p>
+        <div style="display:flex; gap:16px; margin-top:34px; flex-wrap:wrap;">
+          <a class="cs-btn cs-btn--inv" href="https://dancestudio-pro.com/online/index.php?account_id=26523" target="_blank" rel="noopener">Register for 2026 →</a>
+          <a class="cs-btn" href="assets/CentreStage-CPAA-Booklet-2026.pdf" target="_blank" rel="noopener" style="background:transparent; color:#F4F1EA; border-color:rgba(255,255,255,.5);">Download booklet</a>
+        </div>
+      </div>
+    </section>
+    <section style="max-width:1100px; margin:0 auto; padding:88px 48px 40px;">
+      <div style="font-size:18px; line-height:1.7; color:#0A0A0A;">
+        <p style="margin:0 0 22px; font-size:24px; line-height:1.45; font-weight:700; letter-spacing:-.01em;">Our Performing Arts Academy delivers outstanding, measurable learning outcomes, developed by some of Geelong's most respected educators and performers.</p>
+        <p style="margin:0 0 22px;">Designed for young people aged 4 to 18, the programme develops performance skills alongside theatre etiquette, practical skills like costumes and makeup, and the chance to work with some of Australia's leading theatre professionals. Across our four-term tuition programme, students also attend up to two large-scale CentreStage productions featuring adult performers from Geelong's amateur theatre community.</p>
+        <p style="margin:0;">We operate under DET and DHHS-approved guidelines, with registered staff including VIT-accredited teachers. CPAA was created in response to overwhelming demand from families, working with over 200 emerging performers in a single year, and it has continued to grow ever since.</p>
+      </div>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:24px 48px 40px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:36px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">As a member you will</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <sc-for list="{{ weeklyBenefits }}" as="b" hint-placeholder-count="6">
+          <div style="background:#F4F1EA; padding:30px 28px; font-size:16px; line-height:1.5; font-weight:600; letter-spacing:-.01em;">{{ b }}</div>
+        </sc-for>
+      </div>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:40px 48px 96px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:8px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">How to enrol</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <sc-for list="{{ weeklySteps }}" as="s" hint-placeholder-count="7">
+          <div style="background:#F4F1EA; padding:30px 32px; display:flex; gap:20px; align-items:baseline;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600; color:#2E6FB7;">{{ s.n }}</span>
+            <div>
+              <h3 style="font-size:18px; font-weight:700; letter-spacing:-.01em; margin:0 0 6px;">{{ s.t }}</h3>
+              <p style="font-size:14px; line-height:1.55; color:#3A3A37; margin:0;">{{ s.d }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin-top:28px; font-size:15px; color:#3A3A37;">Trouble registering online? Email <a class="cs-link-u" href="mailto:cpaa@centrestage.org.au" style="font-weight:700;">cpaa@centrestage.org.au</a> or call 0422 589 271. Classes run at our North Geelong and Vines Road studios.</p>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ══════════════ PRIVATE SINGING ══════════════ -->
+  <sc-if value="{{ isSinging }}">
+  <div class="cs-fade">
+    <section style="position:relative; background:#0A0A0A; color:#F4F1EA; overflow:hidden;">
+      <img src="https://static.wixstatic.com/media/35cad6_1fcec063ea6a4fc5809aee49fbf8a0fa~mv2.jpg/v1/fill/w_1920,h_900,al_c,q_85,enc_avif,quality_auto/file.avif" alt="Vocal training" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.32;">
+      <div style="position:relative; max-width:1600px; margin:0 auto; padding:104px 48px;">
+        <a class="cs-link-u" href="#education" style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#F2D65A;">← Education</a>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#C9C6BF; margin-top:24px;">One-to-one tuition</div>
+        <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(48px,7.5vw,120px); letter-spacing:-.03em; line-height:.92; margin:16px 0 0;">Private Vocal<br>Lessons.</h1>
+        <p style="font-size:20px; line-height:1.55; max-width:58ch; margin:28px 0 0; color:#E6E3DC;">Affordable, individual vocal training in the north of Geelong — build confidence, find your sound, and sing clearly and freely across your whole range.</p>
+        <div style="display:flex; gap:16px; margin-top:34px; flex-wrap:wrap;">
+          <a class="cs-btn cs-btn--inv" href="https://dancestudio-pro.com/online/signup.php?account_id=26523" target="_blank" rel="noopener">Book online →</a>
+          <a class="cs-btn" href="mailto:cpaa@centrestage.org.au" style="background:transparent; color:#F4F1EA; border-color:rgba(255,255,255,.5);">Ask a question</a>
+        </div>
+      </div>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:88px 48px 40px; display:grid; grid-template-columns:1.3fr 1fr; gap:64px; align-items:start;">
+      <div style="font-size:18px; line-height:1.7; color:#0A0A0A;">
+        <p style="margin:0 0 22px; font-size:22px; line-height:1.45; font-weight:700; letter-spacing:-.01em;">We're passionate about affordable access to education — and we keep our prices low by offsetting costs across many projects.</p>
+        <p style="margin:0 0 22px;">Training at CentreStage helps you sing confidently and clearly anywhere in your range, moving through the different areas of the voice with every word understood. Our coaches bring years of experience across live band performance, studio recording and musical theatre.</p>
+        <p style="margin:0;">Whether you want to strengthen your voice, improve your range or prepare for a performance, voice-development sessions are perfect for building confidence, finding your style and perfecting the techniques that make you a better vocalist and artist.</p>
+      </div>
+      <div style="background:#0A0A0A; color:#F4F1EA; padding:36px 34px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#F2D65A; margin-bottom:20px;">Session rates</div>
+        <sc-for list="{{ singingRates }}" as="r" hint-placeholder-count="2">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 0; border-top:1px solid #1F1F1D;">
+            <span style="font-size:17px; font-weight:700;">{{ r.d }}</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:20px; color:#F4F1EA;">{{ r.p }}</span>
+          </div>
+        </sc-for>
+        <p style="font-size:13px; line-height:1.55; color:#A8A59E; margin:20px 0 0;">Book a single session or a regular weekly, fortnightly or monthly slot — whatever suits you.</p>
+      </div>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:24px 48px 40px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:36px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">What you'll develop</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <sc-for list="{{ singingBenefits }}" as="b" hint-placeholder-count="9">
+          <div style="background:#F4F1EA; padding:24px 26px; font-size:15px; line-height:1.5; font-weight:600; letter-spacing:-.01em;">{{ b }}</div>
+        </sc-for>
+      </div>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:40px 48px 40px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:36px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Our singing educators</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <sc-for list="{{ singingEducators }}" as="e" hint-placeholder-count="4">
+          <div style="background:#F4F1EA; padding:32px 34px; display:flex; flex-direction:column; gap:16px;">
+            <div class="cs-imgz" style="aspect-ratio:16/10; overflow:hidden; background:#ECE7DB;"><img src="{{ e.img }}" alt="{{ e.name }}" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div>
+              <h3 style="font-size:20px; font-weight:700; letter-spacing:-.01em; margin:0;">{{ e.name }}</h3>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#2E6FB7; margin-top:4px;">{{ e.when }}</div>
+            </div>
+            <p style="font-size:14px; line-height:1.6; color:#3A3A37; margin:0;">{{ e.bio }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:40px 48px 96px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:8px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">How to book</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <sc-for list="{{ singingSteps }}" as="s" hint-placeholder-count="4">
+          <div style="background:#F4F1EA; padding:28px 26px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600; color:#2E6FB7;">{{ s.n }}</span>
+            <h3 style="font-size:16px; font-weight:700; letter-spacing:-.01em; margin:10px 0 6px;">{{ s.t }}</h3>
+            <p style="font-size:13px; line-height:1.5; color:#3A3A37; margin:0;">{{ s.d }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:28px;"><a class="cs-btn" href="https://dancestudio-pro.com/online/signup.php?account_id=26523" target="_blank" rel="noopener">Book online →</a></div>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ══════════════ DANCE CLASSES ══════════════ -->
+  <sc-if value="{{ isDance }}">
+  <div class="cs-fade">
+    <section style="position:relative; background:#0A0A0A; color:#F4F1EA; overflow:hidden;">
+      <img src="https://static.wixstatic.com/media/35cad6_554e7cf4ca6a4e62aec2b090112d0862~mv2_d_2048_1367_s_2.jpg/v1/fill/w_1920,h_900,al_c,q_85,enc_avif,quality_auto/file.avif" alt="Dance class" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.34;">
+      <div style="position:relative; max-width:1600px; margin:0 auto; padding:104px 48px;">
+        <a class="cs-link-u" href="#education" style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#F2D65A;">← Education</a>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#C9C6BF; margin-top:24px;">Thursday nights · North Geelong</div>
+        <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(48px,7.5vw,120px); letter-spacing:-.03em; line-height:.92; margin:16px 0 0;">Dance Classes.</h1>
+        <p style="font-size:20px; line-height:1.55; max-width:58ch; margin:28px 0 0; color:#E6E3DC;">High-energy, welcoming dance classes led by Chloe Quinney. Whether you're returning to dance or stepping in for the first time, build confidence, technique and performance skills in a supportive environment. No audition required.</p>
+        <div style="display:flex; gap:16px; margin-top:34px; flex-wrap:wrap;">
+          <a class="cs-btn cs-btn--inv" href="mailto:richelle@centrestage.org.au">Email to enrol →</a>
+        </div>
+      </div>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:88px 48px 40px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:36px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Class schedule</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <sc-for list="{{ danceSchedule }}" as="c" hint-placeholder-count="2">
+          <div style="background:#F4F1EA; padding:36px 34px;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:14px; color:#E8472B;">{{ c.time }}</div>
+            <h3 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:28px; letter-spacing:-.02em; margin:12px 0 4px;">{{ c.t }}</h3>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:#6B6B68;">{{ c.tag }}</div>
+            <p style="font-size:15px; line-height:1.6; color:#3A3A37; margin:16px 0 0;">{{ c.d }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:24px 48px 40px; display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+      <div style="background:#0A0A0A; color:#F4F1EA; padding:36px 32px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#F2D65A; margin-bottom:16px;">Pricing</div>
+        <div style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:40px; letter-spacing:-.02em; line-height:1;">$15</div>
+        <p style="font-size:14px; color:#A8A59E; margin:8px 0 18px;">casual class</p>
+        <div style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:40px; letter-spacing:-.02em; line-height:1;">$12.50</div>
+        <p style="font-size:14px; color:#A8A59E; margin:8px 0 0;">per class with full-term enrolment · paid at the class</p>
+      </div>
+      <div style="background:#F4F1EA; padding:36px 32px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68; margin-bottom:16px;">Who it's for</div>
+        <div style="display:flex; flex-direction:column;">
+          <sc-for list="{{ danceWho }}" as="w" hint-placeholder-count="3">
+            <div style="font-size:15px; line-height:1.5; color:#0A0A0A; padding:10px 0 10px 18px; position:relative; border-bottom:1px solid #E4E0D6;"><span style="position:absolute; left:0; top:10px; color:#E8472B; font-weight:700;">/</span>{{ w }}</div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:#F4F1EA; padding:36px 32px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68; margin-bottom:16px;">What to bring</div>
+        <div style="display:flex; flex-direction:column;">
+          <sc-for list="{{ danceBring }}" as="b" hint-placeholder-count="3">
+            <div style="font-size:15px; line-height:1.5; color:#0A0A0A; padding:10px 0 10px 18px; position:relative; border-bottom:1px solid #E4E0D6;"><span style="position:absolute; left:0; top:10px; color:#E8472B; font-weight:700;">/</span>{{ b }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+    <section style="max-width:1100px; margin:0 auto; padding:40px 48px 96px;">
+      <div style="background:#0A0A0A; color:#F4F1EA; padding:56px 48px;">
+        <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(26px,3.2vw,40px); letter-spacing:-.02em; line-height:1.05; margin:0 0 16px;">How to join.</h2>
+        <p style="font-size:17px; line-height:1.6; color:#C9C6BF; margin:0 0 24px; max-width:56ch;">Getting started is simple. Email <a class="cs-link-u" href="mailto:richelle@centrestage.org.au" style="color:#8FD3F4; font-weight:700;">richelle@centrestage.org.au</a> to secure your place or ask a question — or just arrive on the night and join in. Located at CentreStage Studios, 26 Rodney Road, North Geelong.</p>
+        <a class="cs-btn cs-btn--inv" href="mailto:richelle@centrestage.org.au">Email to enrol →</a>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ══════════════ CONTACT ══════════════ -->
+  <sc-if value="{{ isContact }}">
+  <div class="cs-fade">
+    <section style="max-width:1600px; margin:0 auto; padding:64px 48px 0;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">Contact</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">Norlane / North Geelong / Fyansford</span>
+      </div>
+      <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(56px,9vw,144px); letter-spacing:-.03em; line-height:.9; margin:0;">Write to us.</h1>
+    </section>
+    <section style="max-width:1600px; margin:0 auto; padding:64px 48px 96px; display:grid; grid-template-columns:1fr 1.1fr; gap:80px; align-items:start;">
+      <div style="display:flex; flex-direction:column; gap:40px;">
+        <div>
+          <div style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68; margin-bottom:12px;">General enquiries</div>
+          <a class="cs-link-u" href="mailto:david@centrestage.org.au" style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:28px; letter-spacing:-.02em; display:block;">david@centrestage.org.au</a>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:15px; color:#3A3A37; margin-top:8px;">(03) 5272 1775</div>
+        </div>
+        <div>
+          <div style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68; margin-bottom:12px;">Education team</div>
+          <a class="cs-link-u" href="mailto:cpaa@centrestage.org.au" style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:28px; letter-spacing:-.02em; display:block;">cpaa@centrestage.org.au</a>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:15px; color:#3A3A37; margin-top:8px;">(03) 5272 1775</div>
+        </div>
+        <p style="font-size:14px; color:#6B6B68; margin:0; max-width:44ch; line-height:1.6;">Please note our office hours vary and we encourage you to leave a voice mail if unattended.</p>
+        <div style="border-top:1px solid #D9D5CC; padding-top:28px; display:flex; flex-direction:column; gap:18px;">
+          <div>
+            <div style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68; margin-bottom:6px;">Head office</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:14px; color:#3A3A37;">22 Princess Highway, Norlane, 3214</div>
+          </div>
+          <div>
+            <div style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68; margin-bottom:6px;">Rehearsal studios</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:14px; color:#3A3A37; line-height:1.7;">22 Princess Highway, Norlane, 3214<br>26 Rodney Road, North Geelong<br>+ Classes at Vines Road Community Centre</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#FFFFFF; border:1px solid #D9D5CC; padding:48px;">
+        <div style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">Enquiry</div>
+        <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:44px; letter-spacing:-.02em; margin:12px 0 32px;">Send a message.</h2>
+        <div style="display:flex; flex-direction:column; gap:26px;">
+          <div><div style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68; margin-bottom:6px;">Full name</div><input placeholder="Your name" style="width:100%; height:48px; padding:0 12px; background:transparent; border:0; border-bottom:1px solid #0A0A0A; font-family:Arial; font-size:17px; outline:none;"></div>
+          <div><div style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68; margin-bottom:6px;">Email</div><input placeholder="you@email.com" style="width:100%; height:48px; padding:0 12px; background:transparent; border:0; border-bottom:1px solid #0A0A0A; font-family:Arial; font-size:17px; outline:none;"></div>
+          <div><div style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68; margin-bottom:6px;">Subject</div><input placeholder="Tickets / classes / auditions / general" style="width:100%; height:48px; padding:0 12px; background:transparent; border:0; border-bottom:1px solid #0A0A0A; font-family:Arial; font-size:17px; outline:none;"></div>
+          <div><div style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68; margin-bottom:6px;">Message</div><textarea rows="4" placeholder="How can we help?" style="width:100%; padding:12px; background:transparent; border:1px solid #0A0A0A; font-family:Arial; font-size:17px; resize:vertical; outline:none;"></textarea></div>
+          <button class="cs-btn" style="align-self:flex-start;" onClick="{{ onSend }}">{{ sendLabel }}</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ══════════════ BIO (hidden) ══════════════ -->
+  <sc-if value="{{ isBio }}">
+  <div class="cs-fade">
+    <section style="max-width:1100px; margin:0 auto; padding:64px 48px 0;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">Program bios</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68;">Cast &amp; crew</span>
+      </div>
+      <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(48px,8vw,120px); letter-spacing:-.03em; line-height:.9; margin:0;">Submit your bio.</h1>
+      <p style="font-size:19px; line-height:1.55; max-width:58ch; margin:32px 0 0; color:#3A3A37;">Let's share your story. Read the outline below and submit your bio to be printed in our theatre program. Please note bios may be edited by our creative team &mdash; to reduce information being cut, please follow the guidelines.</p>
+    </section>
+    <section style="max-width:1100px; margin:0 auto; padding:56px 48px 0;">
+      <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <sc-for list="{{ bioGuides }}" as="g" hint-placeholder-count="6">
+          <div style="background:#F4F1EA; padding:30px 32px; border-top:4px solid #2E6FB7;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#2E6FB7; margin-bottom:12px;">{{ g.n }}</div>
+            <h3 style="font-size:19px; font-weight:700; letter-spacing:-.01em; margin:0 0 10px;">{{ g.t }}</h3>
+            <p style="font-size:15px; line-height:1.55; color:#3A3A37; margin:0;">{{ g.d }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+    <section style="max-width:1100px; margin:0 auto; padding:56px 48px 0;">
+      <div style="background:#0A0A0A; color:#F4F1EA; padding:44px 48px;">
+        <div style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#F2D65A; margin-bottom:8px;">Format your credits like this</div>
+        <p style="font-family:'JetBrains Mono',monospace; font-size:15px; line-height:1.7; color:#EAF4FF; margin:0 0 24px;">Role <span style="color:#A8A59E;">(in italics)</span> &mdash; SHOW NAME IN CAPITALS <span style="color:#A8A59E;">(Company in brackets)</span><br>e.g. Sarah recently appeared as <em>Lina Lamont</em> &mdash; SINGIN' IN THE RAIN (CentreStage)</p>
+        <div style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#A8A59E; margin-bottom:12px;">Example bio</div>
+        <p style="font-size:16px; line-height:1.7; color:#EAF4FF; margin:0; max-width:80ch;">Kethly has been a familiar face in the Geelong theatre scene for over 30 years. Some of her credits include <em>Velma</em> &mdash; CHICAGO (Theatre of the Damned), <em>Demeter</em> &mdash; CATS, and <em>Logainne Schwartzandgrubenierre</em> &mdash; 25TH ANNUAL PUTNAM COUNTY SPELLING BEE (Doorstep Arts). In 2007, Kethly was awarded the Music Theatre Guild of Victoria Award for Best Female in a Lead Role for her portrayal of <em>Sally Bowles</em> &mdash; CABARET (GSODA). She has worked as a teacher and director in performing-arts education for 25 years, and would like to thank CentreStage for this opportunity and her family for their support.</p>
+      </div>
+    </section>
+    <section style="max-width:1100px; margin:0 auto; padding:56px 48px 96px;">
+      <div style="background:#FFFFFF; border:1px solid #D9D5CC; padding:48px;">
+        <div style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">Submit</div>
+        <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:40px; letter-spacing:-.02em; margin:12px 0 32px;">Send us your bio.</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:26px;">
+          <div><div style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68; margin-bottom:6px;">First name</div><input placeholder="Your name" style="width:100%; height:48px; padding:0 12px; background:transparent; border:0; border-bottom:1px solid #0A0A0A; font-family:Arial; font-size:17px; outline:none;"></div>
+          <div><div style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68; margin-bottom:6px;">Pronouns</div><input placeholder="e.g. she/her" style="width:100%; height:48px; padding:0 12px; background:transparent; border:0; border-bottom:1px solid #0A0A0A; font-family:Arial; font-size:17px; outline:none;"></div>
+          <div><div style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68; margin-bottom:6px;">Email</div><input placeholder="you@email.com" style="width:100%; height:48px; padding:0 12px; background:transparent; border:0; border-bottom:1px solid #0A0A0A; font-family:Arial; font-size:17px; outline:none;"></div>
+          <div><div style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68; margin-bottom:6px;">Role &amp; show</div><input placeholder="e.g. Ensemble — FROZEN" style="width:100%; height:48px; padding:0 12px; background:transparent; border:0; border-bottom:1px solid #0A0A0A; font-family:Arial; font-size:17px; outline:none;"></div>
+        </div>
+        <div style="margin-top:26px;"><div style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68; margin-bottom:6px;">Your bio</div><textarea rows="6" placeholder="Paste your bio here, following the guidelines above." style="width:100%; padding:12px; background:transparent; border:1px solid #0A0A0A; font-family:Arial; font-size:17px; resize:vertical; outline:none;"></textarea></div>
+        <button class="cs-btn" style="margin-top:28px;" onClick="{{ onSend }}">{{ sendLabel }}</button>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  </main>
+
+  <!-- ══════════════ MEDIA ══════════════ -->
+  <sc-if value="{{ isMedia }}">
+  <div class="cs-fade">
+    <section style="background:#0A0A0A; color:#F4F1EA;">
+      <div style="max-width:1600px; margin:0 auto; padding:96px 48px 72px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#E8472B;">Media <span style="color:#6B6B68;">/</span> Press</span>
+        <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(52px,8vw,132px); letter-spacing:-.03em; line-height:.9; margin:20px 0 0;">In the press.</h1>
+        <p style="font-size:20px; line-height:1.55; max-width:60ch; margin:32px 0 0; color:#C9C6BF;">For fifteen years, Geelong's media has followed the CentreStage story — award recognition, record-breaking productions, and more than a million dollars raised for the community. A multi-award-winning company, proudly of the north.</p>
+      </div>
+    </section>
+
+    <section style="background:#0A0A0A; color:#F4F1EA; border-top:1px solid #1F1F1D;">
+      <div style="max-width:1600px; margin:0 auto; padding:0 48px 88px;">
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:#1F1F1D; border:1px solid #1F1F1D;">
+          <sc-for list="{{ pressStats }}" as="s" hint-placeholder-count="4">
+            <div style="background:#0A0A0A; padding:40px 28px;">
+              <div style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(32px,3.4vw,52px); letter-spacing:-.02em; line-height:1; color:{{ s.color }};">{{ s.n }}</div>
+              <div style="font-size:14px; line-height:1.5; color:#A8A59E; margin-top:14px;">{{ s.l }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1600px; margin:0 auto; padding:88px 48px 40px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:12px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Awards &amp; recognition</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <sc-for list="{{ accolades }}" as="a" hint-placeholder-count="8">
+          <div style="background:#F4F1EA; padding:30px 26px 34px; display:flex; flex-direction:column; gap:12px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600; color:#E8472B;">{{ a.y }}</span>
+            <h3 style="font-size:18px; font-weight:700; letter-spacing:-.01em; line-height:1.2; margin:0;">{{ a.t }}</h3>
+            <p style="font-size:13px; line-height:1.5; color:#3A3A37; margin:0;">{{ a.d }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="max-width:1600px; margin:0 auto; padding:56px 48px 40px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:36px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Coverage</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <sc-for list="{{ media }}" as="m" hint-placeholder-count="6">
+          <a href="{{ m.href }}" target="_blank" rel="noopener" class="cs-row" style="background:#F4F1EA; padding:36px 34px 40px; display:flex; flex-direction:column; gap:16px; text-decoration:none; color:inherit; transition:background .2s;">
+            <div style="display:flex; align-items:center; gap:14px;">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.04em; color:#0A0A0A;">{{ m.outlet }}</span>
+              <span style="width:4px; height:4px; border-radius:50%; background:#6B6B68;"></span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68;">{{ m.date }}</span>
+              <span style="margin-left:auto; font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#F4F1EA; background:{{ m.accent }}; padding:4px 9px;">{{ m.tag }}</span>
+            </div>
+            <h3 style="font-size:23px; font-weight:700; letter-spacing:-.01em; line-height:1.22; margin:0; text-wrap:pretty;">{{ m.title }}</h3>
+            <p style="font-size:15px; line-height:1.55; color:#3A3A37; margin:0;">{{ m.blurb }}</p>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.04em; color:#0A0A0A; margin-top:2px;">Read at {{ m.outlet }} ↗</span>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="max-width:1600px; margin:0 auto; padding:56px 48px 40px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:36px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Watch</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:32px;">
+        <sc-for list="{{ ytVideos }}" as="v" hint-placeholder-count="4">
+          <a href="{{ v.watch }}" target="_blank" rel="noopener" class="cs-imgz" style="display:flex; flex-direction:column; gap:14px; text-decoration:none; color:inherit;">
+            <div style="position:relative; aspect-ratio:16/9; background:#0A0A0A; overflow:hidden;">
+              <img src="{{ v.thumb }}" alt="CentreStage video" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+              <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center;">
+                <div style="width:66px; height:66px; border-radius:50%; background:rgba(10,10,10,.72); display:flex; align-items:center; justify-content:center;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="#F4F1EA"><path d="M8 5v14l11-7z"></path></svg>
+                </div>
+              </div>
+            </div>
+            <span class="cs-link-u" style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#0A0A0A;">Watch on YouTube ↗</span>
+          </a>
+        </sc-for>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC; margin-top:32px;">
+        <sc-for list="{{ socialVideos }}" as="v" hint-placeholder-count="3">
+          <a href="{{ v.href }}" target="_blank" rel="noopener" class="cs-row" style="background:#F4F1EA; padding:28px 26px 32px; display:flex; flex-direction:column; gap:10px; text-decoration:none; color:inherit; transition:background .2s;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#E8472B;">{{ v.platform }}</span>
+            <p style="font-size:15px; line-height:1.5; color:#0A0A0A; margin:0; font-weight:700;">{{ v.blurb }}</p>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68; margin-top:2px;">Watch ↗</span>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer style="background:#0A0A0A; color:#F4F1EA;">
+    <div style="max-width:1600px; margin:0 auto; padding:72px 48px 36px;">
+      <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:48px; align-items:start;">
+        <div>
+          <img src="assets/CentreStage-Solid-White.png" alt="CentreStage" style="height:28px; margin-bottom:24px;">
+          <p style="font-size:14px; line-height:1.6; color:#A8A59E; max-width:34ch; margin:0 0 20px;">Established 2010. Theatre, Education &amp; Agency Representation, proudly based in Geelong.</p>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#A8A59E;">david@centrestage.org.au<br>(03) 5272 1775</div>
+        </div>
+        <div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#A8A59E; margin-bottom:16px;">Explore</div>
+          <div style="display:flex; flex-direction:column; gap:10px; font-size:14px;">
+            <a class="cs-link-u" href="#tickets" style="color:#F4F1EA;">Tickets</a>
+            <a class="cs-link-u" href="#about" style="color:#F4F1EA;">About</a>
+            <a class="cs-link-u" href="#productions" style="color:#F4F1EA;">Previous Productions</a>
+            <a class="cs-link-u" href="#blog" style="color:#F4F1EA;">Journal</a>
+            <a class="cs-link-u" href="#media" style="color:#F4F1EA;">Media &amp; Press</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#A8A59E; margin-bottom:16px;">Take part</div>
+          <div style="display:flex; flex-direction:column; gap:10px; font-size:14px;">
+            <a class="cs-link-u" href="#education" style="color:#F4F1EA;">Education Program</a>
+            <a class="cs-link-u" href="#involved" style="color:#F4F1EA;">Get Involved</a>
+            <a class="cs-link-u" href="https://www.centrestageagency.org.au" target="_blank" rel="noopener" style="color:#F4F1EA;">Agency ↗</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#A8A59E; margin-bottom:16px;">Care</div>
+          <div style="display:flex; flex-direction:column; gap:10px; font-size:14px;">
+            <a class="cs-link-u" href="#health" style="color:#F4F1EA;">Health &amp; Wellbeing</a>
+            <a class="cs-link-u" href="#contact" style="color:#F4F1EA;">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div style="height:1px; background:#1F1F1D; margin:56px 0 28px;"></div>
+      <div style="display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:36px;">
+        <span style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#A8A59E; margin-right:8px;">Follow <span style="color:#6B6B68;">/</span> @centrestageaus</span>
+        <a class="cs-social" href="https://www.facebook.com/centrestageaus" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V9H6.5v3H9v9h3v-9h2.5l.5-3H12V6.5a.5.5 0 0 1 .5-.5H15z"/></svg>
+        </a>
+        <a class="cs-social" href="https://www.instagram.com/centrestageaus" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a class="cs-social" href="https://www.tiktok.com/@centrestageaus" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M14 4v9.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 7a4.5 4.5 0 0 0 4.5 4.5"/></svg>
+        </a>
+        <a class="cs-social" href="https://www.linkedin.com/company/centrestageaus" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 10v7"/></svg>
+        </a>
+        <a class="cs-social" href="https://www.youtube.com/@centrestageaus" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M11 9.5l3.5 2.5L11 14.5z" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a class="cs-social cs-social--pod" href="https://open.spotify.com/show/2TUccyv0vDjXqLiWYLTMOv" target="_blank" rel="noopener" title="OnStage Casting Call podcast">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M8 10.5c2.5-.8 5-.5 7.5 1M8.5 13.2c2-.6 3.8-.4 5.6.8M9 15.6c1.4-.4 2.6-.3 3.8.5"/></svg>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.04em;">OnStage Casting Call</span>
+        </a>
+      </div>
+      <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-family:'JetBrains Mono',monospace; font-size:11px; color:#A8A59E; letter-spacing:.04em;">
+        <span>© 2026 CENTRESTAGE PTY LTD</span>
+        <span>GEELONG <span style="color:#6B6B68;">/</span> VICTORIA <span style="color:#6B6B68;">/</span> AUSTRALIA</span>
+        <span>THEATRE / EDUCATION / AGENCY</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Accessibility tool -->
+  <button aria-label="Accessibility options" onClick="{{ a11yToggle }}" style="position:fixed; right:24px; bottom:24px; z-index:100; width:56px; height:56px; border-radius:50%; border:2px solid #0A0A0A; background:#2E6FB7; color:#fff; cursor:pointer; box-shadow:0 12px 28px -10px rgba(0,0,0,.5); display:flex; align-items:center; justify-content:center;">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="3.6" r="1.5" fill="currentColor" stroke="none"></circle><path d="M4 7c3 1.2 5 1.6 8 1.6S17 8.2 20 7"></path><path d="M12 8.6V14"></path><path d="M12 14l-3 6.4"></path><path d="M12 14l3 6.4"></path></svg>
+  </button>
+  <div style="{{ a11yPanel }}">
+    <div style="position:fixed; right:24px; bottom:92px; z-index:100; width:326px; background:#fff; border:2px solid #0A0A0A; box-shadow:0 24px 60px -20px rgba(0,0,0,.45);">
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:16px 20px; background:#0A0A0A; color:#F4F1EA;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">Accessibility tools</span>
+        <button onClick="{{ a11yToggle }}" aria-label="Close" style="border:0; background:transparent; color:#F4F1EA; font-size:22px; cursor:pointer; line-height:1;">&times;</button>
+      </div>
+      <div style="padding:10px 14px 16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:14px 6px; border-bottom:1px solid #ECE7DB;">
+          <span style="font-size:15px; font-weight:700;">Text size <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68; font-weight:400;">{{ a11yScaleLabel }}</span></span>
+          <div style="display:flex; gap:6px;">
+            <button onClick="{{ a11yTextDown }}" aria-label="Decrease text size" style="width:34px;height:34px;border:1px solid #0A0A0A;background:#fff;cursor:pointer;font-weight:900;font-size:14px;">A-</button>
+            <button onClick="{{ a11yTextUp }}" aria-label="Increase text size" style="width:34px;height:34px;border:1px solid #0A0A0A;background:#fff;cursor:pointer;font-weight:900;font-size:17px;">A+</button>
+          </div>
+        </div>
+        <button onClick="{{ a11yContrast }}" style="{{ a11yContrastStyle }}"><span>Boost contrast</span><span style="font-family:'JetBrains Mono',monospace; font-size:12px;">{{ a11yContrastLabel }}</span></button>
+        <button onClick="{{ a11yUnderline }}" style="{{ a11yUnderlineStyle }}"><span>Underline links</span><span style="font-family:'JetBrains Mono',monospace; font-size:12px;">{{ a11yUnderlineLabel }}</span></button>
+        <button onClick="{{ a11yFont }}" style="{{ a11yFontStyle }}"><span>Readable font</span><span style="font-family:'JetBrains Mono',monospace; font-size:12px;">{{ a11yFontLabel }}</span></button>
+        <button onClick="{{ a11yMotion }}" style="{{ a11yMotionStyle }}"><span>Reduce motion</span><span style="font-family:'JetBrains Mono',monospace; font-size:12px;">{{ a11yMotionLabel }}</span></button>
+        <button onClick="{{ a11yReset }}" style="width:100%; margin-top:12px; height:42px; border:1px solid #0A0A0A; background:#0A0A0A; color:#F4F1EA; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; cursor:pointer;">Reset all</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { route: "home", slug: null, data: null, sent: false, a11yOpen: false, a11y: { scale: 1, contrast: false, underline: false, font: false, motion: false } };
+
+  componentDidMount() {
+    this._onHash = () => {
+      const h = (location.hash || "#home").replace(/^#/, "");
+      if (h.startsWith("post/")) {
+        this.setState({ route: "post", slug: h.slice(5), sent: false });
+      } else {
+        this.setState({ route: h || "home", slug: null, sent: false });
+      }
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener("hashchange", this._onHash);
+    this._onHash();
+    import("./content.js").then((m) => this.setState({ data: m }));
+    this._a11yEl = document.createElement("style");
+    this._a11yEl.id = "cs-a11y";
+    document.head.appendChild(this._a11yEl);
+    this.applyA11y();
+    this.lazyImgs();
+  }
+  componentDidUpdate() { this.applyA11y(); this.lazyImgs(); }
+  lazyImgs() {
+    try {
+      document.querySelectorAll("img:not([data-lz])").forEach((i) => {
+        i.setAttribute("data-lz", "1");
+        i.loading = "lazy";
+        i.decoding = "async";
+      });
+    } catch (e) {}
+  }
+  componentWillUnmount() {
+    window.removeEventListener("hashchange", this._onHash);
+    try { document.body.style.zoom = ""; document.body.style.filter = ""; } catch (e) {}
+    if (this._a11yEl) this._a11yEl.remove();
+  }
+  applyA11y() {
+    const a = this.state.a11y;
+    try {
+      document.body.style.zoom = a.scale;
+      document.body.style.filter = a.contrast ? "contrast(1.35)" : "";
+    } catch (e) {}
+    if (!this._a11yEl) return;
+    let css = "";
+    if (a.underline) css += "a{text-decoration:underline !important;text-underline-offset:3px;}";
+    if (a.font) css += "*{font-family:Verdana,Tahoma,Geneva,sans-serif !important;letter-spacing:.01em !important;}";
+    if (a.motion) css += "*,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important;}";
+    this._a11yEl.textContent = css;
+  }
+  setA11y(patch) { this.setState((s) => ({ a11y: { ...s.a11y, ...patch } })); }
+  a11yVals() {
+    const a = this.state.a11y;
+    const row = (on) => "width:100%;display:flex;justify-content:space-between;align-items:center;padding:13px 8px;font-size:15px;font-weight:700;cursor:pointer;text-align:left;border:0;border-bottom:1px solid #ECE7DB;background:" + (on ? "#E7F0FA" : "#fff") + ";color:" + (on ? "#2E6FB7" : "#0A0A0A") + ";";
+    const lbl = (on) => (on ? "ON" : "OFF");
+    return {
+      a11yPanel: this.state.a11yOpen ? "" : "display:none;",
+      a11yScaleLabel: Math.round(a.scale * 100) + "%",
+      a11yContrastStyle: row(a.contrast), a11yContrastLabel: lbl(a.contrast),
+      a11yUnderlineStyle: row(a.underline), a11yUnderlineLabel: lbl(a.underline),
+      a11yFontStyle: row(a.font), a11yFontLabel: lbl(a.font),
+      a11yMotionStyle: row(a.motion), a11yMotionLabel: lbl(a.motion),
+      a11yToggle: () => this.setState((s) => ({ a11yOpen: !s.a11yOpen })),
+      a11yTextUp: () => this.setA11y({ scale: Math.min(1.6, +(this.state.a11y.scale + 0.1).toFixed(2)) }),
+      a11yTextDown: () => this.setA11y({ scale: Math.max(0.9, +(this.state.a11y.scale - 0.1).toFixed(2)) }),
+      a11yContrast: () => this.setA11y({ contrast: !this.state.a11y.contrast }),
+      a11yUnderline: () => this.setA11y({ underline: !this.state.a11y.underline }),
+      a11yFont: () => this.setA11y({ font: !this.state.a11y.font }),
+      a11yMotion: () => this.setA11y({ motion: !this.state.a11y.motion }),
+      a11yReset: () => this.setState({ a11y: { scale: 1, contrast: false, underline: false, font: false, motion: false } }),
+    };
+  }
+
+  navStyle(id) {
+    return this.state.route === id ? "border-bottom-color:#0A0A0A;" : "";
+  }
+
+  wix(id) {
+    return "https://static.wixstatic.com/media/" + id + "/v1/fill/w_900,h_600,al_c,q_85,enc_avif,quality_auto/file.avif";
+  }
+
+  renderVals() {
+    const r = this.state.route;
+    const d = this.state.data;
+    const shows = (d && d.SHOWS || []).map((s) => {
+      const feat = s.featured;
+      return {
+        ...s,
+        bg: feat ? "#0A0A0A" : "#F4F1EA",
+        fg: feat ? "#F4F1EA" : "#0A0A0A",
+        meta: feat ? "#F2D65A" : "#6B6B68",
+        body: feat ? "#F4F1EA" : "#3A3A37",
+        btnClass: feat ? "cs-btn--inv" : "",
+      };
+    });
+    const productions = (d && d.PRODUCTIONS || []).map((p) => ({
+      ...p,
+      tag: /Showcase|Camp|Launch|Awards|Pop Up|Sing Out|Bending|Forbidden/i.test(p.t) ? "Event" : "Production",
+    }));
+    const catColor = (c) => ({ "News": "#2E6FB7", "Cast Announcement": "#E8472B", "Health & Wellbeing": "#2E8B6B", "Advice": "#C9902D", "Craft": "#2E6FB7", "Behind the Scenes": "#7A4FB5", "Community": "#2E8B6B" }[c] || "#0A0A0A");
+    const posts = (d && d.POSTS || []).map((p) => ({ ...p, catColor: catColor(p.cat) }));
+    let post = null;
+    if (r === "post") {
+      const found = posts.find((p) => p.slug === this.state.slug) || posts[0] || {};
+      post = {
+        ...found,
+        body: found.body || [],
+        noBody: !(found.body && found.body.length),
+        url: "#blog",
+      };
+    }
+
+    return {
+      isHome: r === "home", isTickets: r === "tickets", isAbout: r === "about",
+      isEducation: r === "education", isHealth: r === "health", isProductions: r === "productions",
+      isInvolved: r === "involved", isBlog: r === "blog", isPost: r === "post",
+      isShop: false, isContact: r === "contact", isBio: r === "bio", isMedia: r === "media",
+      isWeekly: r === "weekly", isSinging: r === "singing", isDance: r === "dance",
+      bioGuides: [
+        { n: "01", t: "Word limits", d: "Lead roles 150 words max; all other roles and ensemble 100 words max; creative team 150 words max." },
+        { n: "02", t: "Spell it CentreStage", d: "Capital C and capital S, one word, with no slash in the spelling." },
+        { n: "03", t: "No shout-outs", d: "No business promotion or product plugs — that space is reserved for our sponsors." },
+        { n: "04", t: "List your shows", d: "Role in italics — SHOW NAME IN CAPITALS (Company in brackets)." },
+        { n: "05", t: "Spell check", d: "Proofread your bio with a friend before you send it." },
+        { n: "06", t: "Name our classes right", d: "Refer to education classes as CentreStage or CPAA — not CEEPA." },
+      ],
+
+      navHome: this.navStyle("home"),
+      navTickets: this.navStyle("tickets"), navAbout: this.navStyle("about"),
+      navEducation: this.navStyle("education"), navHealth: this.navStyle("health"), navBlog: this.navStyle("blog"),
+      navMedia: this.navStyle("media"),
+
+      shows, productions, prodCount: productions.length,
+      posts, postCount: posts.length, homePosts: posts.slice(0, 3), post,
+      helplines: d && d.HELPLINES || [],
+      stats: (d && d.STATS || []).map((s, i) => ({ ...s, color: ["#7FD3FF", "#F2D65A", "#8FE0B0", "#F2A65A"][i % 4] })),
+      accreditations: d && d.ACCREDITATIONS || [],
+      troupes: d && d.EDU_TROUPES || [], eduIncluded: d && d.EDU_INCLUDED || [],
+      eduFacts: d && d.EDU_FACTS || [], privateLessons: d && d.PRIVATE_LESSONS || [],
+      faqEdu: d && d.FAQ_EDU || [], values: d && d.VALUES || [], faqGeneral: d && d.FAQ_GENERAL || [],
+      milestones: d && d.MILESTONES || [], partners: d && d.PARTNERS || [],
+      policies: d && d.POLICIES || [], policyLibrary: d && d.POLICY_LIBRARY || [],
+      media: d && d.MEDIA || [], accolades: d && d.ACCOLADES || [],
+      weeklySteps: [
+        { n: "01", t: "Register an account", d: "Visit the enrolment portal and click the Join Now button." },
+        { n: "02", t: "Go to Registration", d: "Navigate to the Registration area of the portal." },
+        { n: "03", t: "Add the parent", d: "Register the parent or carer who will receive all core emails." },
+        { n: "04", t: "Add your child", d: "Create a child profile within the program." },
+        { n: "05", t: "Choose a class", d: "Select your preferred class and click Enrol." },
+        { n: "06", t: "Pay the $35 fee", d: "A $35 registration fee covers your performance t-shirt, calendar and insurances." },
+        { n: "07", t: "Get ready for Week 1", d: "Keep an eye on your inbox and get ready for the first class." },
+      ],
+      weeklyBenefits: [
+        "Learn new skills and develop a performance portfolio",
+        "Take part in a variety of musical theatre performances and experiences",
+        "Attend up to two large-scale CentreStage productions each year",
+        "Learn theatre etiquette and practical skills like costumes and makeup",
+        "Work alongside some of Australia's leading theatre professionals",
+        "Build a strong network of theatre friends and mentors",
+      ],
+      singingRates: [
+        { d: "30 minutes", p: "$32.50" },
+        { d: "60 minutes", p: "$60.00" },
+      ],
+      singingBenefits: [
+        "Develop a solid singing technique", "Increase your self-confidence", "Increase your vocal range",
+        "Strengthen your voice", "Develop endurance — a voice that lasts night after night", "Improve your pitch and tone",
+        "Sing with a connected voice", "Move from low to high without straining", "Expand your unique sound",
+      ],
+      singingSteps: [
+        { n: "01", t: "Register online", d: "Create a DanceStudio-Pro account (skip if you already have one)." },
+        { n: "02", t: "Set up your profile", d: "Add your details or your child's within the portal." },
+        { n: "03", t: "Open Private Tuition", d: "Select the Private Tuition / Classes section." },
+        { n: "04", t: "Book your session", d: "Choose the session, date and teacher that suit you. Our team will then help onboard you." },
+      ],
+      singingEducators: [
+        { name: "Cate Dunstan", when: "Thursday evenings", img: this.wix("35cad6_a3cb235c012c4179ae13a5948b41beeb~mv2.jpg"),
+          bio: "A Melbourne-based classical singer finalising her Bachelor of Music at the Melbourne Conservatorium. A CPAA vocal teacher since 2020, Cate has co-directed Elf Jr., The Little Mermaid Jr. and Annie Jr., and has performed across Geelong and Melbourne since age 12." },
+        { name: "Leticia Bayliss", when: "Tuesday evenings", img: this.wix("35cad6_dca8ae45b41344c5862c69253e9b1c30~mv2.jpg"),
+          bio: "A vocal coach and active performer with an Advanced Diploma in Music Industry. Leticia teaches voice, theory, songwriting and piano, gigs regularly across the region, and is a passionate member of Geelong's musical theatre community." },
+        { name: "Eleanor Parry", when: "Wednesday evenings", img: this.wix("35cad6_b37e39f1801a4762a61e9b917b63775c~mv2.jpg"),
+          bio: "A contemporary-trained vocalist with over 15 years of training and a Bachelor of Music (Honours). Eleanor has performed in the Victorian State School Spectacular and internationally, and is finalising her Master of Teaching at Monash." },
+        { name: "Jesse Simpson", when: "Tuesday & Thursday evenings", img: this.wix("35cad6_d36138c20b8e4103b31e9247797de761~mv2.jpg"),
+          bio: "A WAAPA graduate whose credits include Frozen the Musical (Disney Theatrical) and Swan Lake (The Australian Ballet). Jesse is a multiple Australian and New Zealand ballroom and Latin champion." },
+      ],
+      danceSchedule: [
+        { time: "6.00 – 7.00pm", t: "Open Tap", tag: "Beginner / Easy Intermediate", d: "Develop rhythm, coordination and strong tap foundations in a class that is practical, engaging and accessible." },
+        { time: "7.00 – 8.00pm", t: "Broadway Bootcamp", tag: "Dance Technique", d: "Build strength, flexibility and musical theatre dance technique inspired by Broadway styles." },
+      ],
+      danceWho: [
+        "Beginners looking to try dance in a supportive setting",
+        "Performers wanting to build technique and consistency",
+        "Anyone seeking a fun, active and community-focused class",
+      ],
+      danceBring: [
+        "Comfortable clothing you can move in", "A water bottle", "Tap shoes for the tap class (or just ask us if you're starting out)",
+      ],
+      videos: d && d.VIDEOS || [],
+      ytVideos: (d && d.VIDEOS || []).filter((v) => v.kind === "youtube").map((v) => ({ ...v, thumb: "https://i.ytimg.com/vi/" + v.id + "/hqdefault.jpg", watch: "https://www.youtube.com/watch?v=" + v.id })),
+      socialVideos: (d && d.VIDEOS || []).filter((v) => v.kind !== "youtube").map((v) => ({ ...v, platform: v.kind === "facebook" ? "Facebook" : "Instagram" })),
+      pressStats: (d && d.PRESS_STATS || []).map((s, i) => ({ ...s, color: ["#7FD3FF", "#F2D65A", "#8FE0B0", "#F2A65A"][i % 4] })),
+      ...this.a11yVals(),
+
+      featuredIn: ["9 News", "Sky News", "3AW", "Stage Whispers", "Geelong Advertiser", "Bay 93.9"],
+      csr: [
+        { n: "01", t: "Reducing our carbon footprint" },
+        { n: "02", t: "Engaging in charity work and regular donations" },
+        { n: "03", t: "Purchasing local" },
+        { n: "04", t: "Investing in environmentally conscious strategies" },
+        { n: "05", t: "Improving industry wages and rewarding staff" },
+        { n: "06", t: "Comprehensive mental health commitment for our people" },
+      ],
+      classes: [
+        { n: "01", t: "Weekly Classes", d: "Weekly group education for young performers, aligned with school terms across four terms of tuition.", cta: "Learn more", href: "#weekly" },
+        { n: "02", t: "Private Singing", d: "One-to-one vocal and piano tuition tailored to each student, across pop, rock, jazz and classical.", cta: "Learn more", href: "#singing" },
+        { n: "03", t: "Dance Classes", d: "Group dance for all skill levels, from hip hop to ballet, in a supportive and inclusive environment.", cta: "Learn more", href: "#dance" },
+      ],
+      roles: [
+        { n: "01", t: "Paid positions" },
+        { n: "02", t: "Orchestra" },
+        { n: "03", t: "Volunteering" },
+        { n: "04", t: "Work experience" },
+        { n: "05", t: "Internships" },
+      ],
+      resources: [
+        { t: "A Message From the Arts Wellbeing Collective", href: "#post/arts-wellbeing-collective" },
+        { t: "Getting Through the Post-Show 'Come Down'", href: "#post/art-come-down" },
+        { t: "A Pre-Show Meditation for Performance Energy", href: "#post/pre-show-meditation" },
+        { t: "7 Common Dance Injuries (and How to Prevent Them)", href: "#post/dance-injuries" },
+        { t: "7 Tips to Keep Your Singing Voice Healthy", href: "#post/singing-voice-healthy" },
+        { t: "How Do I Deal With Grief and Loss?", href: "#post/grief-and-loss" },
+      ],
+      agencyCols: [
+        { n: "01", t: "Representation", d: "We represent performers across stage, screen, commercial and live performance — nationally, from our Geelong head office." },
+        { n: "02", t: "Casting & Management", d: "Touchpoints in Melbourne, Sydney, Brisbane, Ballarat and Newcastle connect our talent to opportunities across the country." },
+        { n: "03", t: "A proud MEAA member", d: "We build careers with care — unearthing and championing talent for the world's stages and screens." },
+      ],
+
+      sendLabel: this.state.sent ? "Message sent ✓" : "Send message",
+      onSend: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+    };
+  }
+}
+</script>
+</body>
+</html>
