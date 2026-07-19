@@ -63,19 +63,16 @@
     .cs-nav--open { display: flex !important; }
     .cs-nav a { padding: 15px 2px !important; border-bottom: 1px solid #ECE7DB; font-size: 15px; }
     header .cs-btn--sec { display: none; }
-    /* collapse multi-column grids to single */
-    [style*="repeat(4,1fr)"], [style*="repeat(3,1fr)"], [style*="repeat(2,1fr)"],
-    [style*="grid-template-columns:1.6fr"], [style*="grid-template-columns:1.4fr"], [style*="grid-template-columns:1.3fr"],
-    [style*="grid-template-columns:1fr 1fr"], [style*="grid-template-columns:1fr auto"] { grid-template-columns: 1fr !important; }
-    /* tighten centered page gutters */
-    [style*="margin:0 auto"] { padding-left: 20px !important; padding-right: 20px !important; }
-    [style*="columns:2"] { columns: 1 !important; }
-    /* reduce very large hero type a touch on small screens */
+    /* collapse every multi-column grid to a single column */
+    [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+    /* let flex rows wrap instead of overflowing */
+    [style*="space-between"] { flex-wrap: wrap !important; }
+    /* tighten centered page gutters (matches margin:0 auto containers) */
+    [style*="0px auto"] { padding-left: 20px !important; padding-right: 20px !important; }
     h1 { line-height: .95 !important; }
   }
   @media (max-width: 500px) {
     .cs-btn { width: 100%; }
-    [style*="padding:96px 48px"], [style*="padding:104px 48px"], [style*="padding:88px 48px"], [style*="padding:64px 56px"], [style*="padding:56px 48px"] { padding-top: 56px !important; padding-bottom: 56px !important; }
   }
 </style>
 </helmet>
