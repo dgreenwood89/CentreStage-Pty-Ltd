@@ -11,8 +11,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <meta name="description" content="CentreStage in the media — award-winning Geelong theatre. Order of Australia recognition, Geelong Business Excellence Hall of Fame, $1M+ raised for charity, and press coverage of Priscilla, Les Misérables and more.">
-<link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="icon" type="image/png" href="assets/favicon-slash.png">
+<link rel="apple-touch-icon" href="assets/favicon-slash.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="CentreStage">
 <meta property="og:title" content="CentreStage — Theatre, Education & Agency, Geelong">
@@ -83,21 +83,21 @@
 
   <header style="position:sticky; top:0; z-index:50; background:#F4F1EA; border-bottom:1px solid #D9D5CC;">
     <div style="max-width:1600px; margin:0 auto; padding:0 48px; height:76px; display:flex; align-items:center; justify-content:space-between;">
-      <a href="#home" style="display:flex; align-items:center; gap:14px;">
+      <a href="/" style="display:flex; align-items:center; gap:14px;">
         <img src="assets/CentreStage-Solid-Black.png" alt="CentreStage" style="height:22px;">
       </a>
       <button class="cs-burger" aria-label="Menu" onClick="{{ toggleMenu }}">{{ burgerIcon }}</button>
       <nav class="{{ navOpenClass }}" style="display:flex; gap:30px; align-items:center;">
-        <a class="cs-nav-a" href="#home" style="{{ navHome }}">Home</a>
-        <a class="cs-nav-a" href="#tickets" style="{{ navTickets }}">Tickets</a>
-        <a class="cs-nav-a" href="#about" style="{{ navAbout }}">About</a>
-        <a class="cs-nav-a" href="#education" style="{{ navEducation }}">Education</a>
-        <a class="cs-nav-a" href="#health" style="{{ navHealth }}">Health</a>
-        <a class="cs-nav-a" href="#blog" style="{{ navBlog }}">Journal</a>
-        <a class="cs-nav-a" href="#media" style="{{ navMedia }}">Media</a>
+        <a class="cs-nav-a" href="/" style="{{ navHome }}">Home</a>
+        <a class="cs-nav-a" href="/tickets" style="{{ navTickets }}">Tickets</a>
+        <a class="cs-nav-a" href="/about" style="{{ navAbout }}">About</a>
+        <a class="cs-nav-a" href="/education" style="{{ navEducation }}">Education</a>
+        <a class="cs-nav-a" href="/health" style="{{ navHealth }}">Health</a>
+        <a class="cs-nav-a" href="/blog" style="{{ navBlog }}">Journal</a>
+        <a class="cs-nav-a" href="/media" style="{{ navMedia }}">Media</a>
         <a class="cs-nav-a" href="https://www.centrestageagency.org.au" target="_blank" rel="noopener">Agency ↗</a>
       </nav>
-      <a class="cs-btn cs-btn--sec" href="#contact" style="height:40px; padding:0 18px;">Contact</a>
+      <a class="cs-btn cs-btn--sec" href="/contact" style="height:40px; padding:0 18px;">Contact</a>
     </div>
   </header>
 
@@ -121,8 +121,8 @@
         <div style="margin-top:56px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:end;">
           <p style="font-size:19px; line-height:1.55; max-width:46ch; margin:0; color:#F4F1EA;">Where imagination knows no bounds. Theatre, education and agency representation — we create ambitious productions, train the next generation, and represent talent across stage and screen.</p>
           <div style="display:flex; gap:16px; justify-content:flex-end; flex-wrap:wrap;">
-            <a class="cs-btn cs-btn--inv" href="#tickets">What's on →</a>
-            <a class="cs-btn" href="#education" style="border-color:#F4F1EA; color:#F4F1EA;">Learn with us</a>
+            <a class="cs-btn cs-btn--inv" href="/tickets">What's on →</a>
+            <a class="cs-btn" href="/education" style="border-color:#F4F1EA; color:#F4F1EA;">Learn with us</a>
           </div>
         </div>
       </div>
@@ -147,7 +147,7 @@
             <p style="font-size:20px; line-height:1.55; max-width:44ch; margin:22px 0 0; color:#EAF4FF;">It's time to LET IT GO. CentreStage's most ambitious production yet takes the stage from 5–21 March 2027. Tickets available exclusively via the Geelong Arts Centre.</p>
             <div style="display:flex; gap:16px; margin-top:30px; flex-wrap:wrap;">
               <a class="cs-btn" href="https://geelongartscentre.org.au/whats-on/all-events/frozen-centrestage" target="_blank" rel="noopener" style="background:#EAF4FF; color:#0A2646; border-color:#EAF4FF;">Book now →</a>
-              <a class="cs-btn" href="#post/frozencreativeteam" style="background:transparent; color:#EAF4FF; border-color:rgba(255,255,255,.5);">Meet the creatives</a>
+              <a class="cs-btn" href="/post/frozencreativeteam" style="background:transparent; color:#EAF4FF; border-color:rgba(255,255,255,.5);">Meet the creatives</a>
             </div>
           </div>
         </div>
@@ -164,7 +164,7 @@
         <div style="flex:1; height:1px; background:#D9D5CC;"></div>
       </div>
       <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
-        <a href="#education" class="cs-row" style="background:#F4F1EA; padding:36px 36px 48px; display:block; border-top:4px solid #2E6FB7; transition:background .2s;">
+        <a href="/education" class="cs-row" style="background:#F4F1EA; padding:36px 36px 48px; display:block; border-top:4px solid #2E6FB7; transition:background .2s;">
           <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#2E6FB7; font-weight:600;">01 — Learn</div>
           <h3 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:44px; letter-spacing:-.02em; margin:20px 0 16px;">Learn</h3>
           <p style="font-size:16px; line-height:1.55; color:#3A3A37; margin:0;">Start your education journey. Weekly group classes, private vocal and piano lessons, and dance for ages 4 to 18.</p>
@@ -176,7 +176,7 @@
           <p style="font-size:16px; line-height:1.55; color:#3A3A37; margin:0;">Interested in professional acting, musical theatre and commercial opportunities? Audition for CentreStage Agency.</p>
           <div style="margin-top:24px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#E8472B;">Visit the agency ↗</div>
         </a>
-        <a href="#tickets" class="cs-row" style="background:#F4F1EA; padding:36px 36px 48px; display:block; border-top:4px solid #2E8B6B; transition:background .2s;">
+        <a href="/tickets" class="cs-row" style="background:#F4F1EA; padding:36px 36px 48px; display:block; border-top:4px solid #2E8B6B; transition:background .2s;">
           <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#2E8B6B; font-weight:600;">03 — Enjoy</div>
           <h3 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:44px; letter-spacing:-.02em; margin:20px 0 16px;">Enjoy</h3>
           <p style="font-size:16px; line-height:1.55; color:#3A3A37; margin:0;">Staging 7 to 11 productions annually, your chance to live and breathe musical theatre is only a click away.</p>
@@ -221,7 +221,7 @@
           <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(40px,4.6vw,64px); letter-spacing:-.02em; line-height:.98; margin:20px 0 24px;">Do you hear the people sing?</h2>
           <p style="font-size:18px; line-height:1.6; color:#0A0A0A; max-width:52ch; margin:0 0 18px;">We're proudly Geelong — that's our secret to creating consistently strong theatre. Our aim is to create inspiring projects that foster new talent and develop existing skills within our teams.</p>
           <p style="font-size:18px; line-height:1.6; color:#3A3A37; max-width:52ch; margin:0 0 28px;">CentreStage is driven by a desire to provide access to the arts, through musical theatre, to as many people in our community as possible. We support the inclusion of all people and offer opportunities to community groups to access the arts.</p>
-          <a class="cs-btn cs-btn--sec" href="#about">Read our story →</a>
+          <a class="cs-btn cs-btn--sec" href="/about">Read our story →</a>
         </div>
       </div>
     </section>
@@ -232,11 +232,11 @@
         <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68;">05 / 06</span>
         <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">Latest news</span>
         <div style="flex:1; height:1px; background:#D9D5CC;"></div>
-        <a class="cs-link-u" href="#blog" style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">All posts →</a>
+        <a class="cs-link-u" href="/blog" style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">All posts →</a>
       </div>
       <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:36px; margin-top:40px;">
         <sc-for list="{{ homePosts }}" as="p" hint-placeholder-count="3">
-          <a href="#post/{{ p.slug }}" style="display:block;">
+          <a href="/post/{{ p.slug }}" style="display:block;">
             <div class="cs-imgz"><img src="{{ p.img }}" alt="{{ p.title }}" style="width:100%; aspect-ratio:4/3; object-fit:cover;"></div>
             <div style="display:flex; gap:10px; align-items:center; margin-top:16px;"><span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68;">{{ p.date }}</span><span style="font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#fff; background:{{ p.catColor }}; padding:3px 8px;">{{ p.cat }}</span></div>
             <h3 style="font-size:21px; font-weight:700; letter-spacing:-.01em; line-height:1.2; margin:10px 0 0; text-wrap:pretty;">{{ p.title }}</h3>
@@ -403,22 +403,22 @@
           <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(28px,3.4vw,44px); letter-spacing:-.02em; line-height:1.02; margin:14px 0 14px;">The perfect solution to Geelong costume hire.</h2>
           <p style="font-size:17px; line-height:1.6; color:#3A3A37; max-width:60ch; margin:0;">You may not know this — but CentreStage does costume and set hire, available to theatre companies, schools, organisations and individuals. (Please note this service is not available for private hire such as parties or dress-up days.)</p>
         </div>
-        <a class="cs-btn" href="#contact">Enquire about hire →</a>
+        <a class="cs-btn" href="/contact">Enquire about hire →</a>
       </div>
     </section>
     <section style="max-width:1600px; margin:0 auto; padding:96px 48px;">
       <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
-        <a href="#health" class="cs-row" style="background:#F4F1EA; padding:40px 36px; display:block; transition:background .2s;">
+        <a href="/health" class="cs-row" style="background:#F4F1EA; padding:40px 36px; display:block; transition:background .2s;">
           <h3 style="font-size:24px; font-weight:700; letter-spacing:-.01em; margin:0 0 12px;">Health, Wellbeing &amp; Inclusion</h3>
           <p style="font-size:15px; color:#3A3A37; margin:0 0 20px; line-height:1.55;">Resources, helplines and our cultural framework for a safe and supportive environment.</p>
           <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">Explore →</span>
         </a>
-        <a href="#productions" class="cs-row" style="background:#F4F1EA; padding:40px 36px; display:block; transition:background .2s;">
+        <a href="/productions" class="cs-row" style="background:#F4F1EA; padding:40px 36px; display:block; transition:background .2s;">
           <h3 style="font-size:24px; font-weight:700; letter-spacing:-.01em; margin:0 0 12px;">Previous Productions</h3>
           <p style="font-size:15px; color:#3A3A37; margin:0 0 20px; line-height:1.55;">Over 70 shows since 2010. Browse the full history of the CentreStage stage.</p>
           <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">See the list →</span>
         </a>
-        <a href="#involved" class="cs-row" style="background:#F4F1EA; padding:40px 36px; display:block; transition:background .2s;">
+        <a href="/involved" class="cs-row" style="background:#F4F1EA; padding:40px 36px; display:block; transition:background .2s;">
           <h3 style="font-size:24px; font-weight:700; letter-spacing:-.01em; margin:0 0 12px;">How to Get Involved</h3>
           <p style="font-size:15px; color:#3A3A37; margin:0 0 20px; line-height:1.55;">Paid roles, orchestra, volunteering, work experience and internships. There's a place for you.</p>
           <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">Join us →</span>
@@ -548,8 +548,8 @@
           <p style="margin:0 0 18px;">We operate under the Victorian Child Safe Standards. All staff complete Child Safety Mandatory Training and hold Working with Children Checks, and our classes are led by VIT-registered educators under DET and DHHS-approved guidelines.</p>
           <p style="margin:0 0 24px;">Our published Child Safety Plan and We Are People Plan set out our commitment to every young performer: We Belong, We Create, We Listen, We Care.</p>
           <div style="display:flex; gap:14px; flex-wrap:wrap;">
-            <a class="cs-btn cs-btn--inv" href="#post/child-safety-plan">Read our Child Safety Plan →</a>
-            <a class="cs-btn" href="#health" style="background:transparent; color:#EAF4FF; border-color:rgba(255,255,255,.5);">Health &amp; wellbeing</a>
+            <a class="cs-btn cs-btn--inv" href="/post/child-safety-plan">Read our Child Safety Plan →</a>
+            <a class="cs-btn" href="/health" style="background:transparent; color:#EAF4FF; border-color:rgba(255,255,255,.5);">Health &amp; wellbeing</a>
           </div>
         </div>
       </div>
@@ -647,7 +647,7 @@
           </a>
         </sc-for>
       </div>
-      <p style="margin-top:24px; font-size:14px; color:#6B6B68;">Full copies of any policy are available on request &mdash; <a class="cs-link-u" href="#contact" style="font-weight:700;">contact our team</a>.</p>
+      <p style="margin-top:24px; font-size:14px; color:#6B6B68;">Full copies of any policy are available on request &mdash; <a class="cs-link-u" href="/contact" style="font-weight:700;">contact our team</a>.</p>
     </section>
     <section style="max-width:1600px; margin:0 auto; padding:0 48px 96px;">
       <div style="display:flex; align-items:center; gap:16px; margin-bottom:36px;">
@@ -706,7 +706,7 @@
         <p style="margin:0 0 22px;">We are thrilled to offer a wide range of opportunities for anyone who loves the theatre, whether you are a seasoned professional or just starting out. Our company is committed to creating exceptional performances that inspire and delight our audiences.</p>
         <p style="margin:0 0 22px;">We believe in nurturing and developing talent at every level, and we welcome anyone who is passionate about theatre to join us. We offer a variety of roles, including paid positions, orchestra, volunteering opportunities, work experience, and internships.</p>
         <p style="margin:0;">Whether you are an actor, musician, technician, or just someone who loves the theatre, we invite you to get in touch and join our vibrant community. Together, we can create something truly magical on stage.</p>
-        <a class="cs-btn" href="#contact" style="margin-top:32px;">Register your interest →</a>
+        <a class="cs-btn" href="/contact" style="margin-top:32px;">Register your interest →</a>
       </div>
       <div style="display:grid; grid-template-columns:1fr; gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
         <sc-for list="{{ roles }}" as="r" hint-placeholder-count="5">
@@ -734,7 +734,7 @@
     <section style="max-width:1600px; margin:0 auto; padding:64px 48px 96px;">
       <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:40px 36px;">
         <sc-for list="{{ posts }}" as="p" hint-placeholder-count="9">
-          <a href="#post/{{ p.slug }}" style="display:block;">
+          <a href="/post/{{ p.slug }}" style="display:block;">
             <div class="cs-imgz"><img src="{{ p.img }}" alt="{{ p.title }}" style="width:100%; aspect-ratio:4/3; object-fit:cover;"></div>
             <div style="display:flex; gap:10px; align-items:center; margin-top:16px;"><span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68;">{{ p.date }}</span><span style="font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#fff; background:{{ p.catColor }}; padding:3px 8px;">{{ p.cat }}</span></div>
             <h3 style="font-size:22px; font-weight:700; letter-spacing:-.01em; line-height:1.2; margin:10px 0 12px; text-wrap:pretty;">{{ p.title }}</h3>
@@ -750,7 +750,7 @@
   <sc-if value="{{ isPost }}">
   <div class="cs-fade">
     <article style="max-width:820px; margin:0 auto; padding:48px 48px 0;">
-      <a class="cs-link-u" href="#blog" style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">← Back to the Journal</a>
+      <a class="cs-link-u" href="/blog" style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">← Back to the Journal</a>
       <div style="display:flex; gap:12px; margin-top:36px; font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B68;"><span>{{ post.date }}</span><span style="color:#A8A59E;">/</span><span>{{ post.cat }}</span><span style="color:#A8A59E;">/</span><span>{{ post.read }}</span></div>
       <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(34px,4.6vw,60px); letter-spacing:-.02em; line-height:1; margin:20px 0 24px; text-wrap:balance;">{{ post.title }}</h1>
       <div style="font-size:13px; color:#6B6B68; font-family:'JetBrains Mono',monospace;">By {{ post.author }}</div>
@@ -773,7 +773,7 @@
     <div style="max-width:820px; margin:0 auto; padding:0 48px 96px;">
       <div style="border-top:1px solid #D9D5CC; padding-top:28px; display:flex; justify-content:space-between; align-items:center; gap:16px;">
         <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">Share the stage</span>
-        <a class="cs-btn cs-btn--sec" href="#blog">More from the Journal →</a>
+        <a class="cs-btn cs-btn--sec" href="/blog">More from the Journal →</a>
       </div>
     </div>
   </div>
@@ -785,7 +785,7 @@
     <section style="position:relative; background:#0A0A0A; color:#F4F1EA; overflow:hidden;">
       <img src="https://static.wixstatic.com/media/35cad6_6b4dd2a6fd4047c092bae0ebc5631deb~mv2_d_2048_1365_s_2.jpg/v1/fill/w_1920,h_900,al_c,q_85,enc_avif,quality_auto/file.avif" alt="CentreStage students" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.34;">
       <div style="position:relative; max-width:1600px; margin:0 auto; padding:104px 48px;">
-        <a class="cs-link-u" href="#education" style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#F2D65A;">← Education</a>
+        <a class="cs-link-u" href="/education" style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#F2D65A;">← Education</a>
         <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#C9C6BF; margin-top:24px;">CentreStage Performing Arts Academy</div>
         <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(48px,7.5vw,120px); letter-spacing:-.03em; line-height:.92; margin:16px 0 0;">Weekly Musical<br>Theatre Classes.</h1>
         <p style="font-size:20px; line-height:1.55; max-width:58ch; margin:28px 0 0; color:#E6E3DC;">Weekly group tuition for young performers aged 4 to 18, across four terms aligned with the school year — acting, singing and dance, taught by registered educators and industry professionals.</p>
@@ -840,7 +840,7 @@
     <section style="position:relative; background:#0A0A0A; color:#F4F1EA; overflow:hidden;">
       <img src="https://static.wixstatic.com/media/35cad6_1fcec063ea6a4fc5809aee49fbf8a0fa~mv2.jpg/v1/fill/w_1920,h_900,al_c,q_85,enc_avif,quality_auto/file.avif" alt="Vocal training" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.32;">
       <div style="position:relative; max-width:1600px; margin:0 auto; padding:104px 48px;">
-        <a class="cs-link-u" href="#education" style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#F2D65A;">← Education</a>
+        <a class="cs-link-u" href="/education" style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#F2D65A;">← Education</a>
         <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#C9C6BF; margin-top:24px;">One-to-one tuition</div>
         <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(48px,7.5vw,120px); letter-spacing:-.03em; line-height:.92; margin:16px 0 0;">Private Vocal<br>Lessons.</h1>
         <p style="font-size:20px; line-height:1.55; max-width:58ch; margin:28px 0 0; color:#E6E3DC;">Affordable, individual vocal training in the north of Geelong — build confidence, find your sound, and sing clearly and freely across your whole range.</p>
@@ -921,7 +921,7 @@
     <section style="position:relative; background:#0A0A0A; color:#F4F1EA; overflow:hidden;">
       <img src="https://static.wixstatic.com/media/35cad6_554e7cf4ca6a4e62aec2b090112d0862~mv2_d_2048_1367_s_2.jpg/v1/fill/w_1920,h_900,al_c,q_85,enc_avif,quality_auto/file.avif" alt="Dance class" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.34;">
       <div style="position:relative; max-width:1600px; margin:0 auto; padding:104px 48px;">
-        <a class="cs-link-u" href="#education" style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#F2D65A;">← Education</a>
+        <a class="cs-link-u" href="/education" style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#F2D65A;">← Education</a>
         <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#C9C6BF; margin-top:24px;">Thursday nights · North Geelong</div>
         <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(48px,7.5vw,120px); letter-spacing:-.03em; line-height:.92; margin:16px 0 0;">Dance Classes.</h1>
         <p style="font-size:20px; line-height:1.55; max-width:58ch; margin:28px 0 0; color:#E6E3DC;">High-energy, welcoming dance classes led by Chloe Quinney. Whether you're returning to dance or stepping in for the first time, build confidence, technique and performance skills in a supportive environment. No audition required.</p>
@@ -1188,26 +1188,26 @@
         <div>
           <div style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#A8A59E; margin-bottom:16px;">Explore</div>
           <div style="display:flex; flex-direction:column; gap:10px; font-size:14px;">
-            <a class="cs-link-u" href="#tickets" style="color:#F4F1EA;">Tickets</a>
-            <a class="cs-link-u" href="#about" style="color:#F4F1EA;">About</a>
-            <a class="cs-link-u" href="#productions" style="color:#F4F1EA;">Previous Productions</a>
-            <a class="cs-link-u" href="#blog" style="color:#F4F1EA;">Journal</a>
-            <a class="cs-link-u" href="#media" style="color:#F4F1EA;">Media &amp; Press</a>
+            <a class="cs-link-u" href="/tickets" style="color:#F4F1EA;">Tickets</a>
+            <a class="cs-link-u" href="/about" style="color:#F4F1EA;">About</a>
+            <a class="cs-link-u" href="/productions" style="color:#F4F1EA;">Previous Productions</a>
+            <a class="cs-link-u" href="/blog" style="color:#F4F1EA;">Journal</a>
+            <a class="cs-link-u" href="/media" style="color:#F4F1EA;">Media &amp; Press</a>
           </div>
         </div>
         <div>
           <div style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#A8A59E; margin-bottom:16px;">Take part</div>
           <div style="display:flex; flex-direction:column; gap:10px; font-size:14px;">
-            <a class="cs-link-u" href="#education" style="color:#F4F1EA;">Education Program</a>
-            <a class="cs-link-u" href="#involved" style="color:#F4F1EA;">Get Involved</a>
+            <a class="cs-link-u" href="/education" style="color:#F4F1EA;">Education Program</a>
+            <a class="cs-link-u" href="/involved" style="color:#F4F1EA;">Get Involved</a>
             <a class="cs-link-u" href="https://www.centrestageagency.org.au" target="_blank" rel="noopener" style="color:#F4F1EA;">Agency ↗</a>
           </div>
         </div>
         <div>
           <div style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#A8A59E; margin-bottom:16px;">Care</div>
           <div style="display:flex; flex-direction:column; gap:10px; font-size:14px;">
-            <a class="cs-link-u" href="#health" style="color:#F4F1EA;">Health &amp; Wellbeing</a>
-            <a class="cs-link-u" href="#contact" style="color:#F4F1EA;">Contact</a>
+            <a class="cs-link-u" href="/health" style="color:#F4F1EA;">Health &amp; Wellbeing</a>
+            <a class="cs-link-u" href="/contact" style="color:#F4F1EA;">Contact</a>
           </div>
         </div>
       </div>
@@ -1276,18 +1276,29 @@ class Component extends DCLogic {
   state = { route: "home", slug: null, data: null, sent: false, menuOpen: false, a11yOpen: false, a11y: { scale: 1, contrast: false, underline: false, font: false, motion: false } };
 
   componentDidMount() {
-    this._onHash = () => {
-      const h = (location.hash || "#home").replace(/^#/, "");
-      if (h.startsWith("post/")) {
-        this.setState({ route: "post", slug: h.slice(5), sent: false });
+    this._route = () => {
+      let p = (location.pathname || "/").replace(/^\/+|\/+$/g, "");
+      if (p.startsWith("post/")) {
+        this.setState({ route: "post", slug: p.slice(5), sent: false });
       } else {
-        this.setState({ route: h || "home", slug: null, sent: false });
+        this.setState({ route: p || "home", slug: null, sent: false });
       }
       window.scrollTo(0, 0);
       this.setState({ menuOpen: false });
     };
-    window.addEventListener("hashchange", this._onHash);
-    this._onHash();
+    this._click = (e) => {
+      const a = e.target.closest && e.target.closest("a");
+      if (!a) return;
+      const href = a.getAttribute("href") || "";
+      if (href[0] === "/" && href[1] !== "/" && !a.target) {
+        e.preventDefault();
+        if (href !== location.pathname) { history.pushState(null, "", href); this._route(); }
+        else { this.setState({ menuOpen: false }); }
+      }
+    };
+    window.addEventListener("popstate", this._route);
+    document.addEventListener("click", this._click);
+    this._route();
     import("./content.js").then((m) => this.setState({ data: m }));
     this._a11yEl = document.createElement("style");
     this._a11yEl.id = "cs-a11y";
@@ -1306,7 +1317,8 @@ class Component extends DCLogic {
     } catch (e) {}
   }
   componentWillUnmount() {
-    window.removeEventListener("hashchange", this._onHash);
+    window.removeEventListener("popstate", this._route);
+    document.removeEventListener("click", this._click);
     try { document.body.style.zoom = ""; document.body.style.filter = ""; } catch (e) {}
     if (this._a11yEl) this._a11yEl.remove();
   }
@@ -1381,7 +1393,7 @@ class Component extends DCLogic {
         ...found,
         body: found.body || [],
         noBody: !(found.body && found.body.length),
-        url: "#blog",
+        url: "/blog",
       };
     }
 

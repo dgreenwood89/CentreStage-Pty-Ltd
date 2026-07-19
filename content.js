@@ -586,9 +586,9 @@ export const EDU_FACTS = [
   { n: "Two productions", d: "Students attend up to two large-scale CentreStage musicals a year." },
 ];
 export const PRIVATE_LESSONS = [
-  { t: "Private Singing", d: "One-to-one vocal tuition across pop, rock, jazz and classical, tailored to each student and every stage of their voice.", href: "#singing", color: "#E8472B" },
-  { t: "Private Piano", d: "Individual piano lessons for beginners through to advanced players, at a pace that suits the student.", href: "#singing", color: "#2E6FB7" },
-  { t: "Group Dance", d: "From hip hop to ballet, for all skill levels in a supportive, inclusive and energetic environment.", href: "#dance", color: "#C9902D" },
+  { t: "Private Singing", d: "One-to-one vocal tuition across pop, rock, jazz and classical, tailored to each student and every stage of their voice.", href: "/singing", color: "#E8472B" },
+  { t: "Private Piano", d: "Individual piano lessons for beginners through to advanced players, at a pace that suits the student.", href: "/singing", color: "#2E6FB7" },
+  { t: "Group Dance", d: "From hip hop to ballet, for all skill levels in a supportive, inclusive and energetic environment.", href: "/dance", color: "#C9902D" },
 ];
 export const FAQ_EDU = [
   { q: "What ages do you teach?", a: "Our Performing Arts Academy welcomes young people aged 4 to 18, grouped into Junior, Middle and Senior troupes so every student is challenged at the right level." },
