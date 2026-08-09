@@ -54,8 +54,23 @@
   .cs-social { display:inline-flex; align-items:center; gap:8px; justify-content:center; width:38px; height:38px; border:1px solid #1F1F1D; color:#F4F1EA; transition:background .2s, color .2s, border-color .2s; }
   .cs-social:hover { background:#F4F1EA; color:#0A0A0A; border-color:#F4F1EA; }
   .cs-social--pod { width:auto; padding:0 14px; gap:9px; }
+  .cs-chip { display:inline-flex; align-items:center; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.04em; color:#0A0A0A; text-decoration:none; border:1px solid #D9D5CC; padding:9px 15px; transition:background .2s, color .2s, border-color .2s; }
+  .cs-chip:hover { background:#0A0A0A; color:#F4F1EA; border-color:#0A0A0A; }
+  .cs-ice-chip { display:inline-flex; align-items:center; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#9FD9FF; text-decoration:none; border:1px solid rgba(127,211,255,.35); padding:10px 16px; transition:background .2s, color .2s; }
+  .cs-ice-chip:hover { background:#7FD3FF; color:#04101F; border-color:#7FD3FF; }
+  .cs-ice { transition:transform .3s cubic-bezier(.2,.6,.2,1), box-shadow .3s; }
+  .cs-ice:hover { transform:translateY(-3px); box-shadow:0 24px 48px -24px rgba(127,211,255,.45); }
+  .cs-marquee { display:block; overflow:hidden; background:#7FD3FF; color:#08203A; text-decoration:none; padding:15px 0; border-top:1px solid #0A0A0A; border-bottom:1px solid #0A0A0A; transition:background .25s; }
+  .cs-marquee:hover { background:#A8E2FF; }
+  .cs-marquee-track { display:flex; width:max-content; animation:cs-marquee 34s linear infinite; }
+  .cs-marquee:hover .cs-marquee-track { animation-play-state:paused; }
+  .cs-marquee-item { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:19px; letter-spacing:-.01em; text-transform:uppercase; white-space:nowrap; padding-right:8px; }
+  .cs-marquee-sep { color:#E8472B; margin:0 .5em; }
+  @keyframes cs-marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .cs-marquee-track { animation:none; } }
+  .cs-nav-a { white-space:nowrap; }
   .cs-burger { display:none; width:44px; height:44px; align-items:center; justify-content:center; background:transparent; border:1px solid #D9D5CC; color:#0A0A0A; font-size:22px; line-height:1; cursor:pointer; }
-  @media (max-width: 820px) {
+  @media (max-width: 1080px) {
     html, body { font-size: 16px; }
     header > div { position: relative; height: 64px !important; padding: 0 18px !important; }
     .cs-burger { display: inline-flex; }
@@ -89,6 +104,7 @@
         <a class="cs-nav-a" href="/tickets" style="{{ navTickets }}">Tickets</a>
         <a class="cs-nav-a" href="/about" style="{{ navAbout }}">About</a>
         <a class="cs-nav-a" href="/education" style="{{ navEducation }}">Education</a>
+        <a class="cs-nav-a" href="/auditions" style="{{ navAuditions }}">Auditions</a>
         <a class="cs-nav-a" href="/health" style="{{ navHealth }}">Health</a>
         <a class="cs-nav-a" href="/blog" style="{{ navBlog }}">Journal</a>
         <a class="cs-nav-a" href="/media" style="{{ navMedia }}">Media</a>
@@ -124,6 +140,13 @@
         </div>
       </div>
     </section>
+
+    <a href="/auditions" class="cs-marquee" aria-label="Frozen auditions — book now">
+      <div class="cs-marquee-track">
+        <span class="cs-marquee-item">Frozen : The Musical Auditions <span class="cs-marquee-sep">/</span> Book your audition <span class="cs-marquee-sep">/</span> Adults &amp; young performers <span class="cs-marquee-sep">/</span> Arendelle awaits <span class="cs-marquee-sep">/</span> </span>
+        <span class="cs-marquee-item">Frozen : The Musical Auditions <span class="cs-marquee-sep">/</span> Book your audition <span class="cs-marquee-sep">/</span> Adults &amp; young performers <span class="cs-marquee-sep">/</span> Arendelle awaits <span class="cs-marquee-sep">/</span> </span>
+      </div>
+    </a>
 
     <!-- Frozen spotlight -->
     <section style="background:linear-gradient(135deg,#0A2646 0%,#123f79 52%,#1E63AE 100%); color:#EAF4FF;">
@@ -841,7 +864,7 @@
         <a class="cs-link-u" href="/education" style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#F2D65A;">← Education</a>
         <div class="cs-mono-eyebrow" style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#C9C6BF; margin-top:24px;">One-to-one tuition · Voice &amp; Acting</div>
         <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(48px,7.5vw,120px); letter-spacing:-.03em; line-height:.92; margin:16px 0 0;">Private Voice &amp;<br>Acting Lessons.</h1>
-        <p style="font-size:20px; line-height:1.55; max-width:58ch; margin:28px 0 0; color:#E6E3DC;">Personalised one-on-one Voice and Acting sessions with Jake Waterworth or Storm Randall — both highly experienced performers and educators. Practical, focused and outcome-driven, held Monday, Wednesday and Thursday evenings in Norlane.</p>
+        <p style="font-size:20px; line-height:1.55; max-width:58ch; margin:28px 0 0; color:#E6E3DC;">Personalised one-on-one Voice and Acting sessions with Jake Waterworth or Storm Randall — both highly experienced performers and educators. Practical, focused and outcome-driven, held Wednesday evenings in Fyansford.</p>
         <div style="display:flex; gap:16px; margin-top:34px; flex-wrap:wrap;">
           <a class="cs-btn cs-btn--inv" href="https://app.gostudiopro.com/online/index.php?account_id=26523" target="_blank" rel="noopener">Book a lesson →</a>
           <a class="cs-btn" href="mailto:cpaa@centrestage.org.au" style="background:transparent; color:#F4F1EA; border-color:rgba(255,255,255,.5);">Ask a question</a>
@@ -864,8 +887,8 @@
         </sc-for>
         <div style="border-top:1px solid #1F1F1D; margin-top:8px; padding-top:20px;">
           <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#F2D65A; margin-bottom:10px;">Sessions held at</div>
-          <p style="font-size:15px; line-height:1.5; color:#F4F1EA; margin:0;">22 Princes Highway, Norlane</p>
-          <p style="font-size:13px; line-height:1.55; color:#A8A59E; margin:12px 0 0;">Available Monday, Wednesday and Thursday evenings with Jake Waterworth or Storm Randall.</p>
+          <p style="font-size:15px; line-height:1.5; color:#F4F1EA; margin:0;">Unit 2, 255 Hamilton Highway, Fyansford</p>
+          <p style="font-size:13px; line-height:1.55; color:#A8A59E; margin:12px 0 0;">Term 3 sessions. Storm Randall is available Wednesday evenings. Jake Waterworth's Monday evening sessions are currently unavailable.</p>
         </div>
       </div>
     </section>
@@ -1082,6 +1105,330 @@
 
   </main>
 
+  <!-- ══════════════ AUDITIONS (password protected) ══════════════ -->
+  <sc-if value="{{ isAuditions }}">
+  <div class="cs-fade">
+
+    <sc-if value="{{ audLocked }}">
+      <section style="background:linear-gradient(160deg,#04101F 0%,#0A2646 55%,#123F79 100%); color:#EAF4FF; min-height:80vh; display:flex; align-items:center;">
+        <div style="max-width:560px; margin:0 auto; padding:96px 32px; width:100%;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#7FD3FF;">Restricted access</div>
+          <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(38px,6vw,68px); letter-spacing:-.03em; line-height:.94; margin:24px 0 0;">This page is private.</h1>
+          <p style="font-size:17px; line-height:1.6; color:#A9C6E4; margin:22px 0 34px; max-width:46ch;">Enter the access password to view audition information for CentreStage's production of Frozen.</p>
+          <form onSubmit="{{ audSubmit }}" style="display:flex; flex-direction:column; gap:14px;">
+            <input type="password" value="{{ audInput }}" onChange="{{ audChange }}" placeholder="Access password" aria-label="Access password" style="width:100%; background:rgba(255,255,255,.05); border:1px solid rgba(127,211,255,.4); color:#EAF4FF; padding:16px 18px; font-family:'JetBrains Mono',monospace; font-size:15px; letter-spacing:.04em;">
+            <sc-if value="{{ audError }}">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#FF8A6B;">Incorrect password. Please try again.</span>
+            </sc-if>
+            <button type="submit" style="background:#7FD3FF; color:#04101F; border:1px solid #7FD3FF; padding:16px 24px; font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; font-family:Arial,sans-serif;">Enter</button>
+          </form>
+          <p style="font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.6; color:#5E7FA3; margin:28px 0 0;">Password issues? Email david@centrestage.org.au</p>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ audOpen }}">
+    <div style="background:#04101F; color:#EAF4FF;">
+
+      <section style="position:relative; overflow:hidden; background:linear-gradient(165deg,#04101F 0%,#0A2646 60%,#153F73 100%);">
+        <img src="assets/frozen-keyart.png" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.28;">
+        <div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(4,16,31,.35) 0%,rgba(4,16,31,.85) 100%);"></div>
+        <div style="position:relative; max-width:1500px; margin:0 auto; padding:96px 56px 88px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#7FD3FF;">Auditions 2026</div>
+          <img src="assets/frozen-title-dark.png" alt="Frozen" style="display:block; width:min(400px,54vw); height:auto; margin:30px 0 4px;">
+          <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(44px,7vw,110px); letter-spacing:-.035em; line-height:.9; margin:18px 0 0;">Arendelle awaits.</h1>
+          <p style="font-size:19px; line-height:1.62; max-width:54ch; margin:30px 0 0; color:#C6DCF2;">Audition for a powerful, visually spectacular production that celebrates courage, connection and embracing who you are. Performers of all backgrounds, identities and experience levels are welcome.</p>
+          <div style="display:grid; grid-template-columns:repeat(3,auto); gap:0; margin-top:52px; border-top:1px solid rgba(127,211,255,.25); padding-top:26px; max-width:820px;">
+            <div style="padding-right:36px;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#5E86B3;">Season</div>
+              <div style="font-size:17px; font-weight:700; margin-top:8px;">5 &ndash; 20 March 2027</div>
+            </div>
+            <div style="padding:0 36px; border-left:1px solid rgba(127,211,255,.25);">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#5E86B3;">Venue</div>
+              <div style="font-size:17px; font-weight:700; margin-top:8px;">The Playhouse, Geelong</div>
+            </div>
+            <div style="padding-left:36px; border-left:1px solid rgba(127,211,255,.25);">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#5E86B3;">Performances</div>
+              <div style="font-size:17px; font-weight:700; margin-top:8px;">Fifteen only</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style="background:#7FD3FF; color:#04101F;">
+        <div style="max-width:1500px; margin:0 auto; padding:18px 56px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; background:#04101F; color:#7FD3FF; padding:5px 11px;">Draft</span>
+          <span style="font-size:15px; line-height:1.5;">This page is a working draft for internal review.</span>
+        </div>
+      </section>
+
+      <section style="max-width:1500px; margin:0 auto; padding:72px 56px 28px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:stretch;">
+          <a href="https://booking.appointy.com/centrestageaus" target="_blank" rel="noopener" class="cs-ice" style="background:linear-gradient(150deg,#123F79 0%,#1E63AE 100%); color:#EAF4FF; padding:48px 42px 52px; display:flex; flex-direction:column; gap:14px; text-decoration:none; border:1px solid rgba(127,211,255,.35);">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#9FD9FF;">Preferred &middot; In person</span>
+            <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(28px,3.2vw,42px); letter-spacing:-.025em; line-height:1; margin:0;">Book your audition</h2>
+            <p style="font-size:16px; line-height:1.55; color:#C6DCF2; margin:0;">Choose your vocal audition appointment at Cloverdale Community Centre, Corio. Appointments are essential.</p>
+            <p style="font-size:14px; line-height:1.55; color:#9FD9FF; margin:0;">Young Anna &amp; Young Elsa auditionees book the youth workshop instead.</p>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#EAF4FF; margin-top:auto; padding-top:18px;">Book at Appointy &nearr;</span>
+          </a>
+          <div style="background:rgba(255,255,255,.04); border:1px solid rgba(127,211,255,.22); padding:48px 42px 52px; display:flex; flex-direction:column; gap:14px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#5E86B3;">Alternative &middot; Virtual</span>
+            <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(28px,3.2vw,42px); letter-spacing:-.025em; line-height:1; margin:0;">Submit a self-tape</h2>
+            <p style="font-size:16px; line-height:1.55; color:#A9C6E4; margin:0;">Not our preferred method, but accepted. You must still attend the Dance &amp; Movement Call on Sunday 30 August.</p>
+            <p style="font-size:14px; line-height:1.55; color:#FF8A6B; margin:0;">Adult performers only. Self-tape submissions are not accepted for youth roles.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScPZOcZ7IaIPyCgGC5T4JTB4dnNRCZtvl87Gvcp3bNakEUWtA/viewform" target="_blank" rel="noopener" style="align-self:flex-start; margin-top:auto; border:1px solid #7FD3FF; color:#7FD3FF; padding:14px 22px; font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;">Open the form &nearr;</a>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:1500px; margin:0 auto; padding:20px 56px 8px;">
+        <div style="display:flex; flex-wrap:wrap; gap:9px;">
+          <a class="cs-ice-chip" href="#adults">Adult performers</a>
+          <a class="cs-ice-chip" href="#youth">Young Anna &amp; Young Elsa</a>
+          <a class="cs-ice-chip" href="#characters">Characters</a>
+          <a class="cs-ice-chip" href="#dates">Key dates</a>
+          <a class="cs-ice-chip" href="#fees">Fees &amp; commitment</a>
+          <a class="cs-ice-chip" href="#booklet">Full booklet</a>
+        </div>
+      </section>
+
+      <section id="adults" style="max-width:1500px; margin:0 auto; padding:72px 56px 28px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#7FD3FF;">Adult performers &middot; 18+</div>
+        <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(32px,4.4vw,62px); letter-spacing:-.03em; line-height:.98; margin:20px 0 18px;">How adult auditions work.</h2>
+        <p style="font-size:18px; line-height:1.62; max-width:62ch; margin:0 0 44px; color:#A9C6E4;">Adult cast members must be 18 or older by 1 January 2027 and hold &mdash; or be eligible to apply for &mdash; a current Working with Children Check. Follow these five steps.</p>
+        <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:20px;">
+          <sc-for list="{{ adultSteps }}" as="s" hint-placeholder-count="5">
+            <div style="background:rgba(255,255,255,.035); border:1px solid rgba(127,211,255,.18); border-top:2px solid #7FD3FF; padding:34px 32px 38px; display:flex; flex-direction:column; gap:12px;">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.2em; color:#7FD3FF;">{{ s.n }}</span>
+              <h3 style="font-size:22px; font-weight:700; letter-spacing:-.015em; line-height:1.2; margin:0; color:#EAF4FF;">{{ s.t }}</h3>
+              <p style="font-size:15px; line-height:1.6; color:#A9C6E4; margin:0;">{{ s.d }}</p>
+              <sc-if value="{{ s.meta }}">
+                <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:#5E86B3; margin-top:2px;">{{ s.meta }}</span>
+              </sc-if>
+              <sc-if value="{{ s.link }}">
+                <a href="{{ s.href }}" target="_blank" rel="noopener" style="align-self:flex-start; margin-top:8px; border:1px solid #7FD3FF; color:#7FD3FF; padding:12px 18px; font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;">{{ s.link }}</a>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+      <section style="max-width:1500px; margin:0 auto; padding:32px 56px 28px;">
+        <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:28px;">
+          <div style="background:linear-gradient(150deg,#0A2646 0%,#123F79 100%); border:1px solid rgba(127,211,255,.25); padding:42px 38px 46px;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#9FD9FF;">Vocal audition evenings</div>
+            <h3 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:27px; letter-spacing:-.025em; margin:16px 0 20px;">By appointment only</h3>
+            <sc-for list="{{ auditionNights }}" as="n" hint-placeholder-count="5">
+              <div style="display:flex; justify-content:space-between; gap:16px; padding:13px 0; border-bottom:1px solid rgba(127,211,255,.16); font-size:15px;">
+                <span>{{ n.d }}</span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#9FD9FF;">{{ n.t }}</span>
+              </div>
+            </sc-for>
+            <p style="font-size:14px; line-height:1.6; color:#A9C6E4; margin:22px 0 0;">Cloverdale Community Centre, 167&ndash;169 Purnell Road, Corio VIC 3214.</p>
+          </div>
+          <div style="background:rgba(255,255,255,.035); border:1px solid rgba(127,211,255,.18); border-top:2px solid #FF8A6B; padding:42px 38px 46px;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#FF8A6B;">Compulsory for all adults</div>
+            <h3 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:27px; letter-spacing:-.025em; margin:16px 0 10px;">Dance &amp; Movement Call</h3>
+            <p style="font-size:15px; line-height:1.6; color:#A9C6E4; margin:0 0 20px;">Sunday 30 August 2026 &middot; Geelong High School, 385 Ryrie Street, East Geelong &mdash; in the Gymnasium, not the main hall. You do not need to be a trained dancer.</p>
+            <sc-for list="{{ danceCall }}" as="c" hint-placeholder-count="4">
+              <div style="display:flex; justify-content:space-between; gap:16px; padding:13px 0; border-bottom:1px solid rgba(127,211,255,.16);">
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                  <span style="font-size:15px; font-weight:700;">{{ c.t }}</span>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:{{ c.color }};">{{ c.tag }}</span>
+                </div>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#9FD9FF; white-space:nowrap;">{{ c.time }}</span>
+              </div>
+            </sc-for>
+            <p style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:#5E86B3; margin:20px 0 0;">Indicative times, subject to change.</p>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:1500px; margin:0 auto; padding:32px 56px 28px;">
+        <div style="background:#EAF4FF; color:#04101F; padding:52px 46px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#1E63AE;">What to prepare</div>
+          <h3 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(26px,3vw,42px); letter-spacing:-.03em; margin:18px 0 8px;">One song, 90 seconds.</h3>
+          <p style="font-size:16px; line-height:1.62; color:#2A4A6B; max-width:64ch; margin:0 0 34px;">Or a 32-bar cut. Choose a song in the style of Frozen that shows your voice and your storytelling. Songs from Frozen may not be used for initial auditions.</p>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:36px;">
+            <div>
+              <h4 style="font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; margin:0 0 14px; color:#1E63AE;">The panel is looking for</h4>
+              <sc-for list="{{ lookingFor }}" as="l" hint-placeholder-count="6">
+                <div style="font-size:14px; line-height:1.5; color:#2A4A6B; padding:8px 0 8px 18px; position:relative; border-bottom:1px solid #CFE1F5;"><span style="position:absolute; left:0; color:#1E63AE; font-weight:700;">/</span>{{ l }}</div>
+              </sc-for>
+            </div>
+            <div>
+              <h4 style="font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; margin:0 0 14px; color:#1E63AE;">Backing track rules</h4>
+              <sc-for list="{{ trackRules }}" as="l" hint-placeholder-count="6">
+                <div style="font-size:14px; line-height:1.5; color:#2A4A6B; padding:8px 0 8px 18px; position:relative; border-bottom:1px solid #CFE1F5;"><span style="position:absolute; left:0; color:#1E63AE; font-weight:700;">/</span>{{ l }}</div>
+              </sc-for>
+            </div>
+            <div>
+              <h4 style="font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; margin:0 0 14px; color:#1E63AE;">Song inspiration</h4>
+              <sc-for list="{{ songIdeas }}" as="s" hint-placeholder-count="5">
+                <div style="display:flex; justify-content:space-between; gap:12px; font-size:14px; line-height:1.5; color:#2A4A6B; padding:8px 0; border-bottom:1px solid #CFE1F5;">
+                  <span>{{ s.t }}</span>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5E86B3; text-align:right;">{{ s.show }}</span>
+                </div>
+              </sc-for>
+              <p style="font-size:14px; line-height:1.55; color:#2A4A6B; margin:16px 0 0;">Most importantly, choose a song you love to sing.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="youth" style="background:linear-gradient(160deg,#0A2646 0%,#153F73 100%); margin-top:44px; border-top:1px solid rgba(127,211,255,.25); border-bottom:1px solid rgba(127,211,255,.25);">
+        <div style="max-width:1500px; margin:0 auto; padding:84px 56px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#9FD9FF;">Young performers</div>
+          <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(32px,4.4vw,62px); letter-spacing:-.03em; line-height:.98; margin:20px 0 18px;">Young Anna &amp; Young Elsa.</h2>
+          <p style="font-size:18px; line-height:1.62; max-width:62ch; margin:0 0 18px; color:#C6DCF2;">Young performers audition in a single combined session on <strong>Sunday 30 August 2026</strong>, separate from the adult auditions and Dance Call, in a focused and supportive environment. There are no additional callback rounds &mdash; this session is the only audition for these roles.</p>
+          <p style="font-size:16px; line-height:1.62; max-width:62ch; margin:0 0 44px; color:#8FB3D6;">All performance material is provided in advance with your audition confirmation. There will be no surprises on the day.</p>
+          <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:20px;">
+            <sc-for list="{{ youthSteps }}" as="s" hint-placeholder-count="4">
+              <div style="background:rgba(4,16,31,.45); border:1px solid rgba(127,211,255,.2); border-top:2px solid #9FD9FF; padding:34px 32px 38px; display:flex; flex-direction:column; gap:12px;">
+                <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.2em; color:#9FD9FF;">{{ s.n }}</span>
+                <h3 style="font-size:22px; font-weight:700; letter-spacing:-.015em; line-height:1.2; margin:0;">{{ s.t }}</h3>
+                <p style="font-size:15px; line-height:1.6; color:#C6DCF2; margin:0;">{{ s.d }}</p>
+                <sc-if value="{{ s.link }}">
+                  <a href="{{ s.href }}" target="_blank" rel="noopener" style="align-self:flex-start; margin-top:8px; border:1px solid #9FD9FF; color:#9FD9FF; padding:12px 18px; font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;">{{ s.link }}</a>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(127,211,255,.2); border:1px solid rgba(127,211,255,.2); margin-top:24px;">
+            <sc-for list="{{ youthFacts }}" as="f" hint-placeholder-count="4">
+              <div style="background:#0A2646; padding:30px 26px;">
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:#5E86B3;">{{ f.k }}</span>
+                <div style="font-size:17px; line-height:1.45; font-weight:700; margin-top:10px;">{{ f.v }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="margin-top:24px; padding:30px 32px; border:1px solid rgba(127,211,255,.2); background:rgba(4,16,31,.35);">
+            <h4 style="font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; margin:0 0 16px; color:#9FD9FF;">What we're looking for</h4>
+            <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:20px;">
+              <sc-for list="{{ youthQualities }}" as="q" hint-placeholder-count="5">
+                <div style="font-size:14px; line-height:1.5; color:#C6DCF2; padding-top:12px; border-top:1px solid rgba(127,211,255,.25);">{{ q }}</div>
+              </sc-for>
+            </div>
+          </div>
+          <p style="font-size:15px; line-height:1.62; color:#8FB3D6; margin:28px 0 0; max-width:62ch;">A parent or guardian must provide all required permissions and documentation under Victorian child employment and child safety requirements. Children's roles may be shared between two casts.</p>
+          <a href="https://booking.appointy.com/centrestageaus?sr=1265931" target="_blank" rel="noopener" style="display:inline-block; margin-top:28px; background:#7FD3FF; color:#04101F; padding:16px 26px; font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;">Book the youth audition workshop &rarr;</a>
+        </div>
+      </section>
+
+      <section id="characters" style="max-width:1500px; margin:0 auto; padding:84px 56px 28px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#7FD3FF;">Character breakdown</div>
+        <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(32px,4.4vw,62px); letter-spacing:-.03em; line-height:.98; margin:20px 0 44px;">Who we're casting.</h2>
+        <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:20px;">
+          <sc-for list="{{ characters }}" as="c" hint-placeholder-count="14">
+            <div style="background:rgba(255,255,255,.035); border:1px solid rgba(127,211,255,.18); padding:32px 30px 34px; display:flex; flex-direction:column; gap:10px;">
+              <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;">
+                <h3 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:24px; letter-spacing:-.025em; margin:0; color:#EAF4FF;">{{ c.name }}</h3>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#5E86B3;">{{ c.gender }}</span>
+              </div>
+              <p style="font-size:15px; line-height:1.58; color:#A9C6E4; margin:0;">{{ c.d }}</p>
+              <div style="display:flex; gap:10px; align-items:center; margin-top:8px; padding-top:12px; border-top:1px solid rgba(127,211,255,.18);">
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#5E86B3;">Range</span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#9FD9FF;">{{ c.range }}</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="background:linear-gradient(150deg,#0A2646 0%,#123F79 100%); border:1px solid rgba(127,211,255,.25); padding:42px 38px; margin-top:20px;">
+          <h3 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:26px; letter-spacing:-.025em; margin:0 0 12px;">Ensemble</h3>
+          <p style="font-size:16px; line-height:1.62; color:#C6DCF2; margin:0 0 22px; max-width:70ch;">The Ensemble brings the world of Frozen to life &mdash; Arendelle citizens, castle staff, Oaken's family, the Hidden Folk and featured tracks, with opportunities for featured character moments and dance roles. We're looking for versatile performers confident moving between singing, dancing and acting.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <sc-for list="{{ ensembleRoles }}" as="e" hint-placeholder-count="9">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; border:1px solid rgba(127,211,255,.35); padding:7px 12px; color:#C6DCF2;">{{ e }}</span>
+            </sc-for>
+          </div>
+        </div>
+        <div style="background:rgba(255,138,107,.08); border:1px solid rgba(255,138,107,.35); border-left:3px solid #FF8A6B; padding:28px 30px; margin-top:20px;">
+          <p style="font-size:15px; line-height:1.62; color:#C6DCF2; margin:0;"><strong style="color:#EAF4FF;">Sven</strong> is cast outside the general audition process, and is a non-singing role requiring strong physical storytelling. To express interest, email <a href="mailto:michele@centrestage.org.au" style="color:#9FD9FF;">michele@centrestage.org.au</a> and an expression of interest document will be sent to you.</p>
+        </div>
+      </section>
+
+      <section id="dates" style="max-width:1500px; margin:0 auto; padding:72px 56px 28px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#7FD3FF;">Key dates</div>
+        <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(32px,4.4vw,62px); letter-spacing:-.03em; line-height:.98; margin:20px 0 18px;">Audition to opening night.</h2>
+        <p style="font-size:17px; line-height:1.62; max-width:62ch; margin:0 0 40px; color:#A9C6E4;">Block out Monday, Wednesday and Sunday rehearsals across the whole period and assume you will be required at most rehearsals. All known unavailable dates must be listed on your audition form.</p>
+        <div style="display:grid; grid-template-columns:1.15fr 1fr; gap:28px;">
+          <div>
+            <sc-for list="{{ keyDates }}" as="d" hint-placeholder-count="10">
+              <div style="display:flex; justify-content:space-between; gap:20px; padding:16px 0; border-bottom:1px solid rgba(127,211,255,.16);">
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                  <span style="font-size:16px; font-weight:700; line-height:1.3; color:#EAF4FF;">{{ d.t }}</span>
+                  <sc-if value="{{ d.note }}">
+                    <span style="font-size:13px; color:#5E86B3; line-height:1.4;">{{ d.note }}</span>
+                  </sc-if>
+                </div>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#9FD9FF; white-space:nowrap;">{{ d.when }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:20px;">
+            <div style="background:linear-gradient(150deg,#0A2646 0%,#123F79 100%); border:1px solid rgba(127,211,255,.25); padding:36px 34px;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#9FD9FF;">Weekly rehearsals</div>
+              <sc-for list="{{ rehearsals }}" as="r" hint-placeholder-count="3">
+                <div style="display:flex; justify-content:space-between; gap:16px; padding:13px 0; border-bottom:1px solid rgba(127,211,255,.16); font-size:15px;">
+                  <span>{{ r.d }}</span>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#9FD9FF;">{{ r.t }}</span>
+                </div>
+              </sc-for>
+              <p style="font-size:14px; line-height:1.6; color:#A9C6E4; margin:20px 0 0;">Primary venue: 26 Rodney Road, North Geelong.</p>
+            </div>
+            <div style="background:rgba(255,255,255,.035); border:1px solid rgba(127,211,255,.18); border-top:2px solid #FF8A6B; padding:36px 34px;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#FF8A6B;">Compulsory</div>
+              <h3 style="font-size:22px; font-weight:700; letter-spacing:-.015em; margin:12px 0 14px;">Intensive weekends</h3>
+              <sc-for list="{{ intensives }}" as="i" hint-placeholder-count="3">
+                <div style="display:flex; justify-content:space-between; gap:16px; padding:11px 0; border-bottom:1px solid rgba(127,211,255,.16); font-size:15px;">
+                  <span>{{ i.n }}</span>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#9FD9FF;">{{ i.d }}</span>
+                </div>
+              </sc-for>
+              <p style="font-size:14px; line-height:1.6; color:#A9C6E4; margin:18px 0 0;">Attendance at all intensive weekends is compulsory.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="fees" style="max-width:1500px; margin:0 auto; padding:72px 56px 28px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#7FD3FF;">Cast membership</div>
+        <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(32px,4.4vw,62px); letter-spacing:-.03em; line-height:.98; margin:20px 0 18px;">Fees &amp; commitment.</h2>
+        <p style="font-size:17px; line-height:1.62; max-width:62ch; margin:0 0 40px; color:#A9C6E4;">On securing a role, each cast member pays a membership fee of $125 covering insurance during rehearsals and performances, a commemorative cast T-shirt, and afterparty supplies. Each cast member also nominates a person aged 18 or over to contribute 10 hours of volunteer work.</p>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
+          <sc-for list="{{ feeOptions }}" as="f" hint-placeholder-count="3">
+            <div style="background:rgba(255,255,255,.035); border:1px solid rgba(127,211,255,.18); border-top:2px solid {{ f.color }}; padding:38px 32px 42px; display:flex; flex-direction:column; gap:12px;">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:#5E86B3;">{{ f.label }}</span>
+              <div style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:44px; letter-spacing:-.03em; line-height:1; color:#EAF4FF;">{{ f.price }}</div>
+              <h3 style="font-size:18px; font-weight:700; margin:4px 0 0; color:#EAF4FF;">{{ f.t }}</h3>
+              <p style="font-size:15px; line-height:1.58; color:#A9C6E4; margin:0;">{{ f.d }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+      <section id="booklet" style="max-width:1500px; margin:0 auto; padding:56px 56px 104px;">
+        <div style="position:relative; overflow:hidden; border:1px solid rgba(127,211,255,.3); background:linear-gradient(150deg,#0A2646 0%,#1E63AE 100%);">
+          <img src="assets/frozen-keyart.png" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.18;">
+          <div style="position:relative; padding:64px 56px; display:grid; grid-template-columns:1.4fr 1fr; gap:48px; align-items:center;">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#9FD9FF;">Full casting brief</div>
+              <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(30px,3.6vw,52px); letter-spacing:-.03em; line-height:1; margin:20px 0 16px;">Read the whole booklet.</h2>
+              <p style="font-size:17px; line-height:1.62; color:#C6DCF2; margin:0; max-width:52ch;">Nineteen pages covering the full character breakdown, audition process, rehearsal schedule, creative team biographies and season details. Please read it before you audition.</p>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:14px;">
+              <a href="assets/frozen-casting-brief.pdf" target="_blank" rel="noopener" style="background:#EAF4FF; color:#04101F; padding:16px 24px; font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; text-align:center;">Download the brief (PDF)</a>
+              <a href="https://booking.appointy.com/centrestageaus?sr=1265916" target="_blank" rel="noopener" style="border:1px solid rgba(234,244,255,.6); color:#EAF4FF; padding:16px 24px; font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; text-align:center;">Book your audition &rarr;</a>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.7; color:#9FD9FF; margin-top:6px;">Access requirements or questions?<br>david@centrestage.org.au &middot; (03) 5272 1775</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    </sc-if>
+  </div>
+  </sc-if>
+
   <!-- ══════════════ MEDIA ══════════════ -->
   <sc-if value="{{ isMedia }}">
   <div class="cs-fade">
@@ -1274,15 +1621,18 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { route: "home", slug: null, data: null, sent: false, menuOpen: false, a11yOpen: false, a11y: { scale: 1, contrast: false, underline: false, font: false, motion: false } };
+  state = { route: "home", slug: null, data: null, sent: false, menuOpen: false, audOk: (() => { try { return sessionStorage.getItem("cs_aud") === "1"; } catch (e) { return false; } })(), audInput: "", audError: false, a11yOpen: false, a11y: { scale: 1, contrast: false, underline: false, font: false, motion: false } };
 
   componentDidMount() {
     this._route = () => {
-      let p = (location.pathname || "/").replace(/^\/+|\/+$/g, "");
-      if (p.startsWith("post/")) {
-        this.setState({ route: "post", slug: p.slice(5), sent: false });
+      let parts = (location.pathname || "/").replace(/^\/+|\/+$/g, "").split("/").filter(function (x) { return x && !/\.html?$/i.test(x); });
+      const known = ["home","tickets","about","education","health","productions","involved","blog","shop","contact","bio","media","weekly","singing","dance","auditions"];
+      const pi = parts.lastIndexOf("post");
+      if (pi >= 0 && parts[pi + 1]) {
+        this.setState({ route: "post", slug: parts[pi + 1], sent: false });
       } else {
-        this.setState({ route: p || "home", slug: null, sent: false });
+        const last = parts[parts.length - 1] || "";
+        this.setState({ route: known.indexOf(last) >= 0 ? last : "home", slug: null, sent: false });
       }
       window.scrollTo(0, 0);
       this.setState({ menuOpen: false });
@@ -1404,6 +1754,102 @@ class Component extends DCLogic {
       isInvolved: r === "involved", isBlog: r === "blog", isPost: r === "post",
       isShop: false, isContact: r === "contact", isBio: r === "bio", isMedia: r === "media",
       isWeekly: r === "weekly", isSinging: r === "singing", isDance: r === "dance",
+      isAuditions: r === "auditions",
+      audLocked: !this.state.audOk, audOpen: !!this.state.audOk, audInput: this.state.audInput || "", audError: !!this.state.audError,
+      audChange: (e) => this.setState({ audInput: e.target.value, audError: false }),
+      audSubmit: (e) => {
+        e.preventDefault();
+        if ((this.state.audInput || "").trim() === "CreativeTeam2026Frozen") {
+          try { sessionStorage.setItem("cs_aud", "1"); } catch (err) {}
+          this.setState({ audOk: true, audError: false, audInput: "" });
+        } else { this.setState({ audError: true }); }
+      },
+      adultSteps: [
+        { n: "01", t: "Read the casting brief", d: "Check the character breakdown, rehearsal commitment and availability requirements before you book.", meta: "19 pages · PDF", link: "Download the brief ↗", href: "assets/frozen-casting-brief.pdf" },
+        { n: "02", t: "Book your vocal audition", d: "Vocal auditions are by appointment only and must be attended by all auditionees, except those auditioning solely for Sven.", meta: "Cloverdale Community Centre, Corio", link: "Book at Appointy ↗", href: "https://booking.appointy.com/centrestageaus" },
+        { n: "03", t: "Prepare your song and backing track", d: "One song in the style of Frozen — a 32-bar cut or roughly 90 seconds — performed solo to a backing track. Your MP3 must be attached to your audition form.", meta: "No songs from Frozen for initial auditions" },
+        { n: "04", t: "Attend the Dance & Movement Call", d: "Compulsory for every adult auditionee, whatever role you are seeking. Optional tap and additional-skills components run either side of the main dance call.", meta: "Sunday 30 August 2026 · Geelong High School" },
+        { n: "05", t: "Callbacks, if required", d: "Callback invitations are issued by email once all initial auditions conclude, with any preparation material provided at that time. Not all roles require a callback.", meta: "Sunday 13 September 2026" },
+      ],
+      auditionNights: [
+        { d: "Monday 24 August", t: "From 7:00pm" },
+        { d: "Wednesday 26 August", t: "From 7:00pm" },
+        { d: "Monday 31 August", t: "From 7:00pm" },
+        { d: "Tuesday 1 September", t: "From 7:00pm" },
+        { d: "Wednesday 2 September", t: "From 7:00pm" },
+      ],
+      danceCall: [
+        { t: "Tap audition", tag: "Optional", color: "#6B6B68", time: "3:30 – 4:30pm" },
+        { t: "Dance call", tag: "All auditionees", color: "#E8472B", time: "4:30 – 6:00pm" },
+        { t: "Additional skills", tag: "Optional", color: "#6B6B68", time: "6:00 – 6:15pm" },
+        { t: "Partner call", tag: "By request", color: "#2E6FB7", time: "6:15 – 7:00pm" },
+      ],
+      lookingFor: ["Vocal ability", "Acting ability", "Characterisation", "Storytelling through performance", "Musicality and interpretation", "Suitability for the production"],
+      trackRules: ["No lead vocals", "Ideally no backing vocals", "High-quality audio file", "Edited for the audition cut", "Clean start and finish", "Named Surname_FirstName_SongTitle"],
+      songIdeas: [
+        { t: "Journey to the Past", show: "Anastasia" },
+        { t: "Out There", show: "Hunchback of Notre Dame" },
+        { t: "A Change in Me", show: "Beauty and the Beast" },
+        { t: "Proud of Your Boy", show: "Aladdin" },
+        { t: "I Know It's Today", show: "Shrek the Musical" },
+      ],
+      youthSteps: [
+        { n: "01", t: "Register your interest", d: "Book the youth audition workshop online. Young Anna and Young Elsa auditionees receive an Audition Pack with their audition confirmation, outlining every requirement for the day.", link: "Book the youth workshop ↗", href: "https://booking.appointy.com/centrestageaus?sr=1265931" },
+        { n: "02", t: "Familiarise yourself with the musical", d: "Get to know the story, characters and songs of Frozen. All audition content will be taught on the day in a supportive workshop — there is nothing to prepare in advance." },
+        { n: "03", t: "Audition and callback in one day", d: "Performers should be ready to work in different combinations with other auditionees as the creative team explores character relationships and chemistry." },
+        { n: "04", t: "Movement and creative workshop", d: "A short workshop led by the creative team exploring musicality, physical storytelling, confidence and creativity. No formal dance training is required." },
+      ],
+      youthFacts: [
+        { k: "Date", v: "Sunday 30 August 2026" },
+        { k: "Time", v: "9:30am – 2:00pm" },
+        { k: "Location", v: "Geelong High School Gymnasium" },
+        { k: "What to wear", v: "Comfortable clothing and footwear" },
+      ],
+      youthQualities: ["Strong imagination and character connection", "Ability to communicate emotion and tell a story", "Musicality and willingness to learn", "Confidence, enthusiasm and a positive attitude", "Ability to collaborate and perform with others"],
+      characters: [
+        { name: "Elsa", gender: "Female presenting", range: "E3 – E5 · Mezzo-soprano with strong belt", d: "The newly crowned Queen of Arendelle: poised, regal and reserved, carrying the weight of fear, responsibility and expectation. Beneath her composed exterior lies deep vulnerability, strength and compassion." },
+        { name: "Anna", gender: "Female presenting", range: "G3 – E5 · Soprano with musical theatre belt", d: "Warm-hearted, spirited and endlessly optimistic, with a playful sense of humour and fearless determination. Beneath the energy lies remarkable resilience and emotional maturity." },
+        { name: "Kristoff", gender: "Male presenting", range: "A2 – B♭4 · Folk/pop-rock baritone", d: "An independent, resourceful ice harvester more comfortable with his reindeer than with people. Honest, practical and quietly compassionate, masking vulnerability with dry humour." },
+        { name: "Olaf", gender: "Any gender", range: "Alto or tenor, depending on casting", d: "A magical snowman brought to life by Elsa's powers — joyful, curious and endlessly optimistic. Requires puppeteering, excellent physical comedy and a warm, character-driven voice." },
+        { name: "Hans", gender: "Male presenting", range: "A2 – B4 · Polished, lyrical", d: "Charming, polished and seemingly sincere — the ideal prince. Beneath the impeccable manners is a calculating, ambitious man skilled at manipulating those around him." },
+        { name: "Queen Iduna", gender: "Female presenting", range: "F3 – E5 · Warm, lyrical", d: "A compassionate and devoted mother whose warmth and strength are central to her family. Regal and protective, she carries the weight of secrets from her past." },
+        { name: "King Agnarr", gender: "Male presenting", range: "B2 – C4 · Rich, grounded bass-baritone", d: "A commanding yet deeply loving father driven by an overwhelming desire to protect his family, making difficult decisions that create distance between them." },
+        { name: "Duke of Weselton", gender: "Male presenting", range: "F3 – A4 · Bright and characterful", d: "Pompous, self-important and desperate to be taken seriously. His inflated sense of importance makes him a wonderfully comic character, especially as his confidence cracks." },
+        { name: "Oaken", gender: "Male presenting", range: "A2 – B♭4 · Warm and characterful", d: "The cheerful, eccentric owner of Wandering Oaken's Trading Post and Sauna. A larger-than-life personality with unexpected moments of bluntness and real audience connection." },
+        { name: "Pabbie", gender: "Male presenting", range: "A♭2 – G♭4 · Rich baritone", d: "Leader of the Hidden Folk, with a deep connection to the ancient magic and traditions of the forest. Wise, mysterious and quietly authoritative." },
+        { name: "Bulda", gender: "Female presenting", range: "B♭3 – D5 · Warm and soulful", d: "A powerful and nurturing member of the Hidden Folk, deeply connected to the magic and natural world. Wise and perceptive, guiding others with warmth and quiet authority." },
+        { name: "Sven", gender: "Any gender · Non-singing", range: "Physical storytelling role", d: "Kristoff's fiercely loyal companion — protective, stubborn and highly expressive, communicating almost entirely through physicality. Requires strong body awareness, coordination and stamina." },
+        { name: "Young Anna", gender: "Female presenting · ~7–10 years", range: "B♭3 – E5 · Bright and youthful", d: "Energetic, curious and full of imagination, with infectious enthusiasm for the world around her. She adores her sister and approaches life with warmth and openness." },
+        { name: "Young Elsa", gender: "Female presenting · ~9–12 years", range: "A3 – E5 · Clear and lyrical", d: "Bright, thoughtful and eager to do what is expected of her. As she begins to understand her magical abilities, she carries a growing sense of responsibility and fear." },
+      ],
+      ensembleRoles: ["Handmaidens", "Castle guards", "Bishop", "Doctor", "Weselton's Lackeys", "Townspeople", "Oaken's Family", "Hidden Folk", "Featured dancers"],
+      keyDates: [
+        { t: "Auditions commence", when: "Mon 24 Aug 2026", note: "Vocal auditions by appointment" },
+        { t: "Youth audition · Young Anna & Young Elsa", when: "Sun 30 Aug 2026", note: "9:30am – 2:00pm" },
+        { t: "Dance & Movement Call", when: "Sun 30 Aug 2026", note: "Compulsory for all adults" },
+        { t: "Callbacks", when: "Sun 13 Sep 2026", note: "By invitation" },
+        { t: "First full company rehearsal", when: "Sun 18 Oct 2026", note: "Table read · 1:30pm" },
+        { t: "Christmas Carols event", when: "Wed 23 Dec 2026", note: "" },
+        { t: "Holiday break", when: "21 Dec – 10 Jan", note: "" },
+        { t: "Rehearsals resume", when: "Sun 10 Jan 2027", note: "" },
+        { t: "Bump in", when: "Sun 28 Feb 2027", note: "" },
+        { t: "Season", when: "5 – 20 Mar 2027", note: "15 performances at The Playhouse" },
+      ],
+      rehearsals: [
+        { d: "Sundays", t: "1:30 – 6:30pm" },
+        { d: "Mondays", t: "7:00 – 10:00pm" },
+        { d: "Wednesdays", t: "7:00 – 10:30pm" },
+      ],
+      intensives: [
+        { n: "Weekend one", d: "28 – 29 Nov 2026" },
+        { n: "Weekend two", d: "16 – 17 Jan 2027" },
+        { n: "Weekend three", d: "23 – 24 Jan 2027" },
+      ],
+      feeOptions: [
+        { label: "Standard", price: "$125", color: "#0A0A0A", t: "Fee plus 10 hours", d: "Membership fee plus a nominated person aged 18+ contributing 10 hours of volunteer work across the production." },
+        { label: "Option one", price: "$225", color: "#2E6FB7", t: "No volunteer hours", d: "Pay an additional $100 to be exempt from the 10-hour volunteer commitment and focus solely on your performance." },
+        { label: "Option two", price: "$0", color: "#2E8B6B", t: "20 hours total", d: "Waive all membership fees by contributing 10 additional hours of volunteer work — 20 hours in total." },
+      ],
       bioGuides: [
         { n: "01", t: "Word limits", d: "Lead roles 150 words max; all other roles and ensemble 100 words max; creative team 150 words max." },
         { n: "02", t: "Spell it CentreStage", d: "Capital C and capital S, one word, with no slash in the spelling." },
@@ -1420,6 +1866,7 @@ class Component extends DCLogic {
       toggleMenu: () => this.setState((s) => ({ menuOpen: !s.menuOpen })),
       navTickets: this.navStyle("tickets"), navAbout: this.navStyle("about"),
       navEducation: this.navStyle("education"), navHealth: this.navStyle("health"), navBlog: this.navStyle("blog"),
+      navAuditions: this.navStyle("auditions"),
       navMedia: this.navStyle("media"),
 
       shows, productions, prodCount: productions.length,
@@ -1462,13 +1909,13 @@ class Component extends DCLogic {
       singingSteps: [
         { n: "01", t: "Create or log in", d: "Visit our GoStudioPro portal and create a new student account, or log in with your existing account." },
         { n: "02", t: "Open Private Lessons", d: "Navigate to the Private Lessons section within the portal." },
-        { n: "03", t: "Choose educator & evening", d: "Select from the available educators and evenings — Monday, Wednesday or Thursday." },
-        { n: "04", t: "Book your session", d: "Pick a 30 or 60 minute session. Sessions are held at 22 Princes Highway, Norlane." },
+        { n: "03", t: "Choose educator & evening", d: "Select from the available educators and evenings. Storm Randall is currently available on Wednesday evenings." },
+        { n: "04", t: "Book your session", d: "Pick a 30 or 60 minute session. Term 3 sessions are held at Unit 2, 255 Hamilton Highway, Fyansford." },
       ],
       singingEducators: [
-        { name: "Jake Waterworth", when: "Voice & Acting · Evening sessions", img: "assets/educators/jake-waterworth.jpg",
+        { name: "Jake Waterworth", when: "Voice & Acting · Monday evenings currently unavailable", img: "assets/educators/jake-waterworth.jpg",
           bio: "A highly experienced performer and educator within our program. Jake brings current industry knowledge and real-world experience, giving students clear direction, constructive feedback and actionable strategies to improve their craft — whether preparing for an audition, refining a self tape or building confidence on stage." },
-        { name: "Storm Randall", when: "Voice & Acting · Evening sessions", img: "assets/educators/storm-randall.jpg",
+        { name: "Storm Randall", when: "Voice & Acting · Wednesday evenings", img: "assets/educators/storm-randall.jpg",
           bio: "A highly experienced performer and educator within our program. Storm delivers practical, focused and outcome-driven sessions across vocal technique, audition preparation, scene work and character development, supporting students at every stage of their development." },
       ],
       danceSchedule: [
