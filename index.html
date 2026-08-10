@@ -1617,6 +1617,7 @@ class Component extends DCLogic {
       }
       window.scrollTo(0, 0);
       this.setState({ menuOpen: false });
+      this._meta();
     };
     this._click = (e) => {
       const a = e.target.closest && e.target.closest("a");
@@ -1627,6 +1628,27 @@ class Component extends DCLogic {
         if (href !== location.pathname) { history.pushState(null, "", href); this._route(); }
         else { this.setState({ menuOpen: false }); }
       }
+    };
+    this._meta = () => {
+      const aud = (location.pathname || "").indexOf("auditions") > -1;
+      const base = "https://centrestage.org.au";
+      const title = aud
+        ? "Frozen Auditions \u2014 CentreStage, Geelong"
+        : "CentreStage \u2014 Theatre, Education & Agency, Geelong";
+      const desc = aud
+        ? "Auditions now open for CentreStage's production of Frozen. Adults and young performers welcome. 5 \u2013 20 March 2027 at The Playhouse, Geelong Arts Centre."
+        : "Award-winning Geelong theatre since 2010. Ambitious productions, a performing arts academy for ages 4\u201318, and talent representation.";
+      const img = base + (aud ? "/assets/og-frozen-auditions.jpg" : "/assets/og-image.jpg");
+      document.title = title;
+      const set = (sel, attr, val) => { const el = document.querySelector(sel); if (el) el.setAttribute(attr, val); };
+      set('meta[name="description"]', "content", desc);
+      set('meta[property="og:title"]', "content", title);
+      set('meta[property="og:description"]', "content", desc);
+      set('meta[property="og:image"]', "content", img);
+      set('meta[property="og:url"]', "content", base + (location.pathname || "/"));
+      set('meta[name="twitter:title"]', "content", title);
+      set('meta[name="twitter:description"]', "content", desc);
+      set('meta[name="twitter:image"]', "content", img);
     };
     window.addEventListener("popstate", this._route);
     document.addEventListener("click", this._click);
