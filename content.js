@@ -10,16 +10,20 @@ export const SHOWS = [
     img: "assets/frozen-keyart.png", featured: true },
   { id: "winnie", title: "Winnie the Pooh Kids", when: "October 2026", venue: "Junior Troupe · Ages 4–8",
     blurb: "A joyful beginning for our youngest performers. Onstage October 2026, performed by the Junior Troupe students.",
-    cta: "Tickets via TryBooking", href: "https://www.trybooking.com/DMGCA",
+    cta: "Tickets via TryBooking", href: "https://www.trybooking.com/DMGCA", status: "Sold out",
     img: fill("35cad6_e028c5b5122c4b968cc06aafee71cbd9~mv2.png", 900, 675) },
   { id: "matilda", title: "Matilda Jr.", when: "October / November 2026", venue: "Middle Troupe · Ages 9–12",
     blurb: "A brilliant young girl who refuses to accept injustice. Performed by the Middle Troupe students.",
-    cta: "Tickets via TryBooking", href: "https://www.trybooking.com/DMGCC",
+    cta: "Tickets via TryBooking", href: "https://www.trybooking.com/DMGCC", status: "Last tickets remaining",
     img: fill("35cad6_1d484875c31f4ac490fe4aad76b3861d~mv2.png", 900, 675) },
   { id: "hadestown", title: "Hadestown: Teen Edition", when: "November 2026", venue: "Senior Troupe · Ages 12–18",
     blurb: "A journey into the underworld. One of the most ambitious projects undertaken within our training program.",
     cta: "Tickets via TryBooking", href: "https://www.trybooking.com/DMGCJ",
     img: fill("35cad6_9eb8cd6e51734cc99bbb500892500fa6~mv2.png", 900, 675) },
+  { id: "broadwayrocks", title: "Broadway Rocks", when: "5 December 2026 · 6.00pm", venue: "Costa Hall · Geelong Waterfront",
+    blurb: "One night only. 300 students, one stage — the rock anthems of musical theatre, performed by the CentreStage student showcase.",
+    cta: "Book at Geelong Arts Centre", href: "https://geelongartscentre.org.au/whats-on/all-events/broadway-rocks-centrestage", status: "On sale Thursday 27 August",
+    img: "assets/broadway-rocks.png", poster: true },
 ];
 
 // ── Previous productions (year desc) ─────────────────────────

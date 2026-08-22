@@ -25,6 +25,7 @@
 <meta name="twitter:title" content="CentreStage — Theatre, Education & Agency, Geelong">
 <meta name="twitter:description" content="Award-winning Geelong theatre since 2010. Ambitious productions, a performing arts academy for ages 4–18, and talent representation.">
 <meta name="twitter:image" content="https://centrestage.org.au/assets/og-image.jpg">
+<meta name="robots" content="index, follow">
 <style>
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: #F4F1EA; color: #0A0A0A; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
@@ -56,6 +57,8 @@
   .cs-social--pod { width:auto; padding:0 14px; gap:9px; }
   .cs-chip { display:inline-flex; align-items:center; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.04em; color:#0A0A0A; text-decoration:none; border:1px solid #D9D5CC; padding:9px 15px; transition:background .2s, color .2s, border-color .2s; }
   .cs-chip:hover { background:#0A0A0A; color:#F4F1EA; border-color:#0A0A0A; }
+  .cs-input:focus { outline:none; border-bottom-width:2px; }
+  .cs-input::placeholder { color:#A8A59E; }
   .cs-ice-chip { display:inline-flex; align-items:center; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#9FD9FF; text-decoration:none; border:1px solid rgba(127,211,255,.35); padding:10px 16px; transition:background .2s, color .2s; }
   .cs-ice-chip:hover { background:#7FD3FF; color:#04101F; border-color:#7FD3FF; }
   .cs-ice { transition:transform .3s cubic-bezier(.2,.6,.2,1), box-shadow .3s; }
@@ -296,13 +299,21 @@
     <section style="max-width:1600px; margin:0 auto; padding:64px 48px 96px; display:flex; flex-direction:column; gap:1px; background:#D9D5CC; border-top:1px solid #D9D5CC; border-bottom:1px solid #D9D5CC;">
       <sc-for list="{{ shows }}" as="s" hint-placeholder-count="4">
         <div style="background:{{ s.bg }}; color:{{ s.fg }}; padding:48px; display:grid; grid-template-columns:1fr 1.4fr auto; gap:48px; align-items:center;">
-          <div class="cs-imgz"><img src="{{ s.img }}" alt="{{ s.title }}" style="width:100%; aspect-ratio:3/2; object-fit:cover;"></div>
+          <div class="cs-imgz"><img src="{{ s.img }}" alt="{{ s.title }}" style="width:100%; aspect-ratio:3/2; object-fit:{{ s.imgFit }}; background:{{ s.imgBg }};"></div>
           <div>
             <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:{{ s.meta }}; margin-bottom:14px;">{{ s.when }} &nbsp;/&nbsp; {{ s.venue }}</div>
             <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(36px,4.4vw,64px); letter-spacing:-.02em; line-height:.95; margin:0;">{{ s.title }}</h2>
+            <sc-if value="{{ s.status }}">
+              <span style="display:inline-block; margin:16px 0 0; background:{{ s.statusColor }}; color:{{ s.statusFg }}; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:6px 12px;">{{ s.status }}</span>
+            </sc-if>
             <p style="font-size:17px; line-height:1.55; max-width:48ch; margin:18px 0 0; color:{{ s.body }};">{{ s.blurb }}</p>
           </div>
-          <a class="cs-btn {{ s.btnClass }}" href="{{ s.href }}" target="_blank" rel="noopener" style="white-space:nowrap;">{{ s.cta }} →</a>
+          <sc-if value="{{ s.soldOut }}">
+            <a class="cs-btn {{ s.btnClass }}" href="{{ s.href }}" target="_blank" rel="noopener" style="white-space:nowrap; border-color:#A8A59E; background:transparent; color:#6B6B68;">Sold out — view →</a>
+          </sc-if>
+          <sc-if value="{{ s.onSale }}">
+            <a class="cs-btn {{ s.btnClass }}" href="{{ s.href }}" target="_blank" rel="noopener" style="white-space:nowrap;">{{ s.cta }} →</a>
+          </sc-if>
         </div>
       </sc-for>
     </section>
@@ -1505,6 +1516,163 @@
   </div>
   </sc-if>
 
+  <!-- ══════════════ WWCC (unlisted) ══════════════ -->
+  <sc-if value="{{ isWwcc }}">
+  <div class="cs-fade">
+    <section style="background:#0A0A0A; color:#F4F1EA;">
+      <div style="max-width:1000px; margin:0 auto; padding:88px 48px 72px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#E8472B;">Volunteers <span style="color:#6B6B68;">/</span> Compliance</span>
+        <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(40px,6.4vw,86px); letter-spacing:-.03em; line-height:.92; margin:22px 0 0;">Working with Children Check.</h1>
+        <p style="font-size:19px; line-height:1.6; max-width:56ch; margin:28px 0 0; color:#C9C6BF;">Every CentreStage volunteer who works with or around young people must hold a current Working with Children Check. Use this form to submit your card and confirm you have read our child safety commitments.</p>
+      </div>
+    </section>
+
+    <section style="max-width:1000px; margin:0 auto; padding:64px 48px 24px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:28px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Before you begin</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <sc-for list="{{ wwccPrep }}" as="p" hint-placeholder-count="3">
+          <div style="background:#F4F1EA; padding:30px 26px 34px; display:flex; flex-direction:column; gap:10px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; color:#2E6FB7;">{{ p.n }}</span>
+            <h3 style="font-size:17px; font-weight:700; letter-spacing:-.01em; line-height:1.25; margin:0;">{{ p.t }}</h3>
+            <p style="font-size:14px; line-height:1.55; color:#3A3A37; margin:0;">{{ p.d }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <sc-if value="{{ wwccDone }}">
+      <section style="max-width:1000px; margin:0 auto; padding:48px 48px 104px;">
+        <div style="background:#0A0A0A; color:#F4F1EA; border-top:4px solid #2E8B6B; padding:56px 48px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#8FE0B0;">Submitted</span>
+          <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(28px,3.4vw,44px); letter-spacing:-.02em; line-height:1; margin:18px 0 16px;">Thank you, {{ wwccName }}.</h2>
+          <sc-if value="{{ wwccSent }}">
+            <p style="font-size:17px; line-height:1.6; color:#C9C6BF; margin:0; max-width:52ch;">Your Working with Children Check has been received and saved securely to our volunteer records, along with your agreement to our child safety commitments. Our Child Safety Officer will verify your card and be in touch only if anything further is needed.</p>
+          </sc-if>
+          <sc-if value="{{ wwccMailFallback }}">
+            <p style="font-size:17px; line-height:1.6; color:#C9C6BF; margin:0 0 8px; max-width:52ch;">Your details and agreement have been recorded and an email has opened in your mail app, pre-filled and addressed to our Child Safety Officer.</p>
+            <div style="background:#1F1F1D; border-left:4px solid #E8472B; padding:22px 24px; margin:24px 0 0;">
+              <p style="font-size:16px; line-height:1.6; color:#F4F1EA; margin:0; font-weight:700;">One last step: attach your card photo</p>
+              <p style="font-size:15px; line-height:1.6; color:#C9C6BF; margin:10px 0 0;">Attach <span style="font-family:'JetBrains Mono',monospace; color:#7FD3FF;">{{ wwccFileDone }}</span> to that email and press send. Your submission is not complete until we receive the image.</p>
+              <p style="font-size:14px; line-height:1.6; color:#A8A59E; margin:14px 0 0;">If no email opened, send your card photo to <a class="cs-link-u" href="mailto:richelle@centrestage.org.au" style="color:#F4F1EA;">richelle@centrestage.org.au</a> quoting your full name and card number.</p>
+            </div>
+          </sc-if>
+          <p style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#A8A59E; margin:22px 0 0;">Completed {{ wwccStamp }}</p>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ wwccForm }}">
+    <form onSubmit="{{ wwccSubmit }}">
+      <section style="max-width:1000px; margin:0 auto; padding:56px 48px 0;">
+        <div style="display:flex; align-items:center; gap:16px; margin-bottom:28px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Your details</span>
+          <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+          <label style="display:flex; flex-direction:column; gap:8px;">
+            <span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">Full legal name <span style="color:#E8472B;">*</span></span>
+            <span style="font-size:13px; line-height:1.5; color:#6B6B68;">Exactly as it appears on your Working with Children Check.</span>
+            <input type="text" required="true" value="{{ wName }}" onChange="{{ wSetName }}" placeholder="e.g. Jane Elizabeth Citizen" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:Arial,sans-serif;">
+          </label>
+          <label style="display:flex; flex-direction:column; gap:8px;">
+            <span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">Preferred name</span>
+            <span style="font-size:13px; line-height:1.5; color:#6B6B68;">What we should call you in rehearsals and backstage.</span>
+            <input type="text" value="{{ wPref }}" onChange="{{ wSetPref }}" placeholder="e.g. Jane" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:Arial,sans-serif;">
+          </label>
+          <label style="display:flex; flex-direction:column; gap:8px;">
+            <span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">Email <span style="color:#E8472B;">*</span></span>
+            <input type="email" required="true" value="{{ wEmail }}" onChange="{{ wSetEmail }}" placeholder="you@example.com" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:Arial,sans-serif;">
+          </label>
+          <label style="display:flex; flex-direction:column; gap:8px;">
+            <span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">Mobile <span style="color:#E8472B;">*</span></span>
+            <input type="tel" required="true" value="{{ wPhone }}" onChange="{{ wSetPhone }}" placeholder="04XX XXX XXX" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:Arial,sans-serif;">
+          </label>
+          <label style="display:flex; flex-direction:column; gap:8px;">
+            <span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">WWCC card number <span style="color:#E8472B;">*</span></span>
+            <input type="text" required="true" value="{{ wCard }}" onChange="{{ wSetCard }}" placeholder="e.g. 1234567A-01" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:'JetBrains Mono',monospace;">
+          </label>
+          <label style="display:flex; flex-direction:column; gap:8px;">
+            <span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">Card expiry <span style="color:#E8472B;">*</span></span>
+            <span style="font-size:13px; line-height:1.5; color:#6B6B68;">Expired cards cannot be accepted.</span>
+            <input type="date" required="true" value="{{ wExpiry }}" onChange="{{ wSetExpiry }}" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:'JetBrains Mono',monospace;">
+            <sc-if value="{{ wExpiryWarn }}">
+              <span style="font-size:13px; line-height:1.5; font-weight:700; color:{{ wExpiryWarnColor }};">{{ wExpiryWarn }}</span>
+            </sc-if>
+          </label>
+        </div>
+        <div style="margin-top:24px;">
+          <span style="display:block; font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; margin-bottom:8px;">Card type <span style="color:#E8472B;">*</span></span>
+          <span style="display:block; font-size:13px; line-height:1.5; color:#6B6B68; margin-bottom:12px;">Either type is accepted. Volunteer checks are free in Victoria.</span>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <label style="display:flex; align-items:center; gap:12px; background:#F4F1EA; border:1px solid #D9D5CC; padding:16px 22px; cursor:pointer; flex:1; min-width:200px;">
+              <input type="radio" name="wwcctype" checked="{{ wTypeVol }}" onChange="{{ wSetVol }}" style="width:20px; height:20px; accent-color:#0A0A0A;">
+              <span style="display:flex; flex-direction:column; gap:3px;">
+                <span style="font-size:16px; font-weight:700;">Volunteer check</span>
+                <span style="font-size:13px; color:#6B6B68;">Free, for unpaid roles</span>
+              </span>
+            </label>
+            <label style="display:flex; align-items:center; gap:12px; background:#F4F1EA; border:1px solid #D9D5CC; padding:16px 22px; cursor:pointer; flex:1; min-width:200px;">
+              <input type="radio" name="wwcctype" checked="{{ wTypeEmp }}" onChange="{{ wSetEmp }}" style="width:20px; height:20px; accent-color:#0A0A0A;">
+              <span style="display:flex; flex-direction:column; gap:3px;">
+                <span style="font-size:16px; font-weight:700;">Employee check</span>
+                <span style="font-size:13px; color:#6B6B68;">For paid or mixed roles</span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:1000px; margin:0 auto; padding:52px 48px 0;">
+        <div style="display:flex; align-items:center; gap:16px; margin-bottom:28px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Upload your card</span>
+          <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+        </div>
+        <label style="display:block; background:#F4F1EA; border:2px dashed #A8A59E; padding:44px 36px; cursor:pointer; text-align:center; transition:border-color .2s, background .2s;">
+          <span style="display:block; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:22px; letter-spacing:-.02em; margin-bottom:10px;">{{ wFileLabel }}</span>
+          <span style="display:block; font-size:14px; line-height:1.6; color:#3A3A37; max-width:52ch; margin:0 auto;">A clear photo or scan of the front of your Working with Children Check card, showing your name, photo, card number and expiry date. JPG, PNG or PDF.</span>
+          <span style="display:block; font-size:13px; line-height:1.6; color:#6B6B68; max-width:52ch; margin:12px auto 0;">Selecting your card here records it against your submission. You will be asked to attach the same file to the confirmation email at the final step.</span>
+          <input type="file" accept="image/*,application/pdf" onChange="{{ wSetFile }}" style="position:absolute; width:1px; height:1px; opacity:0; overflow:hidden;">
+        </label>
+        <p style="font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.6; color:#6B6B68; margin:14px 0 0;">Your card image is held securely and used only to verify your check. It is never published or shared beyond our Child Safety Officer and management.</p>
+      </section>
+
+      <section style="max-width:1000px; margin:0 auto; padding:52px 48px 0;">
+        <div style="display:flex; align-items:center; gap:16px; margin-bottom:28px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Volunteer agreement</span>
+          <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+          <sc-for list="{{ wwccTerms }}" as="t" hint-placeholder-count="5">
+            <label style="background:#F4F1EA; padding:28px 30px; display:flex; gap:18px; align-items:flex-start; cursor:pointer; border-left:4px solid {{ t.color }};">
+              <input type="checkbox" required="true" checked="{{ t.on }}" onChange="{{ t.toggle }}" style="width:22px; height:22px; margin-top:2px; flex-shrink:0; accent-color:#0A0A0A;">
+              <span style="display:flex; flex-direction:column; gap:7px;">
+                <span style="font-size:17px; font-weight:700; letter-spacing:-.01em; line-height:1.3;">{{ t.t }}</span>
+                <span style="font-size:15px; line-height:1.6; color:#3A3A37;">{{ t.d }}</span>
+              </span>
+            </label>
+          </sc-for>
+        </div>
+        <p style="font-size:14px; line-height:1.6; color:#3A3A37; margin:22px 0 0; max-width:70ch;">These commitments sit alongside our full <a class="cs-link-u" href="/health">Child Safety Plan and Code of Conduct</a>. All five must be agreed before you can volunteer with CentreStage.</p>
+      </section>
+
+      <section style="max-width:1000px; margin:0 auto; padding:44px 48px 104px;">
+        <div style="background:#0A0A0A; color:#F4F1EA; padding:44px 40px;">
+          <p style="font-size:16px; line-height:1.6; color:#C9C6BF; margin:0 0 8px;">By submitting this form you declare the information provided is true and correct, and that the card uploaded is your own current Working with Children Check.</p>
+          <p style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#7FD3FF; margin:0 0 28px;">This submission will be timestamped {{ wwccNow }}</p>
+          <sc-if value="{{ wwccError }}">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#FF8A6B; margin:0 0 20px;">{{ wwccError }}</p>
+          </sc-if>
+          <button type="submit" class="cs-btn cs-btn--inv" style="justify-content:center;">{{ wwccBtnLabel }}</button>
+        </div>
+      </section>
+    </form>
+    </sc-if>
+  </div>
+  </sc-if>
+
   <!-- ══════════════ FOOTER ══════════════ -->
   <footer style="background:#0A0A0A; color:#F4F1EA;">
     <div style="max-width:1600px; margin:0 auto; padding:72px 48px 36px;">
@@ -1522,6 +1690,7 @@
             <a class="cs-link-u" href="/productions" style="color:#F4F1EA;">Previous Productions</a>
             <a class="cs-link-u" href="/blog" style="color:#F4F1EA;">Journal</a>
             <a class="cs-link-u" href="/media" style="color:#F4F1EA;">Media &amp; Press</a>
+            <a class="cs-link-u" href="/wwcc" style="color:#F4F1EA;">Volunteer WWCC</a>
           </div>
         </div>
         <div>
@@ -1607,7 +1776,7 @@ class Component extends DCLogic {
   componentDidMount() {
     this._route = () => {
       let parts = (location.pathname || "/").replace(/^\/+|\/+$/g, "").split("/").filter(function (x) { return x && !/\.html?$/i.test(x); });
-      const known = ["home","tickets","about","education","health","productions","involved","blog","shop","contact","bio","media","weekly","singing","dance","auditions"];
+      const known = ["home","tickets","about","education","health","productions","involved","blog","shop","contact","bio","media","weekly","singing","dance","auditions","wwcc"];
       const pi = parts.lastIndexOf("post");
       if (pi >= 0 && parts[pi + 1]) {
         this.setState({ route: "post", slug: parts[pi + 1], sent: false });
@@ -1631,6 +1800,7 @@ class Component extends DCLogic {
     };
     this._meta = () => {
       const aud = (location.pathname || "").indexOf("auditions") > -1;
+      const priv = (location.pathname || "").indexOf("wwcc") > -1;
       const base = "https://centrestage.org.au";
       const title = aud
         ? "Frozen Auditions \u2014 CentreStage, Geelong"
@@ -1649,6 +1819,8 @@ class Component extends DCLogic {
       set('meta[name="twitter:title"]', "content", title);
       set('meta[name="twitter:description"]', "content", desc);
       set('meta[name="twitter:image"]', "content", img);
+      set('meta[name="robots"]', "content", priv ? "noindex, nofollow, noarchive" : "index, follow");
+      if (priv) { document.title = "Volunteer WWCC — CentreStage"; }
     };
     window.addEventListener("popstate", this._route);
     document.addEventListener("click", this._click);
@@ -1716,6 +1888,16 @@ class Component extends DCLogic {
     return this.state.route === id ? "border-bottom-color:#0A0A0A;" : "";
   }
 
+  fmtStamp(d) {
+    const pad = (n) => (n < 10 ? "0" + n : "" + n);
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const mon = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let h = d.getHours(); const ap = h >= 12 ? "pm" : "am";
+    h = h % 12; if (h === 0) h = 12;
+    return days[d.getDay()] + " " + d.getDate() + " " + mon[d.getMonth()] + " " + d.getFullYear() +
+      " at " + h + ":" + pad(d.getMinutes()) + ap;
+  }
+
   wix(id) {
     return "https://static.wixstatic.com/media/" + id + "/v1/fill/w_900,h_600,al_c,q_85,enc_avif,quality_auto/file.avif";
   }
@@ -1732,6 +1914,13 @@ class Component extends DCLogic {
         meta: feat ? "#F2D65A" : "#6B6B68",
         body: feat ? "#F4F1EA" : "#3A3A37",
         btnClass: feat ? "cs-btn--inv" : "",
+        soldOut: s.status === "Sold out",
+        onSale: s.status !== "Sold out",
+        imgFit: s.poster ? "contain" : "cover",
+        imgBg: s.poster ? "#0A0A0A" : "transparent",
+        statusColor: s.status === "Sold out" ? "#6B6B68" : "#E8472B",
+        statusFg: s.status === "Sold out" ? "#F4F1EA" : "#F4F1EA",
+        ctaLabel: s.status === "Sold out" ? "Sold out" : s.cta + " →",
       };
     });
     const productions = (d && d.PRODUCTIONS || []).map((p) => ({
@@ -1757,6 +1946,147 @@ class Component extends DCLogic {
       isInvolved: r === "involved", isBlog: r === "blog", isPost: r === "post",
       isShop: false, isContact: r === "contact", isBio: r === "bio", isMedia: r === "media",
       isWeekly: r === "weekly", isSinging: r === "singing", isDance: r === "dance",
+      isWwcc: r === "wwcc",
+      wwccDone: !!this.state.wwccDone, wwccForm: !this.state.wwccDone,
+      wwccName: this.state.wwccName || "", wwccStamp: this.state.wwccStamp || "",
+      wwccFileDone: this.state.wFile || "your card photo",
+      wwccSent: !!this.state.wwccSent, wwccMailFallback: !this.state.wwccSent,
+      wwccBtnLabel: this.state.wwccSending ? "Submitting…" : "Submit my Working with Children Check",
+      wwccNow: this.fmtStamp(new Date()), wwccError: this.state.wwccError || "",
+      wName: this.state.wName || "", wPref: this.state.wPref || "", wEmail: this.state.wEmail || "",
+      wPhone: this.state.wPhone || "", wCard: this.state.wCard || "", wExpiry: this.state.wExpiry || "",
+      wType: this.state.wType || "",
+      wTypeVol: this.state.wType === "Volunteer", wTypeEmp: this.state.wType === "Employee",
+      wSetVol: () => this.setState({ wType: "Volunteer", wwccError: "" }),
+      wSetEmp: () => this.setState({ wType: "Employee", wwccError: "" }),
+      wExpiryWarn: (() => {
+        const v = this.state.wExpiry;
+        if (!v) return "";
+        const exp = new Date(v + "T23:59:59");
+        if (isNaN(exp.getTime())) return "";
+        const today = new Date(); today.setHours(0, 0, 0, 0);
+        if (exp < today) return "This card has expired and cannot be accepted. Please renew it before submitting.";
+        const soon = new Date(today.getTime() + 60 * 86400000);
+        if (exp <= soon) return "Heads up — this card expires within 60 days. Please plan to renew it.";
+        return "";
+      })(),
+      wExpiryWarnColor: (() => {
+        const v = this.state.wExpiry;
+        if (!v) return "#6B6B68";
+        const exp = new Date(v + "T23:59:59");
+        if (isNaN(exp.getTime())) return "#6B6B68";
+        const today = new Date(); today.setHours(0, 0, 0, 0);
+        return exp < today ? "#E8472B" : "#C9902D";
+      })(),
+      wSetName: (e) => this.setState({ wName: e.target.value, wwccError: "" }),
+      wSetPref: (e) => this.setState({ wPref: e.target.value }),
+      wSetEmail: (e) => this.setState({ wEmail: e.target.value, wwccError: "" }),
+      wSetPhone: (e) => this.setState({ wPhone: e.target.value, wwccError: "" }),
+      wSetCard: (e) => this.setState({ wCard: e.target.value, wwccError: "" }),
+      wSetExpiry: (e) => this.setState({ wExpiry: e.target.value, wwccError: "" }),
+      wSetFile: (e) => {
+        const f = e.target.files && e.target.files[0];
+        if (!f) { this.setState({ wFile: "", wFileData: "" }); return; }
+        if (f.size > 10 * 1024 * 1024) {
+          this.setState({ wFile: "", wFileData: "", wwccError: "That file is larger than 10MB. Please upload a smaller photo." });
+          return;
+        }
+        this.setState({ wFile: f.name, wwccError: "" });
+        const fr = new FileReader();
+        fr.onload = () => this.setState({ wFileData: fr.result });
+        fr.readAsDataURL(f);
+      },
+      wFileLabel: this.state.wFile ? "Selected: " + this.state.wFile : "Choose a photo of your WWCC card",
+      wwccPrep: [
+        { n: "01", t: "Have your card ready", d: "You will need your Working with Children Check card number, its expiry date, and a clear photo of the front of the card." },
+        { n: "02", t: "Volunteer or Employee check", d: "Both types are accepted. Volunteer checks are free in Victoria. Whichever you hold, it must be current — expired cards cannot be accepted." },
+        { n: "03", t: "Allow five minutes", d: "You will confirm your details, upload your card and agree to our child safety commitments. Your submission is timestamped automatically." },
+      ],
+      wwccTerms: [
+        { key: "t1", color: "#E8472B", on: !!this.state.t1, toggle: () => this.setState((s) => ({ t1: !s.t1, wwccError: "" })),
+          t: "Child safety is my responsibility",
+          d: "I have read and will uphold the CentreStage Child Safety Plan and Code of Conduct. I understand CentreStage has zero tolerance for child abuse, and that the safety and wellbeing of children comes before every other consideration." },
+        { key: "t2", color: "#2E6FB7", on: !!this.state.t2, toggle: () => this.setState((s) => ({ t2: !s.t2, wwccError: "" })),
+          t: "I will report concerns immediately",
+          d: "I will report any concern, disclosure, allegation or observation about a child's safety to the Child Safety Officer without delay, and I understand serious matters are reported to Victoria Police and child protection authorities. In an emergency I will call 000." },
+        { key: "t3", color: "#2E8B6B", on: !!this.state.t3, toggle: () => this.setState((s) => ({ t3: !s.t3, wwccError: "" })),
+          t: "I will be identifiable as a volunteer",
+          d: "I will wear my CentreStage lanyard and identification at all times while on site, at rehearsals, backstage and at performances, so that children, families and staff can always recognise me as an authorised volunteer." },
+        { key: "t4", color: "#C9902D", on: !!this.state.t4, toggle: () => this.setState((s) => ({ t4: !s.t4, wwccError: "" })),
+          t: "I will maintain safe boundaries",
+          d: "I will never be alone one-to-one with a child, will use only approved and monitored communication channels, will never contact a young person privately or through personal social media, and will follow all supervision, change room and transport protocols." },
+        { key: "t5", color: "#7A4FB5", on: !!this.state.t5, toggle: () => this.setState((s) => ({ t5: !s.t5, wwccError: "" })),
+          t: "My check is current and I will keep it current",
+          d: "The card I have uploaded is my own, is current, and I will notify CentreStage immediately if it expires, is revoked or if my circumstances change in any way that affects my suitability to work with children." },
+      ],
+      wwccSubmit: (e) => {
+        e.preventDefault();
+        const s = this.state;
+        if (!s.wFile) { this.setState({ wwccError: "Please upload a photo of your Working with Children Check card." }); return; }
+        if (!s.wExpiry) { this.setState({ wwccError: "Please enter the expiry date shown on your card." }); return; }
+        const exp = new Date(s.wExpiry + "T23:59:59");
+        const today = new Date(); today.setHours(0, 0, 0, 0);
+        if (isNaN(exp.getTime())) { this.setState({ wwccError: "That expiry date could not be read. Please re-enter it." }); return; }
+        if (exp < today) { this.setState({ wwccError: "This card expired on " + s.wExpiry + ". An expired Working with Children Check cannot be accepted — please renew it at service.vic.gov.au and submit this form again once you have your new card." }); return; }
+        if (!s.wType) { this.setState({ wwccError: "Please select whether your card is a Volunteer or Employee check." }); return; }
+        if (!(s.t1 && s.t2 && s.t3 && s.t4 && s.t5)) { this.setState({ wwccError: "Please agree to all five volunteer commitments." }); return; }
+        const stamp = this.fmtStamp(new Date());
+        const endpoint = "https://script.google.com/macros/s/AKfycbxSgjgiAxRmp7iLGHtGSXwf8W9XwkuT7iZF-KcX34_6hR-bFsCyH6b097Q_f8LrAM3BfA/exec";
+        if (endpoint) {
+          this.setState({ wwccSending: true, wwccError: "" });
+          fetch(endpoint, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify({
+              submittedAt: stamp,
+              fullName: s.wName || "",
+              preferredName: s.wPref || "",
+              email: s.wEmail || "",
+              phone: s.wPhone || "",
+              cardType: s.wType || "",
+              cardNumber: s.wCard || "",
+              cardExpiry: s.wExpiry || "",
+              agreedAll: true,
+              fileName: s.wFile || "",
+              fileData: s.wFileData || "",
+            }),
+          }).then(() => {
+            this.setState({ wwccDone: true, wwccSent: true, wwccSending: false, wwccStamp: stamp, wwccName: (s.wPref || s.wName || "volunteer") });
+          }).catch(() => {
+            this.setState({ wwccSending: false, wwccError: "We couldn't reach our submission service. Please check your connection and try again, or email your card to richelle@centrestage.org.au." });
+          });
+          return;
+        }
+        const body = [
+          "CentreStage — Working with Children Check submission",
+          "",
+          "Completed: " + stamp,
+          "Full legal name: " + (s.wName || ""),
+          "Preferred name: " + (s.wPref || ""),
+          "Email: " + (s.wEmail || ""),
+          "Mobile: " + (s.wPhone || ""),
+          "WWCC card number: " + (s.wCard || ""),
+          "Card type: " + (s.wType || ""),
+          "Card expiry: " + (s.wExpiry || "") + "  (verified current at time of submission)",
+          "Card image file: " + (s.wFile || ""),
+          "",
+          "Agreed to all five volunteer commitments: YES",
+          "  1. Child safety is my responsibility",
+          "  2. I will report concerns immediately",
+          "  3. I will be identifiable as a volunteer",
+          "  4. I will maintain safe boundaries",
+          "  5. My check is current and I will keep it current",
+          "",
+          "IMPORTANT: please attach the card image file to this email before sending.",
+        ].join("\n");
+        try {
+          window.location.href = "mailto:richelle@centrestage.org.au?subject=" +
+            encodeURIComponent("WWCC submission — " + (s.wName || "Volunteer")) +
+            "&body=" + encodeURIComponent(body);
+        } catch (err) {}
+        this.setState({ wwccDone: true, wwccStamp: stamp, wwccName: (s.wPref || s.wName || "volunteer") });
+      },
       isAuditions: r === "auditions",
       adultSteps: [
         { n: "01", t: "Read the casting brief", d: "Check the character breakdown, rehearsal commitment and availability requirements before you book.", meta: "19 pages · PDF", link: "Download the brief ↗", href: "assets/frozen-casting-brief.pdf" },
