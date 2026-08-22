@@ -1605,7 +1605,7 @@
         </div>
         <div style="margin-top:24px;">
           <span style="display:block; font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; margin-bottom:8px;">Card type <span style="color:#E8472B;">*</span></span>
-          <span style="display:block; font-size:13px; line-height:1.5; color:#6B6B68; margin-bottom:12px;">Either type is accepted. Volunteer checks are free in Victoria.</span>
+          <span style="display:block; font-size:13px; line-height:1.5; color:#6B6B68; margin-bottom:12px;">All three are accepted. Volunteer checks are free in Victoria, and current VIT registration is recognised in place of a WWCC.</span>
           <div style="display:flex; gap:12px; flex-wrap:wrap;">
             <label style="display:flex; align-items:center; gap:12px; background:#F4F1EA; border:1px solid #D9D5CC; padding:16px 22px; cursor:pointer; flex:1; min-width:200px;">
               <input type="radio" name="wwcctype" checked="{{ wTypeVol }}" onChange="{{ wSetVol }}" style="width:20px; height:20px; accent-color:#0A0A0A;">
@@ -1619,6 +1619,13 @@
               <span style="display:flex; flex-direction:column; gap:3px;">
                 <span style="font-size:16px; font-weight:700;">Employee check</span>
                 <span style="font-size:13px; color:#6B6B68;">For paid or mixed roles</span>
+              </span>
+            </label>
+            <label style="display:flex; align-items:center; gap:12px; background:#F4F1EA; border:1px solid #D9D5CC; padding:16px 22px; cursor:pointer; flex:1; min-width:200px;">
+              <input type="radio" name="wwcctype" checked="{{ wTypeVit }}" onChange="{{ wSetVit }}" style="width:20px; height:20px; accent-color:#0A0A0A;">
+              <span style="display:flex; flex-direction:column; gap:3px;">
+                <span style="font-size:16px; font-weight:700;">VIT registration</span>
+                <span style="font-size:13px; color:#6B6B68;">Victorian Institute of Teaching</span>
               </span>
             </label>
           </div>
@@ -1956,9 +1963,10 @@ class Component extends DCLogic {
       wName: this.state.wName || "", wPref: this.state.wPref || "", wEmail: this.state.wEmail || "",
       wPhone: this.state.wPhone || "", wCard: this.state.wCard || "", wExpiry: this.state.wExpiry || "",
       wType: this.state.wType || "",
-      wTypeVol: this.state.wType === "Volunteer", wTypeEmp: this.state.wType === "Employee",
+      wTypeVol: this.state.wType === "Volunteer", wTypeEmp: this.state.wType === "Employee", wTypeVit: this.state.wType === "VIT",
       wSetVol: () => this.setState({ wType: "Volunteer", wwccError: "" }),
       wSetEmp: () => this.setState({ wType: "Employee", wwccError: "" }),
+      wSetVit: () => this.setState({ wType: "VIT", wwccError: "" }),
       wExpiryWarn: (() => {
         const v = this.state.wExpiry;
         if (!v) return "";
@@ -1991,7 +1999,7 @@ class Component extends DCLogic {
           this.setState({ wFile: "", wFileData: "", wwccError: "That file is larger than 10MB. Please upload a smaller photo." });
           return;
         }
-        this.setState({ wFile: f.name, wwccError: "" });
+        this.setState({ wFile: f.name, wFileObj: f, wwccError: "" });
         const fr = new FileReader();
         fr.onload = () => this.setState({ wFileData: fr.result });
         fr.readAsDataURL(f);
@@ -1999,7 +2007,7 @@ class Component extends DCLogic {
       wFileLabel: this.state.wFile ? "Selected: " + this.state.wFile : "Choose a photo of your WWCC card",
       wwccPrep: [
         { n: "01", t: "Have your card ready", d: "You will need your Working with Children Check card number, its expiry date, and a clear photo of the front of the card." },
-        { n: "02", t: "Volunteer or Employee check", d: "Both types are accepted. Volunteer checks are free in Victoria. Whichever you hold, it must be current — expired cards cannot be accepted." },
+        { n: "02", t: "Volunteer, Employee or VIT", d: "All three are accepted. Volunteer checks are free in Victoria, and current VIT registration is recognised in place of a WWCC. Whichever you hold, it must be current — expired cards cannot be accepted." },,
         { n: "03", t: "Allow five minutes", d: "You will confirm your details, upload your card and agree to our child safety commitments. Your submission is timestamped automatically." },
       ],
       wwccTerms: [
@@ -2028,34 +2036,33 @@ class Component extends DCLogic {
         const today = new Date(); today.setHours(0, 0, 0, 0);
         if (isNaN(exp.getTime())) { this.setState({ wwccError: "That expiry date could not be read. Please re-enter it." }); return; }
         if (exp < today) { this.setState({ wwccError: "This card expired on " + s.wExpiry + ". An expired Working with Children Check cannot be accepted — please renew it at service.vic.gov.au and submit this form again once you have your new card." }); return; }
-        if (!s.wType) { this.setState({ wwccError: "Please select whether your card is a Volunteer or Employee check." }); return; }
+        if (!s.wType) { this.setState({ wwccError: "Please select whether you hold a Volunteer check, Employee check or VIT registration." }); return; }
         if (!(s.t1 && s.t2 && s.t3 && s.t4 && s.t5)) { this.setState({ wwccError: "Please agree to all five volunteer commitments." }); return; }
         const stamp = this.fmtStamp(new Date());
-        const endpoint = "https://script.google.com/macros/s/AKfycbxSgjgiAxRmp7iLGHtGSXwf8W9XwkuT7iZF-KcX34_6hR-bFsCyH6b097Q_f8LrAM3BfA/exec";
+        const endpoint = "https://formspree.io/f/xbgrbyel";
         if (endpoint) {
           this.setState({ wwccSending: true, wwccError: "" });
-          fetch(endpoint, {
-            method: "POST",
-            mode: "no-cors",
-            headers: { "Content-Type": "text/plain;charset=utf-8" },
-            body: JSON.stringify({
-              submittedAt: stamp,
-              fullName: s.wName || "",
-              preferredName: s.wPref || "",
-              email: s.wEmail || "",
-              phone: s.wPhone || "",
-              cardType: s.wType || "",
-              cardNumber: s.wCard || "",
-              cardExpiry: s.wExpiry || "",
-              agreedAll: true,
-              fileName: s.wFile || "",
-              fileData: s.wFileData || "",
-            }),
-          }).then(() => {
-            this.setState({ wwccDone: true, wwccSent: true, wwccSending: false, wwccStamp: stamp, wwccName: (s.wPref || s.wName || "volunteer") });
-          }).catch(() => {
-            this.setState({ wwccSending: false, wwccError: "We couldn't reach our submission service. Please check your connection and try again, or email your card to richelle@centrestage.org.au." });
-          });
+          const fd = new FormData();
+          fd.append("_subject", "WWCC submission — " + (s.wName || "volunteer"));
+          fd.append("Submitted at", stamp);
+          fd.append("Full legal name", s.wName || "");
+          fd.append("Preferred name", s.wPref || "");
+          fd.append("email", s.wEmail || "");
+          fd.append("Mobile", s.wPhone || "");
+          fd.append("Card type", s.wType || "");
+          fd.append("WWCC card number", s.wCard || "");
+          fd.append("Card expiry", (s.wExpiry || "") + " (verified current at submission)");
+          fd.append("Agreed to all five commitments", "YES");
+          if (s.wFileObj) { fd.append("WWCC card image", s.wFileObj, s.wFile || "wwcc-card"); }
+          fd.append("Card image file name", s.wFile || "");
+          fetch(endpoint, { method: "POST", body: fd, headers: { Accept: "application/json" } })
+            .then((r) => {
+              if (!r.ok) { throw new Error("bad status"); }
+              this.setState({ wwccDone: true, wwccSent: true, wwccSending: false, wwccStamp: stamp, wwccName: (s.wPref || s.wName || "volunteer") });
+            })
+            .catch(() => {
+              this.setState({ wwccSending: false, wwccError: "We couldn't reach our submission service. Please check your connection and try again, or email your card to richelle@centrestage.org.au." });
+            });
           return;
         }
         const body = [
