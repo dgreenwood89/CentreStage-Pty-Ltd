@@ -794,6 +794,22 @@
       <sc-for list="{{ post.body }}" as="para" hint-placeholder-count="4">
         <p style="margin:0 0 24px;">{{ para }}</p>
       </sc-for>
+      <sc-for list="{{ post.bodyRich }}" as="blk" hint-placeholder-count="6">
+        <sc-if value="{{ blk.h }}">
+          <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:26px; letter-spacing:-.01em; margin:44px 0 18px;">{{ blk.h }}</h2>
+        </sc-if>
+        <sc-if value="{{ blk.p }}">
+          <p style="margin:0 0 24px;">{{ blk.p }}</p>
+        </sc-if>
+        <sc-if value="{{ blk.img }}">
+          <figure style="margin:8px -48px 36px;">
+            <img src="{{ blk.img }}" alt="{{ blk.alt }}" style="width:100%; aspect-ratio:3/2; object-fit:cover; display:block;">
+            <sc-if value="{{ blk.cap }}">
+              <figcaption style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68; margin:12px 48px 0;">{{ blk.cap }}</figcaption>
+            </sc-if>
+          </figure>
+        </sc-if>
+      </sc-for>
       <sc-if value="{{ post.noBody }}">
         <div style="border-top:1px solid #D9D5CC; margin-top:8px; padding-top:28px;">
           <p style="font-size:16px; color:#6B6B68; margin:0 0 20px;">This article is part of the CentreStage Journal. Read the complete piece on our current site.</p>
