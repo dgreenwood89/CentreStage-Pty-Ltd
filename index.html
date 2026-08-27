@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>document.write('<base href="' + document.baseURI.replace(/[^\/]*$/, '') + '">');</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
@@ -1831,7 +1832,7 @@ class Component extends DCLogic {
       const desc = aud
         ? "Auditions now open for CentreStage's production of Frozen. Adults and young performers welcome. 5 \u2013 20 March 2027 at The Playhouse, Geelong Arts Centre."
         : "Award-winning Geelong theatre since 2010. Ambitious productions, a performing arts academy for ages 4\u201318, and talent representation.";
-      const img = base + (aud ? "/assets/og-frozen-auditions.jpg" : "/assets/og-image.jpg");
+      const img = base + (aud ? "/assets/og-frozen-auditions.jpg" : "assets/og-image.jpg");
       document.title = title;
       const set = (sel, attr, val) => { const el = document.querySelector(sel); if (el) el.setAttribute(attr, val); };
       set('meta[name="description"]', "content", desc);

@@ -107,7 +107,7 @@ export const POSTS = [
       { h: "Our current programs continue" },
       { p: "CentreStage continues to deliver programs across our existing locations, including 26 Rodney Road, North Geelong, our Fyansford premises and Vines Road, Hamlyn Heights. Our current classes, rehearsals and productions are continuing as scheduled. We are looking forward to presenting our junior productions throughout October and November, alongside preparations for our major 2027 production of Disney's Frozen." },
       { img: "assets/blog/sweet16/music-man-band.jpg", alt: "CentreStage students in costume for The Music Man", cap: "Junior productions continue throughout October and November." },
-      { p: "Shortly, 350 families will be cheering our students on as the prepared for their stage debut. FGamilies and performers should continue to follow the specific rehearsal and venue information provided for their program." },
+      { p: "Shortly, 350 families will be cheering our students on as the prepared for their stage debut. Families and performers should continue to follow the specific rehearsal and venue information provided for their program." },
       { img: "assets/blog/sweet16/crowd-cheer.jpg", alt: "Families cheering with CentreStage t-shirts on", cap: "350 families will be cheering our students on this season." },
       { h: "Planning for a permanent future" },
       { p: "CentreStage is currently involved in commercial discussions concerning its future premises with local agents and our goal is to secure a long-term home that expands upon the capabilities of our current spaces and supports the next stage of our organisation's development." },
