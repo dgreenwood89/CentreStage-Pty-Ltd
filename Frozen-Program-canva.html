@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>Frozen &mdash; CentreStage Theatrical Program</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  doc-page:not(:defined){visibility:hidden}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#0A0A0A;-webkit-font-smoothing:antialiased}
+  .page{position:relative;width:220mm;height:307mm;background:#EAF4FF;overflow:hidden;display:flex;flex-direction:column}
+  .safe{position:relative;z-index:3;flex:1;display:flex;flex-direction:column;padding:18mm 20mm 16mm;min-height:0}
+  .hasIce .safe{padding-top:30mm}
+  .marks{position:absolute;inset:0;z-index:9;pointer-events:none}
+  .m{position:absolute;background:#000}
+  .tl1{top:0;left:5mm;width:.25pt;height:3.5mm}.tl2{top:5mm;left:0;height:.25pt;width:3.5mm}
+  .tr1{top:0;right:5mm;width:.25pt;height:3.5mm}.tr2{top:5mm;right:0;height:.25pt;width:3.5mm}
+  .bl1{bottom:0;left:5mm;width:.25pt;height:3.5mm}.bl2{bottom:5mm;left:0;height:.25pt;width:3.5mm}
+  .br1{bottom:0;right:5mm;width:.25pt;height:3.5mm}.br2{bottom:5mm;right:0;height:.25pt;width:3.5mm}
+  .cover .m,.castlist .m,.ifc .m{background:#fff;opacity:.6}
+
+  /* ── ice design elements ── */
+  .icicles{position:absolute;top:0;left:0;right:0;height:74mm;z-index:1;pointer-events:none;
+    background:url(assets/frozen/aurora-band-lite.png) top center/100% 100% no-repeat;opacity:.92;
+    mask-image:linear-gradient(180deg,#000 0%,#000 52%,transparent 100%);
+    -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 52%,transparent 100%)}
+  .icicles.narrow{height:40mm;background-image:url(assets/frozen/aurora-band-slim-lite.png);opacity:.88}
+  .frost{position:absolute;width:132mm;height:132mm;z-index:1;pointer-events:none;
+    background:url(assets/frozen/filigree-lite.png) center/contain no-repeat;opacity:.22}
+  .ftl{top:-34mm;left:-34mm}.ftr{top:-38mm;right:-34mm}
+  .fbl{bottom:-38mm;left:-36mm}.fbr{bottom:-34mm;right:-34mm}
+  .crule{display:flex;align-items:center;gap:3mm;margin:5mm 0 1mm;flex:none}
+  .crule i{flex:1;height:.5pt;background:linear-gradient(90deg,rgba(30,99,174,0),#1E63AE)}
+  .crule i:last-child{background:linear-gradient(90deg,#1E63AE,rgba(30,99,174,0))}
+  .crule b{width:2.4mm;height:2.4mm;background:#7FD3FF;transform:rotate(45deg);flex:none}
+  .tp .crule{width:56mm;margin:8mm 0}
+
+  h1,h3{font-family:'Arial Black',Arial,sans-serif;font-weight:900;letter-spacing:-.03em;line-height:.94;margin:0}
+  .d2{font-size:19mm}.d3{font-size:15mm}.d4{font-size:11mm}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:8pt;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#1E63AE;display:block;margin-bottom:4mm}
+  .eyebrow.ice{color:#7FD3FF}
+  .onink{color:#fff}.onink2{color:#C6DCF2}
+  p{font-size:11pt;line-height:1.5;color:#2A3B4C;margin:0 0 3.2mm}
+  p:last-child{margin-bottom:0}
+  .lead{font-size:12pt;line-height:1.5;color:#1E3348}
+  .drop{font-size:13pt;line-height:1.4;color:#04101F;font-weight:700}
+  .twocol{columns:2;column-gap:10mm;margin-top:5mm;flex:1;min-height:0}
+  h4{font-family:'JetBrains Mono',monospace;font-size:7.6pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#1E63AE;margin:0 0 2.6mm}
+
+  .rh{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:2.5mm;margin-bottom:6mm;border-bottom:.5pt solid #B8CFE4;flex:none}
+  .rhe,.rhf{font-family:'JetBrains Mono',monospace;font-size:7pt;letter-spacing:.2em;text-transform:uppercase;color:#6E8BA6}
+  .castlist .rh{border-bottom-color:#1E3A5C}.castlist .rhe,.castlist .rhf{color:#7FA3C4}
+
+  .cover{background:#04101F}
+  .bleedimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;z-index:0}
+  /* cover: blank key art full bleed, licensed title lockup placed separately */
+  .cover{background:#0A2646}
+  .cover .bleedimg{object-position:32% 42%}
+  .cover .coverwash{background:linear-gradient(180deg,rgba(4,16,31,.82) 0%,rgba(4,16,31,.58) 12%,rgba(4,16,31,.10) 26%,rgba(4,16,31,0) 40%,rgba(4,16,31,.30) 62%,rgba(4,16,31,.78) 82%,rgba(4,16,31,.92) 100%)}
+  .cover .cvmid{justify-content:flex-end;padding-bottom:6mm}
+  /* credits page: stacked role/name pairs, no leaders */
+  .crgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10mm 16mm;margin-top:7mm;flex:1;min-height:0;align-content:start}
+  .crcol{min-width:0}
+  .crh{color:#7FD3FF;padding-bottom:2.2mm;margin-bottom:4.5mm;border-bottom:.5pt solid #1E3A5C}
+  .cr{margin-bottom:4.6mm}
+  .crr{display:block;font-family:'JetBrains Mono',monospace;font-size:8.6pt;letter-spacing:.16em;text-transform:uppercase;color:#7FA3C4;line-height:1.2}
+  .crn{display:block;font-size:12.5pt;font-weight:700;color:#fff;line-height:1.25;margin-top:.9mm}
+  .cover{background:#04101F}
+  .cvart{object-fit:cover !important;object-position:center top !important;background:#04101F}
+  .cvplate{width:100%;display:flex;justify-content:center;padding:7mm 8mm 8mm;background:linear-gradient(180deg,rgba(240,248,255,.06) 0%,rgba(240,248,255,.93) 26%,rgba(255,255,255,.97) 62%,rgba(240,248,255,.90) 100%);box-shadow:0 0 18mm rgba(200,232,255,.34)}
+  .cvtitle{width:150mm;max-width:100%;height:auto;display:block}
+  .coverwash{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,16,31,.86) 0%,rgba(4,16,31,.74) 9%,rgba(4,16,31,.24) 20%,rgba(4,16,31,0) 30%,rgba(4,16,31,0) 70%,rgba(4,16,31,.30) 80%,rgba(4,16,31,.80) 89%,rgba(4,16,31,.94) 100%)}
+  .bleedfill{position:absolute;inset:0;z-index:0;background:radial-gradient(120% 90% at 78% 8%,#1E63AE 0%,#0A2646 46%,#04101F 100%)}
+  .cvr{justify-content:space-between;padding:22mm 20mm 12mm}
+  .back .cvr{padding-top:34mm}
+  .cvtop{display:flex;justify-content:space-between;align-items:center}
+  .wm{height:7mm}
+  .cvpres{font-family:'JetBrains Mono',monospace;font-size:8pt;letter-spacing:.28em;text-transform:uppercase;color:#7FD3FF}
+  .cvmid{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center}
+  .cvbot{display:flex;flex-direction:column;align-items:center;gap:4mm}
+  .cvrule{width:100%;height:.5pt;background:rgba(127,211,255,.42)}
+  .cvmeta{display:flex;gap:9mm;flex-wrap:wrap;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:8.4pt;letter-spacing:.14em;text-transform:uppercase;color:#EAF4FF}
+  .back .cvmid{align-items:flex-start;justify-content:flex-end;padding-bottom:8mm}
+  .bkmid h1{margin:3mm 0 5mm}.bkmid .lead{max-width:104mm}
+  .bkgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8mm;width:100%;padding-top:5mm}
+  .bkgrid h4{color:#7FD3FF}
+  .bkgrid p{font-size:10pt;line-height:1.55;color:#C6DCF2}
+  .bkmeta{justify-content:space-between;width:100%;color:#7FA3C4;font-size:7.4pt}
+
+  .ifc{background:#0A2646}
+  .ifc .rhe,.ifc .rhf{color:#7FA3C4}.ifc .rh{border-bottom-color:#1E3A5C}
+  .ackwrap{flex:1;display:flex;flex-direction:column;justify-content:center}
+  .ifc h1{color:#fff;margin-bottom:6mm}
+  .ifc .lead{color:#C6DCF2;max-width:118mm}
+  .flags{display:flex;gap:6mm;margin:0 0 7mm}
+  .flagslot{width:44mm;aspect-ratio:3/2;border:.5pt dashed rgba(127,211,255,.5);background:rgba(255,255,255,.05);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4mm;text-align:center;padding:2mm}
+  .flagslot span{font-family:'JetBrains Mono',monospace;font-size:6.4pt;letter-spacing:.14em;color:#9FD9FF;line-height:1.4}
+  .flagslot em{font-family:'JetBrains Mono',monospace;font-size:5.8pt;letter-spacing:.1em;color:#5E86B3;font-style:normal}
+  .pull{margin-top:8mm;padding-top:6mm;border-top:.5pt solid #1E3A5C;position:relative}
+  .pull .q{position:absolute;left:-2mm;top:2mm;font-family:Georgia,serif;font-size:24mm;line-height:1;color:#7FD3FF;opacity:.28}
+  .pull p{font-family:Georgia,'Times New Roman',serif;font-size:15pt;line-height:1.45;color:#EAF4FF;font-style:italic;padding-left:12mm;margin-bottom:3mm}
+  .attr{display:block;padding-left:12mm;font-family:'JetBrains Mono',monospace;font-size:7.6pt;letter-spacing:.18em;text-transform:uppercase;color:#9FD9FF}
+
+  .tp{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center}
+  .tpco{font-family:'JetBrains Mono',monospace;font-size:8.4pt;letter-spacing:.28em;text-transform:uppercase;color:#1E63AE}
+  .tptitle{width:104mm;height:auto;margin:4mm 0 2mm}
+  .tpsub{font-family:'JetBrains Mono',monospace;font-size:8.6pt;letter-spacing:.3em;text-transform:uppercase;color:#4E7699}
+  .tpcred{width:100%;max-width:132mm;display:grid;grid-template-columns:1fr 1fr;gap:0 8mm}
+  .tprow{display:flex;flex-direction:column;gap:.5mm;margin-bottom:2.6mm}
+  .tpk{font-family:'JetBrains Mono',monospace;font-size:6.6pt;letter-spacing:.16em;text-transform:uppercase;color:#6E8BA6}
+  .tpv{font-size:11.4pt;font-weight:700;color:#04101F;letter-spacing:-.01em}
+  .tplic{margin-top:3.5mm;padding:4mm 5.5mm;background:#fff;border-top:1.5pt solid #FF8A6B;text-align:left;width:100%}
+  .tplic p{font-size:8.6pt;line-height:1.34;margin-bottom:1.1mm}
+  .tplic strong{color:#FF8A6B;font-family:'JetBrains Mono',monospace;font-size:7.6pt;letter-spacing:.14em}
+  .tpsm{font-size:8pt;color:#6E8BA6}
+
+  .sig{flex:none;margin-top:5mm;padding-top:4mm;border-top:.5pt solid #B8CFE4;display:flex;flex-direction:column;gap:1mm}
+  .signame{font-family:'Arial Black',Arial;font-weight:900;font-size:12pt;letter-spacing:-.02em}
+  .sigrole{font-family:'JetBrains Mono',monospace;font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;color:#6E8BA6}
+
+  .castlist{background:#04101F}
+  .clgrid{display:grid;grid-template-columns:1fr 1fr;gap:12mm;margin-top:6mm;flex:1;min-height:0}
+  .clh{color:#7FD3FF;padding-bottom:2mm;border-bottom:.5pt solid #1E3A5C}
+  .cl{display:flex;align-items:baseline;gap:2.5mm;padding:1.9mm 0;border-bottom:.25pt solid rgba(127,211,255,.14)}
+  .clr{font-size:10.4pt;font-weight:700;color:#fff;white-space:nowrap}
+  .cldot{flex:1;border-bottom:.25pt dotted #3E5F80;transform:translateY(-1mm)}
+  .clp{font-family:'JetBrains Mono',monospace;font-size:7.6pt;letter-spacing:.1em;color:#9FD9FF;white-space:nowrap}
+  .clens{flex:none;margin-top:3mm;padding-top:3mm;border-top:.5pt solid #1E3A5C}
+  .ensnames{font-family:Arial,Helvetica,sans-serif;font-size:11pt;line-height:1.5;color:#C6DCF2;margin:0 0 2mm}
+  .ensnote{font-size:9pt;color:#6E8BA6;font-style:italic}
+
+  .ycintro{max-width:none !important;columns:2;column-gap:14mm;text-align:justify;hyphens:auto}
+  .ycgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm;margin:7mm 0}
+  .yc{background:#fff;border-top:2pt solid #7FD3FF;padding:6mm 6mm 7mm;display:flex;flex-direction:column}
+  .ycl{font-family:'Arial Black',Arial;font-weight:900;font-size:12pt;letter-spacing:-.025em;color:#04101F;display:block;min-height:14mm}
+  .ycm{display:block;font-size:9.4pt;line-height:1.45;color:#6E8BA6;font-style:italic;margin:0 0 4.5mm;min-height:16mm;padding-bottom:3mm;border-bottom:.5pt solid #DCE7F2}
+  .ycrow{display:flex;flex-direction:column;gap:.8mm;padding:0 0 4mm}
+  .ycrow:last-child{padding-bottom:0}
+  .ycr{font-size:10.4pt;font-weight:700;color:#04101F}
+  .ycp{font-family:'JetBrains Mono',monospace;font-size:7.4pt;letter-spacing:.1em;color:#6E8BA6}
+  .ycdates{display:flex;flex-direction:column;gap:.8mm;margin-top:4mm}
+  .ycdates span{font-family:'JetBrains Mono',monospace;font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;color:#8FA8BF}
+  .ycdates strong{font-family:'JetBrains Mono',monospace;font-size:8.4pt;letter-spacing:.1em;color:#1E63AE}
+
+  .mngrid{display:grid;grid-template-columns:1fr 1fr;gap:12mm;margin-top:6mm;flex:1;min-height:0}
+  .mnh{font-size:9pt;letter-spacing:.2em;color:#1E63AE;padding-bottom:2.4mm;border-bottom:.75pt solid #1E63AE;margin-bottom:3mm}
+  .mn{display:flex;gap:4mm;align-items:baseline;padding:2.4mm 0;border-bottom:.25pt solid #DCE7F2}
+  .mnn{font-family:'JetBrains Mono',monospace;font-size:7.4pt;color:#9FB6CC;width:6mm;flex:none}
+  .mnt{font-size:11pt;line-height:1.35;color:#04101F;font-weight:700}
+  .interval{margin-top:6mm;padding:5mm;background:#04101F;display:flex;flex-direction:column;gap:2mm}
+  .interval span{font-family:'JetBrains Mono',monospace;font-size:8pt;letter-spacing:.1em;color:#7FD3FF}
+  .ivt{color:#8FB3D6 !important;font-size:7.4pt !important}
+
+  .biogrid{display:grid;gap:8mm 9mm;flex:1;min-height:0;align-content:start}
+  .biogrid.c2{grid-template-columns:1fr 1fr}
+  .biogrid.c3{grid-template-columns:repeat(3,1fr)}
+  .bio{display:flex;flex-direction:column;gap:3.4mm;min-height:0}
+  .shot{background:linear-gradient(150deg,#E6F1FB 0%,#D2E4F4 100%);border:.5pt solid #B8CFE4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2mm;flex:none}
+  .shot.r45{aspect-ratio:4/5}.shot.r11{aspect-ratio:1/1}
+  .shot span{font-family:'JetBrains Mono',monospace;font-size:7pt;letter-spacing:.2em;color:#7B96AF}
+  .shot em{font-family:'JetBrains Mono',monospace;font-size:6.2pt;letter-spacing:.12em;color:#9FB6CC;font-style:normal}
+  .biotx{flex:1;min-height:0;display:flex;flex-direction:column}
+  .biotx h3{font-size:13pt;letter-spacing:-.02em;color:#04101F}
+  .biotx .role{display:block;font-family:'JetBrains Mono',monospace;font-size:7.4pt;letter-spacing:.14em;text-transform:uppercase;color:#1E63AE;margin:1.4mm 0 2.6mm;padding-bottom:2mm;border-bottom:.5pt solid #DCE7F2}
+  .biotx p{font-family:Arial,Helvetica,sans-serif;font-size:11pt;line-height:1.42;margin:0;color:#2A3B4C}
+  .bc{border-top:1.5pt solid #1E63AE;padding-top:4mm}
+  .bc .biotx h3{font-size:14pt}
+
+  /* headshot gallery, no bios */
+  .ggrid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(0,1fr);gap:7mm 6mm;flex:1;min-height:0}
+  .gcard{display:flex;flex-direction:column;gap:2.4mm;min-height:0}
+  .gcard .shot{flex:1;min-height:0;aspect-ratio:auto}
+  .gcard .shot span{font-size:6pt}
+  .gcard h3{font-size:10.6pt;letter-spacing:-.02em;color:#04101F;flex:none}
+  .grole{font-family:'JetBrains Mono',monospace;font-size:6.8pt;letter-spacing:.12em;text-transform:uppercase;color:#1E63AE;flex:none}
+
+  .ad{flex:none;margin-top:6mm;min-height:0;background:#fff;border:.75pt dashed #8FB3D6;display:flex;align-items:center;justify-content:center}
+  .adin{display:flex;flex-direction:column;align-items:center;gap:2mm;text-align:center}
+  .adl{font-family:'JetBrains Mono',monospace;font-size:6.8pt;letter-spacing:.24em;color:#FF8A6B}
+  .adin strong{font-family:'Arial Black',Arial;font-weight:900;font-size:12pt;letter-spacing:-.02em;color:#04101F}
+  .add{font-family:'JetBrains Mono',monospace;font-size:7pt;letter-spacing:.1em;color:#7B96AF}
+  .qgrid{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:minmax(0,1fr);gap:6mm;flex:1;min-height:0;margin-top:6mm}
+  .qgrid .ad{margin-top:0;height:auto}
+  .adnote{flex:none;margin-top:5mm;font-size:9pt;color:#6E8BA6;font-style:italic}
+
+  .orch{display:grid;grid-template-columns:1fr 1fr;gap:0 12mm;margin-top:6mm}
+  .ocl{display:flex;justify-content:space-between;gap:4mm;padding:2.3mm 0;border-bottom:.25pt solid #DCE7F2}
+  .ocr{font-size:10.4pt;font-weight:700;color:#04101F}
+  .ocn{font-size:12pt;color:#1E63AE;text-align:right}
+
+  .q4{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:6mm;flex:1;margin-top:6mm}
+  .dg{background:#1F0B3B;color:#F3EEFB;padding:7mm 7mm 6mm;display:flex;flex-direction:column;position:relative;overflow:hidden}
+  .dg:before{content:"";position:absolute;right:-18mm;top:-18mm;width:52mm;height:52mm;border-radius:50%;background:radial-gradient(circle,rgba(167,124,255,.42) 0%,rgba(31,11,59,0) 70%)}
+  .dgeb{position:relative;font-family:'JetBrains Mono',monospace;font-size:6.6pt;letter-spacing:.2em;text-transform:uppercase;color:#B99CFF}
+  .dgwm{position:relative;font-family:Georgia,'Times New Roman',serif;font-size:15pt;line-height:1.05;margin:3mm 0 0;font-weight:400;letter-spacing:-.01em}
+  .dgwm i{color:#B99CFF;font-style:normal;padding:0 .5mm}
+  .dgwm em{display:block;font-family:'JetBrains Mono',monospace;font-size:6.4pt;letter-spacing:.24em;text-transform:uppercase;color:#B99CFF;font-style:normal;margin-top:1.4mm}
+  .dgh{position:relative;font-family:Georgia,'Times New Roman',serif;font-size:13pt;line-height:1.16;margin:4mm 0 3mm;font-weight:400}
+  .dgl{position:relative;list-style:none;margin:0;padding:0;border-top:.5pt solid rgba(185,156,255,.35)}
+  .dgl li{font-size:8.4pt;line-height:1.34;padding:1.7mm 0;border-bottom:.25pt solid rgba(185,156,255,.22);color:#E4DAF7}
+  .dgv{position:relative;margin-top:auto;padding-top:3.5mm}
+  .dgvote{display:inline-block;background:#B99CFF;color:#1F0B3B;font-family:'JetBrains Mono',monospace;font-size:7.4pt;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:2mm 3.5mm}
+  .dgc{font-family:'JetBrains Mono',monospace;font-size:7pt;letter-spacing:.08em;color:#CBB9F5;margin-top:2.6mm;line-height:1.5}
+  .dgauth{font-size:5.8pt;line-height:1.4;color:#8E79B8;margin-top:2mm}
+  .credcols{columns:2;column-gap:11mm;margin-top:4mm}
+  .dept{break-inside:avoid;margin:0 0 4mm}
+  .depth{font-family:'JetBrains Mono',monospace;font-size:7.6pt;letter-spacing:.18em;text-transform:uppercase;color:#1E63AE;padding-bottom:1.2mm;border-bottom:.5pt solid #B8CFE4;margin:0 0 1.2mm}
+  .crow{display:flex;justify-content:space-between;gap:3mm;padding:1.15mm 0;border-bottom:.25pt solid #E2EBF4}
+  .crole{font-size:11pt;font-weight:700;color:#04101F;flex:1;min-width:0}
+  .cname{font-size:11pt;color:#1E63AE;text-align:right;flex:1;min-width:0}
+  .cteam{font-size:11pt;line-height:1.36;color:#1E63AE;padding:1.15mm 0;border-bottom:.25pt solid #E2EBF4}
+  .cteam b{display:block;font-size:11pt;color:#04101F;margin-bottom:.4mm}
+  .statrow{flex:none;display:grid;grid-template-columns:repeat(4,1fr);gap:5mm;margin-top:6mm;padding-top:5mm;border-top:.5pt solid #B8CFE4}
+  .stat strong{display:block;font-family:'Arial Black',Arial;font-weight:900;font-size:15pt;letter-spacing:-.03em;color:#1E63AE}
+  .stat span{display:block;font-size:8.6pt;line-height:1.4;color:#6E8BA6;margin-top:1.4mm}
+
+  .thx{display:grid;grid-template-columns:1fr 1fr;gap:7mm 10mm;margin-top:7mm;flex:1;min-height:0;align-content:start}
+  .thxc h4{color:#1E63AE;padding-bottom:1.8mm;border-bottom:.5pt solid #DCE7F2}
+  .thxc p{font-size:10pt;line-height:1.5}
+
+  .nsgrid{display:grid;grid-template-columns:1fr 1fr;gap:6mm;margin-top:8mm;flex:1;min-height:0;align-content:start}
+  .ns{background:rgba(255,255,255,.05);border:.5pt solid #1E3A5C;border-top:2pt solid #7FD3FF;padding:6mm}
+  .ns h3{font-size:14pt;color:#fff;margin-bottom:2mm}
+  .nsc{display:block;font-size:10pt;color:#C6DCF2;margin-bottom:3mm}
+  .nsd{font-family:'JetBrains Mono',monospace;font-size:8pt;letter-spacing:.12em;color:#7FD3FF}
+  .nsnote{flex:none;font-size:9pt;color:#8FB3D6;font-style:italic;margin-top:6mm}
+
+  .infgrid{display:grid;grid-template-columns:1fr 1fr;gap:6mm 10mm;margin-top:6mm;flex:1;min-height:0;align-content:start}
+  .inf h4{color:#1E63AE;padding-bottom:1.6mm;border-bottom:.5pt solid #DCE7F2}
+  .inf p{font-size:10pt;line-height:1.45}
+
+  /* 3-up bio: thumbnail beside name, bio below */
+  .b3{gap:2.8mm}
+  .bhead{display:flex;gap:3.4mm;align-items:flex-start;flex:none}
+  .shot.thumb{width:24mm;aspect-ratio:4/5;flex:none}
+  .shot.thumb span{font-size:5.6pt;letter-spacing:.14em}
+  .bnames{flex:1;min-width:0;padding-top:.6mm}
+  .b3 .bnames h3{font-size:11.4pt;line-height:1.06;letter-spacing:-.02em;color:#04101F}
+  .b3 .bnames .role{display:block;font-family:'JetBrains Mono',monospace;font-size:6.8pt;letter-spacing:.12em;text-transform:uppercase;color:#1E63AE;margin-top:1.6mm;border:0;padding:0}
+  .b3>p{font-family:Arial,Helvetica,sans-serif;font-size:11pt;line-height:1.42;color:#2A3B4C;margin:0;padding-top:2.6mm;border-top:.5pt solid #DCE7F2}
+  /* title page split credits */
+  .tpsplit{display:grid;grid-template-columns:1fr 1fr;gap:9mm;width:100%;max-width:150mm;margin-top:7mm;text-align:left}
+  .tph{color:#1E63AE;padding-bottom:1.8mm;border-bottom:.5pt solid #C6D9EA;margin-bottom:2.4mm}
+  .tpline{display:flex;justify-content:space-between;gap:3mm;padding:1.5mm 0;border-bottom:.25pt solid #E4EDF6}
+  .tplk{font-size:8.6pt;color:#6E8BA6;white-space:nowrap}
+  .tplv{font-size:9pt;font-weight:700;color:#04101F;text-align:right}
+  .tplic{margin-top:7mm !important}
+  /* audience info strip */
+  .infstrip{flex:none;display:grid;grid-template-columns:repeat(4,1fr);gap:6mm;margin-top:6mm;padding-top:5mm;border-top:.5pt solid #B8CFE4}
+  .infs h4{color:#1E63AE;margin-bottom:1.6mm}
+  .infs p{font-size:8.4pt;line-height:1.45}
+
+  .longnote{column-gap:9mm}
+  .longnote p{font-size:10pt;line-height:1.40;margin:0 0 2.8mm}
+  .longnote .drop{font-size:11.4pt;line-height:1.34}
+
+  
+  .cover .icicles{display:none}
+  
+  .cvtitle{width:152mm;height:auto;display:block}
+  .cvsub{display:block;margin-top:7mm;text-align:center;font-family:'JetBrains Mono',monospace;font-size:9.6pt;letter-spacing:.34em;text-transform:uppercase;color:#9FD9FF}
+
+  .flagimg{width:42mm;height:28mm;object-fit:contain;object-position:left center;display:block}
+
+  .cover .cvpres,.cover .cvmeta span{text-shadow:0 .4mm 1.2mm rgba(3,10,26,.92),0 0 .5mm rgba(3,10,26,.8)}
+  .cover .wm{filter:drop-shadow(0 .4mm 1.2mm rgba(3,10,26,.9))}
+  .cover .cvrule{background:rgba(200,232,255,.55)}
+
+  .sigimg{height:15mm;width:auto;display:block;margin-bottom:1.5mm;align-self:flex-start}
+
+  .ggrid.g5{grid-template-columns:repeat(5,1fr);gap:6mm 5mm}
+  .ggrid.g5 h3{font-size:9.4pt}
+  .ggrid.g5 .grole{font-size:6pt}
+  .ggrid.g5 .shot span{font-size:5.2pt}
+
+  .pron{font-family:'JetBrains Mono',monospace;font-size:6.8pt;font-weight:400;letter-spacing:.06em;color:#7B96AF;white-space:nowrap}
+  .b3 .bnames h3 .pron{font-size:6.2pt}
+  .pronm{color:#5E86B3;letter-spacing:.06em}
+
+  /* principal cast: fixed photo height + aligned text so both cards always fit */
+  .biogrid.c2{grid-auto-rows:minmax(0,1fr)}
+  .biogrid.c2>.bio{min-height:0;overflow:hidden}
+  .b2 .shot.r45{aspect-ratio:auto !important;height:118mm;width:100%}
+  .b2 .biotx{display:flex;flex-direction:column;min-height:0}
+  .b2 .biotx h3{min-height:12mm}
+  .b2 .biotx>p{margin-top:2.4mm;min-height:0}
+  /* title page: centred stacked credits, no ledger lines */
+  .tp{width:100%;justify-content:flex-start !important;padding-top:0;height:auto !important;flex:1 1 auto;min-height:0}
+  .tpcred{width:100% !important;text-align:center;display:flex;flex-direction:column;gap:2.4mm;margin-top:0}
+  .tpcred .tprow{display:flex !important;flex-direction:column;align-items:center;gap:.9mm}
+  .tpcred .tpk{font-family:'JetBrains Mono',monospace;font-size:7pt;letter-spacing:.22em;text-transform:uppercase;color:#5E86B3}
+  .tpcred .tpv{font-size:11.8pt;line-height:1.24;color:#04101F;letter-spacing:-.01em;text-align:center}
+  .tpsplit{width:100% !important;grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;gap:0 11mm !important;margin-top:2.6mm;align-items:start}
+  .tpcol{text-align:center}
+  .tph{text-align:center;font-family:'JetBrains Mono',monospace;font-size:7.4pt;letter-spacing:.26em;text-transform:uppercase;color:#1E63AE;padding-bottom:2.2mm;margin-bottom:3mm;border-bottom:.5pt solid #C9DDEF}
+  .tpline{display:grid !important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 3.4mm;align-items:baseline;padding:.9mm 0 !important;border:0 !important}
+  .tplk{font-family:'JetBrains Mono',monospace;font-size:6.6pt;letter-spacing:.16em;text-transform:uppercase;color:#7B96AF;text-align:right}
+  .tplv{font-size:11pt;line-height:1.2;color:#04101F;letter-spacing:-.01em;text-align:left}
+  .title .crule{margin:4mm 0 !important}
+  .title .tptitle{margin-top:2mm !important;margin-bottom:1.4mm !important}
+  .tplic{margin-top:3.4mm !important}
+  /* full-page advertising: edge to edge, no margin or folio */
+  .page.adpage .safe{padding:0 !important;display:flex}
+  .page.adpage .ad{flex:1 1 auto !important;margin:0 !important;width:100%;height:100%;border:0 !important;min-height:0}
+  .page.adpage .q4{gap:0 !important;margin:0 !important;flex:1 1 auto !important;width:100%;height:100%}
+  .page.adpage .q4>.ad{border:0 !important;margin:0 !important;outline:.5pt dashed #C9DDEF;outline-offset:-.5pt}
+  .page.adpage .dg{margin:0 !important}
+  /* CentreStage Agency quarter-page advertisement */
+  .agq{position:relative;overflow:hidden;background:linear-gradient(150deg,#F6EFE4 0%,#EFE5D5 52%,#E4D7C3 100%);display:flex;flex-direction:column;padding:11mm 9mm 9mm;color:#16294A}
+  .agarc{position:absolute;top:-30mm;right:-40mm;width:120mm;height:120mm;border-radius:50%;background:linear-gradient(200deg,#FBF6EE 0%,#F1E7D7 100%);opacity:.95}
+  .agrule{position:absolute;left:6.5mm;top:13mm;bottom:11mm;width:.6pt;background:linear-gradient(180deg,#C8A45C 0%,rgba(200,164,92,.15) 100%)}
+  .agin{position:relative;display:flex;flex-direction:column;height:100%;min-height:0;width:54%}
+  .aghd{font-family:'Arial Black',Arial,sans-serif;font-size:21pt;line-height:.9;letter-spacing:-.02em;
+    background:linear-gradient(100deg,#B98F44 0%,#E3C382 42%,#B98F44 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .aghr{height:.6pt;background:linear-gradient(90deg,#C8A45C 0%,rgba(200,164,92,.1) 100%);margin:3.4mm 0 4.2mm}
+  .agscript{font-family:'Great Vibes',Georgia,serif;font-size:22pt;line-height:.95;color:#16294A;margin-bottom:1mm}
+  .agp{font-size:7.6pt;line-height:1.45;color:#3A4C6B;margin:0 0 2.2mm}
+  .aglist{list-style:none;margin:0 0 auto;padding:0}
+  .aglist li{font-family:'JetBrains Mono',monospace;font-size:5.9pt;letter-spacing:.06em;text-transform:uppercase;color:#8A6A2E;padding:1.5mm 0;border-bottom:.4pt solid rgba(200,164,92,.35)}
+  .agfoot{margin-top:auto;padding-top:4mm}
+  .agrep{font-size:7.6pt;line-height:1.35;color:#3A4C6B}
+  .agname{font-family:'Arial Black',Arial,sans-serif;font-size:11pt;line-height:1.06;letter-spacing:-.02em;color:#16294A;margin-top:.8mm}
+  .agurl{display:inline-block;margin-top:2.8mm;font-family:'JetBrains Mono',monospace;font-size:6.4pt;letter-spacing:.06em;color:#16294A;background:linear-gradient(100deg,#E3C382,#C8A45C);padding:2.2mm 3.4mm}
+  .agshot{position:absolute;right:0;bottom:0;width:38%;height:70%;background:linear-gradient(160deg,#E7DCC9 0%,#D8C9AF 100%);border-left:.5pt solid rgba(200,164,92,.5);border-top:.5pt solid rgba(200,164,92,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1mm;text-align:center;padding:3mm}
+  .agshot span{font-family:'JetBrains Mono',monospace;font-size:5.6pt;letter-spacing:.16em;color:#8A6A2E}
+  .agshot em{font-family:'JetBrains Mono',monospace;font-size:5pt;letter-spacing:.1em;color:#A08A62;font-style:normal}
+  .phshot{padding:0 !important;overflow:hidden;position:relative}
+  .phshot img{width:100%;height:100%;object-fit:cover;display:block}
+  .biogrid.c4e{grid-template-columns:1fr 1fr;grid-auto-rows:minmax(0,1fr);gap:9mm 9mm}
+  .biogrid.c4e .shot.thumb{width:30mm}
+  .biogrid.c4e .bnames h3{font-size:12.4pt}
+  .biogrid.c4e>.bio>p{font-size:11pt;line-height:1.44}
+
+  /* enforced type floor: 11pt Arial body, 12pt+ names & roles */
+  .biotx p, .b3>p, .longnote p, .twocol p, p{font-family:Arial,Helvetica,sans-serif !important;font-size:11pt !important;line-height:1.44 !important}
+  .drop, .longnote .drop{font-size:12.5pt !important;line-height:1.38 !important}
+  .lead{font-size:12pt !important}
+  .biotx h3, .b3 .bnames h3, .bc .biotx h3, .ggrid h3, .ggrid.g5 h3{font-size:13pt !important;line-height:1.1 !important}
+  .biotx .role, .b3 .bnames .role{font-size:12pt !important;font-family:Arial,Helvetica,sans-serif !important;letter-spacing:.02em !important;text-transform:none !important}
+  .grole, .ggrid.g5 .grole{font-size:12pt !important;font-family:Arial,Helvetica,sans-serif !important;letter-spacing:.01em !important;text-transform:none !important}
+  .clr{font-size:12.5pt !important}
+  .clp{font-size:12pt !important;font-family:Arial,Helvetica,sans-serif !important;letter-spacing:0 !important}
+  /* cast/creative rows: let long performer names wrap instead of running off */
+  .clgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}
+  .clgrid .clcol{min-width:0 !important}
+  .clgrid .cl{align-items:flex-start !important;min-width:0 !important;padding:.9mm 0 1mm !important}
+  .clgrid .clr{white-space:normal !important;line-height:1.15 !important;max-width:44% !important}
+  .clgrid .clp{white-space:normal !important;line-height:1.15 !important;text-align:right !important;flex:1 !important}
+  .clgrid .cldot{flex:0 0 4mm !important}
+  .ycr{font-size:12.5pt !important}
+  .ycp{font-size:12pt !important;font-family:Arial,Helvetica,sans-serif !important;letter-spacing:0 !important}
+  .ensnames{font-size:12pt !important;font-family:Arial,Helvetica,sans-serif !important;letter-spacing:0 !important;line-height:1.6 !important}
+  .mnt{font-size:12pt !important}
+  .ocr{font-size:12.5pt !important}
+  .ocn{font-size:12pt !important;font-family:Arial,Helvetica,sans-serif !important;letter-spacing:0 !important}
+  .tpv, .tplv{font-size:12pt !important}
+  .tplk{font-size:11pt !important}
+  .pron{font-size:11pt !important;font-family:Arial,Helvetica,sans-serif !important;letter-spacing:0 !important}
+  .pronm{font-size:11pt !important}
+  .signame{font-size:13pt !important}
+  .thxc p, .inf p, .infs p, .nsc, .bkgrid p{font-size:11pt !important}
+  .ns h3{font-size:14pt !important}
+  .adnote, .nsnote, .ensnote{font-size:11pt !important}
+
+  .dsgrid{display:grid;grid-template-columns:1fr 1fr;gap:6mm;flex:1;min-height:0;margin-top:5mm}
+  .dsgrid .shot{flex:1;min-height:0;aspect-ratio:auto}
+  .dslong{grid-column:1/-1}
+  .rhgrid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(0,1fr);gap:5mm;flex:1;min-height:0;margin-top:5mm}
+  .rhgrid .shot{flex:1;min-height:0;aspect-ratio:auto}
+  .rhwide{grid-column:span 2}
+  .joing{display:grid;grid-template-columns:1fr 1fr;gap:7mm;margin-top:6mm}
+  .jcard{background:rgba(255,255,255,.05);border:1px solid #1E3A5C;border-top:2px solid #7FD3FF;padding:6mm 6.5mm}
+  .jcard h3{font-size:13pt;color:#EAF4FF;margin-bottom:2mm}
+  .jcard p{font-size:10.4pt;line-height:1.5;color:#C6DCF2;margin:0}
+  .jcard .jk{font-family:'JetBrains Mono',monospace;font-size:7pt;letter-spacing:.18em;text-transform:uppercase;color:#7FD3FF;display:block;margin-top:3mm}
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="120" fill="#04101F"/><circle cx="90" cy="26" r="30" fill="#1E63AE" opacity=".55"/><text x="60" y="58" font-family="Arial Black,Arial" font-size="19" font-weight="900" fill="#EAF4FF" text-anchor="middle">FROZEN</text><text x="60" y="92" font-family="Arial Black,Arial" font-size="34" font-weight="900" fill="#7FD3FF" text-anchor="middle">/</text></svg>
+</template>
+<doc-page width="220mm" height="307mm" margin="0">
+<section data-document-role="page" class="page cover"><img class="bleedimg cvart" src="assets/frozen/cover-v4-lite.png" alt="CentreStage production of Disney's Frozen — The Broadway Musical">
+<div class="safe cvr">
+</div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page ifc hasIce"><div class="icicles"></div><div class="safe"><div class="rh"><span class="rhe">Acknowledgement</span><span class="rhf">02</span></div>
+  <div class="ackwrap">
+    <span class="eyebrow ice">Wadawurrung Country</span>
+    <h1 class="d2">We acknowledge<br>Country.</h1>
+    <div class="flags">
+      <img class="flagimg" src="assets/flags/aboriginal-flag.jpg" alt="Australian Aboriginal Flag">
+      <img class="flagimg" src="assets/flags/torres-strait-flag.svg" alt="Torres Strait Islander Flag">
+    </div>
+    <p class="lead">CentreStage acknowledges the Wadawurrung people as the Traditional Owners of the land on which we rehearse, build and perform. We pay our respects to Elders past and present, and to all Aboriginal and Torres Strait Islander people who call this Country home.</p>
+    <p class="lead">Storytelling has taken place on this land for more than sixty thousand years. We are grateful to add our small part to that tradition, and we are committed to a company where First Nations artists, audiences and stories are welcomed, resourced and centre stage.</p>
+    <div class="pull"><span class="q">&ldquo;</span><p>Every spotlight we turn on must illuminate not only talent, but truth.</p><span class="attr">David Greenwood OAM &middot; Managing Director</span></div>
+  </div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page title"><div class="frost fbr"></div><div class="safe"><div class="rh"><span class="rhe">Title page</span><span class="rhf">03</span></div>
+  <div class="tp">
+    <span class="tpco">CentreStage presents</span>
+    <img class="tptitle" src="assets/frozen/title-keyed-lite.png" alt="Disney's Frozen — The Broadway Musical">
+    <div class="crule"><i></i><b></b><i></i></div>
+    <div class="tpcred"><div class="tprow"><span class="tpk">Music and Lyrics by</span><span class="tpv">Kristen Anderson-Lopez and Robert Lopez</span></div><div class="tprow"><span class="tpk">Book by</span><span class="tpv">Jennifer Lee</span></div><div class="tprow"><span class="tpk">Based on the Disney film written by</span><span class="tpv">Jennifer Lee and Chris Buck</span></div></div>
+    <div class="tpsplit">
+      <div class="tpcol"><h4 class="tph">Creative team</h4>
+        <div class="tpline"><span class="tplk">Director</span><span class="tplv">Michele Marcu</span></div><div class="tpline"><span class="tplk">Assistant Director</span><span class="tplv">Jesse Simpson</span></div><div class="tpline"><span class="tplk">Musical Director</span><span class="tplv">Brittney Ling</span></div><div class="tpline"><span class="tplk">Assistant Musical Director</span><span class="tplv">Hannah Foster Reeves</span></div><div class="tpline"><span class="tplk">Choreographer</span><span class="tplv">Chloe Quinney</span></div><div class="tpline"><span class="tplk">Producer</span><span class="tplv">Martin Nguyen</span></div><div class="tpline"><span class="tplk">Costume Designer</span><span class="tplv">Virginia Connell</span></div><div class="tpline"><span class="tplk">Wardrobe Manager</span><span class="tplv">Dawn Murdoch</span></div><div class="tpline"><span class="tplk">Child Safety Officer</span><span class="tplv">Richelle White</span></div></div>
+      <div class="tpcol"><h4 class="tph">Production team</h4>
+        <div class="tpline"><span class="tplk">Set Designer</span><span class="tplv">NAME</span></div><div class="tpline"><span class="tplk">Lighting Designer</span><span class="tplv">NAME</span></div><div class="tpline"><span class="tplk">Sound Designer</span><span class="tplv">NAME</span></div><div class="tpline"><span class="tplk">Stage Manager</span><span class="tplv">NAME</span></div><div class="tpline"><span class="tplk">Assistant Stage Manager</span><span class="tplv">NAME</span></div><div class="tpline"><span class="tplk">Production Manager</span><span class="tplv">NAME</span></div><div class="tpline"><span class="tplk">Properties Coordinator</span><span class="tplv">NAME</span></div><div class="tpline"><span class="tplk">Hair &amp; Makeup Designer</span><span class="tplv">NAME</span></div><div class="tpline"><span class="tplk">Rehearsal Pianist</span><span class="tplv">NAME</span></div></div>
+    </div>
+    <div class="tplic">
+      <p><strong>Music and Lyrics by</strong><br>Kristen Anderson-Lopez &amp; Robert Lopez</p>
+      <p><strong>Book by</strong><br>Jennifer Lee</p>
+      <p><strong>Originally Directed on Broadway by</strong><br>Michael Grandage</p>
+      <p>Based on the Disney film written by Jennifer Lee and directed by Chris Buck &amp; Jennifer Lee</p>
+      <p>Originally produced on Broadway by Disney Theatrical Group</p>
+      <p class="tpsm">Licensed exclusively by Music Theatre International (Australasia). All authorised performance materials are also supplied by Music Theatre International (Australasia). www.mtishows.com.au</p>
+      <p class="tpsm"></p>
+    </div>
+  </div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="frost ftl"></div><div class="safe"><div class="rh"><span class="rhe">Welcome</span><span class="rhf">04</span></div>
+  <span class="eyebrow">From the Managing Director</span>
+  <h1 class="d3">The winter was never<br>the problem.</h1><div class="crule"><i></i><b></b><i></i></div>
+  <div class="twocol longnote">
+    <p class="drop">Welcome to Arendelle, and thank you for being here.</p>
+    <p>There is a reason this story has held on to us. On the surface, <em>Frozen</em> is a fairytale about a kingdom trapped in an endless winter. Underneath, it is about a young woman taught &mdash; with love, and with the best of intentions &mdash; that the truest thing about her is dangerous. Something to be hidden. Something nobody should ever see.</p>
+    <p>Most of us have been handed a version of that instruction. We live in a society that still quietly asks people to mask &mdash; to manage the parts of themselves that might make a room uncomfortable. A disability, a diagnosis, a way of thinking, a way of loving, a struggle carried privately while everything looks fine from the outside. We become very good at it. We learn to keep the gloves on, and to offer the version of ourselves that asks the least of everybody else.</p>
+    <p>And it costs us exactly what it costs Elsa. It costs us connection. What I love about this musical is that it never resolves that by asking her to become someone else. Nobody fixes her. Her magic is never treated as an illness to be cured. What changes is that she stops being frightened of herself &mdash; and the winter lifts. The thaw was never going to arrive through control, only through love, and through being known.</p>
+    <p>That is why we wanted this title, and why we wanted it now. CentreStage has always been built on a simple idea: that everybody has the potential to be a great performer, and that the arts should be open to all people. This organisation is owned and led by a person with disability and a member of the LGBTQIA+ community, and our team includes people who identify as First Nations and people from a range of minority communities. That is not a statement drafted for a website &mdash; it is simply who we are, and it shapes every room we run.</p>
+    <p>The company you are about to watch spans performers and creatives aged seven to eighty; some auditioning for the first time, some with us for a decade. Three young performers share Young Anna and three share Young Elsa, because the aim was never to find the single child who was best. It was to give more of them the stage.</p>
+    <p>Watch them tonight, and watch how little they are hiding. Thank you for choosing live theatre made by your own community, and thank you to the creative team, crew, volunteers and families who made a year of Sundays possible. And to anyone here who has been holding something in for a very long time &mdash; we hope you leave a little lighter than you arrived.</p>
+  </div>
+  <div class="sig"><img class="sigimg" src="assets/david-signature-lite.png" alt="David Greenwood OAM"><span class="signame">David Greenwood OAM</span><span class="sigrole">Managing Director &middot; CentreStage</span></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="frost fbr"></div><div class="safe"><div class="rh"><span class="rhe">Director's note</span><span class="rhf">05</span></div>
+  <span class="eyebrow">Director's note</span>
+  <h1 class="d3">Two sisters,<br>one door.</h1><div class="crule"><i></i><b></b><i></i></div>
+  <div class="twocol longnote">
+    <p class="drop">The whole show, for me, lives in a closed door and the person on either side of it.</p>
+    <p>When I first sat down with this script, I expected to be directing a story about ice and magic and spectacle. What I found instead was a story about a family who love each other very much and get almost everything wrong &mdash; and about the years of silence that follow one frightened decision made in a single night.</p>
+    <p>That became the spine of this production, and everything you will see tonight is built around it. Rather than treat Elsa's magic as a special effect, we have treated it as a feeling: something that surges when she is frightened, contracts when she is controlled, and finally moves freely when she is safe. You will notice the design follows her emotional state far more closely than it follows the weather. When Arendelle freezes, it is not really about the temperature.</p>
+    <p>A note on the ensemble, because in this show they matter enormously. The citizens of Arendelle are not scenery. They are the community that shuts its gates, that gossips at a coronation, that turns on a queen it does not understand, and that eventually welcomes her home. We have given them specificity &mdash; names, families, relationships you may only half-catch &mdash; because a kingdom is only ever as convincing as the people standing in it.</p>
+    <p>Then there are the young performers. Six of them share the roles of Young Anna and Young Elsa across three casts, and watching them work has been the great privilege of this process. They arrive without the self-consciousness adults have to unlearn. They ask direct questions. They cry in the right places. Several times this year one of them has found something in a scene that every adult in the room had walked straight past.</p>
+    <p>If there is one thing I hope you carry out of the theatre tonight, it is what happens in the final quarter of the second act &mdash; the moment the story stops asking who will rescue whom, and answers the question rather differently to the way a fairytale usually would.</p>
+    <p>Thank you to my extraordinary creative team, to our crew and volunteers, and to every family who has driven to North Geelong on a Sunday since October. And thank you for being here. A closed door is a terrible thing. An audience is the opposite of one.</p>
+  </div>
+  <div class="sig"><img class="sigimg" src="assets/michele-signature-lite.png" alt="Michele Marcu"><span class="signame">Michele Marcu</span><span class="sigrole">Director</span></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="frost ftr"></div><div class="safe"><div class="rh"><span class="rhe">Producer's message</span><span class="rhf">06</span></div>
+  <span class="eyebrow">From the Producer</span>
+  <h1 class="d3">Nine months,<br>one night.</h1>
+  <div class="crule"><i></i><b></b><i></i></div>
+  <div class="twocol longnote">
+    <p class="drop">A producer's job, as far as I can tell, is to make sure that everybody else can do theirs.</p>
+    <p>None of these people are paid, and almost all have full-time jobs. This is my first production in this chair, and the thing that has surprised me most is how little of it happens on a stage. It happens in spreadsheets and group chats, in phone calls about hire trucks and rehearsal room bookings, in a hundred small decisions made months before anybody sings a note.</p>
+    <p>What you are watching tonight represents around nine months of work by well over a hundred people. There are the performers, whom you will see, and the creative team, whose names are printed a few pages from here. Then there is everybody else: the crew who move a castle in the dark in under ninety seconds, the wardrobe volunteers who have hand-finished more costumes than I can count, the parents who signed up to chaperone, the people who built the set in a shed on weekends, and the front of house team who will sell you an ice cream at interval and then go home and do it again tomorrow night.</p>
+    <p>That is worth stating plainly, because community theatre is often described as though it were a smaller version of professional theatre. It is not. It is a different thing entirely &mdash; a group of people who have no obligation to be in the room, choosing to make something difficult and beautiful together, to a standard nobody is forcing them to meet.</p>
+    <p>Staging <em>Frozen</em> has tested that goodwill more than most titles would. It is a technically demanding show with a large cast, an ambitious design, live orchestra, young performers across three casts, and an audience arriving with very specific expectations. Every department has had to solve a problem this year that they had not solved before.</p>
+    <p>My thanks to Michele, whose vision for this production has been clear from the first meeting and has never wavered; to Brittney and the orchestra for the sound you are about to hear; to Chloe for turning a large group of people into a company that moves as one; and to David, for handing a first-time producer a show of this size and then backing the decision.</p>
+    <p>Thank you also to our advertisers and sponsors, whose support is the practical reason a ticket to community theatre in Geelong still costs what it does.</p>
+    <p>And thank you for coming. A show only exists while somebody is watching it. Enjoy your evening in Arendelle.</p>
+  </div>
+  <div class="sig"><span class="signame">Martin Nguyen</span><span class="sigrole">Producer</span></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page castlist hasIce"><div class="icicles"></div><div class="safe"><div class="rh"><span class="rhe">The company</span><span class="rhf">07</span></div>
+  <span class="eyebrow ice">Cast</span><h1 class="d3 onink">The company.</h1>
+  <div class="clgrid">
+    <div class="clcol"><h4 class="clh">Principals</h4>
+      <div class="cl"><span class="clr">Elsa</span><span class="cldot"></span><span class="clp">PERFORMER NAME <span class="pronm">(PRONOUNS)</span></span></div><div class="cl"><span class="clr">Anna</span><span class="cldot"></span><span class="clp">PERFORMER NAME <span class="pronm">(PRONOUNS)</span></span></div><div class="cl"><span class="clr">Kristoff</span><span class="cldot"></span><span class="clp">PERFORMER NAME <span class="pronm">(PRONOUNS)</span></span></div><div class="cl"><span class="clr">Olaf</span><span class="cldot"></span><span class="clp">PERFORMER NAME <span class="pronm">(PRONOUNS)</span></span></div><div class="cl"><span class="clr">Hans</span><span class="cldot"></span><span class="clp">PERFORMER NAME <span class="pronm">(PRONOUNS)</span></span></div><div class="cl"><span class="clr">Queen Iduna</span><span class="cldot"></span><span class="clp">PERFORMER NAME <span class="pronm">(PRONOUNS)</span></span></div><div class="cl"><span class="clr">King Agnarr</span><span class="cldot"></span><span class="clp">PERFORMER NAME <span class="pronm">(PRONOUNS)</span></span></div><div class="cl"><span class="clr">Duke of Weselton</span><span class="cldot"></span><span class="clp">PERFORMER NAME <span class="pronm">(PRONOUNS)</span></span></div><div class="cl"><span class="clr">Oaken</span><span class="cldot"></span><span class="clp">PERFORMER NAME <span class="pronm">(PRONOUNS)</span></span></div><div class="cl"><span class="clr">Pabbie</span><span class="cldot"></span><span class="clp">PERFORMER NAME <span class="pronm">(PRONOUNS)</span></span></div><div class="cl"><span class="clr">Bulda</span><span class="cldot"></span><span class="clp">PERFORMER NAME <span class="pronm">(PRONOUNS)</span></span></div><div class="cl"><span class="clr">Sven</span><span class="cldot"></span><span class="clp">PERFORMER NAME <span class="pronm">(PRONOUNS)</span></span></div></div>
+    <div class="clcol"><h4 class="clh">Featured</h4>
+      <div class="cl"><span class="clr">Bishop</span><span class="cldot"></span><span class="clp">PERFORMER NAME <span class="pronm">(PRONOUNS)</span></span></div><div class="cl"><span class="clr">Kai</span><span class="cldot"></span><span class="clp">PERFORMER NAME <span class="pronm">(PRONOUNS)</span></span></div><div class="cl"><span class="clr">Gerda</span><span class="cldot"></span><span class="clp">PERFORMER NAME <span class="pronm">(PRONOUNS)</span></span></div><div class="cl"><span class="clr">Handmaiden</span><span class="cldot"></span><span class="clp">PERFORMER NAME <span class="pronm">(PRONOUNS)</span></span></div><div class="cl"><span class="clr">Weselton's Lackey</span><span class="cldot"></span><span class="clp">PERFORMER NAME <span class="pronm">(PRONOUNS)</span></span></div><div class="cl"><span class="clr">Weselton's Lackey</span><span class="cldot"></span><span class="clp">PERFORMER NAME <span class="pronm">(PRONOUNS)</span></span></div><div class="cl"><span class="clr">Guard Captain</span><span class="cldot"></span><span class="clp">PERFORMER NAME <span class="pronm">(PRONOUNS)</span></span></div><div class="cl"><span class="clr">Doctor</span><span class="cldot"></span><span class="clp">PERFORMER NAME <span class="pronm">(PRONOUNS)</span></span></div>
+      <h4 class="clh" style="margin-top:8mm">Youth roles</h4>
+      <div class="cl"><span class="clr">Young Anna</span><span class="cldot"></span><span class="clp">THREE CASTS</span></div>
+      <div class="cl"><span class="clr">Young Elsa</span><span class="cldot"></span><span class="clp">THREE CASTS</span></div></div>
+  </div>
+  <div class="clens"><h4 class="clh">Ensemble</h4>
+    <p class="ensnames">PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME &middot; PERFORMER NAME</p>
+    <span class="ensnote">Arendelle citizens &middot; castle staff &middot; Oaken's family &middot; the Hidden Folk &middot; featured dancers</span></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="frost ftr"></div><div class="safe"><div class="rh"><span class="rhe">Youth casts</span><span class="rhf">08</span></div>
+  <span class="eyebrow">Young Anna &amp; Young Elsa</span><h1 class="d3">Three casts.</h1>
+  <p class="lead ycintro">The roles of Young Anna and Young Elsa are shared across three youth casts, so that more young performers can take the stage. Each cast is named for something from the world of the show &mdash; the lights that dance above the North Mountain, the frozen heart that only love can thaw, and the first thaw that returns summer to Arendelle.</p>
+  <div class="ycgrid">
+    <div class="yc" style="border-top-color:#7FD3FF">
+      <span class="ycl">Northern Lights Cast</span><span class="ycm">For the lights that dance above the North Mountain</span>
+      <div class="ycrow"><span class="ycr">Young Anna</span><span class="ycp">PERFORMER NAME <span class="pronm">(pronouns)</span></span></div>
+      <div class="ycrow"><span class="ycr">Young Elsa</span><span class="ycp">PERFORMER NAME <span class="pronm">(pronouns)</span></span></div>
+      </div><div class="yc" style="border-top-color:#9FD9FF">
+      <span class="ycl">Frozen Heart Cast</span><span class="ycm">For the frozen heart that only an act of true love can thaw</span>
+      <div class="ycrow"><span class="ycr">Young Anna</span><span class="ycp">PERFORMER NAME <span class="pronm">(pronouns)</span></span></div>
+      <div class="ycrow"><span class="ycr">Young Elsa</span><span class="ycp">PERFORMER NAME <span class="pronm">(pronouns)</span></span></div>
+      </div><div class="yc" style="border-top-color:#1E63AE">
+      <span class="ycl">First Thaw Cast</span><span class="ycm">For the thaw that returns summer to Arendelle</span>
+      <div class="ycrow"><span class="ycr">Young Anna</span><span class="ycp">PERFORMER NAME <span class="pronm">(pronouns)</span></span></div>
+      <div class="ycrow"><span class="ycr">Young Elsa</span><span class="ycp">PERFORMER NAME <span class="pronm">(pronouns)</span></span></div>
+      </div>
+  </div>
+  <div class="ad" style="height:54mm"><div class="adin"><span class="adl">ADVERTISING</span><strong>Half page &mdash; horizontal</strong><span class="add">180 &times; 54 mm &middot; 300dpi CMYK</span></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="frost fbl"></div><div class="safe"><div class="rh"><span class="rhe">Musical numbers</span><span class="rhf">09</span></div>
+  <span class="eyebrow">Musical numbers</span><h1 class="d4">The songs.</h1>
+  <div class="mngrid">
+    <div><h4 class="mnh">Act One</h4><div class="mn"><span class="mnn">01</span><span class="mnt">Let the Sun Shine On</span></div><div class="mn"><span class="mnn">02</span><span class="mnt">A Little Bit of You</span></div><div class="mn"><span class="mnn">03</span><span class="mnt">Do You Want to Build a Snowman?</span></div><div class="mn"><span class="mnn">04</span><span class="mnt">For the First Time in Forever</span></div><div class="mn"><span class="mnn">05</span><span class="mnt">Hans of the Southern Isles</span></div><div class="mn"><span class="mnn">06</span><span class="mnt">Queen Anointed</span></div><div class="mn"><span class="mnn">07</span><span class="mnt">Dangerous to Dream</span></div><div class="mn"><span class="mnn">08</span><span class="mnt">Love Is an Open Door</span></div><div class="mn"><span class="mnn">09</span><span class="mnt">Reindeer(s) Are Better Than People</span></div><div class="mn"><span class="mnn">10</span><span class="mnt">What Do You Know About Love?</span></div><div class="mn"><span class="mnn">11</span><span class="mnt">In Summer</span></div><div class="mn"><span class="mnn">12</span><span class="mnt">Hans of the Southern Isles (Reprise)</span></div><div class="mn"><span class="mnn">13</span><span class="mnt">Let It Go</span></div></div>
+    <div><h4 class="mnh">Act Two</h4><div class="mn"><span class="mnn">01</span><span class="mnt">Hygge</span></div><div class="mn"><span class="mnn">02</span><span class="mnt">For the First Time in Forever (Reprise)</span></div><div class="mn"><span class="mnn">03</span><span class="mnt">Fixer Upper</span></div><div class="mn"><span class="mnn">04</span><span class="mnt">Kristoff Lullaby</span></div><div class="mn"><span class="mnn">05</span><span class="mnt">Monster</span></div><div class="mn"><span class="mnn">06</span><span class="mnt">True Love</span></div><div class="mn"><span class="mnn">07</span><span class="mnt">Colder by the Minute</span></div><div class="mn"><span class="mnn">08</span><span class="mnt">Finale</span></div>
+      <div class="interval"><span>One interval of twenty minutes.</span><span class="ivt">Running time approximately 2 hours 30 minutes.</span></div></div>
+  </div>
+  <div class="infstrip">
+    <div class="infs"><h4>Recording</h4><p>No photography, video or audio recording is permitted. This is a condition of our performance licence.</p></div><div class="infs"><h4>Latecomers</h4><p>Admitted at a suitable break, at the venue's discretion.</p></div><div class="infs"><h4>Effects</h4><p>Contains theatrical haze, strobe and low-frequency sound.</p></div><div class="infs"><h4>Accessibility</h4><p>Accessible seating and hearing loops via the Geelong Arts Centre box office.</p></div>
+  </div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Synopsis</span><span class="rhf">10</span></div>
+  <span class="eyebrow">Synopsis</span><h1 class="d3">Act One.</h1><div class="crule"><i></i><b></b><i></i></div>
+  <div class="twocol">
+    <p class="drop">In the kingdom of Arendelle, two young sisters play alone in the great hall at night. One of them can make snow.</p>
+    <p>Young Elsa and Young Anna are inseparable, and Elsa's magic is their shared secret. But in the middle of a game the magic slips, and Anna is struck. Their parents, King Agnarr and Queen Iduna, carry her to the Hidden Folk, who heal her by removing every memory of the magic that hurt her. Their leader, Pabbie, warns that Elsa's gift will grow &mdash; and that fear will be its enemy.</p>
+    <p>The King's answer is separation. The gates of the castle are closed, the staff sent away, and Elsa is taken from her sister and taught to hide what she is: conceal it, don't feel it, don't let it show. Anna, remembering nothing, spends her childhood knocking at a door that never opens, growing up in an empty castle beside a sister who will not look at her.</p>
+    <p>Years pass. The King and Queen sail out on a voyage and do not return. The sisters are left alone in the same house, still strangers, until the day of Elsa's coronation forces the gates open for the first time in thirteen years.</p>
+    <p>Arendelle fills with visitors. Anna, giddy at the sight of actual people, collides with the charming Prince Hans of the Southern Isles, and within a single evening believes she has found the thing she has been missing her whole life. Elsa survives the ceremony with her gloves off and her hands shaking, and holds herself together &mdash; until Anna asks for her blessing to marry a man she met that afternoon.</p>
+    <p>The argument is public. Elsa refuses. Anna presses. A glove comes off, the fear breaks through, and ice tears across the hall in front of the entire court. Named a monster by the Duke of Weselton, Elsa runs.</p>
+    <p>She climbs into the mountains, and for the first time in her life stops holding back. Alone on the North Mountain she lets the storm come, builds a palace out of it, and finds something like freedom in being the thing everyone feared. Behind her, Arendelle freezes solid.</p>
+    <p>Anna sets out after her, leaving Hans in charge. In a trading post she finds Kristoff, an ice harvester with a reindeer and no patience for royalty, and talks him into guiding her up the mountain. On the way they meet Olaf, a snowman built from a childhood memory, who is very warm for someone made of snow and who wants, more than anything, to see summer.</p>
+    <p>Anna reaches the ice palace and finds her sister transformed and unreachable. She tells her the kingdom is buried in winter. She asks her to come home. Elsa, terrified of what she has already done, tells her to go &mdash; and in the panic of trying to make her leave, strikes her sister a second time.</p>
+    <p>Anna is carried out into the snow. Her hair is turning white.</p>
+  </div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Synopsis</span><span class="rhf">11</span></div>
+  <span class="eyebrow">Synopsis</span><h1 class="d3">Act Two.</h1><div class="crule"><i></i><b></b><i></i></div>
+  <div class="twocol">
+    <p class="drop">An eternal winter holds Arendelle, and the ice inside Anna is spreading towards her heart.</p>
+    <p>Kristoff takes Anna to the Hidden Folk, hoping they can heal her as they healed her once before. Pabbie's answer is harder this time: the ice is in her heart, and only an act of true love can thaw it. Believing that means Hans, Kristoff races her back down the mountain to Arendelle.</p>
+    <p>On the North Mountain, Hans arrives at the head of a search party. Elsa, cornered and desperate not to hurt anyone, loses control again; she is knocked unconscious and taken back to the kingdom in chains, imprisoned in the castle she grew up hiding in.</p>
+    <p>Anna is delivered to Hans, freezing, and asks him for the kiss she is certain will save her. He doesn't give it. He tells her the truth instead: he was never in love with her, he came looking for a throne, and a lonely girl desperate to be chosen was the easiest way to reach one. He leaves her locked in a cold room to die, and goes out to tell the court that Elsa killed her sister.</p>
+    <p>Olaf finds her and gets her out. In the wind on the fjord, Anna finally understands what love is supposed to look like &mdash; and it looks like Kristoff, who has turned back for her.</p>
+    <p>Elsa breaks out of her cell and flees onto the frozen fjord, and the storm follows her. Through the white-out Anna sees Kristoff coming for her from one direction and Hans closing on her sister with a drawn sword from the other. She chooses. She turns away from the person who could save her, throws herself in front of Elsa, and the cold takes her as the blade falls.</p>
+    <p>Anna freezes solid. The storm stops.</p>
+    <p>And in the silence, holding her sister, Elsa understands the thing nobody ever told her: love is not the opposite of her magic, it is what governs it. Her grief thaws Anna, and Anna's sacrifice thaws everything else. The ice lets go of the fjord, summer comes back to Arendelle, and Olaf gets his flurry.</p>
+    <p>Hans is sent home in disgrace. The Duke of Weselton is shown the door. Kristoff gets a new sled and, more importantly, an answer. And Elsa &mdash; who spent her whole life being told that the truest thing about her was dangerous &mdash; opens the gates and keeps them open.</p>
+    <p>Nobody fixes her. She was never broken. She simply stops being afraid, and lets herself be known.</p>
+  </div>
+  <div class="ad" style="height:50mm"><div class="adin"><span class="adl">ADVERTISING</span><strong>Quarter page</strong><span class="add">86 &times; 50 mm</span></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="frost ftl"></div><div class="safe"><div class="rh"><span class="rhe">Design</span><span class="rhf">12</span></div>
+  <span class="eyebrow">The world of the show</span><h1 class="d3">Building Arendelle.</h1><div class="crule"><i></i><b></b><i></i></div>
+  <p class="lead" style="max-width:118mm">A kingdom that freezes over in front of an audience has to be built twice &mdash; once as a summer court, and once in ice. These pages will carry the set and costume design for our production.</p>
+  <div class="dsgrid">
+    <div class="shot"><span>SET RENDER</span><em>the great hall &middot; landscape &middot; 300dpi</em></div>
+    <div class="shot"><span>SET RENDER</span><em>the ice palace &middot; landscape &middot; 300dpi</em></div>
+    <div class="shot dslong"><span>COSTUME PLATES</span><em>principal costume design &middot; wide &middot; 300dpi</em></div>
+  </div>
+  <p style="font-size:10pt;line-height:1.5;color:#3F5E7C;margin-top:5mm">Set design by Jason Stoddart. Costume design by Virginia Connell, with wardrobe managed by Dawn Murdoch. Captions to be confirmed with the design team before print.</p>
+</div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="frost ftr"></div><div class="safe"><div class="rh"><span class="rhe">Principal cast</span><span class="rhf">13</span></div><div class="biogrid c2"><div class="bio b2">
+  <div class="shot r45"><span>HEADSHOT</span><em>colour &middot; 4:5 &middot; 300dpi</em></div>
+  <div class="biotx"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Elsa</span><p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. This placeholder biography runs to approximately 130 words &mdash; adjust to suit. A bio of this length holds training, a selection of credits, a line about the performer away from the stage, and a closing thanks. Training might read: a graduate of the Victorian College of the Arts, with further vocal study at the Melbourne Conservatorium. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>The Music Man &middot; Marian Paroo &middot; 2025</em>; <em>&amp; Juliet &middot; Ensemble &middot; 2026</em>; <em>Les Mis&eacute;rables &middot; &Eacute;ponine &middot; 2022</em>, all for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div></div><div class="bio b2">
+  <div class="shot r45"><span>HEADSHOT</span><em>colour &middot; 4:5 &middot; 300dpi</em></div>
+  <div class="biotx"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Anna</span><p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. This placeholder biography runs to approximately 130 words &mdash; adjust to suit. A bio of this length holds training, a selection of credits, a line about the performer away from the stage, and a closing thanks. Training might read: a graduate of the Victorian College of the Arts, with further vocal study at the Melbourne Conservatorium. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>The Music Man &middot; Marian Paroo &middot; 2025</em>; <em>&amp; Juliet &middot; Ensemble &middot; 2026</em>; <em>Les Mis&eacute;rables &middot; &Eacute;ponine &middot; 2022</em>, all for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Principal cast</span><span class="rhf">14</span></div><div class="biogrid c2"><div class="bio b2">
+  <div class="shot r45"><span>HEADSHOT</span><em>colour &middot; 4:5 &middot; 300dpi</em></div>
+  <div class="biotx"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Kristoff</span><p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. This placeholder biography runs to approximately 130 words &mdash; adjust to suit. A bio of this length holds training, a selection of credits, a line about the performer away from the stage, and a closing thanks. Training might read: a graduate of the Victorian College of the Arts, with further vocal study at the Melbourne Conservatorium. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>The Music Man &middot; Marian Paroo &middot; 2025</em>; <em>&amp; Juliet &middot; Ensemble &middot; 2026</em>; <em>Les Mis&eacute;rables &middot; &Eacute;ponine &middot; 2022</em>, all for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div></div><div class="bio b2">
+  <div class="shot r45"><span>HEADSHOT</span><em>colour &middot; 4:5 &middot; 300dpi</em></div>
+  <div class="biotx"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Olaf</span><p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. This placeholder biography runs to approximately 130 words &mdash; adjust to suit. A bio of this length holds training, a selection of credits, a line about the performer away from the stage, and a closing thanks. Training might read: a graduate of the Victorian College of the Arts, with further vocal study at the Melbourne Conservatorium. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>The Music Man &middot; Marian Paroo &middot; 2025</em>; <em>&amp; Juliet &middot; Ensemble &middot; 2026</em>; <em>Les Mis&eacute;rables &middot; &Eacute;ponine &middot; 2022</em>, all for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Principal cast</span><span class="rhf">15</span></div><div class="biogrid c2"><div class="bio b2">
+  <div class="shot r45"><span>HEADSHOT</span><em>colour &middot; 4:5 &middot; 300dpi</em></div>
+  <div class="biotx"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Hans</span><p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. This placeholder biography runs to approximately 130 words &mdash; adjust to suit. A bio of this length holds training, a selection of credits, a line about the performer away from the stage, and a closing thanks. Training might read: a graduate of the Victorian College of the Arts, with further vocal study at the Melbourne Conservatorium. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>The Music Man &middot; Marian Paroo &middot; 2025</em>; <em>&amp; Juliet &middot; Ensemble &middot; 2026</em>; <em>Les Mis&eacute;rables &middot; &Eacute;ponine &middot; 2022</em>, all for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div></div><div class="bio b2">
+  <div class="shot r45"><span>HEADSHOT</span><em>colour &middot; 4:5 &middot; 300dpi</em></div>
+  <div class="biotx"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Queen Iduna</span><p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. This placeholder biography runs to approximately 130 words &mdash; adjust to suit. A bio of this length holds training, a selection of credits, a line about the performer away from the stage, and a closing thanks. Training might read: a graduate of the Victorian College of the Arts, with further vocal study at the Melbourne Conservatorium. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>The Music Man &middot; Marian Paroo &middot; 2025</em>; <em>&amp; Juliet &middot; Ensemble &middot; 2026</em>; <em>Les Mis&eacute;rables &middot; &Eacute;ponine &middot; 2022</em>, all for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Principal cast</span><span class="rhf">16</span></div><div class="biogrid c2"><div class="bio b2">
+  <div class="shot r45"><span>HEADSHOT</span><em>colour &middot; 4:5 &middot; 300dpi</em></div>
+  <div class="biotx"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">King Agnarr</span><p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. This placeholder biography runs to approximately 130 words &mdash; adjust to suit. A bio of this length holds training, a selection of credits, a line about the performer away from the stage, and a closing thanks. Training might read: a graduate of the Victorian College of the Arts, with further vocal study at the Melbourne Conservatorium. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>The Music Man &middot; Marian Paroo &middot; 2025</em>; <em>&amp; Juliet &middot; Ensemble &middot; 2026</em>; <em>Les Mis&eacute;rables &middot; &Eacute;ponine &middot; 2022</em>, all for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div></div><div class="bio b2">
+  <div class="shot r45"><span>HEADSHOT</span><em>colour &middot; 4:5 &middot; 300dpi</em></div>
+  <div class="biotx"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Duke of Weselton</span><p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. This placeholder biography runs to approximately 130 words &mdash; adjust to suit. A bio of this length holds training, a selection of credits, a line about the performer away from the stage, and a closing thanks. Training might read: a graduate of the Victorian College of the Arts, with further vocal study at the Melbourne Conservatorium. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>The Music Man &middot; Marian Paroo &middot; 2025</em>; <em>&amp; Juliet &middot; Ensemble &middot; 2026</em>; <em>Les Mis&eacute;rables &middot; &Eacute;ponine &middot; 2022</em>, all for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Principal cast</span><span class="rhf">17</span></div><div class="biogrid c2"><div class="bio b2">
+  <div class="shot r45"><span>HEADSHOT</span><em>colour &middot; 4:5 &middot; 300dpi</em></div>
+  <div class="biotx"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Oaken</span><p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. This placeholder biography runs to approximately 130 words &mdash; adjust to suit. A bio of this length holds training, a selection of credits, a line about the performer away from the stage, and a closing thanks. Training might read: a graduate of the Victorian College of the Arts, with further vocal study at the Melbourne Conservatorium. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>The Music Man &middot; Marian Paroo &middot; 2025</em>; <em>&amp; Juliet &middot; Ensemble &middot; 2026</em>; <em>Les Mis&eacute;rables &middot; &Eacute;ponine &middot; 2022</em>, all for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div></div><div class="bio b2">
+  <div class="shot r45"><span>HEADSHOT</span><em>colour &middot; 4:5 &middot; 300dpi</em></div>
+  <div class="biotx"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Pabbie</span><p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. This placeholder biography runs to approximately 130 words &mdash; adjust to suit. A bio of this length holds training, a selection of credits, a line about the performer away from the stage, and a closing thanks. Training might read: a graduate of the Victorian College of the Arts, with further vocal study at the Melbourne Conservatorium. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>The Music Man &middot; Marian Paroo &middot; 2025</em>; <em>&amp; Juliet &middot; Ensemble &middot; 2026</em>; <em>Les Mis&eacute;rables &middot; &Eacute;ponine &middot; 2022</em>, all for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Principal cast</span><span class="rhf">18</span></div><div class="biogrid c2"><div class="bio b2">
+  <div class="shot r45"><span>HEADSHOT</span><em>colour &middot; 4:5 &middot; 300dpi</em></div>
+  <div class="biotx"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Bulda</span><p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. This placeholder biography runs to approximately 130 words &mdash; adjust to suit. A bio of this length holds training, a selection of credits, a line about the performer away from the stage, and a closing thanks. Training might read: a graduate of the Victorian College of the Arts, with further vocal study at the Melbourne Conservatorium. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>The Music Man &middot; Marian Paroo &middot; 2025</em>; <em>&amp; Juliet &middot; Ensemble &middot; 2026</em>; <em>Les Mis&eacute;rables &middot; &Eacute;ponine &middot; 2022</em>, all for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div></div><div class="bio b2">
+  <div class="shot r45"><span>HEADSHOT</span><em>colour &middot; 4:5 &middot; 300dpi</em></div>
+  <div class="biotx"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Sven</span><p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. This placeholder biography runs to approximately 130 words &mdash; adjust to suit. A bio of this length holds training, a selection of credits, a line about the performer away from the stage, and a closing thanks. Training might read: a graduate of the Victorian College of the Arts, with further vocal study at the Melbourne Conservatorium. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>The Music Man &middot; Marian Paroo &middot; 2025</em>; <em>&amp; Juliet &middot; Ensemble &middot; 2026</em>; <em>Les Mis&eacute;rables &middot; &Eacute;ponine &middot; 2022</em>, all for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Featured cast</span><span class="rhf">19</span></div><div class="biogrid c3"><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Bishop</span></div></div>
+  <p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>&amp; Juliet &middot; Ensemble &middot; 2026</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Kai</span></div></div>
+  <p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>&amp; Juliet &middot; Ensemble &middot; 2026</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Gerda</span></div></div>
+  <p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>&amp; Juliet &middot; Ensemble &middot; 2026</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Featured cast</span><span class="rhf">20</span></div><div class="biogrid c3"><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Handmaiden</span></div></div>
+  <p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>&amp; Juliet &middot; Ensemble &middot; 2026</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Weselton's Lackey</span></div></div>
+  <p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>&amp; Juliet &middot; Ensemble &middot; 2026</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Weselton's Lackey</span></div></div>
+  <p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>&amp; Juliet &middot; Ensemble &middot; 2026</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Featured cast</span><span class="rhf">21</span></div><div class="biogrid c3"><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Guard Captain</span></div></div>
+  <p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>&amp; Juliet &middot; Ensemble &middot; 2026</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Doctor</span></div></div>
+  <p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>&amp; Juliet &middot; Ensemble &middot; 2026</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="frost fbl"></div><div class="safe"><div class="rh"><span class="rhe">Youth cast</span><span class="rhf">22</span></div><div class="biogrid c3"><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Young Anna &middot; Northern Lights Cast</span></div></div>
+  <p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>&amp; Juliet &middot; Ensemble &middot; 2026</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Young Elsa &middot; Northern Lights Cast</span></div></div>
+  <p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>&amp; Juliet &middot; Ensemble &middot; 2026</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Young Anna &middot; Frozen Heart Cast</span></div></div>
+  <p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>&amp; Juliet &middot; Ensemble &middot; 2026</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Youth cast</span><span class="rhf">23</span></div><div class="biogrid c3"><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Young Elsa &middot; Frozen Heart Cast</span></div></div>
+  <p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>&amp; Juliet &middot; Ensemble &middot; 2026</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Young Anna &middot; First Thaw Cast</span></div></div>
+  <p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>&amp; Juliet &middot; Ensemble &middot; 2026</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Young Elsa &middot; First Thaw Cast</span></div></div>
+  <p>PERFORMER NAME is delighted to be joining the company of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>&amp; Juliet &middot; Ensemble &middot; 2026</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME teaches at a local primary school. They would like to thank the creative team, and their family for every drive to rehearsal.</p></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="frost ftr"></div><div class="safe"><div class="rh"><span class="rhe">Ensemble</span><span class="rhf">24</span></div><div class="biogrid c4e"><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Ensemble</span><span class="rhf">25</span></div><div class="biogrid c4e"><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Ensemble</span><span class="rhf">26</span></div><div class="biogrid c4e"><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Ensemble</span><span class="rhf">27</span></div><div class="biogrid c4e"><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Ensemble</span><span class="rhf">28</span></div><div class="biogrid c4e"><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Ensemble</span><span class="rhf">29</span></div><div class="biogrid c4e"><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>PERFORMER NAME <span class="pron">(pronouns)</span></h3><span class="role">Ensemble</span></div></div>
+  <p>PERFORMER NAME is thrilled to join the ensemble of <em>Frozen</em>. Placeholder bio of roughly 95 words. Credits are set as <em>Production &middot; Role &middot; Year</em>: <em>Pippin &middot; Ensemble &middot; 2025</em> and <em>The Music Man &middot; Ensemble &middot; 2025</em>, both for CentreStage. Away from the stage, PERFORMER NAME studies at Deakin University. They would like to thank the creative team, and their family for their patience across a long rehearsal period.</p></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="frost ftr"></div><div class="safe"><div class="rh"><span class="rhe">Rehearsal room</span><span class="rhf">30</span></div>
+  <span class="eyebrow">Nine months, three nights a week</span><h1 class="d3">Before the ice.</h1><div class="crule"><i></i><b></b><i></i></div>
+  <p class="lead" style="max-width:118mm">Everything an audience sees tonight was built in a hall in North Geelong on Monday, Wednesday and Sunday evenings, by people who came straight from work and school.</p>
+  <div class="rhgrid">
+    <div class="shot rhwide"><span>REHEARSAL PHOTO</span><em>company call &middot; landscape &middot; 300dpi</em></div>
+    <div class="shot"><span>REHEARSAL PHOTO</span><em>portrait &middot; 300dpi</em></div>
+    <div class="shot"><span>REHEARSAL PHOTO</span><em>portrait &middot; 300dpi</em></div>
+    <div class="shot rhwide"><span>REHEARSAL PHOTO</span><em>wardrobe or band call &middot; landscape &middot; 300dpi</em></div>
+  </div>
+</div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page castlist hasIce"><div class="icicles"></div><div class="safe"><div class="rh"><span class="rhe">Creative team</span><span class="rhf">31</span></div>
+  <span class="eyebrow ice">Creative &amp; production</span><h1 class="d3 onink">Who made this.</h1>
+  <div class="crgrid">
+    <div class="crcol"><h4 class="crh">Creative team</h4>
+      <div class="cr"><span class="crr">Director</span><span class="crn">Michele Marcu</span></div>
+      <div class="cr"><span class="crr">Assistant Director</span><span class="crn">Jesse Simpson</span></div>
+      <div class="cr"><span class="crr">Musical Director</span><span class="crn">Brittney Ling</span></div>
+      <div class="cr"><span class="crr">Assistant Musical Director</span><span class="crn">Hannah Foster Reeves</span></div>
+      <div class="cr"><span class="crr">Choreographer</span><span class="crn">Chloe Quinney</span></div>
+      <div class="cr"><span class="crr">Producer</span><span class="crn">Martin Nguyen</span></div>
+      <div class="cr"><span class="crr">Costume Designer</span><span class="crn">Virginia Connell</span></div>
+      <div class="cr"><span class="crr">Wardrobe Manager</span><span class="crn">Dawn Murdoch</span></div>
+      <div class="cr"><span class="crr">Child Safety Officer</span><span class="crn">Richelle White</span></div>
+    </div>
+    <div class="crcol"><h4 class="crh">Production team</h4>
+      <div class="cr"><span class="crr">Set Designer</span><span class="crn">NAME</span></div>
+      <div class="cr"><span class="crr">Lighting Designer</span><span class="crn">NAME</span></div>
+      <div class="cr"><span class="crr">Sound Designer</span><span class="crn">NAME</span></div>
+      <div class="cr"><span class="crr">Stage Manager</span><span class="crn">NAME</span></div>
+      <div class="cr"><span class="crr">Assistant Stage Manager</span><span class="crn">NAME</span></div>
+      <div class="cr"><span class="crr">Production Manager</span><span class="crn">NAME</span></div>
+      <div class="cr"><span class="crr">Properties Coordinator</span><span class="crn">NAME</span></div>
+      <div class="cr"><span class="crr">Hair &amp; Makeup Designer</span><span class="crn">NAME</span></div>
+      <div class="cr"><span class="crr">Rehearsal Pianist</span><span class="crn">NAME</span></div>
+    </div>
+  </div>
+  <div class="clens"><h4 class="clh">Production crew</h4>
+    <p class="ensnames">STAGE CREW &middot; FLY OPERATORS &middot; DRESSERS &middot; FOLLOW SPOT &middot; SET CONSTRUCTION &middot; SCENIC ART &middot; PROPS MAKERS &middot; WARDROBE ASSISTANTS &middot; FRONT OF HOUSE &middot; CHAPERONES</p></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="frost fbr"></div><div class="safe"><div class="rh"><span class="rhe">Creative biographies</span><span class="rhf">32</span></div><div class="biogrid c3"><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>Michele Marcu <span class="pron">(pronouns)</span></h3><span class="role">Director</span></div></div>
+  <p>Placeholder biography of roughly 120 words, within the 150 to 300 word range set for the creative team. Open with training, qualifications and professional context. Then credits, grouped by the kind of work rather than chronologically, set as <em>Production &middot; Role &middot; Year</em> and formatted identically across every creative bio. Then a personal note: what this person brings to a rehearsal room that a credit list cannot convey. Close with something specific to this production, and who they would like to thank.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>Jesse Simpson <span class="pron">(pronouns)</span></h3><span class="role">Assistant Director</span></div></div>
+  <p>Placeholder biography of roughly 120 words, within the 150 to 300 word range set for the creative team. Open with training, qualifications and professional context. Then credits, grouped by the kind of work rather than chronologically, set as <em>Production &middot; Role &middot; Year</em> and formatted identically across every creative bio. Then a personal note: what this person brings to a rehearsal room that a credit list cannot convey. Close with something specific to this production, and who they would like to thank.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>Brittney Ling <span class="pron">(pronouns)</span></h3><span class="role">Musical Director</span></div></div>
+  <p>Placeholder biography of roughly 120 words, within the 150 to 300 word range set for the creative team. Open with training, qualifications and professional context. Then credits, grouped by the kind of work rather than chronologically, set as <em>Production &middot; Role &middot; Year</em> and formatted identically across every creative bio. Then a personal note: what this person brings to a rehearsal room that a credit list cannot convey. Close with something specific to this production, and who they would like to thank.</p></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Creative biographies</span><span class="rhf">33</span></div><div class="biogrid c3"><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>Hannah Foster Reeves <span class="pron">(pronouns)</span></h3><span class="role">Assistant Musical Director</span></div></div>
+  <p>Placeholder biography of roughly 120 words, within the 150 to 300 word range set for the creative team. Open with training, qualifications and professional context. Then credits, grouped by the kind of work rather than chronologically, set as <em>Production &middot; Role &middot; Year</em> and formatted identically across every creative bio. Then a personal note: what this person brings to a rehearsal room that a credit list cannot convey. Close with something specific to this production, and who they would like to thank.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>Chloe Quinney <span class="pron">(pronouns)</span></h3><span class="role">Choreographer</span></div></div>
+  <p>Placeholder biography of roughly 120 words, within the 150 to 300 word range set for the creative team. Open with training, qualifications and professional context. Then credits, grouped by the kind of work rather than chronologically, set as <em>Production &middot; Role &middot; Year</em> and formatted identically across every creative bio. Then a personal note: what this person brings to a rehearsal room that a credit list cannot convey. Close with something specific to this production, and who they would like to thank.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>Martin Nguyen <span class="pron">(pronouns)</span></h3><span class="role">Producer</span></div></div>
+  <p>Placeholder biography of roughly 120 words, within the 150 to 300 word range set for the creative team. Open with training, qualifications and professional context. Then credits, grouped by the kind of work rather than chronologically, set as <em>Production &middot; Role &middot; Year</em> and formatted identically across every creative bio. Then a personal note: what this person brings to a rehearsal room that a credit list cannot convey. Close with something specific to this production, and who they would like to thank.</p></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Creative biographies</span><span class="rhf">34</span></div><div class="biogrid c3"><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>Virginia Connell <span class="pron">(pronouns)</span></h3><span class="role">Costume Designer</span></div></div>
+  <p>Placeholder biography of roughly 120 words, within the 150 to 300 word range set for the creative team. Open with training, qualifications and professional context. Then credits, grouped by the kind of work rather than chronologically, set as <em>Production &middot; Role &middot; Year</em> and formatted identically across every creative bio. Then a personal note: what this person brings to a rehearsal room that a credit list cannot convey. Close with something specific to this production, and who they would like to thank.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>Dawn Murdoch <span class="pron">(pronouns)</span></h3><span class="role">Wardrobe Manager</span></div></div>
+  <p>Placeholder biography of roughly 120 words, within the 150 to 300 word range set for the creative team. Open with training, qualifications and professional context. Then credits, grouped by the kind of work rather than chronologically, set as <em>Production &middot; Role &middot; Year</em> and formatted identically across every creative bio. Then a personal note: what this person brings to a rehearsal room that a credit list cannot convey. Close with something specific to this production, and who they would like to thank.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>Richelle White <span class="pron">(pronouns)</span></h3><span class="role">Child Safety Officer</span></div></div>
+  <p>Placeholder biography of roughly 120 words, within the 150 to 300 word range set for the creative team. Open with training, qualifications and professional context. Then credits, grouped by the kind of work rather than chronologically, set as <em>Production &middot; Role &middot; Year</em> and formatted identically across every creative bio. Then a personal note: what this person brings to a rehearsal room that a credit list cannot convey. Close with something specific to this production, and who they would like to thank.</p></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Creative biographies</span><span class="rhf">35</span></div><div class="biogrid c3"><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>NAME <span class="pron">(pronouns)</span></h3><span class="role">Set Designer</span></div></div>
+  <p>Placeholder biography of roughly 120 words, within the 150 to 300 word range set for the creative team. Open with training, qualifications and professional context. Then credits, grouped by the kind of work rather than chronologically, set as <em>Production &middot; Role &middot; Year</em> and formatted identically across every creative bio. Then a personal note: what this person brings to a rehearsal room that a credit list cannot convey. Close with something specific to this production, and who they would like to thank.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>NAME <span class="pron">(pronouns)</span></h3><span class="role">Lighting Designer</span></div></div>
+  <p>Placeholder biography of roughly 120 words, within the 150 to 300 word range set for the creative team. Open with training, qualifications and professional context. Then credits, grouped by the kind of work rather than chronologically, set as <em>Production &middot; Role &middot; Year</em> and formatted identically across every creative bio. Then a personal note: what this person brings to a rehearsal room that a credit list cannot convey. Close with something specific to this production, and who they would like to thank.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>NAME <span class="pron">(pronouns)</span></h3><span class="role">Sound Designer</span></div></div>
+  <p>Placeholder biography of roughly 120 words, within the 150 to 300 word range set for the creative team. Open with training, qualifications and professional context. Then credits, grouped by the kind of work rather than chronologically, set as <em>Production &middot; Role &middot; Year</em> and formatted identically across every creative bio. Then a personal note: what this person brings to a rehearsal room that a credit list cannot convey. Close with something specific to this production, and who they would like to thank.</p></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Creative biographies</span><span class="rhf">36</span></div><div class="biogrid c3"><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>NAME <span class="pron">(pronouns)</span></h3><span class="role">Stage Manager</span></div></div>
+  <p>Placeholder biography of roughly 120 words, within the 150 to 300 word range set for the creative team. Open with training, qualifications and professional context. Then credits, grouped by the kind of work rather than chronologically, set as <em>Production &middot; Role &middot; Year</em> and formatted identically across every creative bio. Then a personal note: what this person brings to a rehearsal room that a credit list cannot convey. Close with something specific to this production, and who they would like to thank.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>NAME <span class="pron">(pronouns)</span></h3><span class="role">Assistant Stage Manager</span></div></div>
+  <p>Placeholder biography of roughly 120 words, within the 150 to 300 word range set for the creative team. Open with training, qualifications and professional context. Then credits, grouped by the kind of work rather than chronologically, set as <em>Production &middot; Role &middot; Year</em> and formatted identically across every creative bio. Then a personal note: what this person brings to a rehearsal room that a credit list cannot convey. Close with something specific to this production, and who they would like to thank.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>NAME <span class="pron">(pronouns)</span></h3><span class="role">Production Manager</span></div></div>
+  <p>Placeholder biography of roughly 120 words, within the 150 to 300 word range set for the creative team. Open with training, qualifications and professional context. Then credits, grouped by the kind of work rather than chronologically, set as <em>Production &middot; Role &middot; Year</em> and formatted identically across every creative bio. Then a personal note: what this person brings to a rehearsal room that a credit list cannot convey. Close with something specific to this production, and who they would like to thank.</p></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Creative biographies</span><span class="rhf">37</span></div><div class="biogrid c3"><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>NAME <span class="pron">(pronouns)</span></h3><span class="role">Properties Coordinator</span></div></div>
+  <p>Placeholder biography of roughly 120 words, within the 150 to 300 word range set for the creative team. Open with training, qualifications and professional context. Then credits, grouped by the kind of work rather than chronologically, set as <em>Production &middot; Role &middot; Year</em> and formatted identically across every creative bio. Then a personal note: what this person brings to a rehearsal room that a credit list cannot convey. Close with something specific to this production, and who they would like to thank.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>NAME <span class="pron">(pronouns)</span></h3><span class="role">Hair &amp; Makeup Designer</span></div></div>
+  <p>Placeholder biography of roughly 120 words, within the 150 to 300 word range set for the creative team. Open with training, qualifications and professional context. Then credits, grouped by the kind of work rather than chronologically, set as <em>Production &middot; Role &middot; Year</em> and formatted identically across every creative bio. Then a personal note: what this person brings to a rehearsal room that a credit list cannot convey. Close with something specific to this production, and who they would like to thank.</p></div><div class="bio b3">
+  <div class="bhead"><div class="shot thumb"><span>PHOTO</span></div>
+    <div class="bnames"><h3>NAME <span class="pron">(pronouns)</span></h3><span class="role">Rehearsal Pianist</span></div></div>
+  <p>Placeholder biography of roughly 120 words, within the 150 to 300 word range set for the creative team. Open with training, qualifications and professional context. Then credits, grouped by the kind of work rather than chronologically, set as <em>Production &middot; Role &middot; Year</em> and formatted identically across every creative bio. Then a personal note: what this person brings to a rehearsal room that a credit list cannot convey. Close with something specific to this production, and who they would like to thank.</p></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">Our team</span><span class="rhf">38</span></div>
+    <span class="eyebrow">Crew &amp; company</span><h1 class="d4">The people behind it.</h1>
+    <div class="ggrid g5"><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div><div class="gcard"><div class="shot r45 sm"><span>HEADSHOT</span></div><h3>NAME</h3><span class="grole">Production crew &middot; (pronouns)</span></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="frost ftl"></div><div class="safe"><div class="rh"><span class="rhe">Orchestra</span><span class="rhf">39</span></div>
+  <span class="eyebrow">The orchestra</span><h1 class="d3">Live music.</h1>
+  <p class="lead" style="max-width:112mm">Every CentreStage production is performed to live music. Tonight's orchestra sits beneath the stage, following the conductor on a monitor you will never see.</p>
+  <div class="orch"><div class="ocl"><span class="ocr">Conductor / Keys 1</span><span class="ocn">NAME</span></div><div class="ocl"><span class="ocr">Keys 2</span><span class="ocn">NAME</span></div><div class="ocl"><span class="ocr">Violin I</span><span class="ocn">NAME</span></div><div class="ocl"><span class="ocr">Violin II</span><span class="ocn">NAME</span></div><div class="ocl"><span class="ocr">Cello</span><span class="ocn">NAME</span></div><div class="ocl"><span class="ocr">Flute / Piccolo</span><span class="ocn">NAME</span></div><div class="ocl"><span class="ocr">Clarinet</span><span class="ocn">NAME</span></div><div class="ocl"><span class="ocr">Oboe</span><span class="ocn">NAME</span></div><div class="ocl"><span class="ocr">Horn</span><span class="ocn">NAME</span></div><div class="ocl"><span class="ocr">Trumpet I</span><span class="ocn">NAME</span></div><div class="ocl"><span class="ocr">Trumpet II</span><span class="ocn">NAME</span></div><div class="ocl"><span class="ocr">Trombone</span><span class="ocn">NAME</span></div><div class="ocl"><span class="ocr">Guitar</span><span class="ocn">NAME</span></div><div class="ocl"><span class="ocr">Bass</span><span class="ocn">NAME</span></div><div class="ocl"><span class="ocr">Percussion</span><span class="ocn">NAME</span></div><div class="ocl"><span class="ocr">Drums</span><span class="ocn">NAME</span></div></div>
+  <div class="ad" style="height:54mm"><div class="adin"><span class="adl">ADVERTISING</span><strong>Half page &mdash; horizontal</strong><span class="add">180 &times; 54 mm</span></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="frost ftr"></div><div class="safe"><div class="rh"><span class="rhe">Production credits</span><span class="rhf">40</span></div>
+  <span class="eyebrow">Behind the curtain</span><h1 class="d3">Production credits.</h1>
+  <p class="lead" style="max-width:120mm;margin-bottom:0">For every performer on stage there is somebody in the wings, up a ladder or at a sewing machine. None of them are paid. All of them are the reason this show exists.</p>
+  <div class="credcols">
+    <div class="dept"><div class="depth">Production management</div><div class="crow"><span class="crole">Producer</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Production Manager</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Production Assistant</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Company Manager</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Rehearsal Pianist</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Répétiteur</span><span class="cname">NAME</span></div></div>
+    <div class="dept"><div class="depth">Stage management</div><div class="crow"><span class="crole">Stage Manager</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Deputy Stage Manager</span><span class="cname">NAME</span></div><div class="cteam"><b>Assistant Stage Managers</b>NAME &middot; NAME &middot; NAME &middot; NAME</div><div class="cteam"><b>Backstage Crew</b>NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME</div><div class="cteam"><b>Stage Hands</b>NAME &middot; NAME &middot; NAME &middot; NAME</div></div>
+    <div class="dept"><div class="depth">Set &amp; scenic</div><div class="crow"><span class="crole">Set Designer</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Head of Construction</span><span class="cname">NAME</span></div><div class="cteam"><b>Set Builders</b>NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME</div><div class="crow"><span class="crole">Scenic Artist</span><span class="cname">NAME</span></div><div class="cteam"><b>Set Painters</b>NAME &middot; NAME &middot; NAME &middot; NAME</div><div class="crow"><span class="crole">Props Coordinator</span><span class="cname">NAME</span></div><div class="cteam"><b>Props Team</b>NAME &middot; NAME &middot; NAME &middot; NAME</div></div>
+    <div class="dept"><div class="depth">Lighting</div><div class="crow"><span class="crole">Lighting Designer</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Lighting Programmer</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Lighting Operator</span><span class="cname">NAME</span></div><div class="cteam"><b>Follow Spot Operators</b>NAME &middot; NAME</div><div class="cteam"><b>Lighting Crew</b>NAME &middot; NAME &middot; NAME &middot; NAME</div></div>
+    <div class="dept"><div class="depth">Sound</div><div class="crow"><span class="crole">Sound Designer</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Sound Operator</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Radio Mic Technician</span><span class="cname">NAME</span></div><div class="cteam"><b>Sound Crew</b>NAME &middot; NAME &middot; NAME</div></div>
+    <div class="dept"><div class="depth">Vision &amp; automation</div><div class="crow"><span class="crole">Projection Designer</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Dome Operator</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Vision Operator</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Automation Operator</span><span class="cname">NAME</span></div><div class="cteam"><b>Flys &amp; Rigging</b>NAME &middot; NAME &middot; NAME</div></div>
+  </div>
+</div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="frost fbl"></div><div class="safe"><div class="rh"><span class="rhe">Production credits</span><span class="rhf">41</span></div>
+  <span class="eyebrow">Behind the curtain</span><h1 class="d3">And front of house.</h1>
+  <p class="lead" style="max-width:120mm;margin-bottom:0">Thank you to every family member who gave up their weekends so that somebody else's child could stand in the light.</p>
+  <div class="credcols">
+    <div class="dept"><div class="depth">Wardrobe</div><div class="crow"><span class="crole">Costume Designer</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Wardrobe Manager</span><span class="cname">NAME</span></div><div class="cteam"><b>Costume Construction</b>NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME</div><div class="cteam"><b>Alterations &amp; Repairs</b>NAME &middot; NAME &middot; NAME &middot; NAME</div><div class="cteam"><b>Dressers</b>NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME</div><div class="crow"><span class="crole">Wardrobe Assistant</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Laundry</span><span class="cname">NAME</span></div></div>
+    <div class="dept"><div class="depth">Hair, wigs &amp; makeup</div><div class="crow"><span class="crole">Hair &amp; Makeup Designer</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Wigs Supervisor</span><span class="cname">NAME</span></div><div class="cteam"><b>Hair &amp; Makeup Team</b>NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME</div><div class="cteam"><b>Wigs Team</b>NAME &middot; NAME &middot; NAME</div></div>
+    <div class="dept"><div class="depth">Child safety &amp; welfare</div><div class="crow"><span class="crole">Child Safety Officer</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Youth Coordinator</span><span class="cname">NAME</span></div><div class="cteam"><b>Chaperones</b>NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME</div><div class="crow"><span class="crole">First Aid Officer</span><span class="cname">NAME</span></div></div>
+    <div class="dept"><div class="depth">Front of house</div><div class="crow"><span class="crole">Front of House Manager</span><span class="cname">NAME</span></div><div class="cteam"><b>Ushers</b>NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME</div><div class="cteam"><b>Box Office</b>NAME &middot; NAME &middot; NAME &middot; NAME</div><div class="cteam"><b>Merchandise</b>NAME &middot; NAME &middot; NAME &middot; NAME</div><div class="cteam"><b>Bar &amp; Canteen</b>NAME &middot; NAME &middot; NAME &middot; NAME</div><div class="crow"><span class="crole">Access &amp; Companion Seating</span><span class="cname">NAME</span></div></div>
+    <div class="dept"><div class="depth">Marketing &amp; media</div><div class="crow"><span class="crole">Program Design</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Program Advertising</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Graphic Design</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Production Photography</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Videography</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Social Media</span><span class="cname">NAME</span></div><div class="crow"><span class="crole">Publicity</span><span class="cname">NAME</span></div></div>
+    <div class="dept"><div class="depth">And everyone else</div><div class="cteam"><b>Working Bee Volunteers</b>NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME</div><div class="cteam"><b>Bump In &amp; Bump Out Crew</b>NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME</div><div class="cteam"><b>Committee &amp; Board</b>NAME &middot; NAME &middot; NAME &middot; NAME</div></div>
+  </div>
+</div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="safe"><div class="rh"><span class="rhe">About us</span><span class="rhf">42</span></div>
+  <span class="eyebrow">About CentreStage</span><h1 class="d3">Geelong's theatre company.</h1><div class="crule"><i></i><b></b><i></i></div>
+  <div class="twocol">
+    <p class="drop">CentreStage began in 2010 with one production and a lot of ambition. It is now one of the largest amateur musical theatre companies in the country, and the theatre company of Geelong.</p>
+    <p><strong>Everybody belongs on our stage.</strong> We do not pre-cast. Our inclusion policy is not a statement on a website &mdash; it is how we run auditions, classes and rehearsal rooms. We are owned and managed by a person with disability and a member of the LGBTQIA+ community, and our leadership includes people who identify as First Nations. We make reasonable adjustments as a matter of course, we run Relaxed and Accessible Performances, and we partner with disability and aged care services so more of our community can be in the room.</p>
+    <p><strong>We train the performers we cast.</strong> Our Performing Arts Academy runs weekly classes for more than four hundred young performers aged four to eighteen, every one of them performing on a real stage each year. Every teacher is VIT registered and holds a current Working with Children Check. Alongside it, the CentreStage Agency represents performers for professional stage and screen work &mdash; so a student can go from a first Saturday class to a paid credit without ever leaving Geelong.</p>
+    <p><strong>We stage the shows nobody expects a regional company to attempt.</strong> Blockbuster titles straight from the international stages, at full scale &mdash; flying, automation, licensed effects and casts of a hundred. <em>Priscilla</em> drew more than ten thousand people and set the second highest box office in the history of the Geelong Arts Centre. <em>Les Mis&eacute;rables</em> played to more than a thousand people a night at Costa Hall. That track record is why licensors trust us with titles like <em>Frozen</em>.</p>
+    <p><strong>And the work has been recognised.</strong> Inducted into the Geelong Business Excellence Awards Hall of Fame, Small Business of the Year, twice named a Health &amp; Wellbeing Promoting Workplace, and awarded for corporate social responsibility. Seven Music Theatre Guild of Victoria nominations for <em>Priscilla</em>, including Production of the Year, and the Guild's Edith Harrhy Award. In 2024 our Managing Director, David Greenwood, was awarded the Medal of the Order of Australia for services to the performing arts and to business.</p>
+    <p>Across twenty years of productions and community events we have raised more than one million dollars for Cancer Council Victoria. Our child safety, wellbeing and inclusion policies are published in full at centrestage.org.au/health.</p>
+  </div>
+  <div class="statrow"><div class="stat"><strong>400+</strong><span>Young performers each year</span></div><div class="stat"><strong>$1M+</strong><span>Raised for Cancer Council Victoria</span></div><div class="stat"><strong>500,000+</strong><span>Have seen a CentreStage production</span></div><div class="stat"><strong>2010</strong><span>Established in Geelong</span></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page "><div class="frost fbr"></div><div class="safe"><div class="rh"><span class="rhe">Thanks</span><span class="rhf">43</span></div>
+  <span class="eyebrow">Special thanks</span><h1 class="d3">We could not have<br>done this alone.</h1>
+  <div class="thx">
+    <div class="thxc"><h4>Licensing</h4><p>Stuart, Mark, Allanah and John at MTI Australia. Kim and Ashleigh at Origin Theatrical.</p></div>
+    <div class="thxc"><h4>Venues</h4><p>Geelong Arts Centre. Vines Road Community Centre.</p></div>
+    <div class="thxc"><h4>Geelong Arts Centre</h4><p>Angelique Helman. Ross Atkin. Tara Rodley. Cameron Bull. And the entire team &mdash; front of house, technical, production and administration.</p></div>
+    <div class="thxc"><h4>Our families</h4><p>To every parent, carer and grandparent who drove to rehearsal, sewed a costume, sold a raffle ticket or sat through a tech run &mdash; thank you.</p></div>
+    <div class="thxc"><h4>Sponsors &amp; supporters</h4><p>SPONSOR NAME &middot; SPONSOR NAME &middot; SPONSOR NAME &middot; SPONSOR NAME &middot; SPONSOR NAME &middot; SPONSOR NAME</p></div>
+    <div class="thxc"><h4>Volunteers</h4><p>NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME &middot; NAME</p></div>
+  </div>
+  <div class="ad" style="height:50mm"><div class="adin"><span class="adl">ADVERTISING</span><strong>Quarter page</strong><span class="add">86 &times; 50 mm</span></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page ifc hasIce"><div class="icicles"></div><div class="safe"><div class="rh"><span class="rhe">Join us</span><span class="rhf">44</span></div>
+  <span class="eyebrow ice">Next time, from the stage</span><h1 class="d2">Come and be<br>part of it.</h1>
+  <p class="lead" style="color:#C6DCF2;max-width:112mm;margin-top:5mm">Nobody in this company started out knowing they could do this. Every performer you have watched tonight walked into a room for the first time once.</p>
+  <div class="joing">
+    <div class="jcard"><h3>CentreStage Performing Arts Academy</h3><p>Saturday classes for ages 4 to 18 at Vines Road Community Centre, building acting, singing and dance across four terms &mdash; with a full-scale musical every year. No audition, no experience needed.</p><span class="jk">centrestage.org.au/satcpaa</span></div>
+    <div class="jcard"><h3>Audition for a mainstage production</h3><p>We do not pre-cast. Auditions are open to everyone, and every season we cast performers who have never set foot on a stage alongside people who have been with us for a decade.</p><span class="jk">centrestage.org.au/auditions</span></div>
+    <div class="jcard"><h3>Work behind the scenes</h3><p>Sets, wardrobe, backstage crew, front of house, orchestra. Volunteering with us is how a great many of our staff and creatives began, and no experience is required to start.</p><span class="jk">david@centrestage.org.au</span></div>
+    <div class="jcard"><h3>Support the work</h3><p>We are a not-for-profit community company. Ticket sales cover a fraction of what a production like this costs; sponsorship and donations cover the rest, and keep our class fees the lowest in Geelong.</p><span class="jk">(03) 5272 1775</span></div>
+  </div>
+</div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page adpage"><div class="safe"><div class="ad"><div class="adin"><span class="adl">ADVERTISING</span><strong>Full page &mdash; full bleed</strong><span class="add">220 &times; 307 mm &middot; trims to 210 &times; 297 mm &middot; keep text 15 mm inside</span></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page adpage"><div class="safe"><div class="q4">
+    <div class="dg">
+      <span class="dgeb">Candidate <i>/</i> You Yangs Ward <i>/</i> 2028</span>
+      <div class="dgwm">David<i>/</i>Greenwood <em>OAM</em></div>
+      <p class="dgh">Standing up for the You Yangs Ward.</p>
+      <ul class="dgl">
+        <li>Show up in person, every week &mdash; an open office and fortnightly suburb walks.</li>
+        <li>Push for transparency on every dollar of local spending.</li>
+        <li>Back the resident groups, CFA, schools and clubs already doing the work.</li>
+      </ul>
+      <div class="dgv">
+        <span class="dgvote">Vote 1 &middot; David Greenwood OAM</span>
+        <div class="dgc">davidgreenwood.com.au<br>0422 589 271</div>
+        <div class="dgauth">Authorised by D. Greenwood OAM, Unit 2, 255 Hamilton Highway, Fyansford VIC 3221.</div>
+      </div>
+    </div>
+    <div class="agq">
+      <div class="agarc"></div><div class="agrule"></div>
+      <div class="agin">
+        <div class="aghd">NOW<br>CASTING</div>
+        <div class="aghr"></div>
+        <div class="agscript">You?</div>
+        <p class="agp">CentreStage Agency represents performers of all ages for professional stage, screen and commercial work &mdash; and we are looking for new talent.</p>
+        <ul class="aglist">
+          <li>Film, television &amp; streaming</li>
+          <li>Commercials &amp; print campaigns</li>
+          <li>Professional music theatre</li>
+          <li>Ages 4 to adult &middot; no experience needed</li>
+        </ul>
+        <div class="agfoot">
+          <div class="agrep">Represented by</div>
+          <div class="agname">CentreStage<br>Agency</div>
+          <span class="agurl">centrestageagency.org.au</span>
+        </div>
+      </div>
+      <div class="agshot"><span>TALENT HEADSHOT</span><em>colour &middot; cut-out on ivory &middot; 300dpi</em></div>
+    </div>
+    <div class="ad"><div class="adin"><span class="adl">ADVERTISING</span><strong>Quarter page &mdash; full bleed</strong><span class="add">110 &times; 153.5 mm &middot; keep text 15 mm inside</span></div></div>
+    <div class="ad"><div class="adin"><span class="adl">ADVERTISING</span><strong>Quarter page &mdash; full bleed</strong><span class="add">110 &times; 153.5 mm &middot; keep text 15 mm inside</span></div></div>
+  </div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page adpage"><div class="safe"><div class="ad"><div class="adin"><span class="adl">ADVERTISING</span><strong>Inside back cover &mdash; full bleed</strong><span class="add">220 &times; 307 mm &middot; trims to 210 &times; 297 mm &middot; keep text 15 mm inside</span></div></div></div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+<section data-document-role="page" class="page cover back hasIce"><div class="bleedfill"></div><div class="icicles"></div>
+<div class="safe cvr">
+  <div class="cvtop"><img class="wm" src="assets/CentreStage-Solid-White.png" alt="CentreStage"></div>
+  <div class="cvmid bkmid">
+    <span class="eyebrow ice">Thank you for joining us</span>
+    <h1 class="d2 onink">See you next<br>season.</h1>
+    <p class="lead onink2">Class enrolments, mainstage auditions and tickets to every production &mdash; all at centrestage.org.au. We are a company built by this community, for this community.</p>
+  </div>
+  <div class="cvbot"><div class="cvrule"></div>
+    <div class="bkgrid">
+      <div><h4>Tickets</h4><p>bookings.centrestage.org.au<br>geelongartscentre.org.au</p></div>
+      <div><h4>Classes</h4><p>cpaa@centrestage.org.au<br>(03) 5272 1775</p></div>
+      <div><h4>Follow</h4><p>@centrestageaus<br>centrestage.org.au</p></div>
+    </div>
+    <div class="cvmeta bkmeta"><span>CentreStage Pty Ltd</span><span>Geelong &middot; Wadawurrung Country</span><span>Established 2010</span></div>
+  </div>
+</div><div class="marks"><i class="m tl1"></i><i class="m tl2"></i><i class="m tr1"></i><i class="m tr2"></i><i class="m bl1"></i><i class="m bl2"></i><i class="m br1"></i><i class="m br2"></i></div></section>
+</doc-page>
+<script src="doc-page.js"><\/script>
+</body>
+</html>
