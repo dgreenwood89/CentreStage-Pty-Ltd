@@ -22,7 +22,7 @@ export const SHOWS = [
     img: fill("35cad6_9eb8cd6e51734cc99bbb500892500fa6~mv2.png", 900, 675) },
   { id: "broadwayrocks", title: "Broadway Rocks", when: "5 December 2026 · 6.00pm", venue: "Costa Hall · Geelong Waterfront",
     blurb: "One night only. 300 students, one stage — the rock anthems of musical theatre, performed by the CentreStage student showcase.",
-    cta: "Book at Geelong Arts Centre", href: "https://geelongartscentre.org.au/whats-on/all-events/broadway-rocks-centrestage", status: "On sale Thursday 27 August",
+    cta: "Book at Geelong Arts Centre", href: "https://geelongartscentre.org.au/whats-on/all-events/broadway-rocks-centrestage", status: "On sale now",
     img: "assets/broadway-rocks.png", poster: true },
 ];
 
@@ -90,6 +90,23 @@ export const HELPLINES = [
 // ── Blog posts (news) ────────────────────────────────────────
 // body: array of paragraphs (full text) or null (excerpt only, to be expanded)
 export const POSTS = [
+  { slug: "frozen-auditions-thankyou", cat: "News", date: "Sep 2026", read: "3 min", author: "David Greenwood",
+    title: "Thank You to Everyone Who Auditioned for Frozen",
+    img: "assets/blog/frozen-audition-panel.jpg",
+    excerpt: "Over five nights and one very full Sunday, hundreds of performers walked into the room for Disney's Frozen. To every one of them: thank you.",
+    body: [
+      "Auditions for our 2027 production of Disney's Frozen have closed, and the turnout still takes our breath away. Performers came through the door in numbers we did not dare hope for, across five vocal audition evenings, a compulsory Dance and Movement Call, a dedicated session for Young Anna and Young Elsa, and a full day of callbacks.",
+      "Every one of those people prepared a song. Every one of them cut a backing track, learned a dance combination, drove across town after work or school, and stood in front of a panel to be seen. Anyone who has done it knows exactly how much courage that takes — and it does not get easier with experience.",
+      "To every performer who auditioned: thank you. Whether this is your first audition or your fifteenth, you gave our creative team an extraordinary problem to solve. The standard was genuinely high, and the depth of talent in this region continues to be the best argument we have for what Geelong theatre can be.",
+      "We wish we could cast everybody. We cannot, and the decisions ahead of our creative team are difficult ones — not because the choices are obvious, but because they are not. A 'no' from this room is a reflection of a very specific set of requirements for one production, and nothing more. Please audition again.",
+      "Our creative team — Michele Marcu, Jesse Simpson, Brittney Ling, Hannah Foster Reeves and Chloe Quinney — worked long days to make sure every person who auditioned was properly seen and heard. Casting outcomes will be communicated directly by email, and we ask for patience while that work is completed carefully.",
+      "A season of this scale also depends on people who never appear on a cast list. We are grateful to Cloverdale Community Centre in Corio, who hosted our vocal auditions across five evenings and gave us a warm, well-run space to work in. We are equally grateful to Geelong High School for the use of their gymnasium for both the Dance and Movement Call and our young performers' session — a large, safe, welcoming venue that made a demanding weekend possible.",
+      "Community theatre at this scale simply does not happen without local venues willing to open their doors. To the staff at both Cloverdale and Geelong High School: thank you for your flexibility, your generosity and your care.",
+      "Frozen opens at The Playhouse, Geelong Arts Centre, from 5 to 20 March 2027. We cannot wait to introduce you to the company who will bring Arendelle to life — and tickets are on sale now.",
+      "Theatrically,",
+      "David Greenwood OAM"
+    ],
+    cta: "Book tickets for Frozen", ctaHref: "https://geelongartscentre.org.au/whats-on/all-events/frozen-centrestage/" },
   { slug: "sweet-16", cat: "News", date: "Aug 2026", read: "6 min", author: "David Greenwood",
     title: "CentreStage's Sweet 16: Building Our Next Chapter",
     img: "assets/blog/sweet16/hero.jpg",
@@ -689,6 +706,10 @@ export const FAQ_GENERAL = [
 
 // ── Media & press ────────────────────────────────────────────
 export const MEDIA = [
+  { outlet: "Geelong Times", date: "Aug 2026", tag: "Inclusion", accent: "#7A4FB5",
+    title: "Relaxed performances challenge traditional theatre expectations",
+    blurb: "Director Michele Marcu built a relaxed performance into her original pitch for Frozen, describing it as the scaffold between following theatre etiquette and building the skills to do so while staying regulated and safe.",
+    href: "https://timesnewsgroup.com.au/geelongtimes/living/relaxed-performances-challenge-traditional-theatre-expectations/" },
   { outlet: "Geelong Times", date: "June 2026", tag: "Community", accent: "#2E8B6B",
     title: "The show goes on for a worthy cause",
     blurb: "CentreStage's night of line dancing raised more than $30,000 for Cancer Council Victoria — part of over $1 million raised for the charity across 20 years of productions and community events.",
