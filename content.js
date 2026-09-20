@@ -10,7 +10,7 @@ export const SHOWS = [
     img: "assets/frozen-keyart.png", featured: true },
   { id: "winnie", title: "Winnie the Pooh Kids", when: "October 2026", venue: "Junior Troupe · Ages 4–8",
     blurb: "A joyful beginning for our youngest performers. Onstage October 2026, performed by the Junior Troupe students.",
-    cta: "Tickets via TryBooking", href: "https://www.trybooking.com/DMGCA", status: "Sold out",
+    cta: "Tickets via TryBooking", href: "https://www.trybooking.com/DMGCA", status: "On sale now",
     img: fill("35cad6_e028c5b5122c4b968cc06aafee71cbd9~mv2.png", 900, 675) },
   { id: "matilda", title: "Matilda Jr.", when: "October / November 2026", venue: "Middle Troupe · Ages 9–12",
     blurb: "A brilliant young girl who refuses to accept injustice. Performed by the Middle Troupe students.",
