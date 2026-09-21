@@ -37,11 +37,11 @@ export const GROUPS = [
     { id: "handmaiden-1", role: "Handmaiden", name: P, pronouns: PR },
     { id: "handmaiden-2", role: "Handmaiden", name: P, pronouns: PR },
   ] },
-  { id: "ensemble", label: "The Ensemble", eyebrow: "Meet the cast / Ensemble", cols: 5, cast: [
-    { id: "ens-1", role: "Ensemble", name: P, pronouns: PR }, { id: "ens-2", role: "Ensemble", name: P, pronouns: PR },
-    { id: "ens-3", role: "Ensemble", name: P, pronouns: PR }, { id: "ens-4", role: "Ensemble", name: P, pronouns: PR },
-    { id: "ens-5", role: "Ensemble", name: P, pronouns: PR }, { id: "ens-6", role: "Ensemble", name: P, pronouns: PR },
-    { id: "ens-7", role: "Ensemble", name: P, pronouns: PR }, { id: "ens-8", role: "Ensemble", name: P, pronouns: PR },
-    { id: "ens-9", role: "Ensemble", name: P, pronouns: PR }, { id: "ens-10", role: "Ensemble", name: P, pronouns: PR },
+  { id: "ensemble", label: "Featured Dancers", eyebrow: "Meet the cast / Featured dancers", cols: 5, cast: [
+    { id: "ens-1", role: "Featured Dancer", name: P, pronouns: PR }, { id: "ens-2", role: "Featured Dancer", name: P, pronouns: PR },
+    { id: "ens-3", role: "Featured Dancer", name: P, pronouns: PR }, { id: "ens-4", role: "Featured Dancer", name: P, pronouns: PR },
+    { id: "ens-5", role: "Featured Dancer", name: P, pronouns: PR }, { id: "ens-6", role: "Featured Dancer", name: P, pronouns: PR },
+    { id: "ens-7", role: "Featured Dancer", name: P, pronouns: PR }, { id: "ens-8", role: "Featured Dancer", name: P, pronouns: PR },
+    { id: "ens-9", role: "Featured Dancer", name: P, pronouns: PR }, { id: "ens-10", role: "Featured Dancer", name: P, pronouns: PR },
   ] },
 ];
