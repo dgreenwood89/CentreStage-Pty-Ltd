@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>Disney's Winnie the Pooh KIDS — CentreStage Program</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<template id="__bundler_thumbnail"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="120" fill="#0A0A0A"/><text x="60" y="78" font-family="Arial Black, Arial" font-size="56" font-weight="900" fill="#E8A317" text-anchor="middle">/</text></svg></template>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #2A2A28; font-family: Arial, Helvetica, sans-serif; color: #0A0A0A; -webkit-font-smoothing: antialiased; }
+  a { color: #0A0A0A; } a:hover { color: #6B6B68; }
+  .page { width: 210mm; height: 297mm; margin: 10mm auto; background: #FFF8E6; position: relative; overflow: hidden; display: flex; flex-direction: column; padding: 16mm 15mm 13mm; }
+  @media print { html, body { background: none; } .page { margin: 0; break-after: page; } }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 9pt; letter-spacing: .22em; text-transform: uppercase; color: #9A6A00; }
+  h2 { font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 26pt; line-height: .98; letter-spacing: -.02em; margin: 3mm 0 5mm; }
+  h3 { font-size: 10pt; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 2.5mm; }
+  p { font-size: 11pt; line-height: 1.5; margin: 0 0 3mm; text-wrap: pretty; }
+  .rule { border-top: 1px solid #D9D5CC; }
+  .land { position:absolute; left:0; right:0; bottom:0; height:30mm; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 30' preserveAspectRatio='none'%3E%3Cpath d='M0 12C17 0 33 0 50 12S83 24 100 12S133 0 150 12S183 24 200 12V30H0Z' fill='%23C8102E'/%3E%3C/svg%3E") center bottom / 100% 100% no-repeat; pointer-events:none; }
+  .land-s { height:13mm; }
+  .drip { position:absolute; left:0; right:0; top:0; height:20mm; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 40' preserveAspectRatio='none'%3E%3Cpath d='M0 0H200V14C190 14 188 30 182 30C176 30 176 14 168 14C158 14 156 22 150 22C144 22 144 14 134 14C124 14 122 36 114 36C106 36 106 14 96 14C86 14 84 24 78 24C72 24 72 14 62 14C52 14 50 32 42 32C34 32 34 14 24 14C16 14 14 22 9 22C4 22 3 14 0 14Z' fill='%23E8A317'/%3E%3C/svg%3E") center top / 100% 100% no-repeat; pointer-events:none; }
+  .drip-s { height:10mm; }
+  .page.cover { background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='%23B97800' stroke-opacity='.08' stroke-width='2'/%3E%3Cpath d='M28 0L28 34L0 50L0 84L28 100L56 84L56 50L28 34' fill='none' stroke='%23B97800' stroke-opacity='.08' stroke-width='2'/%3E%3C/svg%3E") center / 26mm auto, #FCE9A8; }
+  .page > * { position:relative; }
+  .page > .land, .page > .drip { position:absolute; }
+  .hdr { display: flex; justify-content: space-between; align-items: center; padding-bottom: 4mm; border-bottom: 2px solid #0A0A0A; flex: none; }
+  .hdr span { font-family: 'JetBrains Mono', monospace; font-size: 8.5pt; letter-spacing: .14em; text-transform: uppercase; color: #6B6B68; }
+  .ftr { position: relative; background: rgba(244,241,234,.0); margin-top: auto; padding-top: 3mm; border-top: 1px solid #D9D5CC; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 8pt; letter-spacing: .08em; color: #6B6B68; flex: none; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; padding: 2mm 0; border-bottom: 1px solid #E6E1D6; }
+  .row .role { font-family: 'JetBrains Mono', monospace; font-size: 9pt; letter-spacing: .1em; text-transform: uppercase; color: #6B6B68; }
+  .row .nm { font-weight: 700; font-size: 12pt; text-align: right; }
+  .honey { background: #E8A317; }
+</style>
+</head>
+<body>
+
+<!-- 01 COVER -->
+<section class="page cover" data-document-role="page" style="padding:0;">
+  <div class="drip" style="height:30mm; opacity:.55;"></div>
+  <div class="land" style="opacity:.7; height:16mm;"></div>
+  <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 15mm 40mm; position:relative;">
+    <img src="assets/pooh/centrestage-black-trim.png" alt="CentreStage" style="display:block; width:80mm; height:auto;">
+    <div style="font-weight:700; font-size:15pt; margin-top:3mm;">Production of</div>
+    <img src="assets/pooh/pooh-logo-trim.png" alt="Disney's Winnie the Pooh KIDS" style="display:block; width:100mm; height:auto; margin:7mm 0 10mm;">
+    <div style="line-height:1.25;">
+      <div style="font-size:9pt; letter-spacing:.04em;">Music and Lyrics by</div>
+      <div style="font-weight:700; font-size:18pt; margin-top:1mm;">RICHARD M. SHERMAN &amp; ROBERT B. SHERMAN,</div>
+      <div style="font-weight:700; font-size:18pt;">ROBERT LOPEZ &amp; KRISTEN ANDERSON-LOPEZ</div>
+      <div style="font-size:9pt; letter-spacing:.04em; margin-top:4mm;">Music Adapted &amp; Arranged and Additional Music &amp; Lyrics by</div>
+      <div style="font-weight:700; font-size:18pt; margin-top:1mm;">WILL VAN DYKE</div>
+      <div style="font-size:9pt; letter-spacing:.04em; margin-top:4mm;">Book and Additional Lyrics by</div>
+      <div style="font-weight:700; font-size:18pt; margin-top:1mm;">CHERYL DAVIS</div>
+      <div style="font-size:10pt; margin-top:4mm; color:#3A3A37;">Based on the stories of A. A. Milne<br>and the 2011 Disney animated feature film</div>
+      <div style="font-size:8.5pt; line-height:1.45; margin-top:6mm; color:#3A3A37; max-width:150mm; margin-left:auto; margin-right:auto;">Licensed exclusively by Music Theatre International (Australasia).<br>All authorized performance materials are also supplied by Music Theatre International (Australasia).<br>www.mtishows.com.au</div>
+    </div>
+  </div>
+  <div style="flex:none; position:absolute; left:0; right:0; bottom:20mm; text-align:center;">
+    <span class="mono" style="font-size:9pt; letter-spacing:.14em; text-transform:uppercase; color:#0A0A0A; padding:2mm 4mm;">Performing Arts Academy &nbsp;/&nbsp; Juniors</span>
+  </div>
+</section>
+
+<!-- 02 WELCOME + SYNOPSIS -->
+<section class="page" data-document-role="page">
+  <div class="drip drip-s"></div>
+  <div class="land land-s"></div>
+  <div class="hdr" style="position:relative;"><img src="assets/CentreStage-Solid-Black.png" alt="CentreStage" style="width:24mm; height:auto;"></div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:9mm; margin-top:8mm;">
+    <div>
+      <div class="eyebrow">Welcome</div>
+      <h2>Welcome to the Hundred Acre Wood.</h2>
+      <p>Thank you for joining us for our Junior Troupe's production of <b>Disney's Winnie the Pooh KIDS</b>. For many of tonight's performers, this is their very first time on stage — and every one of them has worked hard all term to bring Pooh and his friends to life.</p>
+      <p>Theatre at this age is about confidence, friendship and the joy of telling a story together. We hope you leave with a smile, and perhaps a craving for honey.</p>
+      <p>Please sit back, cheer loudly, and enjoy the show.</p>
+      <div style="margin-top:6mm;">
+        <img src="assets/pooh/david-signature.png" alt="David Greenwood signature" style="display:block; height:18mm; width:auto;">
+        <div style="font-weight:700; font-size:11pt; margin-top:2mm;">David Greenwood OAM</div>
+        <div class="mono" style="font-size:8.5pt; color:#6B6B68; letter-spacing:.06em;">Managing Director, CentreStage</div>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow">The story</div>
+      <h2>A rescue mission, with snacks.</h2>
+      <p>Welcome to the Hundred Acre Wood, where Winnie the Pooh is once again in search of honey. Along the way, he meets his pals Tigger, Piglet, Rabbit and Owl — but soon discovers that Christopher Robin has been captured by the mysterious Backson.</p>
+      <p>As they prepare for a rescue operation, the animals learn about teamwork, friendship and, of course, sharing snacks.</p>
+      <div style="height:62mm; margin-top:4mm;"><img src="assets/pooh/rehearsal.png" alt="Juniors in rehearsal" style="width:100%; height:100%; object-fit:cover; object-position:55% 60%; display:block;"></div>
+    </div>
+  </div>
+  <div style="margin-top:8mm;">
+    <div class="eyebrow">Musical numbers</div>
+    <div style="columns:3; column-gap:7mm; margin-top:3mm; font-size:10pt; line-height:1.7;">
+      <div>Winnie the Pooh</div><div>The Wonderful Thing About Tiggers</div><div>The Tummy Song</div><div>Pooh and Piglet</div><div>Honey!</div><div>The Backson Song</div><div>Piglet's Picnic</div><div>Tigger Bounces In</div><div>The Backson Song (Reprise)</div><div>All in the Trap</div><div>How to Capture a Backson</div><div>Halfway Down</div><div>Out of the Trap</div><div>Hip Hip Pooh-Ray / Winnie the Pooh (Finale)</div>
+    </div>
+  </div>
+  <div class="ftr"><span>Running time approx. 30 minutes · no interval</span><span>02</span></div>
+</section>
+
+<!-- 03 CAST + TEACHING TEAM -->
+<section class="page" data-document-role="page">
+  <div class="drip drip-s"></div>
+  <div class="land land-s"></div>
+  <div class="hdr" style="position:relative;"><img src="assets/CentreStage-Solid-Black.png" alt="CentreStage" style="width:24mm; height:auto;"></div>
+  <div style="display:grid; grid-template-columns:1.15fr 1fr; gap:9mm; margin-top:8mm; flex:1; min-height:0;">
+    <div>
+      <div class="eyebrow">Cast · Juniors</div>
+      <h2>The Hundred Acre Wood.</h2>
+      <div style="columns:2; column-gap:6mm;">
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Jewel Appledore-McCallum</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Angus Armstrong</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Julia Beard</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Penelope Beard</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Bellamy Boutsalis</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Elizabeth Crilly</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Kaia Davies</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Emma Duonis</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Zoe Filipovic</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Pippa Fitzgerald</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Raphael Folino</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Teo Geddes</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Bella Hebbard</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Saleema Innes</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Hazel Jelley</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Angus McKirdy</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Quinn McMurtrie</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Ivy Nath-Cullen</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Ava Patterson Stonehouse</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Charlotte Quarterman</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Audrey Schubert</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Macie Smith</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Hazel Stephenson</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Hendrick Stipcevich</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Arthur Verlaan</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.25; padding:1.6mm 0; border-bottom:1px solid #E6E1D6; break-inside:avoid;">Catia Wiese</div>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow">Production team</div>
+      <h2>Behind the honey pot.</h2>
+      <div style="padding:2.4mm 0; border-bottom:1px solid #E6E1D6;">
+        <div class="mono" style="font-size:8.5pt; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Director of Education</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.35; margin-top:.8mm;">Michele Marcu</div>
+      </div>
+      <div style="padding:2.4mm 0; border-bottom:1px solid #E6E1D6;">
+        <div class="mono" style="font-size:8.5pt; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Assistant Director of Education</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.35; margin-top:.8mm;">Trent Inturrisi</div>
+      </div>
+      <div style="padding:2.4mm 0; border-bottom:1px solid #E6E1D6;">
+        <div class="mono" style="font-size:8.5pt; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Junior Educators</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.35; margin-top:.8mm;">Ella Edwards<br>Cassiana Marcu<br>Ava Davies<br>Rosie Tuck</div>
+      </div>
+      <div style="padding:2.4mm 0; border-bottom:1px solid #E6E1D6;">
+        <div class="mono" style="font-size:8.5pt; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Student Support Leader</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.35; margin-top:.8mm;">Daniel Lim</div>
+      </div>
+      <div style="padding:2.4mm 0; border-bottom:1px solid #E6E1D6;">
+        <div class="mono" style="font-size:8.5pt; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Technical Director</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.35; margin-top:.8mm;">Joel Lane</div>
+      </div>
+      <div style="padding:2.4mm 0; border-bottom:1px solid #E6E1D6;">
+        <div class="mono" style="font-size:8.5pt; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Technical Team</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.35; margin-top:.8mm;">Declan Parisi<br>Emily Rice</div>
+      </div>
+      <div style="padding:2.4mm 0; border-bottom:1px solid #E6E1D6;">
+        <div class="mono" style="font-size:8.5pt; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Accounts Manager</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.35; margin-top:.8mm;">Richelle White</div>
+      </div>
+      <div style="padding:2.4mm 0; border-bottom:1px solid #E6E1D6;">
+        <div class="mono" style="font-size:8.5pt; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Managing Director</div>
+        <div style="font-weight:700; font-size:12pt; line-height:1.35; margin-top:.8mm;">David Greenwood OAM</div>
+      </div>
+    </div>
+  </div>
+  <div class="ftr" ><span>Cast listed alphabetically</span><span>03</span></div>
+</section>
+
+<!-- 04 REGISTRATIONS + BILLING -->
+<section class="page" data-document-role="page" style="padding:0;">
+  <div style="background:#E8A317; padding:16mm 15mm 12mm; flex:none;">
+    <div class="mono" style="font-size:9pt; letter-spacing:.22em; text-transform:uppercase; color:#0A0A0A;">Enrolments now open</div>
+    <div style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:40pt; line-height:.92; letter-spacing:-.03em; margin:4mm 0 5mm;">Join us<br>in 2027.</div>
+    <p style="max-width:150mm;">Loved tonight? Your young performer can be on stage next year. Our Performing Arts Academy runs Saturday musical theatre troupes for ages 4 to 18, and every student performs in a fully staged musical — Annie Kids, Trolls the Musical Jr and Spamalot Youth Edition in 2027 — plus our Disney-inspired showcase, Be Our Guest, at Costa Hall.</p>
+    <div style="display:flex; gap:8mm; align-items:center; margin-top:5mm;">
+      <img src="assets/qr-weekly.png" alt="QR code to centrestage.org.au/weekly" style="width:26mm; height:26mm; display:block; flex:none;">
+      <div style="display:flex; flex-direction:column; gap:2mm;">
+        <div class="mono" style="font-size:8.5pt; letter-spacing:.14em; text-transform:uppercase;">Scan to enrol</div>
+        <div style="font-weight:700; font-size:15pt;">centrestage.org.au/weekly</div>
+        <div class="mono" style="font-size:9pt; letter-spacing:.06em;">cpaa@centrestage.org.au</div>
+      </div>
+    </div>
+  </div>
+  <div style="flex:1; display:flex; flex-direction:column; padding:10mm 15mm 13mm;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:9mm;">
+      <div>
+        <h3>Thank you</h3>
+        <p style="font-size:10pt;">To our families, volunteers and teaching team, and to the venue staff who made tonight possible. And to our young performers — take a bow.</p>
+        <h3 style="margin-top:4mm;">Child safety</h3>
+        <p style="font-size:10pt;">CentreStage is a child safe organisation. Our policies and procedures are available at www.centrestage.org.au/health.</p>
+      </div>
+      <div>
+        <h3>Recording</h3>
+        <p style="font-size:10pt; font-weight:700;">The videotaping or other video or audio recording of this production is strictly prohibited.</p>
+        <h3 style="margin-top:4mm;">Photography</h3>
+        <p style="font-size:10pt;">Please do not share images of other people's children online without their family's consent.</p>
+      </div>
+    </div>
+    <div style="margin-top:auto; border-top:2px solid #0A0A0A; padding-top:5mm; display:flex; justify-content:space-between; align-items:flex-end; gap:10mm;">
+      <div class="mono" style="font-size:8.5pt; letter-spacing:.06em; color:#6B6B68; line-height:1.6;">CentreStage Performing Arts Academy<br>Geelong · Wadawurrung Country</div>
+      <img src="assets/CentreStage-Solid-Black.png" alt="CentreStage" style="width:36mm; height:auto; flex:none;">
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

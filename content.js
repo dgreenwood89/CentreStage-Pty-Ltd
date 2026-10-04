@@ -680,35 +680,34 @@ export const IMG = {
 
 // ── Education ────────────────────────────────────────────────
 export const EDU_TROUPES = [
-  { n: "Junior Troupe", age: "Ages 4–8", show: "Winnie the Pooh Kids · 2026", d: "A gentle first step into performance — storytelling, play, teamwork and stage confidence in a nurturing environment. No audition required.", color: "#2E6FB7" },
-  { n: "Middle Troupe", age: "Ages 9–12", show: "Matilda Jr. · 2026", d: "Building real technique across acting, voice and dance, and the discipline of a full-scale production.", color: "#2E8B6B" },
-  { n: "Senior Troupe", age: "Ages 12–18", show: "Hadestown: Teen Edition · 2026", d: "Ambitious, artistically demanding repertoire, plus a showcase performance at the Geelong Arts Centre.", color: "#8A4FA3" },
+  { n: "Junior Troupe", age: "Ages 4–7", show: "Annie Kids · 2027", logo: "assets/shows/annie-kids-clear.png", d: "A gentle first step into performance — storytelling, play, teamwork and stage confidence in a nurturing environment. No audition required.", color: "#E8472B" },
+  { n: "Middle Troupe", age: "Ages 8–12 · Grades 2–6", show: "Trolls The Musical Jr · 2027", logo: "assets/shows/trolls-jr.jpg", d: "Building real technique across acting, voice and movement, and the discipline of a full-scale production.", color: "#E5487F" },
+  { n: "Senior Troupe", age: "Ages 12–18", show: "Spamalot Young@Part · 2027", logo: "assets/shows/spamalot-clear.png", d: "Ambitious, artistically demanding repertoire, culminating in Be Our Guest at Costa Hall.", color: "#2E6FB7" },
 ];
 export const EDU_INCLUDED = [
   "Weekly classes across four terms, aligned with Victorian school terms",
   "Acting, singing and movement taught by industry professionals",
   "Theatre etiquette plus practical skills like costume and makeup",
-  "The chance to perform in up to two large-scale musicals each year",
+  "A full-scale 2027 musical plus Be Our Guest, our Disney-inspired showcase at Costa Hall",
   "A personal performance portfolio and a network of theatre friends",
-  "Clear pathways into mainstage productions and the talent agency",
+  "CentreStage Agency membership (valued at $347) included in every fee",
 ];
 export const EDU_FACTS = [
   { n: "Four terms", d: "Tuition aligned with Victorian school terms across the year." },
-  { n: "200+ students", d: "CPAA has grown every year since launching in response to community demand." },
+  { n: "350+ students", d: "Geelong's largest theatre education program, growing every year." },
   { n: "Registered staff", d: "VIT-accredited teachers and professionals, under DET & DHHS-approved guidelines." },
-  { n: "Two productions", d: "Students attend up to two large-scale CentreStage musicals a year." },
+  { n: "$5.70 / hour", d: "The lowest per-hour rate of any theatre program in Geelong." },
 ];
 export const PRIVATE_LESSONS = [
-  { t: "Private Singing", d: "One-to-one vocal tuition across pop, rock, jazz and classical, tailored to each student and every stage of their voice.", href: "/singing", color: "#E8472B" },
-  { t: "Private Piano", d: "Individual piano lessons for beginners through to advanced players, at a pace that suits the student.", href: "/singing", color: "#2E6FB7" },
-  { t: "Group Dance", d: "From hip hop to ballet, for all skill levels in a supportive, inclusive and energetic environment.", href: "/dance", color: "#C9902D" },
+  { t: "Private Voice & Acting", d: "One-to-one sessions with Jake Waterworth or Storm Randall — audition prep, self-tape coaching, vocal technique and repertoire.", href: "/singing", color: "#E8472B" },
+  { t: "CentreStage Agency", d: "Every 2027 student is represented for professional television, film and commercial opportunities. Already signed elsewhere? Opt out at onboarding.", href: "https://www.centrestageagency.org.au", color: "#2E6FB7" },
 ];
 export const FAQ_EDU = [
   { q: "What ages do you teach?", a: "Our Performing Arts Academy welcomes young people aged 4 to 18, grouped into Junior, Middle and Senior troupes so every student is challenged at the right level." },
-  { q: "Do students need to audition?", a: "No. Our weekly programs and Junior productions such as Winnie the Pooh Kids are open to all new and returning students, with no audition required." },
+  { q: "Do students need to audition?", a: "No. Our weekly programs and Junior productions such as Annie Kids are open to all new and returning students, with no audition required." },
   { q: "Are your teachers qualified?", a: "Yes. Classes are led by registered staff, including VIT-accredited teachers and working industry professionals, under DET and DHHS-approved guidelines." },
   { q: "How do you keep children safe?", a: "We operate under the Victorian Child Safe Standards. All staff complete Child Safety Mandatory Training and hold Working with Children Checks, and we maintain a published Child Safety Plan." },
-  { q: "When and where are classes held?", a: "Weekly classes run across four terms at our North Geelong and Vines Road studios. Enrolments for the 2026 program are open now, and places are limited." },
+  { q: "When and where are classes held?", a: "Saturday classes run across four terms at Vines Road Community Centre, Hamlyn Heights. 2027 registrations are open now through Studio Pro, and places are limited." },
 ];
 
 // ── Trust / reputation ───────────────────────────────────────

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frozen — Company Code of Conduct · CentreStage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  doc-page:not(:defined){visibility:hidden}
+  html{-webkit-font-smoothing:antialiased}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#0A0A0A}
+  a{color:#0A0A0A} a:hover{color:#E8472B}
+  h1,h2{font-family:'Arial Black',Arial,sans-serif;font-weight:900;letter-spacing:-.02em}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:9pt;letter-spacing:.16em;text-transform:uppercase;color:#6B6B68}
+  .mono{font-family:'JetBrains Mono',monospace}
+  p{font-size:11pt;line-height:1.55;margin:0 0 9pt;max-width:68ch;text-wrap:pretty}
+  .lede{font-size:13pt;line-height:1.5;color:#1F1F1D;max-width:58ch}
+  .sec{break-before:page;padding-top:4pt}
+  .sec-hd{display:grid;grid-template-columns:auto 1fr;gap:0 16pt;align-items:end;border-bottom:2px solid #0A0A0A;padding-bottom:10pt;margin-bottom:16pt}
+  .sec-hd .n{font-family:'JetBrains Mono',monospace;font-size:10pt;color:#6B6B68;letter-spacing:.1em;padding-bottom:5pt}
+  .sec-hd h2{font-size:26pt;line-height:1;margin:0}
+  h3{font-size:11pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin:16pt 0 6pt;break-after:avoid}
+  ul.rules{list-style:none;margin:0 0 10pt;padding:0;border-top:1px solid #D9D5CC}
+  ul.rules li{font-size:11pt;line-height:1.5;padding:6pt 0 6pt 18pt;position:relative;border-bottom:1px solid #D9D5CC;break-inside:avoid}
+  ul.rules li::before{content:"/";position:absolute;left:1pt;top:6pt;font-weight:700;color:#0A0A0A}
+  ul.rules.no li::before{content:"\00D7";color:#0A0A0A}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:18pt}
+  .box{background:#FFFFFF;padding:12pt 14pt;break-inside:avoid;margin:0 0 12pt}
+  .box p:last-child{margin:0}
+  .ink{background:#0A0A0A;color:#F4F1EA;padding:14pt 16pt;break-inside:avoid;margin:12pt 0}
+  .ink p{color:#F4F1EA}
+  .ink .eyebrow{color:#A8A59E}
+  .ink a{color:#F4F1EA}
+  .src{font-family:'JetBrains Mono',monospace;font-size:8.5pt;letter-spacing:.04em;color:#6B6B68;margin:-2pt 0 12pt}
+  table.ct{width:100%;border-collapse:collapse;margin:6pt 0 12pt}
+  table.ct td{font-size:10.5pt;line-height:1.45;padding:7pt 8pt 7pt 0;border-bottom:1px solid #D9D5CC;vertical-align:top}
+  table.ct td:first-child{width:38%;font-weight:700}
+  table.ct td.m{font-family:'JetBrains Mono',monospace;font-size:9.5pt}
+  .val{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#D9D5CC;border:1px solid #D9D5CC;margin:10pt 0 16pt}
+  .val div{background:#F4F1EA;padding:12pt 11pt}
+  .val b{display:block;font-family:'Arial Black',Arial;font-size:13pt;letter-spacing:-.01em;margin-bottom:5pt}
+  .val span{font-size:9.5pt;line-height:1.45;color:#3A3A37}
+  .sig{display:grid;grid-template-columns:1fr 1fr;gap:22pt 24pt;margin-top:14pt}
+  .sig div{border-bottom:1px solid #0A0A0A;height:34pt;position:relative}
+  .sig span{position:absolute;bottom:-15pt;left:0;font-family:'JetBrains Mono',monospace;font-size:8.5pt;letter-spacing:.1em;text-transform:uppercase;color:#6B6B68}
+  .hdr,.ftr{display:flex;justify-content:space-between;align-items:center;gap:16pt;font-family:'JetBrains Mono',monospace;font-size:8pt;letter-spacing:.12em;text-transform:uppercase;color:#6B6B68}
+  .hdr{border-bottom:1px solid #D9D5CC;padding-bottom:5pt}
+  .ftr{border-top:1px solid #D9D5CC;padding-top:5pt}
+  .cover{height:9.3in;overflow:hidden;display:flex;flex-direction:column;background:#0A0A0A;color:#F4F1EA;padding:0.4in 0.4in 0.35in}
+  .cover p{color:#C9C6BF}
+  .fill{flex:1}
+</style>
+</head>
+<body>
+<doc-page size="a4" margin="0.7in">
+  <div slot="header" class="hdr"><img src="assets/CentreStage-Solid-Black.png" alt="CentreStage" style="width:20mm;height:auto"><span>Frozen · Company Code of Conduct</span></div>
+  <div slot="footer" class="ftr"><span>CentreStage Pty Ltd · Geelong · Wadawurrung Country</span><span>Version 1 · September 2026</span></div>
+
+  <section class="cover">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start">
+      <img src="assets/CentreStage-Solid-White.png" alt="CentreStage" style="width:150pt">
+      <span class="eyebrow" style="color:#A8A59E">Company document / Please keep</span>
+    </div>
+    <div class="fill"></div>
+    <div class="eyebrow" style="color:#E8472B">Frozen / Cast · Creative · Crew · Volunteers</div>
+    <h1 style="font-size:46pt;line-height:.92;margin:12pt 0 0;color:#F4F1EA">How we work<br>together.</h1>
+    <p class="lede" style="margin-top:16pt;margin-bottom:20pt;color:#DCD9D2;font-size:12pt">The Company Code of Conduct for CentreStage's production of Frozen. It brings together the Geelong Arts Centre Child Safe Code of Conduct, our Child Employment Licence, backstage practice, the CentreStage We Are People Plan, and the way we look after one another's bodies, boundaries and wellbeing in the rehearsal room.</p>
+    <div class="fill"></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid #262624;padding-top:14pt">
+      <div><div class="eyebrow" style="color:#6B6B68">Season</div><div style="font-size:12pt;font-weight:700;margin-top:5pt">5 – 20 March 2027</div></div>
+      <div style="border-left:1px solid #262624;padding-left:14pt"><div class="eyebrow" style="color:#6B6B68">Venue</div><div style="font-size:12pt;font-weight:700;margin-top:5pt">The Playhouse, Geelong Arts Centre</div></div>
+      <div style="border-left:1px solid #262624;padding-left:14pt"><div class="eyebrow" style="color:#6B6B68">Rehearsals</div><div style="font-size:12pt;font-weight:700;margin-top:5pt">From October 2026</div></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-hd"><span class="n">00</span><h2>Before you begin</h2></div>
+    <p class="lede">Frozen brings adults and children together in one company for five months. That is a privilege, and it comes with responsibilities that are shared by every person in the room.</p>
+    <p>This Code applies to every adult and young person engaged on the production — principal and ensemble cast, understudies, young performers, the creative team, stage management, crew, wardrobe, chaperones, volunteers and anyone else working on or around the show. It applies in every space the company uses: rehearsal studios at North Geelong, Fyansford and Hamlyn Heights, the Geelong Arts Centre, promotional events, and online.</p>
+    <p>It does not replace the law, the Geelong Arts Centre's own policies, or CentreStage's policy library. It draws them together in one place and tells you what they mean for this production, day to day.</p>
+    <h3>Our values</h3>
+    <p>Everything in this Code comes back to the four values of the CentreStage We Are People Plan.</p>
+    <div class="val">
+      <div><b>We Belong.</b><span>Every person has a place in this company, whatever their age, background, identity or experience.</span></div>
+      <div><b>We Create.</b><span>We hold ourselves to a professional standard, and we make it safe to take creative risks.</span></div>
+      <div><b>We Listen.</b><span>We take concerns seriously, from the youngest performer to the most senior creative.</span></div>
+      <div><b>We Care.</b><span>Wellbeing and safety are planned for, not assumed.</span></div>
+    </div>
+    <h3>How this document is organised</h3>
+    <table class="ct">
+      <tr><td>01 · Child safety</td><td>The Geelong Arts Centre Child Safe Code of Conduct, applied to Frozen.</td></tr>
+      <tr><td>02 · Child employment</td><td>Our Child Employment Licence and what it requires of everyone.</td></tr>
+      <tr><td>03 · Boundaries, consent &amp; intimacy</td><td>Physical contact, choreography, fittings and saying no.</td></tr>
+      <tr><td>04 · The rehearsal room</td><td>How we behave in the room and towards the work.</td></tr>
+      <tr><td>05 · Backstage &amp; in the theatre</td><td>Dressing rooms, the wings, stage management and venue rules.</td></tr>
+      <tr><td>06 · Wellbeing</td><td>Looking after yourself and each other.</td></tr>
+      <tr><td>07 · Online &amp; images</td><td>Social media, photos and communication.</td></tr>
+      <tr><td>08 · Speaking up</td><td>How to raise a concern, and what happens next.</td></tr>
+      <tr><td>09 · Acknowledgement</td><td>Your signature.</td></tr>
+    </table>
+  </section>
+
+  <section class="sec">
+    <div class="sec-hd"><span class="n">01</span><h2>Child safety</h2></div>
+    <p class="src">Source · Geelong Arts Centre Child Safe Code of Conduct · Working with Children Act 2005 · Child Safe Standards 2022</p>
+    <p class="lede">Frozen includes performers under 18, and we perform in a Geelong Arts Centre venue. Every adult in the company is bound by the Geelong Arts Centre Child Safe Code of Conduct as well as CentreStage's own Child Safety Plan.</p>
+    <p>A child is anyone under 18. Every adult working with or around children on this production must hold a current Working with Children Check and have lodged it with CentreStage before their first rehearsal.</p>
+    <div class="two">
+      <div>
+        <h3>Every adult must</h3>
+        <ul class="rules">
+          <li>Follow the child safety policies of CentreStage and the Geelong Arts Centre.</li>
+          <li>Take all reasonable steps to protect children from any form of abuse or harm.</li>
+          <li>Treat every child with dignity, equality and respect.</li>
+          <li>Pay particular attention to the needs and cultural safety of First Nations children, and children from culturally and linguistically diverse backgrounds.</li>
+          <li>Promote the safety of d/Deaf and Disabled children, children of diverse gender and sexuality, and children from disadvantaged backgrounds.</li>
+          <li>Listen to and value children's ideas, especially about decisions that affect them.</li>
+          <li>Be a positive role model for healthy relationships, and professional in language, presentation and manner.</li>
+          <li>Build trust and open communication with children and their parents or carers.</li>
+          <li>Respect children's privacy, sharing information only with those who need to know.</li>
+          <li>Recognise that children are valued members of the company, and that enjoying childhood without undue pressure matters.</li>
+          <li>If a child is found unsupervised, take them straight to their chaperone or stage management.</li>
+          <li>Report any breach of this Code promptly to the Child Safety Officer.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>No adult may</h3>
+        <ul class="rules no">
+          <li>Discriminate against a child for any reason, or marginalise, exclude or favour particular children.</li>
+          <li>Shame, humiliate, belittle, frighten or isolate a child, or distress a child to draw out a dramatic reaction.</li>
+          <li>Show overly familiar affection, or make any physical contact that is not necessary and choreographed.</li>
+          <li>Enter a children's dressing room unless they are a designated chaperone or approved by stage management.</li>
+          <li>Allow a child into an adult dressing room or crew area without their chaperone and the room's consent.</li>
+          <li>Close a door on a room where children are present, except to give them privacy to dress.</li>
+          <li>Do personal tasks a child can do for themselves, such as toileting or dressing.</li>
+          <li>Photograph or film a child, or share their image or details, without the consent set out in Section 07.</li>
+          <li>Work with children under the influence of alcohol or drugs, or allow anyone under 18 to be served alcohol.</li>
+          <li>Gossip in front of children.</li>
+          <li>Develop a special relationship with a child, give gifts or special treatment, or contact a child outside the production, online or by phone.</li>
+          <li>Ignore or disregard any concern, suspicion or disclosure of harm.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ink">
+      <div class="eyebrow">If a child tells you something</div>
+      <p style="margin-top:6pt">Stay calm and listen. Do not question them in detail or promise to keep a secret. Tell them they did the right thing. Write down what they said in their own words, as soon as you can, and report it the same day to the Child Safety Officer. If a child is in immediate danger, call 000.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-hd"><span class="n">02</span><h2>Child employment</h2></div>
+    <p class="src">Source · Child Employment Act 2003 · CentreStage Child Employment Licence</p>
+    <p class="lede">CentreStage holds an Entertainment Child Employment Licence issued by the Workforce Inspectorate Victoria. Every young performer on Frozen is engaged under it.</p>
+    <table class="ct">
+      <tr><td>Licence number</td><td class="m">CEL-26-2632</td></tr>
+      <tr><td>Licence type</td><td>Entertainment</td></tr>
+      <tr><td>Licence holder</td><td>CentreStage Pty Ltd</td></tr>
+      <tr><td>Licence period</td><td class="m">10/09/2026 – 10/09/2027</td></tr>
+      <tr><td>Nominated officer</td><td>David Greenwood OAM, Managing Director</td></tr>
+    </table>
+    <h3>What the licence requires</h3>
+    <ul class="rules">
+      <li>We comply with the Child Employment Act 2003, the Child Safe Standards and the Occupational Health and Safety Act 2004.</li>
+      <li>Any work carrying a risk of harm to a child is only done once that risk has been managed and minimised.</li>
+      <li>A copy of the licence is kept at every venue where children work, and is available on request to any child, their supervisor, and their parent or guardian.</li>
+      <li>Every young performer, and every person supervising them, receives an induction covering CentreStage's responsibilities, the supervisor's responsibilities, and the child's rights under the Act, the Child Safe Standards and the licence.</li>
+      <li>We cooperate fully with any request, audit or inspection by the Workforce Inspectorate Victoria.</li>
+    </ul>
+    <div class="two">
+      <div>
+        <h3>For supervisors &amp; chaperones</h3>
+        <ul class="rules">
+          <li>Know the call schedule for every child in your care, and sign them in and out.</li>
+          <li>Keep children within sight at all times, and never leave them alone with a single adult.</li>
+          <li>Make sure children have their breaks, meals and water, and are not kept beyond their scheduled call.</li>
+          <li>Tell stage management immediately if a child is unwell, hurt or distressed.</li>
+          <li>Release children only to their parent or guardian, or a person the parent has authorised in writing.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>For young performers</h3>
+        <ul class="rules">
+          <li>You have the right to be safe, to be treated with respect, and to be heard.</li>
+          <li>You have the right to rest breaks, meals and a working day that fits the law and your licence.</li>
+          <li>You can say no to anything that feels unsafe or wrong, and you will not get in trouble for it.</li>
+          <li>You can talk to your chaperone, the stage manager, the Director or the Child Safety Officer at any time.</li>
+          <li>Stay with your chaperone and in the areas you have been shown.</li>
+        </ul>
+      </div>
+    </div>
+    <p>Hours, breaks and scheduling for young performers are set by the Child Employment Act 2003 and the conditions of our licence. Stage management publishes a separate youth call schedule, and the youth performance roster for Frozen is shared across three casts so no young performer carries the full season.</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-hd"><span class="n">03</span><h2>Boundaries, consent &amp; intimacy</h2></div>
+    <p class="lede">Theatre is physical. We lift, hold, embrace and fall. That work is only possible when everyone trusts that their body and their boundaries will be respected, every time.</p>
+    <h3>Consent in the room</h3>
+    <ul class="rules">
+      <li>Consent is asked for, not assumed. Before any new physical contact, the person leading the work explains what it involves and checks in with everyone taking part.</li>
+      <li>Consent is specific and ongoing. Agreeing to a lift on Monday does not mean agreeing to a different lift on Wednesday. Anyone can change their answer at any time.</li>
+      <li>Every performer has the right to say no, or not yet, without explanation and without consequence to their role.</li>
+      <li>Physical contact is choreographed and rehearsed. Nobody improvises touch, adds contact in performance, or changes agreed choreography without the choreographer and the performers involved.</li>
+      <li>We use a shared stop word. Anyone who says "Hold" stops the action immediately, no questions asked.</li>
+      <li>We touch only the places agreed, in the way agreed, for as long as the moment requires.</li>
+    </ul>
+    <h3>Personal boundaries</h3>
+    <ul class="rules">
+      <li>Ask before touching anyone offstage, including hugs. Some people prefer a wave, and that is always respected.</li>
+      <li>No comments on anyone's body, weight, size, shape or appearance, in or out of the room. Casting and costume conversations happen privately, through the creative team.</li>
+      <li>Use the name and pronouns each person has asked us to use.</li>
+      <li>Respect personal space, belongings and privacy, including phones and dressing-room areas.</li>
+      <li>Jokes, "banter" or pranks that make someone uncomfortable are not acceptable, whatever the intention.</li>
+    </ul>
+    <h3>Stage intimacy</h3>
+    <ul class="rules">
+      <li>Any moment of staged intimacy between adult performers — an embrace, a kiss, romantic contact — is choreographed in advance with the Director and choreographer, agreed with the performers, and rehearsed with stage management present.</li>
+      <li>Intimacy is only rehearsed once it has been blocked and consented to, and is not run repeatedly for its own sake.</li>
+      <li>Performers may ask for a closed room, with non-essential people out, for any intimacy rehearsal.</li>
+      <li>No staged intimacy involves anyone under 18.</li>
+      <li>If an alternative staging is needed to keep a performer comfortable, we find one.</li>
+    </ul>
+    <h3>Fittings, quick changes &amp; wardrobe</h3>
+    <ul class="rules">
+      <li>Costume fittings are explained before they start. Performers can ask for another person to be present, or for a fitter they are comfortable with.</li>
+      <li>Adults are only ever fitted by adult wardrobe staff. Young performers are fitted with their chaperone or parent present, and dress and undress in private.</li>
+      <li>Quick-change plans are agreed in advance, including who assists and where hands go. Nobody is assisted with a change they have not agreed to.</li>
+    </ul>
+  </section>
+
+  <section class="sec">
+    <div class="sec-hd"><span class="n">04</span><h2>The rehearsal room</h2></div>
+    <p class="lede">The rehearsal room is a workplace, a classroom and a creative space all at once. We treat it with the same respect we would give a professional stage.</p>
+    <div class="two">
+      <div>
+        <h3>We are</h3>
+        <ul class="rules">
+          <li>Early. On time means ready to work at the called time, warmed up, with your script and a pencil.</li>
+          <li>Prepared. Lines, music and choreography are learned between calls.</li>
+          <li>Present. Phones are away and on silent unless you are asked to use them.</li>
+          <li>Generous. We support each other's work, and cheer for each other's moments.</li>
+          <li>Available. Conflicts are given to stage management in writing, as early as possible.</li>
+          <li>Tidy. We leave every space cleaner than we found it.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>We do not</h3>
+        <ul class="rules no">
+          <li>Give notes to other performers. Notes come from the creative team.</li>
+          <li>Talk while others are working, or rehearse loudly on the sidelines.</li>
+          <li>Gossip, form cliques, or speak about members of the company behind their backs.</li>
+          <li>Attend rehearsal under the influence of alcohol or drugs, or bring them into any company space.</li>
+          <li>Share casting decisions, creative plans or rehearsal footage before the company has announced them.</li>
+          <li>Film or photograph in the room without the stage manager's permission.</li>
+        </ul>
+      </div>
+    </div>
+    <h3>Feedback and notes</h3>
+    <p>Notes are about the work, never the person. The creative team gives notes clearly, specifically and kindly. Performers receive notes graciously and ask questions if something is unclear. If a note feels personal or unfair, speak to the Director or stage manager privately.</p>
+    <h3>Respecting the creative team</h3>
+    <p>The Director, Musical Director, Choreographer and stage manager lead the room. Their direction is followed in the room. Disagreements are raised calmly and privately, never in front of the company or the young performers.</p>
+    <h3>A room without favourites</h3>
+    <p>Every role matters. Leads, ensemble, understudies, young performers and crew are treated with equal respect and courtesy. Casting is never used as a reward, a threat or a bargaining tool.</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-hd"><span class="n">05</span><h2>Backstage &amp; in the theatre</h2></div>
+    <p class="lede">Once we move into The Playhouse we are guests in a working venue, and the Geelong Arts Centre's rules sit alongside ours.</p>
+    <h3>Stage management</h3>
+    <ul class="rules">
+      <li>The stage manager runs the building for the company. Their calls are followed immediately and without argument.</li>
+      <li>Sign in on arrival and out on departure, every call. Young performers are signed in and out by their chaperone.</li>
+      <li>Respond to calls ("thank you, half an hour") so stage management knows you heard.</li>
+      <li>Report every hazard, injury or near miss straight away, however small.</li>
+    </ul>
+    <h3>The wings and backstage</h3>
+    <ul class="rules">
+      <li>Keep the wings silent and clear. Never stand in a crossover, quick-change area or fly path.</li>
+      <li>Touch only your own props and costumes. Everything returns to its place as soon as you are done.</li>
+      <li>Do not touch lighting, sound, rigging or scenic equipment unless it is your job.</li>
+      <li>No food or drink in costume, and water only in the wings.</li>
+      <li>Phones stay in the dressing room during the show.</li>
+    </ul>
+    <h3>Dressing rooms</h3>
+    <ul class="rules">
+      <li>Children's and adults' dressing rooms are separate. Adults do not enter children's rooms; children do not enter adults' rooms or crew areas.</li>
+      <li>Knock and wait before entering any dressing room.</li>
+      <li>Keep dressing rooms tidy, and your valuables secure.</li>
+      <li>Dressing rooms are private spaces. No photography, ever.</li>
+    </ul>
+    <h3>Venue rules</h3>
+    <ul class="rules">
+      <li>Follow all Geelong Arts Centre safety, security and emergency procedures, and know your nearest exit.</li>
+      <li>Stay within the areas you have been shown. Front-of-house and the foyer are off limits in costume unless called.</li>
+      <li>Nobody under 18 is to be served alcohol or be behind a bar at any time.</li>
+      <li>Treat venue staff, front of house and technicians with the same respect as the company.</li>
+    </ul>
+  </section>
+
+  <section class="sec">
+    <div class="sec-hd"><span class="n">06</span><h2>Wellbeing</h2></div>
+    <p class="src">Source · CentreStage We Are People Plan · Health &amp; Wellbeing Pledge</p>
+    <p class="lede">Performing can be physically exhausting and emotionally draining. Our We Are People Plan commits us to caring for the whole person, not just the performance.</p>
+    <ul class="rules">
+      <li>Look after your body: warm up, cool down, eat well, drink water, and rest when you can.</li>
+      <li>Tell stage management about any injury or illness, however minor. Performing through injury is not bravery; it is risk.</li>
+      <li>Speak up if you are struggling. It is always okay to ask for help, a break, or a conversation.</li>
+      <li>Keep an eye on each other. If someone seems unwell or unlike themselves, check in, and let stage management know.</li>
+      <li>Respect life outside the show. School, work, family and rest all matter, and we plan the schedule with that in mind.</li>
+      <li>Expect the post-show come-down after closing. Stay connected with the company, and reach out if it lingers.</li>
+    </ul>
+    <h3>Cultural safety</h3>
+    <p>We work on Wadawurrung Country. We are committed to the cultural safety of First Nations members of our company, and of people from every cultural, linguistic and faith background. Racism, in any form, is never acceptable.</p>
+    <h3>Support lines</h3>
+    <table class="ct">
+      <tr><td>Emergency</td><td class="m">000</td></tr>
+      <tr><td>Support Act Wellbeing Helpline</td><td class="m">1800 959 500 · free, 24/7, for the arts</td></tr>
+      <tr><td>Lifeline</td><td class="m">13 11 14 · 24/7</td></tr>
+      <tr><td>Kids Helpline (ages 5–25)</td><td class="m">1800 55 1800 · 24/7</td></tr>
+      <tr><td>QLife (LGBTIQ+)</td><td class="m">1800 184 527</td></tr>
+      <tr><td>13YARN (First Nations)</td><td class="m">13 92 76 · 24/7</td></tr>
+    </table>
+  </section>
+
+  <section class="sec">
+    <div class="sec-hd"><span class="n">07</span><h2>Online &amp; images</h2></div>
+    <p class="lede">What we post outlives the season. We protect each other's privacy, and above all the privacy of the children in our company.</p>
+    <h3>Photos and video</h3>
+    <ul class="rules">
+      <li>Nobody photographs or films a child without the explicit consent of the child (if 15 or older), their parent or guardian, and CentreStage management.</li>
+      <li>No photography in dressing rooms, change areas or bathrooms, under any circumstances.</li>
+      <li>Ask before photographing any adult, and delete it if they ask.</li>
+      <li>Rehearsal and backstage footage may only be taken and shared with the stage manager's permission.</li>
+    </ul>
+    <h3>Social media</h3>
+    <ul class="rules">
+      <li>Do not post images, names or details of young performers unless CentreStage has already published them.</li>
+      <li>Share official company announcements, rather than breaking news of your own.</li>
+      <li>No posts that criticise, mock or reveal private information about any member of the company, the creative team or the venue.</li>
+      <li>Respect the production's licensing: no recordings of the show itself, in whole or in part.</li>
+    </ul>
+    <h3>Communicating with young performers</h3>
+    <ul class="rules">
+      <li>Adults communicate with young performers only through approved company channels, with parents included.</li>
+      <li>No private messaging, following or friending of young performers on personal accounts.</li>
+      <li>No contact with young performers outside production activities.</li>
+    </ul>
+  </section>
+
+  <section class="sec">
+    <div class="sec-hd"><span class="n">08</span><h2>Speaking up</h2></div>
+    <p class="lede">If something does not feel right, say so. You will be listened to, taken seriously, and protected from any backlash for raising a concern in good faith.</p>
+    <h3>Who to tell</h3>
+    <table class="ct">
+      <tr><td>CentreStage Child Safety Officer</td><td>Richelle White · <span class="mono">richelle@centrestage.org.au</span></td></tr>
+      <tr><td>Managing Director &amp; licence nominated officer</td><td>David Greenwood OAM · <span class="mono">david@centrestage.org.au · 0422 589 271</span></td></tr>
+      <tr><td>CentreStage office</td><td class="m">(03) 5272 1775</td></tr>
+      <tr><td>Geelong Arts Centre Child Safety Officer</td><td>Manager Governance · <span class="mono">governance@geelongartscentre.org.au · 0405 312 446 · 03 5225 1216</span></td></tr>
+    </table>
+    <p>You can also speak to the Director, the stage manager or any chaperone, who will pass the concern on. Young performers can tell any adult they trust.</p>
+    <h3>What happens next</h3>
+    <ul class="rules">
+      <li>Your concern is acknowledged, recorded and handled confidentially.</li>
+      <li>Child safety concerns are acted on the same day, and reported to Victoria Police, Child Protection or the Commission for Children and Young People where the law requires.</li>
+      <li>Everyone involved is treated fairly and given the chance to be heard.</li>
+      <li>You are told the outcome, as far as privacy allows.</li>
+    </ul>
+    <h3>If the Code is breached</h3>
+    <p>Breaches are taken seriously. Depending on the circumstances, outcomes may include a conversation and additional support, increased supervision, a change of role, removal from the production, or referral to Victoria Police, the Commission for Children and Young People or the Workforce Inspectorate Victoria. The Geelong Arts Centre may also act under its own Child Safety and Wellbeing Policy.</p>
+    <div class="ink">
+      <div class="eyebrow">In an emergency</div>
+      <p style="margin:6pt 0 0">If anyone is in immediate danger, call 000 first. Then tell stage management.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-hd"><span class="n">09</span><h2>Acknowledgement</h2></div>
+    <p class="lede">Please read this Code in full, ask any questions you have, and sign below before your first rehearsal.</p>
+    <p>By signing, I confirm that I have read and understood the Frozen Company Code of Conduct, including the Geelong Arts Centre Child Safe Code of Conduct it incorporates, and I agree to follow it for the whole of my engagement on the production. I understand that breaching this Code may result in the actions described in Section 08.</p>
+    <div class="sig">
+      <div><span>Full name</span></div>
+      <div><span>Role on the production</span></div>
+      <div><span>Signature</span></div>
+      <div><span>Date</span></div>
+    </div>
+    <h3 style="margin-top:34pt">For performers under 18</h3>
+    <p>A parent or guardian must also sign. By signing, I confirm that I have read this Code with my child, that we have talked about what it means, and that my child knows who they can speak to if they have a concern.</p>
+    <div class="sig">
+      <div><span>Parent or guardian name</span></div>
+      <div><span>Relationship to performer</span></div>
+      <div><span>Signature</span></div>
+      <div><span>Date</span></div>
+    </div>
+    <div class="box" style="margin-top:34pt">
+      <p style="font-size:10pt;color:#3A3A37">This Code should be read alongside the CentreStage Child Safety Plan, We Are People Plan and full policy library at <b>centrestage.org.au/health</b>, and the Geelong Arts Centre Child Safe Code of Conduct. Copies of our Child Employment Licence are available from stage management at every venue.</p>
+    </div>
+  </section>
+</doc-page>
+<script src="doc-page.js"></script>
+</body>
+</html>
