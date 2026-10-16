@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /wwcc
-Disallow: /bio
-
-Sitemap: https://centrestage.org.au/sitemap.xml
