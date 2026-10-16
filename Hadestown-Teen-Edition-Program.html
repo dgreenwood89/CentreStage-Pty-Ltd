@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>Hadestown: Teen Edition — CentreStage Program</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+<template id="__bundler_thumbnail"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="120" fill="#131313"/><text x="60" y="78" font-family="Arial Black, Arial" font-size="56" font-weight="900" fill="#D7322B" text-anchor="middle">/</text></svg></template>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #2A2A28; font-family: Arial, Helvetica, sans-serif; color: #0A0A0A; -webkit-font-smoothing: antialiased; }
+  a { color: #0A0A0A; } a:hover { color: #6B6B68; }
+  .page { width: 210mm; height: 297mm; margin: 10mm auto; background: #F4F1EA; position: relative; overflow: hidden; display: flex; flex-direction: column; padding: 16mm 15mm 13mm; }
+  @media print { html, body { background: none; } .page { margin: 0; break-after: page; } }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 9pt; letter-spacing: .22em; text-transform: uppercase; color: #D7322B; }
+  h2 { font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 26pt; line-height: .98; letter-spacing: -.02em; margin: 3mm 0 5mm; }
+  h3 { font-size: 10pt; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 2.5mm; }
+  p { font-size: 11pt; line-height: 1.5; margin: 0 0 3mm; text-wrap: pretty; }
+  .hdr { display: flex; justify-content: space-between; align-items: center; padding-bottom: 4mm; border-bottom: 2px solid #0A0A0A; flex: none; }
+  .hdr span { font-family: 'JetBrains Mono', monospace; font-size: 8.5pt; letter-spacing: .14em; text-transform: uppercase; color: #6B6B68; }
+  .ftr { margin-top: auto; padding-top: 3mm; border-top: 1px solid #D9D5CC; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 8pt; letter-spacing: .08em; color: #6B6B68; flex: none; }
+  .letters { position:absolute; inset:0; pointer-events:none; }
+  .letters span { position:absolute; font-family:'Arial Black',Arial,sans-serif; font-weight:900; line-height:1; }
+  .cast { columns: 3; column-gap: 7mm; margin-top: 2mm; }
+  .cast div { break-inside: avoid; padding: 2.1mm 0; border-bottom: 1px solid #E2DDD2; font-weight: 700; font-size: 12pt; line-height: 1.2; }
+  .team { padding: 2.4mm 0; border-bottom: 1px solid #E2DDD2; break-inside: avoid; }
+  .team .r { font-family: 'JetBrains Mono', monospace; font-size: 8.5pt; letter-spacing: .1em; text-transform: uppercase; color: #6B6B68; }
+  .team .n { font-weight: 700; font-size: 12pt; line-height: 1.4; margin-top: .8mm; }
+
+  .pp { background: radial-gradient(ellipse 120% 70% at 50% 0%, #F7EDD8 0%, #EBDCBC 70%, #E2CFA9 100%); color:#22110D; }
+  .pd { background: radial-gradient(ellipse 110% 60% at 50% 0%, #3A2216 0%, #1A110D 55%, #0E0A08 100%); color:#F3E7CF; }
+  .frame { position:absolute; inset:6mm; border:1px solid rgba(154,107,31,.55); pointer-events:none; }
+  .frame::after { content:''; position:absolute; inset:1.6mm; border:1px solid rgba(154,107,31,.28); }
+  .pd .frame { border-color: rgba(201,162,74,.5); }
+  .pd .frame::after { border-color: rgba(201,162,74,.22); }
+  .gem { position:absolute; width:3.2mm; height:3.2mm; background:#C9A24A; transform:rotate(45deg); pointer-events:none; }
+  .pp .eyebrow, .pd .eyebrow { display:flex; align-items:center; gap:3mm; color:#9A6B1F; letter-spacing:.32em; }
+  .pd .eyebrow { color:#C9A24A; }
+  .pp .eyebrow::before, .pp .eyebrow::after, .pd .eyebrow::before, .pd .eyebrow::after { content:''; height:1px; width:9mm; background:currentColor; opacity:.7; }
+  .pp h2, .pd h2 { letter-spacing:-.025em; }
+  .pp h2 { color:#2A1210; }
+  .pd h2 { color:#F3E7CF; }
+  .pp .hdr, .pd .hdr { border-bottom:none; justify-content:center; gap:5mm; position:relative; }
+  .pp .hdr::before, .pp .hdr::after, .pd .hdr::before, .pd .hdr::after { content:''; flex:1; height:1px; background:linear-gradient(90deg, transparent, #C9A24A); }
+  .pp .hdr::after, .pd .hdr::after { background:linear-gradient(90deg, #C9A24A, transparent); }
+  .pp .ftr { border-top-color: rgba(154,107,31,.4); color:#7A5A2E; }
+  .pd .ftr { border-top-color: rgba(201,162,74,.3); color:#B59A6A; }
+  .pd .cast div { border-bottom-color: rgba(201,162,74,.2); color:#F3E7CF; }
+  .pd .cast div::before { content:'\25C6'; color:#C9A24A; font-size:6pt; margin-right:2.4mm; vertical-align:2px; }
+  .pp .team { border-bottom-color: rgba(154,107,31,.3); }
+  .pp .team .r { color:#9A6B1F; }
+  .pp p { color:#3A2418; }
+  .rays { position:absolute; inset:0; pointer-events:none; background: repeating-conic-gradient(from -90deg at 50% 46%, rgba(201,162,74,.13) 0deg 3deg, transparent 3deg 9deg); -webkit-mask-image: radial-gradient(circle at 50% 46%, #000 0%, rgba(0,0,0,.85) 35%, transparent 72%); mask-image: radial-gradient(circle at 50% 46%, #000 0%, rgba(0,0,0,.85) 35%, transparent 72%); }
+  .glow { position:absolute; inset:0; pointer-events:none; background: radial-gradient(circle at 50% 44%, rgba(232,150,60,.30) 0%, rgba(215,50,43,.10) 30%, transparent 60%); }
+
+  .frame, .gem, .rays, .glow { display:none !important; }
+  .page.grit { position:relative; background:#17120E url('assets/shows/hadestown-grit.jpg') center / cover no-repeat !important; color:#EDE3CC !important; }
+  .page.grit > * { position:relative; }
+  .grit h2 { font-family:'Oswald', 'Arial Narrow', Arial, sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.005em; line-height:.98; color:#C9B58C !important; font-size:30pt; }
+  .grit h3 { font-family:'Oswald', 'Arial Narrow', Arial, sans-serif; font-weight:700; letter-spacing:.06em; color:#C9B58C; font-size:12pt; }
+  .grit p { color:#DCD0B6 !important; }
+  .grit .eyebrow { font-family:'Oswald', 'Arial Narrow', Arial, sans-serif !important; font-weight:500; font-size:10pt !important; letter-spacing:.24em !important; color:#E3121B !important; display:block !important; }
+  .grit .eyebrow::before, .grit .eyebrow::after { display:none !important; }
+  .grit .hdr { justify-content:flex-start !important; border-bottom:1px solid rgba(201,181,140,.35) !important; }
+  .grit .hdr::before, .grit .hdr::after { display:none !important; }
+  .grit .ftr { border-top-color:rgba(201,181,140,.3) !important; color:#9C8C6C !important; }
+  .grit .cast div { color:#EDE3CC !important; border-bottom-color:rgba(201,181,140,.18) !important; font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12.5pt; }
+  .grit .cast div::before { content:none !important; }
+  .grit .team { border-bottom-color:rgba(201,181,140,.2) !important; }
+  .grit .team .r { color:#E3121B !important; }
+  .grit .team .n { color:#EDE3CC; font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.02em; }
+  .grit .mono { color:#A99878; }
+  .grit b, .grit strong { color:#EDE3CC; }
+  .grit .sig { filter: invert(1) sepia(.4) brightness(1.05); }
+  .grit .team .n { font-size:10pt !important; }
+  .grit .eyebrow { color:#FF5A4A !important; }
+  .grit .team .r { color:#C9B58C !important; font-family:'Oswald','Arial Narrow',Arial,sans-serif !important; font-weight:500; font-size:9.5pt !important; letter-spacing:.12em !important; }
+</style>
+</head>
+<body>
+<section data-document-role="page" class="page grit" style="padding:0;">
+  <div style="flex:1; display:flex; flex-direction:column; align-items:center; text-align:center; padding:18mm 16mm 14mm;">
+    <img src="assets/CentreStage-Solid-White.png" alt="CentreStage" style="display:block; width:56mm; height:auto; opacity:.95;">
+    <div style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:700; font-size:24pt; letter-spacing:.02em; text-transform:uppercase; color:#C9B58C; margin-top:4mm; line-height:1;">Production of</div>
+    <div style="flex:1;"></div>
+    <img src="assets/shows/hadestown-clear.png" alt="Hadestown: Teen Edition" style="display:block; width:120mm; height:auto; margin:0 0 3mm;">
+    <div style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:700; font-size:46pt; line-height:1; letter-spacing:.01em; text-transform:uppercase; color:#EDE3CC;">By Anaïs Mitchell</div>
+    <div style="width:30mm; height:3px; background:#E3121B; margin:8mm 0 6mm;"></div>
+    <div style="display:flex; flex-direction:column; gap:1.6mm; text-transform:uppercase; letter-spacing:.03em;">
+      <div style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; font-size:10pt; line-height:1.3; color:#EDE3CC;"><span style="font-weight:500; color:#C9B58C;">Originally produced on Broadway by</span> Mara Isaacs, Dale Franzen, Hunter Arnold and Tom Kirdahy</div>
+      <div style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; font-size:10pt; line-height:1.3; color:#EDE3CC;"><span style="font-weight:500; color:#C9B58C;">Original New York Production developed with and directed by</span> Rachel Chavkin</div>
+      <div style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; font-size:10pt; line-height:1.3; color:#EDE3CC;"><span style="font-weight:500; color:#C9B58C;">Arrangements and Orchestrations by</span> Michael Chorney and Todd Sickafoose</div>
+      <div style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; font-size:10pt; line-height:1.3; color:#EDE3CC;"><span style="font-weight:500; color:#C9B58C;">Hadestown was co-conceived by</span> Ben T. Matchstick</div>
+      <div style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; font-size:10pt; line-height:1.3; color:#EDE3CC;"><span style="font-weight:500; color:#C9B58C;">&ldquo;Papers Instrumental&rdquo; by</span> Michael Chorney, published by Seoats Music (ASCAP)</div>
+      <div style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; font-size:10pt; line-height:1.3; color:#EDE3CC;"><span style="font-weight:500; color:#C9B58C;">Vocal Arrangements by</span> Liam Robinson</div>
+      <div style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; font-size:10pt; line-height:1.3; color:#EDE3CC;"><span style="font-weight:500; color:#C9B58C;">Additional Vocal Arrangements by</span> Justin Vernon and the Haden Triplets</div>
+    </div>
+    <div style="font-size:9pt; line-height:1.45; margin-top:7mm; color:#C9B58C;">HADESTOWN: TEEN EDITION is presented by arrangement with ORiGiN&trade; Theatrical on behalf of Concord Theatricals. www.origintheatrical.com.au</div>
+  </div>
+</section>
+
+<section data-document-role="page" class="page grit">
+  <div class="frame"></div><span class="gem" style="left:4.4mm; top:4.4mm;"></span><span class="gem" style="right:4.4mm; top:4.4mm;"></span><span class="gem" style="left:4.4mm; bottom:4.4mm;"></span><span class="gem" style="right:4.4mm; bottom:4.4mm;"></span>
+  <div class="hdr"><img src="assets/CentreStage-Solid-White.png" alt="CentreStage" style="width:24mm; height:auto;"></div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:9mm; margin-top:8mm; flex:1; min-height:0;">
+    <div>
+      <div class="eyebrow">Welcome</div>
+      <h2>Raise your cups to the ones who sing.</h2>
+      <p>Thank you for joining us for our Senior Troupes' production of <b>Hadestown: Teen Edition</b>. Across four classes and 88 young performers, our Seniors have taken on one of the most demanding and beautiful scores in contemporary musical theatre.</p>
+      <p>Hadestown asks its company to sing as one voice, to hold a story with stillness, and to trust each other completely. Our Seniors have done exactly that, in rehearsal rooms full of focus, generosity and real artistry.</p>
+      <p>Please sit back and enjoy the song. It's an old song, and we're going to sing it again.</p>
+      <div style="margin-top:6mm;">
+        <img class="sig" src="assets/pooh/david-signature.png" alt="David Greenwood signature" style="display:block; height:18mm; width:auto;">
+        <div style="font-weight:700; font-size:11pt; margin-top:2mm;">David Greenwood OAM</div>
+        <div class="mono" style="font-size:8.5pt; color:#6B6B68; letter-spacing:.06em;">Managing Director, CentreStage</div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column;">
+      <div class="eyebrow">The story</div>
+      <h2>Way down under the ground.</h2>
+      <p>Orpheus is a poor young songwriter. Eurydice is a hungry, hard-travelled girl looking for a place to stay. When they fall in love, the world above is harsh and the winter is long.</p>
+      <p>Far below, Hades rules a mighty industrial underworld, where work is promised and freedom is not. When Eurydice is tempted down to Hadestown, Orpheus sets out to bring her home, armed only with a song.</p>
+      <p>Narrated by Hermes and watched over by the three Fates, it's a story of love, hope and doubt, and of what it takes to walk the road out of hell.</p>
+      <div style="margin-top:auto; background:rgba(0,0,0,.35); color:#EDE3CC; padding:7mm 7mm 8mm; border-top:3px solid #E3121B;">
+        <div class="mono" style="font-size:8.5pt; letter-spacing:.16em; text-transform:uppercase; color:#C9A24A;">Four classes, one show</div>
+        <div style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:700; text-transform:uppercase; font-size:20pt; line-height:1.02; margin-top:3mm; color:#C9B58C;">Seniors A, B, C and D each perform their own production.</div>
+        <p style="font-size:10pt; color:#C9C6BF; margin:3mm 0 0;">Each class has its own cast, listed on the pages that follow.</p>
+      </div>
+    </div>
+  </div>
+  <div class="ftr"><span>Hadestown: Teen Edition</span><span>02</span></div>
+</section>
+
+<section data-document-role="page" class="page grit">
+  <div class="frame"></div><span class="gem" style="left:4.4mm; top:4.4mm;"></span><span class="gem" style="right:4.4mm; top:4.4mm;"></span><span class="gem" style="left:4.4mm; bottom:4.4mm;"></span><span class="gem" style="right:4.4mm; bottom:4.4mm;"></span>
+  <div class="hdr"><img src="assets/CentreStage-Solid-White.png" alt="CentreStage" style="width:24mm; height:auto;"></div>
+  <div style="margin-top:8mm;">
+    <div class="eyebrow">Musical numbers</div>
+    <h2>It's an old song.</h2>
+  </div>
+  <div style="columns:2; column-gap:10mm; margin-top:2mm;"><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">01</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Road to Hell</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">02</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Any Way the Wind Blows</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">03</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Come Home with Me</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">04</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Wedding Song</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">05</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Epic I</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">06</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Livin’ It Up on Top</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">07</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">All I’ve Ever Known</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">08</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Way Down Hadestown</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">09</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">A Gathering Storm</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">10</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Epic II</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">11</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Chant</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">12</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Hey, Little Songbird</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">13</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">When the Chips Are Down</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">14</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Wait for Me</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">15</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Why We Build the Wall</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">16</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Our Lady of the Underground</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">17</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Flowers</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">18</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Come Home with Me (Reprise)</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">19</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Papers</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">20</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Nobody’s Ever Done This</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">21</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">If It’s True</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">22</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Promises</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">23</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Word to the Wise</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">24</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">His Kiss, the Riot</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">25</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Doubt Comes In</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">26</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">Road to Hell (Reprise)</span></div><div style="break-inside:avoid; display:flex; gap:5mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid rgba(201,181,140,.2);"><span class="mono" style="font-size:9pt; color:#E3121B; width:7mm;">27</span><span style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.03em; font-size:12pt; color:#EDE3CC;">We Raise Our Cups</span></div></div>
+  <div style="margin-top:auto; padding-top:8mm; display:grid; grid-template-columns:1fr 1fr; gap:9mm;">
+    <div>
+      <h3>About the show</h3>
+      <p style="font-size:10.5pt;">Hadestown opened on Broadway in 2019 and won eight Tony Awards, including Best Musical, along with the Grammy Award for Best Musical Theater Album. Hadestown: Teen Edition is an adaptation created especially for young performers.</p>
+    </div>
+    <div>
+      <h3>About the writer</h3>
+      <p style="font-size:10.5pt;">Written by American singer-songwriter Anaïs Mitchell, who first created Hadestown as a folk opera, co-conceived with Ben T. Matchstick. The original New York production was developed with and directed by Rachel Chavkin.</p>
+    </div>
+  </div>
+  <div class="ftr"><span>Hadestown: Teen Edition</span><span>03</span></div>
+</section>
+
+<section data-document-role="page" class="page grit">
+  <div class="frame"></div><span class="gem" style="left:4.4mm; top:4.4mm;"></span><span class="gem" style="right:4.4mm; top:4.4mm;"></span><span class="gem" style="left:4.4mm; bottom:4.4mm;"></span><span class="gem" style="right:4.4mm; bottom:4.4mm;"></span>
+  <div class="hdr"><img src="assets/CentreStage-Solid-White.png" alt="CentreStage" style="width:24mm; height:auto;"></div>
+  <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:8mm; margin-top:8mm;">
+    <div>
+      <div class="eyebrow">The company</div>
+      <h2 style="margin-bottom:2mm;">Seniors A.</h2>
+    </div>
+    <div class="mono" style="font-size:9pt; letter-spacing:.1em; text-transform:uppercase; color:#B59A6A; padding-bottom:3mm;">19 performers</div>
+  </div>
+  <div style="height:2px; background:#D7322B; margin:2mm 0 4mm;"></div>
+  <div class="cast"><div>Jason Boots</div><div>Amelia Carney</div><div>Chase Coustley</div><div>Zanda Day</div><div>Alistair Fusella</div><div>Audrey Hanneysee</div><div>Griffon Hoiles</div><div>Mahsa Hosseini</div><div>Wynne Jackson</div><div>Laura McConnell</div><div>Lily McIntosh</div><div>Ella Plowman</div><div>Ruby Ritchie</div><div>Abigail Sheather</div><div>Molly Stewart</div><div>Ruby Thwaites</div><div>Lucy Tsilemanis</div><div>Lucinda Willis</div><div>Amirah Zeneldin</div></div>
+  <div class="ftr"><span>Cast listed alphabetically by surname</span><span>04</span></div>
+</section>
+
+<section data-document-role="page" class="page grit">
+  <div class="frame"></div><span class="gem" style="left:4.4mm; top:4.4mm;"></span><span class="gem" style="right:4.4mm; top:4.4mm;"></span><span class="gem" style="left:4.4mm; bottom:4.4mm;"></span><span class="gem" style="right:4.4mm; bottom:4.4mm;"></span>
+  <div class="hdr"><img src="assets/CentreStage-Solid-White.png" alt="CentreStage" style="width:24mm; height:auto;"></div>
+  <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:8mm; margin-top:8mm;">
+    <div>
+      <div class="eyebrow">The company</div>
+      <h2 style="margin-bottom:2mm;">Seniors B.</h2>
+    </div>
+    <div class="mono" style="font-size:9pt; letter-spacing:.1em; text-transform:uppercase; color:#B59A6A; padding-bottom:3mm;">22 performers</div>
+  </div>
+  <div style="height:2px; background:#C9A24A; margin:2mm 0 4mm;"></div>
+  <div class="cast"><div>Maddie Berry</div><div>Matilda Billings</div><div>Isabella Bingham</div><div>Sophie Brajkovic</div><div>Allora Chandler</div><div>Alyssa Clark</div><div>Maddison Crouch</div><div>Tilly Daken</div><div>Grace Dorman</div><div>Archie Gaylard</div><div>Lucinda Jin</div><div>Charlton Keogh</div><div>Oscar Lane</div><div>Ruby Parker</div><div>Oscar Perry</div><div>Piper Semmens</div><div>Jacob Smith</div><div>Xanthe Stangel</div><div>Brooke Van Der Meer</div><div>Kiera Walker</div><div>Ella White</div><div>Isabel White</div></div>
+  <div class="ftr"><span>Cast listed alphabetically by surname</span><span>05</span></div>
+</section>
+
+<section data-document-role="page" class="page grit">
+  <div class="frame"></div><span class="gem" style="left:4.4mm; top:4.4mm;"></span><span class="gem" style="right:4.4mm; top:4.4mm;"></span><span class="gem" style="left:4.4mm; bottom:4.4mm;"></span><span class="gem" style="right:4.4mm; bottom:4.4mm;"></span>
+  <div class="hdr"><img src="assets/CentreStage-Solid-White.png" alt="CentreStage" style="width:24mm; height:auto;"></div>
+  <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:8mm; margin-top:8mm;">
+    <div>
+      <div class="eyebrow">The company</div>
+      <h2 style="margin-bottom:2mm;">Seniors C.</h2>
+    </div>
+    <div class="mono" style="font-size:9pt; letter-spacing:.1em; text-transform:uppercase; color:#B59A6A; padding-bottom:3mm;">24 performers</div>
+  </div>
+  <div style="height:2px; background:#0A0A0A; margin:2mm 0 4mm;"></div>
+  <div class="cast"><div>Harper Anderson</div><div>Lacey Anderson</div><div>Willow Armitstead</div><div>Jessica Barrow</div><div>Daisy Bianco</div><div>Isla Bright</div><div>Jensen Calvert</div><div>Mia Filipovic</div><div>Addison Fowler</div><div>Hector Gleeson</div><div>Lilly Glover-Smith</div><div>Lexie Hyatt</div><div>Macy Hyatt</div><div>Zedd Mathews</div><div>Quin McBride</div><div>Alex McKewan</div><div>Aurora McKinnon</div><div>Ella McLean</div><div>Alex Stewart</div><div>Tom Talbot</div><div>Ethan Vohmann</div><div>Alexandra Wells</div><div>Amelia Wieland</div><div>Saxon Wilde</div></div>
+  <div class="ftr"><span>Cast listed alphabetically by surname</span><span>06</span></div>
+</section>
+
+<section data-document-role="page" class="page grit">
+  <div class="frame"></div><span class="gem" style="left:4.4mm; top:4.4mm;"></span><span class="gem" style="right:4.4mm; top:4.4mm;"></span><span class="gem" style="left:4.4mm; bottom:4.4mm;"></span><span class="gem" style="right:4.4mm; bottom:4.4mm;"></span>
+  <div class="hdr"><img src="assets/CentreStage-Solid-White.png" alt="CentreStage" style="width:24mm; height:auto;"></div>
+  <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:8mm; margin-top:8mm;">
+    <div>
+      <div class="eyebrow">The company</div>
+      <h2 style="margin-bottom:2mm;">Seniors D.</h2>
+    </div>
+    <div class="mono" style="font-size:9pt; letter-spacing:.1em; text-transform:uppercase; color:#B59A6A; padding-bottom:3mm;">23 performers</div>
+  </div>
+  <div style="height:2px; background:#8A2A1E; margin:2mm 0 4mm;"></div>
+  <div class="cast"><div>Sarah Carrington</div><div>Caitlin Clark</div><div>Clara Duxson</div><div>Angus Grigg</div><div>Emily Haley</div><div>Alicia Jenkins</div><div>Eva Jenkins</div><div>Summer Jenkins</div><div>Magdalena Jones</div><div>Daniel Lim</div><div>Adam McCoughtry</div><div>Eliza McCoughtry</div><div>Alexis Opacak</div><div>Saber Pham</div><div>Ashlyn Pitts</div><div>Harper Potter</div><div>Abbey Powers</div><div>Lily Retallick</div><div>Amelia Senftleben</div><div>Tahlia Sharkey</div><div>Madison Shaw</div><div>Ryan Tamis</div><div>Savannah White</div></div>
+  <div class="ftr"><span>Cast listed alphabetically by surname</span><span>07</span></div>
+</section>
+
+<section data-document-role="page" class="page grit">
+  <div class="frame"></div><span class="gem" style="left:4.4mm; top:4.4mm;"></span><span class="gem" style="right:4.4mm; top:4.4mm;"></span><span class="gem" style="left:4.4mm; bottom:4.4mm;"></span><span class="gem" style="right:4.4mm; bottom:4.4mm;"></span>
+  <div class="hdr"><img src="assets/CentreStage-Solid-White.png" alt="CentreStage" style="width:24mm; height:auto;"></div>
+  <div style="margin-top:8mm;">
+    <div class="eyebrow">Behind the scenes</div>
+    <h2>The ones who built the wall.</h2>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:10mm; margin-top:2mm;">
+    <div>
+      <div class="team"><div class="r">Educators</div><div class="n">Jake Waterworth<br>Leticia Bayliss<br>Julianne Wilde<br>Ava Davies<br>Martin Nguyen</div></div>
+      <div class="team"><div class="r">Director of Education</div><div class="n">Michele Marcu</div></div>
+      <div class="team"><div class="r">Assistant Director of Education</div><div class="n">Trent Inturrisi</div></div>
+    </div>
+    <div>
+      <div class="team"><div class="r">Technical Director</div><div class="n">Joel Lane</div></div>
+      <div class="team"><div class="r">Technical Team</div><div class="n">Declan Parisi<br>Emily Rice<br>Murray Plowman</div></div>
+      <div class="team"><div class="r">Technical Support</div><div class="n">Rachael McKinnon<br>Connor McKinnon</div></div>
+      <div class="team"><div class="r">Set Team</div><div class="n">Rodney Bennet · Rhys Bourne · Andrew Chandler · David Gleeson · Andrew Greenwood · Andrew Jones · Joel Lane · Paul Lane · Chris Lim · Emily Rice · Rimon</div></div>
+      <div class="team"><div class="r">Costumes</div><div class="n">Dawn Murdoch<br>Ginny Connell<br>Barb Logan<br>Liz Hay</div></div>
+      <div class="team"><div class="r">Accounts Manager</div><div class="n">Richelle White</div></div>
+      <div class="team"><div class="r">Managing Director</div><div class="n">David Greenwood OAM</div></div>
+      <div class="team"><div class="r">Special Thanks</div><div class="n">Kim, Ashleigh and the team at ORiGiN&trade; Theatrical</div></div>
+    </div>
+  </div>
+  <div class="ftr"><span>CentreStage Performing Arts Academy</span><span>08</span></div>
+</section>
+
+<section data-document-role="page" class="page grit" style="padding:0;">
+  <div style="background:rgba(0,0,0,.3); color:#EDE3CC; border-bottom:3px solid #E3121B; padding:16mm 15mm 12mm; flex:none; position:relative; overflow:hidden;">
+        <div class="mono" style="font-size:9pt; letter-spacing:.22em; text-transform:uppercase; color:#C9A24A; position:relative;">Enrolments now open</div>
+    <div style="font-family:'Oswald','Arial Narrow',Arial,sans-serif; font-weight:700; text-transform:uppercase; font-size:46pt; line-height:.92; margin:4mm 0 5mm; position:relative; color:#C9B58C;">Join us<br>in <span style="color:#E3121B;">2027.</span></div>
+    <p style="max-width:150mm; color:#C9C6BF; position:relative;">Loved tonight? Your young performer can be on stage next year. Our Performing Arts Academy runs Saturday musical theatre troupes for ages 4 to 18, and every student performs in a fully staged musical — Annie Kids, Trolls the Musical Jr and Spamalot Youth Edition in 2027 — plus our Disney-inspired showcase, Be Our Guest, at Costa Hall.</p>
+    <div style="display:flex; gap:8mm; align-items:center; margin-top:5mm; position:relative;">
+      <div style="background:#FFFFFF; padding:2mm; flex:none;"><img src="assets/qr-weekly.png" alt="QR code to centrestage.org.au/weekly" style="width:24mm; height:24mm; display:block;"></div>
+      <div style="display:flex; flex-direction:column; gap:2mm;">
+        <div class="mono" style="font-size:8.5pt; letter-spacing:.14em; text-transform:uppercase; color:#C9A24A;">Scan to enrol</div>
+        <div style="font-weight:700; font-size:15pt;">centrestage.org.au/weekly</div>
+        <div class="mono" style="font-size:9pt; letter-spacing:.06em; color:#C9C6BF;">cpaa@centrestage.org.au</div>
+      </div>
+    </div>
+  </div>
+  <div style="flex:1; display:flex; flex-direction:column; padding:10mm 15mm 13mm;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:9mm;">
+      <div>
+        <h3>Thank you</h3>
+        <p style="font-size:10pt;">To our families, volunteers, costume team and educators, and to the venue staff who made tonight possible. And to our young performers — take a bow.</p>
+        <h3 style="margin-top:4mm;">Child safety</h3>
+        <p style="font-size:10pt;">CentreStage is a child safe organisation. Our policies and procedures are available at www.centrestage.org.au/health.</p>
+      </div>
+      <div>
+        <h3>Recording</h3>
+        <p style="font-size:10pt; font-weight:700;">The videotaping or other video or audio recording of this production is strictly prohibited.</p>
+        <h3 style="margin-top:4mm;">Photography</h3>
+        <p style="font-size:10pt;">No photos or video during the performance, please. Our photographer will capture every moment, and the gallery will be released on the CentreStage Facebook page, <b>@centrestageaus</b>.</p>
+        <p style="font-size:10pt;">You're welcome to take photos once the show has finished, or in the foyer. Please do not share images of other people's children online without their family's consent.</p>
+      </div>
+    </div>
+    <div style="margin-top:auto; border-top:2px solid #0A0A0A; padding-top:5mm; display:flex; justify-content:space-between; align-items:flex-end; gap:10mm;">
+      <div class="mono" style="font-size:8.5pt; letter-spacing:.06em; color:#6B6B68; line-height:1.6;">CentreStage Performing Arts Academy<br>Geelong · Wadawurrung Country</div>
+      <img src="assets/CentreStage-Solid-White.png" alt="CentreStage" style="width:36mm; height:auto; flex:none;">
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

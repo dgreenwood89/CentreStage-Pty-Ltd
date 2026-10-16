@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #04101F; color: #EAF4FF; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #7FD3FF; } a:hover { color: #EAF4FF; }
+  textarea, input, button { font: inherit; }
+  textarea:focus, input:focus { outline: 2px solid #7FD3FF; outline-offset: 1px; }
+</style>
+</helmet>
+
+<div style="min-height:100vh; background:radial-gradient(ellipse 120% 70% at 50% 0%, #123F79 0%, #0A2646 42%, #04101F 100%); padding:44px 20px 88px;">
+  <div style="max-width:760px; margin:0 auto; display:flex; flex-direction:column; gap:28px;">
+
+    <header style="display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;">
+      <img src="assets/CentreStage-Solid-White.png" alt="CentreStage" style="height:24px; width:auto; display:block;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:#7FD3FF;">Frozen / Cast portal</span>
+    </header>
+    <img src="assets/frozen-title-dark.png" alt="Frozen" style="width:min(300px,70%); height:auto; display:block;">
+
+    <sc-if value="{{ isGate }}" hint-placeholder-val="{{ true }}">
+      <section style="background:rgba(10,38,70,.78); border:1px solid rgba(127,211,255,.28); padding:40px clamp(22px,5vw,48px) 44px; display:flex; flex-direction:column; gap:18px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#7FD3FF;">Program bios</span>
+        <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(34px,6vw,52px); line-height:1; letter-spacing:-.025em; margin:0;">Your program bio.</h1>
+        <p style="font-size:17px; line-height:1.6; color:#C6DCF2; margin:0; max-width:52ch;">Enter the personal code from your CentreStage email to write and submit your bio for the Frozen program.</p>
+        <form onSubmit="{{ gateSubmit }}" style="display:flex; gap:12px; flex-wrap:wrap; margin-top:6px;">
+          <input type="text" value="{{ codeInput }}" onChange="{{ onCode }}" placeholder="FZ-XXXXX" aria-label="Your personal code" autocomplete="off" style="flex:1 1 220px; min-height:52px; background:#04101F; border:1px solid rgba(127,211,255,.45); color:#EAF4FF; padding:0 18px; font-family:'JetBrains Mono',monospace; font-size:17px; letter-spacing:.14em; text-transform:uppercase;">
+          <button type="submit" style="min-height:52px; padding:0 28px; background:#7FD3FF; color:#04101F; border:1px solid #7FD3FF; font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer;">{{ gateBtn }}</button>
+        </form>
+        <sc-if value="{{ gateErr }}">
+          <p style="font-size:15px; line-height:1.55; color:#FF8A6B; margin:0;">{{ gateErr }}</p>
+        </sc-if>
+        <p style="font-size:14px; line-height:1.6; color:#9FD9FF; margin:4px 0 0; padding-top:16px; border-top:1px solid rgba(127,211,255,.2);">To find your code, or to contact the creative team, email <a href="mailto:martin@centrestage.org.au">martin@centrestage.org.au</a>.</p>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isWrite }}">
+      <section style="background:rgba(10,38,70,.78); border:1px solid rgba(127,211,255,.28); padding:40px clamp(22px,5vw,48px) 44px; display:flex; flex-direction:column; gap:22px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#7FD3FF;">Step 1 of 2 / Write</span>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(34px,6vw,52px); line-height:1; letter-spacing:-.025em; margin:0;">Welcome, {{ first }}.</h1>
+          <p style="font-family:'JetBrains Mono',monospace; font-size:14px; letter-spacing:.06em; color:#9FD9FF; margin:0;">{{ roleLine }}</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:1px; background:rgba(127,211,255,.25); border:1px solid rgba(127,211,255,.25);">
+          <div style="background:#0A2646; padding:18px 20px;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:#7FA9D3;">Maximum</div>
+            <div style="font-size:22px; font-weight:700; margin-top:8px;">{{ words }} words</div>
+          </div>
+          <div style="background:#0A2646; padding:18px 20px;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:#7FA9D3;">Length</div>
+            <div style="font-size:22px; font-weight:700; margin-top:8px;">{{ minC }} to {{ maxC }} characters</div>
+          </div>
+          <div style="background:#0A2646; padding:18px 20px;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:#7FA9D3;">Voice</div>
+            <div style="font-size:22px; font-weight:700; margin-top:8px;">Third person</div>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:10px; font-size:15px; line-height:1.55; color:#C6DCF2;">
+          <div style="display:flex; gap:12px;"><span style="color:#7FD3FF; font-weight:700;">/</span><span>Start with your first name, for example "{{ first }} is thrilled to be making their CentreStage debut".</span></div>
+          <div style="display:flex; gap:12px;"><span style="color:#7FD3FF; font-weight:700;">/</span><span>Show titles are set in capitals for you, so Pippin becomes PIPPIN.</span></div>
+          <div style="display:flex; gap:12px;"><span style="color:#7FD3FF; font-weight:700;">/</span><span>Roles are set in italics when you write "as Lewis in Pippin". You can also put a role between asterisks, like *Lewis*.</span></div>
+          <div style="display:flex; gap:12px;"><span style="color:#7FD3FF; font-weight:700;">/</span><span>Write one paragraph only. Line breaks are joined up automatically.</span></div>
+          <div style="display:flex; gap:12px;"><span style="color:#7FD3FF; font-weight:700;">/</span><span>We use UK English, so theater becomes theatre and favorite becomes favourite.</span></div>
+          <div style="display:flex; gap:12px;"><span style="color:#7FD3FF; font-weight:700;">/</span><span>Your name, pronouns and role are added above your bio, so leave them out. Characters include spaces.</span></div>
+        </div>
+
+        <div style="border:1px solid rgba(127,211,255,.35); background:rgba(4,16,31,.45);">
+          <button type="button" onClick="{{ toggleHelp }}" style="width:100%; display:flex; justify-content:space-between; align-items:center; gap:16px; padding:18px 22px; background:transparent; border:0; color:#EAF4FF; cursor:pointer; text-align:left;">
+            <span style="display:flex; flex-direction:column; gap:4px;">
+              <span style="font-size:16px; font-weight:700;">Need help writing it?</span>
+              <span style="font-size:14px; line-height:1.5; color:#9FD9FF;">Optional. Answer a few questions and we'll build a draft for you to edit.</span>
+            </span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:20px; color:#7FD3FF; flex:none;">{{ helpIcon }}</span>
+          </button>
+          <sc-if value="{{ helpOpen }}">
+            <div style="padding:6px 22px 24px; display:flex; flex-direction:column; gap:20px; border-top:1px solid rgba(127,211,255,.2);">
+              <div style="display:flex; flex-direction:column; gap:10px; padding-top:16px;">
+                <span style="font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">1. Have you performed with CentreStage before?</span>
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                  <sc-for list="{{ historyOpts }}" as="o" hint-placeholder-count="3">
+                    <button type="button" onClick="{{ o.pick }}" style="min-height:44px; padding:0 16px; background:{{ o.bg }}; color:{{ o.fg }}; border:1px solid #7FD3FF; font-size:14px; cursor:pointer;">{{ o.label }}</button>
+                  </sc-for>
+                </div>
+              </div>
+
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <span style="font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">2. Your favourite past credits <span style="font-weight:400; text-transform:none; letter-spacing:0; color:#9FD9FF;">Up to 15, favourites first. We include as many as your word limit allows.</span></span>
+                <sc-for list="{{ credits }}" as="c" hint-placeholder-count="3">
+                  <div style="display:flex; gap:10px; align-items:center;"><span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#7FA9D3; width:22px; flex:none;">{{ c.n }}</span><div style="flex:1; min-width:0;">
+                  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px;">
+                    <input type="text" value="{{ c.show }}" onChange="{{ c.onShow }}" placeholder="Show, e.g. Pippin" style="min-height:46px; background:#04101F; border:1px solid rgba(127,211,255,.4); color:#EAF4FF; padding:0 14px; font-size:15px;">
+                    <input type="text" value="{{ c.role }}" onChange="{{ c.onRole }}" placeholder="Role, e.g. Lewis" style="min-height:46px; background:#04101F; border:1px solid rgba(127,211,255,.4); color:#EAF4FF; padding:0 14px; font-size:15px;">
+                    <input type="text" value="{{ c.co }}" onChange="{{ c.onCo }}" placeholder="Company (optional)" style="min-height:46px; background:#04101F; border:1px solid rgba(127,211,255,.4); color:#EAF4FF; padding:0 14px; font-size:15px;">
+                  </div>
+                  </div></div>
+                </sc-for>
+                <sc-if value="{{ canAddCredit }}">
+                  <div><button type="button" onClick="{{ addCredit }}" style="min-height:44px; padding:0 16px; background:transparent; color:#7FD3FF; border:1px dashed rgba(127,211,255,.6); font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; cursor:pointer;">+ Add another credit ({{ creditsLeft }} left)</button></div>
+                </sc-if>
+              </div>
+
+              <label style="display:flex; flex-direction:column; gap:8px;">
+                <span style="font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">3. Training or study <span style="font-weight:400; text-transform:none; letter-spacing:0; color:#9FD9FF;">Optional</span></span>
+                <input type="text" value="{{ hTraining }}" onChange="{{ onTraining }}" placeholder="e.g. singing with Jake Waterworth and the CentreStage Performing Arts Academy" style="min-height:46px; background:#04101F; border:1px solid rgba(127,211,255,.4); color:#EAF4FF; padding:0 14px; font-size:15px;">
+              </label>
+
+              <label style="display:flex; flex-direction:column; gap:8px;">
+                <span style="font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">4. Away from the stage, {{ first }}… <span style="font-weight:400; text-transform:none; letter-spacing:0; color:#9FD9FF;">Optional</span></span>
+                <input type="text" value="{{ hAway }}" onChange="{{ onAway }}" placeholder="e.g. teaches primary school and loves the beach with her dog" style="min-height:46px; background:#04101F; border:1px solid rgba(127,211,255,.4); color:#EAF4FF; padding:0 14px; font-size:15px;">
+              </label>
+
+              <label style="display:flex; flex-direction:column; gap:8px;">
+                <span style="font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">5. Who would you like to thank? <span style="font-weight:400; text-transform:none; letter-spacing:0; color:#9FD9FF;">Optional</span></span>
+                <input type="text" value="{{ hThanks }}" onChange="{{ onThanks }}" placeholder="e.g. her family and friends for their endless support" style="min-height:46px; background:#04101F; border:1px solid rgba(127,211,255,.4); color:#EAF4FF; padding:0 14px; font-size:15px;">
+              </label>
+
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <div><button type="button" onClick="{{ buildBio }}" style="min-height:48px; padding:0 22px; background:#EAF4FF; color:#04101F; border:1px solid #EAF4FF; font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer;">Build my bio ↓</button></div>
+                <sc-if value="{{ helpMsg }}">
+                  <p style="font-size:14px; line-height:1.55; color:#FFD27A; margin:0;">{{ helpMsg }}</p>
+                </sc-if>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+
+        <sc-if value="{{ prevSubmitted }}">
+          <p style="font-size:14px; line-height:1.55; color:#FFD27A; margin:0; padding:12px 16px; border:1px solid rgba(255,210,122,.4);">You've already submitted a bio. Submitting again will replace it.</p>
+        </sc-if>
+
+        <label style="display:flex; flex-direction:column; gap:10px;">
+          <span style="font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">Your bio</span>
+          <textarea value="{{ bio }}" onChange="{{ onBio }}" onKeyDown="{{ onBioKey }}" rows="11" placeholder="{{ bioPlaceholder }}" style="width:100%; resize:vertical; background:#04101F; border:1px solid rgba(127,211,255,.45); color:#EAF4FF; padding:16px 18px; font-size:16px; line-height:1.6;"></textarea>
+        </label>
+        <div style="display:flex; flex-direction:column; gap:8px; margin-top:-8px;">
+          <div style="height:6px; background:rgba(127,211,255,.15); position:relative; overflow:hidden;">
+            <div style="position:absolute; left:{{ minPct }}; width:{{ okPct }}; top:0; bottom:0; background:rgba(127,211,255,.22);"></div>
+            <div style="position:absolute; left:0; top:0; bottom:0; width:{{ barW }}; background:{{ countColor }};"></div>
+          </div>
+          <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; font-family:'JetBrains Mono',monospace; font-size:13px;">
+            <span style="color:{{ countColor }};">{{ countMsg }}</span>
+            <span style="color:#9FD9FF;">{{ count }} / {{ maxC }}</span>
+          </div>
+        </div>
+
+        <label style="display:flex; flex-direction:column; gap:10px;">
+          <span style="font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">Do you have an agent? <span style="font-weight:400; text-transform:none; letter-spacing:0; color:#9FD9FF;">Optional</span></span>
+          <input type="text" value="{{ agent }}" onChange="{{ onAgent }}" placeholder="e.g. CentreStage Agency" style="width:100%; min-height:50px; background:#04101F; border:1px solid rgba(127,211,255,.45); color:#EAF4FF; padding:0 18px; font-size:16px;">
+          <span style="font-size:14px; line-height:1.5; color:#9FD9FF;">We'll add a final line: "{{ agentExample }}" This line doesn't count toward your characters.</span>
+        </label>
+
+        <sc-if value="{{ err }}">
+          <p style="font-size:15px; line-height:1.55; color:#FF8A6B; margin:0;">{{ err }}</p>
+        </sc-if>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <button type="button" onClick="{{ toPreview }}" style="min-height:52px; padding:0 28px; background:#7FD3FF; color:#04101F; border:1px solid #7FD3FF; font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer;">Preview my bio →</button>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isPreview }}">
+      <section style="background:rgba(10,38,70,.78); border:1px solid rgba(127,211,255,.28); padding:40px clamp(22px,5vw,48px) 44px; display:flex; flex-direction:column; gap:22px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#7FD3FF;">Step 2 of 2 / Check</span>
+        <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(30px,5.4vw,46px); line-height:1; letter-spacing:-.025em; margin:0;">Here's how it will read.</h1>
+        <p style="font-size:16px; line-height:1.6; color:#C6DCF2; margin:0;">Check it carefully. This is the text that goes into the program.</p>
+
+        <article style="background:#EAF4FF; color:#04101F; padding:30px clamp(20px,4vw,36px) 32px; display:flex; flex-direction:column; gap:12px;">
+          <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 12px;">
+            <span style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:24px; letter-spacing:-.015em; line-height:1.1;">{{ fullName }}</span>
+            <sc-if value="{{ pronouns }}"><span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#3A5A80;">{{ pronouns }}</span></sc-if>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#1E63AE;">{{ role }}</div>
+          <p style="font-size:16px; line-height:1.62; margin:4px 0 0; text-wrap:pretty;"><sc-for list="{{ segs }}" as="s" hint-placeholder-count="1"><span style="font-style:{{ s.fs }};">{{ s.t }}</span></sc-for><sc-if value="{{ agentLine }}"><span> {{ agentLine }}</span></sc-if></p>
+          
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5A7A9E; border-top:1px solid #C9DBEE; padding-top:10px; margin-top:6px;">{{ count }} characters · limit {{ minC }} to {{ maxC }}</div>
+        </article>
+
+        <sc-if value="{{ hasChanges }}">
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:#7FA9D3;">We tidied a few things</span>
+            <sc-for list="{{ changes }}" as="c" hint-placeholder-count="2">
+              <div style="display:flex; gap:12px; font-size:15px; line-height:1.5; color:#C6DCF2;"><span style="color:#7FD3FF; font-weight:700;">/</span><span>{{ c }}</span></div>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{ firstWarn }}">
+          <p style="font-size:14px; line-height:1.55; color:#FFD27A; margin:0; padding:12px 16px; border:1px solid rgba(255,210,122,.4);">{{ firstWarn }}</p>
+        </sc-if>
+        <p style="font-size:14px; line-height:1.55; color:#9FD9FF; margin:0;">Missed a show title or role? Go back and type the title in capitals, or put the role between *asterisks*.</p>
+
+        <sc-if value="{{ err }}">
+          <p style="font-size:15px; line-height:1.55; color:#FF8A6B; margin:0;">{{ err }}</p>
+        </sc-if>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <button type="button" onClick="{{ backToEdit }}" style="min-height:52px; padding:0 24px; background:transparent; color:#EAF4FF; border:1px solid rgba(234,244,255,.55); font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer;">← Edit</button>
+          <button type="button" onClick="{{ submit }}" style="min-height:52px; padding:0 28px; background:#7FD3FF; color:#04101F; border:1px solid #7FD3FF; font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer;">{{ submitLabel }}</button>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isDone }}">
+      <section style="background:rgba(10,38,70,.78); border:1px solid rgba(127,211,255,.28); padding:44px clamp(22px,5vw,48px) 48px; display:flex; flex-direction:column; gap:18px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#7FD3FF;">Submitted</span>
+        <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(34px,6vw,52px); line-height:1; letter-spacing:-.025em; margin:0;">Thank you, {{ first }}.</h1>
+        <p style="font-size:17px; line-height:1.6; color:#C6DCF2; margin:0; max-width:54ch;">Your bio has been sent to the production team for the Frozen program.</p>
+        <p style="font-size:15px; line-height:1.6; color:#9FD9FF; margin:0; max-width:54ch;">Need to make a change? Enter your code again and resubmit. We'll use your latest version.</p>
+        <div><button type="button" onClick="{{ backToEdit }}" style="min-height:48px; padding:0 22px; background:transparent; color:#EAF4FF; border:1px solid rgba(234,244,255,.55); font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer;">Edit my bio</button></div>
+      </section>
+    </sc-if>
+
+    <footer style="font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.7; color:#5E86B3; border-top:1px solid rgba(127,211,255,.2); padding-top:18px;">
+      Questions about your bio? Email <a href="mailto:martin@centrestage.org.au">martin@centrestage.org.au</a><br>
+      CentreStage Production of Frozen · 5 to 20 March 2027 · The Playhouse, Geelong Arts Centre
+    </footer>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { step: "gate", codeInput: "", gateErr: "", busy: false, fails: 0, lockUntil: 0, who: null, hkey: "", bio: "", agent: "", err: "", sending: false };
+  FORMSPREE = "https://formspree.io/f/mwlvaykg";
+
+  componentDidMount() {
+    let c = "";
+    try {
+      const u = new URL(location.href);
+      c = (u.searchParams.get("code") || "").trim();
+      if (c) { u.searchParams.delete("code"); history.replaceState(null, "", u.pathname + u.search + u.hash); }
+    } catch (e) {}
+    if (!c) { try { c = sessionStorage.getItem("cs_bio_code") || ""; } catch (e) {} }
+    if (c) { this.setState({ codeInput: c }); this.check(c); }
+  }
+
+  hash(s) {
+    return crypto.subtle.digest("SHA-256", new TextEncoder().encode("cs-bio-2027:" + s))
+      .then((b) => Array.from(new Uint8Array(b)).map((x) => x.toString(16).padStart(2, "0")).join(""));
+  }
+
+  load(who, hkey, code) {
+    try { sessionStorage.setItem("cs_bio_code", code); } catch (e) {}
+    let d = {};
+    try { d = JSON.parse(localStorage.getItem("cs_bio_draft_" + hkey) || "{}"); } catch (e) {}
+    this.setState({ busy: false, who, hkey, step: "write", bio: d.bio || "", agent: d.agent || "", gateErr: "", fails: 0 });
+  }
+
+  check(raw) {
+    const code = String(raw || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+    if (!code) return;
+    if (Date.now() < this.state.lockUntil) { this.setState({ gateErr: "Too many attempts. Please wait a minute and try again." }); return; }
+    if (code === "PREVIEW") { this.load({ first: "Sandra", last: "Citizen", pronouns: "she/her", role: "Elsa", tier: "principal" }, "preview", code); return; }
+    this.setState({ busy: true, gateErr: "" });
+    Promise.all([this.hash(code), import("./castbio-codes.js").catch(() => ({ CAST: {} }))]).then(([h, m]) => {
+      const w = (m.CAST || {})[h];
+      if (w) { this.load(w, h, code); return; }
+      const fails = this.state.fails + 1;
+      this.setState({
+        busy: false, fails,
+        lockUntil: fails >= 5 ? Date.now() + 60000 : 0,
+        gateErr: fails >= 5 ? "Too many attempts. Please wait a minute and try again." : "That code doesn't look right. Check the email from CentreStage, or contact martin@centrestage.org.au.",
+      });
+    });
+  }
+
+  saveDraft(patch) {
+    const s = { ...this.state, ...patch };
+    try { localStorage.setItem("cs_bio_draft_" + s.hkey, JSON.stringify({ bio: s.bio, agent: s.agent })); } catch (e) {}
+  }
+
+  tierOf(w) {
+    const r = String(w.role || "");
+    if (/^(Elsa|Anna)( understudy)?$/.test(r)) return "principal";
+    if (/^(Kristoff|Olaf|Sven|Hans|Duke of Weselton)$/.test(r)) return "supporting";
+    if (/^Young (Elsa|Anna)/.test(r)) return "youth";
+    return "ensemble";
+  }
+
+  limits(w) {
+    const CPW = 5.85;
+    const T = {
+      principal: { words: 200, minWords: 150, label: "Principal" },
+      supporting: { words: 120, label: "Supporting" },
+      ensemble: { words: 110, label: "Ensemble" },
+      youth: { words: 110, label: "Young performer" },
+    }[this.tierOf(w)];
+    const t = Math.round(T.words * CPW);
+    const min = T.minWords ? Math.round(T.minWords * CPW) : Math.ceil(t * 0.85);
+    return { t, min, max: Math.floor(t * 1.05), words: T.minWords ? T.minWords + " to " + T.words : String(T.words), label: T.label };
+  }
+
+  fixCS(s, ch) {
+    return s.replace(/\b(?:centre|center)[\s\-]?stage\b|\bceepa\b|\bc\.?p\.?a\.?a\b/gi, (m) => { if (m !== "CentreStage") ch.cs = true; return "CentreStage"; });
+  }
+
+  toUK(s, ch) {
+    const keep = (from, to) => { if (from === to) return to; if (from.charAt(0) === from.charAt(0).toUpperCase()) to = to.charAt(0).toUpperCase() + to.slice(1); if (from === from.toUpperCase() && from.length > 1) to = to.toUpperCase(); ch.uk = ch.uk || []; const k = from.toLowerCase() + " → " + to.toLowerCase(); if (ch.uk.indexOf(k) < 0) ch.uk.push(k); return to; };
+    const W = { theater: "theatre", theaters: "theatres", theatrical: "theatrical", center: "centre", centers: "centres", centered: "centred", color: "colour", colors: "colours", colorful: "colourful", favorite: "favourite", favorites: "favourites", favorited: "favourited", honor: "honour", honors: "honours", honored: "honoured", honoring: "honouring", humor: "humour", humorous: "humorous", behavior: "behaviour", neighbor: "neighbour", neighbors: "neighbours", neighborhood: "neighbourhood", harbor: "harbour", labor: "labour", rumor: "rumour", savor: "savour", flavor: "flavour", endeavor: "endeavour", endeavors: "endeavours", glamor: "glamour", mom: "mum", moms: "mums", mommy: "mummy", traveling: "travelling", traveled: "travelled", traveler: "traveller", modeling: "modelling", modeled: "modelled", canceled: "cancelled", jewelry: "jewellery", catalog: "catalogue", dialog: "dialogue", gray: "grey", aluminum: "aluminium", fulfill: "fulfil", enrollment: "enrolment", enroll: "enrol", enrolled: "enrolled", skillful: "skilful", license: "licence", defense: "defence", offense: "offence", pajamas: "pyjamas", math: "maths", fall: "fall", vacation: "holiday", soccer: "football", cozy: "cosy", mold: "mould", ass: "ass" };
+    s = s.replace(/\b[A-Za-z]+\b/g, (m) => {
+      const l = m.toLowerCase();
+      if (W[l] && W[l] !== l && l !== "fall" && l !== "vacation" && l !== "soccer") return keep(m, W[l]);
+      if (/^(size|sized|sizes|prize|prizes|prized|seize|seized|capsize|capsized|baize)$/.test(l)) return m;
+      const z = l.match(/^(.{3,})(ize|izes|ized|izing|ization|izations|izer|izers)$/);
+      if (z) return keep(m, z[1] + z[2].replace("iz", "is"));
+      const y = l.match(/^(.{2,})(yze|yzed|yzes|yzing)$/);
+      if (y) return keep(m, y[1] + y[2].replace("yz", "ys"));
+      return m;
+    });
+    return s;
+  }
+
+  titleRegexes() {
+    if (this._tr) return this._tr;
+    const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const byLen = (a) => a.slice().sort((x, y) => y.length - x.length).map(esc).join("|");
+    const SAFE = ["Les Misérables","Les Miserables","Les Mis","& Juliet","&Juliet","Priscilla, Queen of the Desert","Priscilla Queen of the Desert","Priscilla","The Music Man","Urinetown","Puffs","Hadestown","Pippin","Seussical","High School Musical","Alice in Wonderland","The SpongeBob Musical","SpongeBob","Shrek the Musical","Shrek","Aladdin","Beauty and the Beast","Into the Woods","Cabaret","Strictly Ballroom","Crazy for You","Head Over Heels","The Wedding Singer","Chitty Chitty Bang Bang","Little Shop of Horrors","42nd Street","The Sound of Music","Sound of Music","The Phantom of the Opera","Phantom of the Opera","Miss Saigon","West Side Story","Hamilton","Dear Evan Hansen","Heathers","Mean Girls","Kinky Boots","School of Rock","Jersey Boys","We Will Rock You","Come From Away","Moulin Rouge!","Moulin Rouge","Billy Elliot","Footloose","Anything Goes","Guys and Dolls","Kiss Me, Kate","Kiss Me Kate","Oklahoma!","The King and I","South Pacific","Fiddler on the Roof","Joseph and the Amazing Technicolor Dreamcoat","Jesus Christ Superstar","Evita","Sweeney Todd","Monty Python's Spamalot","Spamalot","Bring It On","Newsies","Godspell","Thoroughly Modern Millie","Singin' in the Rain","My Fair Lady","Sister Act","The Producers","Avenue Q","The Book of Mormon","Book of Mormon","Spring Awakening","Next to Normal","The Pirates of Penzance","HMS Pinafore","The Mikado","La Bohème","La Boheme","Trolls the Musical","Winnie the Pooh","Finding Nemo","Willy Wonka","Charlie and the Chocolate Factory","Peter Pan","The Wizard of Oz","Wizard of Oz","Bye Bye Birdie","Dreamgirls","Rock of Ages","Bat Out of Hell","Beetlejuice","Back to the Future","Mary Poppins","The Little Mermaid","The Lion King","The Addams Family","Legally Blonde","Hairspray","Mamma Mia!","Mamma Mia","Matilda the Musical","Annie Get Your Gun","Calamity Jane","Hello, Dolly!","Hello Dolly","Man of La Mancha","Camelot","Brigadoon","No, No, Nanette","No No Nanette","Bending Broadway","Song Contest","The Drowsy Chaperone","Big Fish","Something Rotten!","Something Rotten","Jagged Little Pill","MJ the Musical","9 to 5","American Idiot","All Shook Up","Oliver!","Annie KIDS","Annie Jr","Matilda Jr","Frozen Jr","Shrek Jr","A Chorus Line","Sunset Boulevard","Starlight Express","The Secret Garden","Mack and Mabel","The Pajama Game","Little Women","The Greatest Showman","Six the Musical","Waitress","Hercules","Tarzan","Mulan","Moana","Encanto","Madagascar","The Jungle Book","Seven Brides for Seven Brothers","Annie Jr.","Matilda Jr.","Frozen Jr."];
+    const CAP = ["Frozen","Matilda","Grease","Wicked","Cinderella","Cats","Oklahoma"];
+    const CTX = ["Annie","Oliver","Chicago","Company","Once","Six","Big","Bare","Beautiful","Hair","Rent","Fame","Ghost","Tina","Joseph","Chess","Follies","Gypsy","Carousel","Pippi"];
+    const L = "(?<![\\p{L}\\p{N}])", R = "(?![\\p{L}\\p{N}])";
+    this._tr = [
+      new RegExp(L + "(" + byLen(SAFE) + ")" + R, "giu"),
+      new RegExp(L + "(" + byLen(CAP) + ")" + R, "gu"),
+      new RegExp("(?<=\\b(?:in|of|for|production of|season of|cast of)\\s)(" + byLen(CTX) + ")" + R, "gu"),
+      new RegExp(L + "(" + byLen(CTX) + ")(?=\\s·|\\s\\()", "gu"),
+    ];
+    return this._tr;
+  }
+
+  outside(s, fn) {
+    return s.split(/(\u0001[^\u0002]*\u0002)/).map((p) => (p.charAt(0) === "\u0001" ? p : fn(p))).join("");
+  }
+
+  format(raw, first) {
+    const ch = { cs: false, titles: [], roles: [] };
+    const A = "\u0001", B = "\u0002";
+    const add = (arr, v) => { if (arr.indexOf(v) < 0) arr.push(v); };
+    const isCaps = (t) => /\p{L}/u.test(t) && t === t.toUpperCase();
+    let s = String(raw || "").replace(/[\u0001\u0002]/g, "").replace(/\s+/g, " ").trim();
+    s = this.fixCS(s, ch);
+    s = this.toUK(s, ch);
+    s = s.replace(/\*([^*]+)\*/g, (m, x) => { const r = x.trim(); if (!r) return ""; if (raw.indexOf("*" + x + "*") > -1 && !this._building) add(ch.roles, r); return A + r + B; });
+    const VR = /\b(as|played|plays|playing|portrayed|portrays|portraying|role of|roles of)(\s+)((?:the\s+)?\p{Lu}[\p{L}\p{M}'’.\-]*(?:\s+(?:of|the|de|la|le|von|van|du|\p{Lu}[\p{L}\p{M}'’.\-]*))*)/gu;
+    s = this.outside(s, (p) => p.replace(VR, (m, v, sp, role) => {
+      const words = role.split(/\s+/), out = [];
+      for (const w of words) { if (w.length > 1 && isCaps(w)) break; out.push(w); if (/[.,;:!?]$/.test(w)) break; }
+      if (out[0] === "the") out.shift();
+      while (out.length && /^(of|the|de|la|le|von|van|du)$/.test(out[out.length - 1])) out.pop();
+      let r = out.join(" ").replace(/[.,;:]+$/, "");
+      if (r.length < 2 || /^CentreStage/.test(r) || /^(I|A|An|Part|Well|Such|Much|Many|Long|Soon|Far)$/.test(r)) return m;
+      const i = role.indexOf(r);
+      add(ch.roles, r);
+      return v + sp + role.slice(0, i) + A + r + B + role.slice(i + r.length);
+    }));
+    const T = this.titleRegexes();
+    const up = (m) => { const u = m.toLocaleUpperCase("en-AU"); if (u !== m) add(ch.titles, u); return u; };
+    s = this.outside(s, (p) => { T.forEach((re) => { p = p.replace(re, up); }); return p; });
+    s = this.outside(s, (p) => p.replace(/((?:\p{Lu}|&)[\p{Lu}\p{N}&!'’.:,\-]*(?:\s+[\p{Lu}\p{N}&!'’.:,\-]+)*)(\s\()([^()]+)(\))/gu, (m, t, op, inner, cl) => {
+      if (!isCaps(t) || t.replace(/[^\p{L}]/gu, "").length < 2) return m;
+      const parts = inner.split(/,\s*/), r = parts[0];
+      if (/^\d/.test(r) || isCaps(r)) return m;
+      add(ch.roles, r);
+      return t + op + A + r + B + (parts.length > 1 ? ", " + parts.slice(1).join(", ") : "") + cl;
+    }));
+    s = this.outside(s, (p) => p.replace(/(\s·\s)([^·]+?)(?=\s·\s\d{2,4})/gu, (m, d, r) => { if (isCaps(r)) return m; add(ch.roles, r.trim()); return d + A + r + B; }));
+    const segs = [];
+    s.split(/(\u0001[^\u0002]*\u0002)/).forEach((p) => {
+      if (!p) return;
+      if (p.charAt(0) === A) segs.push({ t: p.slice(1, -1), fs: "italic" });
+      else segs.push({ t: p, fs: "normal" });
+    });
+    return { segs, plain: s.replace(/[\u0001\u0002]/g, ""), ch };
+  }
+
+  pron(w) {
+    const p = String(w.pronouns || "").toLowerCase().split(/[\/,\s]+/)[0];
+    if (p === "she") return { poss: "her" };
+    if (p === "he") return { poss: "his" };
+    return { poss: "their" };
+  }
+
+  roleCopy(role) {
+    const r = String(role);
+    if (r === "Ensemble") return "in the ensemble of FROZEN";
+    if (r === "Ensemble and Dance Captain") return "as Dance Captain and a member of the ensemble in FROZEN";
+    const m = r.match(/^(.+?) \(Ensemble\)$/);
+    if (m) return "as *" + m[1] + "* in FROZEN";
+    const y = r.match(/^(Young (?:Elsa|Anna)) \((.+) cast\)$/);
+    if (y) return "as *" + y[1] + "* in FROZEN";
+    const u = r.match(/^(Elsa|Anna) understudy$/);
+    if (u) return "as understudy for *" + u[1] + "* in FROZEN";
+    return "as *" + r + "* in FROZEN";
+  }
+
+  buildDraft() {
+    const s = this.state, w = s.who, L = this.limits(w);
+    const F = String(w.first).split(/\s+/)[0], P = this.pron(w);
+    const clean = (t) => String(t || "").replace(/\s+/g, " ").trim().replace(/[.\s]+$/, "");
+    const rc = this.roleCopy(w.role);
+    const h = s.hHistory || "returning";
+    const open = h === "debut" ? F + " is thrilled to be making " + P.poss + " CentreStage debut " + rc + "."
+      : h === "first" ? F + " is thrilled to be making " + P.poss + " stage debut " + rc + "."
+      : F + " is thrilled to be back on the CentreStage stage " + rc + ".";
+    const cr = (s.hCredits || []).map((c) => ({ show: clean(c.show), role: clean(c.role), co: clean(c.co) })).filter((c) => c.show);
+    const one = (c) => (c.role ? "*" + c.role.replace(/\*/g, "") + "* in " : "") + c.show.toUpperCase() + (c.co ? " (" + c.co + ")" : "");
+    const list = (a) => a.length === 1 ? a[0] : a.slice(0, -1).join(", ") + " and " + a[a.length - 1];
+    const credit = (n) => cr.length && n ? (h === "first" ? "" : (n === 1 ? "A favourite past credit is " : "Favourite past credits include ") + list(cr.slice(0, n).map(one)) + ".") : "";
+    const tr = clean(s.hTraining), aw = clean(s.hAway), th = clean(s.hThanks);
+    const parts = (n, withTr, withAw) => [open, credit(n), withTr && tr ? F + "'s training includes " + tr + "." : "", withAw && aw ? "Away from the stage, " + F + " " + aw + "." : "", th ? F + " thanks " + th + "." : ""].filter(Boolean).join(" ");
+    const tries = [];
+    for (let n = Math.min(15, cr.length); n >= 0; n--) tries.push([n, true, true]);
+    tries.push([Math.min(1, cr.length), true, false], [Math.min(1, cr.length), false, true], [Math.min(1, cr.length), false, false], [0, false, false]);
+    let out = parts(Math.min(15, cr.length), true, true), usedN = Math.min(15, cr.length);
+    for (const t of tries) { out = parts(t[0], t[1], t[2]); usedN = t[0]; if (this.format(out, w.first).plain.length <= L.max) break; }
+    const len = this.format(out, w.first).plain.length;
+    let msg = "";
+    if (len > L.max) msg = "Your draft is " + (len - L.max) + " characters too long. Shorten your answers a little, then build again.";
+    else if (len < L.min) msg = "Draft added below. It needs " + (L.min - len) + " more characters, so add a detail or another credit and edit it in the box.";
+    else msg = "Draft added below. Read it through and make it sound like you.";
+    if (len <= L.max && usedN < cr.length) msg += " We fitted " + usedN + " of your " + cr.length + " credits within your word limit, starting from the top of your list.";
+    return { out, msg };
+  }
+
+  agentLine(agent, first) {
+    let a = String(agent || "").replace(/\s+/g, " ").trim().replace(/^(?:i am |i'm |is )?represented by\s+/i, "").replace(/[.\s]+$/, "");
+    if (!a) return "";
+    a = this.fixCS(a, {});
+    return first + " is represented by " + a + ".";
+  }
+
+  renderVals() {
+    const s = this.state, w = s.who;
+    const base = {
+      isGate: s.step === "gate", isWrite: s.step === "write", isPreview: s.step === "preview", isDone: s.step === "done",
+      codeInput: s.codeInput, gateErr: s.gateErr, gateBtn: s.busy ? "Checking…" : "Continue",
+      onCode: (e) => this.setState({ codeInput: e.target.value, gateErr: "" }),
+      gateSubmit: (e) => { e.preventDefault(); this.check(this.state.codeInput); },
+    };
+    if (!w) return base;
+    const L = this.limits(w), f = this.format(s.bio, w.first), n = f.plain.length;
+    const agentLine = this.agentLine(s.agent, w.first);
+    let countMsg, countColor;
+    if (!n) { countMsg = "Aim for " + L.min + " to " + L.max + " characters"; countColor = "#9FD9FF"; }
+    else if (n < L.min) { countMsg = "Add at least " + (L.min - n) + " more characters"; countColor = "#FFD27A"; }
+    else if (n > L.max) { countMsg = "Remove " + (n - L.max) + " characters"; countColor = "#FF8A6B"; }
+    else { countMsg = "Good length"; countColor = "#7FD3FF"; }
+    const changes = [];
+    if (f.ch.cs) changes.push("Spelled CentreStage the right way.");
+    if (f.ch.uk && f.ch.uk.length) changes.push("Used UK English spelling: " + f.ch.uk.join(", ") + ".");
+    if (f.ch.titles.length) changes.push("Set show titles in capitals: " + f.ch.titles.join(", ") + ".");
+    if (f.ch.roles.length) changes.push("Set roles in italics: " + f.ch.roles.join(", ") + ".");
+    const esc = (x) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const firstName = String(w.first).split(/\s+/)[0];
+    const firstWarn = f.plain && !new RegExp("^" + esc(firstName), "i").test(f.plain)
+      ? "Program bios start with your first name, for example \"" + firstName + " is…\". You can still submit, but we may edit the opening." : "";
+    let prevSubmitted = false;
+    try { prevSubmitted = !!localStorage.getItem("cs_bio_sent_" + s.hkey); } catch (e) {}
+    const fullName = w.first + " " + w.last;
+    return {
+      ...base,
+      first: firstName, fullName, pronouns: w.pronouns, role: w.role, roleLine: "Your role: " + w.role,
+      words: L.words, minC: L.min, maxC: L.max, count: n, countMsg, countColor,
+      barW: Math.min(100, (n / L.max) * 100) + "%", minPct: (L.min / L.max) * 100 + "%", okPct: (100 - (L.min / L.max) * 100) + "%",
+      bio: s.bio, agent: s.agent, err: s.err, prevSubmitted,
+      bioPlaceholder: firstName + " is thrilled to join the cast of Frozen. Previous credits include…",
+      agentExample: agentLine || firstName + " is represented by CentreStage Agency.",
+      onBio: (e) => { const v = e.target.value.replace(/[ \t]*[\r\n]+[ \t]*/g, " "); this.setState({ bio: v, err: "" }); this.saveDraft({ bio: v }); },
+      onBioKey: (e) => { if (e.key === "Enter") e.preventDefault(); },
+      onAgent: (e) => { const v = e.target.value; this.setState({ agent: v }); this.saveDraft({ agent: v }); },
+      toPreview: () => {
+        let err = "";
+        if (!n) err = "Please write your bio first.";
+        else if (n < L.min) err = "Your bio needs at least " + L.min + " characters. Add " + (L.min - n) + " more so it sits evenly with the rest of the cast.";
+        else if (n > L.max) err = "Your bio can be at most " + L.max + " characters. Please remove " + (n - L.max) + ".";
+        if (err) { this.setState({ err }); return; }
+        this.setState({ step: "preview", err: "" });
+        window.scrollTo(0, 0);
+      },
+      helpOpen: !!s.helpOpen, helpIcon: s.helpOpen ? "−" : "+", helpMsg: s.helpMsg || "",
+      toggleHelp: () => this.setState({ helpOpen: !this.state.helpOpen }),
+      historyOpts: [["returning", "Yes, I'm returning"], ["debut", "No, it's my CentreStage debut"], ["first", "This is my first ever show"]].map(([k, label]) => {
+        const on = (s.hHistory || "returning") === k;
+        return { label, bg: on ? "#7FD3FF" : "transparent", fg: on ? "#04101F" : "#EAF4FF", pick: () => this.setState({ hHistory: k }) };
+      }),
+      credits: Array.from({ length: s.hRows || 3 }, (_, i) => {
+        const c = (s.hCredits || [])[i] || {};
+        const upd = (k) => (e) => { const v = e.target.value; const a = (this.state.hCredits || []).slice(); a[i] = { ...(a[i] || {}), [k]: v }; this.setState({ hCredits: a }); };
+        return { n: String(i + 1).padStart(2, "0"), show: c.show || "", role: c.role || "", co: c.co || "", onShow: upd("show"), onRole: upd("role"), onCo: upd("co") };
+      }),
+      canAddCredit: (s.hRows || 3) < 15, creditsLeft: 15 - (s.hRows || 3),
+      addCredit: () => this.setState({ hRows: Math.min(15, (this.state.hRows || 3) + 3) }),
+      hTraining: s.hTraining || "", hAway: s.hAway || "", hThanks: s.hThanks || "",
+      onTraining: (e) => this.setState({ hTraining: e.target.value }),
+      onAway: (e) => this.setState({ hAway: e.target.value }),
+      onThanks: (e) => this.setState({ hThanks: e.target.value }),
+      buildBio: () => {
+        const r = this.buildDraft();
+        if (this.state.bio && this.state.bio.trim() && !window.confirm("Replace what you've already written with the new draft?")) return;
+        this.setState({ bio: r.out, helpMsg: r.msg, err: "" });
+        this.saveDraft({ bio: r.out });
+        setTimeout(() => { const t = document.querySelector("textarea"); if (t) { window.scrollTo(0, t.getBoundingClientRect().top + window.scrollY - 120); t.focus(); } }, 60);
+      },
+      segs: f.segs, agentLine, hasChanges: changes.length > 0, changes, firstWarn,
+      backToEdit: () => { this.setState({ step: "write", err: "" }); window.scrollTo(0, 0); },
+      submitLabel: s.sending ? "Sending…" : "Submit my bio",
+      submit: () => {
+        if (this.state.sending) return;
+        if (n < L.min || n > L.max) { this.setState({ step: "write", err: "Your bio must be between " + L.min + " and " + L.max + " characters." }); return; }
+        const marked = f.segs.map((g) => (g.fs === "italic" ? "*" + g.t + "*" : g.t)).join("");
+        const fd = new FormData();
+        fd.append("_subject", "Frozen program bio: " + fullName);
+        fd.append("Name", fullName);
+        fd.append("Pronouns", w.pronouns || "");
+        fd.append("Role", w.role);
+        fd.append("Tier", L.label + " (" + L.words + " words, " + L.min + " to " + L.max + " characters)");
+        fd.append("Bio (formatted, *italics*)", marked + (agentLine ? " " + agentLine : ""));
+        fd.append("Bio (plain text)", f.plain + (agentLine ? " " + agentLine : ""));
+        fd.append("Agent line", agentLine || "None");
+        fd.append("Character count (excluding agent line)", String(n));
+        fd.append("Submitted", new Date().toLocaleString("en-AU", { timeZone: "Australia/Melbourne" }));
+        if (s.hkey === "preview") { setTimeout(() => this.setState({ sending: false, step: "done" }), 400); this.setState({ sending: true }); return; }
+        this.setState({ sending: true, err: "" });
+        fetch(this.FORMSPREE, { method: "POST", body: fd, headers: { Accept: "application/json" } })
+          .then((r) => { if (!r.ok) throw new Error("bad"); try { localStorage.setItem("cs_bio_sent_" + s.hkey, "1"); } catch (e) {} this.setState({ sending: false, step: "done" }); window.scrollTo(0, 0); })
+          .catch(() => this.setState({ sending: false, err: "We couldn't send your bio. Check your connection and try again, or email it to martin@centrestage.org.au." }));
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

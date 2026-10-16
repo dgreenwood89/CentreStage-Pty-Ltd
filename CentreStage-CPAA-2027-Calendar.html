@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>CentreStage CPAA — 2027 Student Calendar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  doc-page:not(:defined){visibility:hidden}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#0A0A0A;-webkit-font-smoothing:antialiased}
+  .page{position:relative;background:#F4F1EA;overflow:hidden;display:flex;flex-direction:column;height:100%}
+  .pad{padding:30px 40px 26px;display:flex;flex-direction:column;flex:1;position:relative;z-index:1;min-height:0}
+  .dark{background:#0A0A0A;color:#F4F1EA}
+  .edge{position:absolute;top:0;bottom:0;right:0;width:13px;z-index:2}
+  .blob{position:absolute;border-radius:50%}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+  h1{font-family:'Arial Black',Arial,sans-serif;font-weight:900;letter-spacing:-.04em;line-height:.88;margin:0}
+  h3{font-family:'Arial Black',Arial,sans-serif;font-weight:900;font-size:15px;letter-spacing:-.025em;margin:0 0 2px}
+  h4{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin:0 0 7px}
+  p{font-size:11px;line-height:1.52;color:#2A2A28;margin:0 0 7px}
+  p:last-child{margin-bottom:0}
+  .lede{font-size:15px;line-height:1.5}
+  .pnum{position:absolute;bottom:14px;right:34px;font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;z-index:3}
+  .chip{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;padding:5px 12px;border-radius:999px}
+  /* month header */
+  .mhd{display:flex;justify-content:space-between;align-items:flex-start;flex:none}
+  .mwrap{position:relative;display:flex;align-items:center;height:92px}
+  .ghost{position:absolute;left:-8px;top:-22px;font-family:'Arial Black',Arial,sans-serif;font-weight:900;font-size:132px;line-height:1;letter-spacing:-.05em;z-index:0}
+  .mname{position:relative;z-index:1;font-size:76px;letter-spacing:-.045em}
+  .mright{display:flex;flex-direction:column;align-items:flex-end;gap:11px;padding-top:6px}
+  .lg{height:19px}
+  /* grid */
+  .dow{display:grid;grid-template-columns:repeat(7,1fr);border-radius:999px;overflow:hidden;flex:none;margin-bottom:7px}
+  .dow div{padding:7px 8px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.18em;color:#fff;text-align:center}
+  .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;flex:1;min-height:0}
+  .c{background:#fff;border-radius:10px;padding:6px 9px 8px;display:flex;flex-direction:column;align-items:flex-end;text-align:right;overflow:hidden}
+  .c.off{background:transparent}
+  .n{font-family:'Arial Black',Arial,sans-serif;font-weight:900;font-size:16px;line-height:1;letter-spacing:-.03em;color:#0A0A0A;margin-bottom:2px}
+  .e{font-size:8.6px;line-height:1.28;font-weight:700;margin-top:2px;text-wrap:pretty}
+  .mft{flex:none;display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:10px;margin-top:9px;border-top:1px solid #D9D5CC}
+  .note{font-size:10px;line-height:1.45;color:#5C5A54;font-style:italic;max-width:88ch}
+  .pill{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;padding:5px 12px;border-radius:999px;white-space:nowrap}
+  /* summary */
+  .tgrid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(0,1fr);gap:14px;flex:1;min-height:0}
+  .tcard{overflow:hidden}
+  .tcard{background:#fff;border-radius:13px;padding:15px 17px 17px;display:flex;flex-direction:column}
+  .rng{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;margin-bottom:8px}
+  .li{display:flex;justify-content:space-between;gap:10px;font-size:10.2px;line-height:1.4;padding:5px 0;border-bottom:1px solid #EFEBE1}
+  .li:last-child{border-bottom:0}
+  .li span:last-child{font-family:'JetBrains Mono',monospace;color:#6B6B68;white-space:nowrap;font-size:9.6px}
+  .igrid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(0,1fr);gap:12px;flex:1;min-height:0}
+  .icard{overflow:hidden}
+  .icard{background:#fff;border-radius:13px;padding:13px 15px 15px}
+  .flagline{background:#0A0A0A;color:#F4F1EA;border-radius:13px;padding:14px 18px;font-size:10.5px;line-height:1.5;margin-top:14px;flex:none}
+  .flagline .fh{font-family:'Arial Black',Arial;font-weight:900;color:#F2A93B}
+  /* cover / back */
+  .coverimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% 22%;z-index:0}
+  .coverwash{position:absolute;inset:0;z-index:0;background:linear-gradient(105deg,rgba(10,10,10,.94) 0%,rgba(10,10,10,.86) 38%,rgba(10,10,10,.42) 66%,rgba(10,10,10,.30) 100%)}
+  .keyrow{display:flex;flex-wrap:wrap;gap:10px 24px;padding:15px 0;border-top:1px solid #262624;border-bottom:1px solid #262624}
+  .ki{display:inline-flex;align-items:center;gap:8px;font-size:11px;color:#C9C6BF}
+  .ki i{width:9px;height:9px;border-radius:50%;display:inline-block}
+  .cft{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#8A867E;padding-top:14px}
+  .bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;border-top:1px solid #262624;padding-top:18px}
+  .bgrid p{font-size:11.5px;line-height:1.6;color:#C9C6BF;margin:0}
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="120" fill="#0A0A0A"/><circle cx="92" cy="28" r="34" fill="#2E6FB7" opacity=".5"/><text x="60" y="60" font-family="Arial Black,Arial" font-size="30" font-weight="900" fill="#fff" text-anchor="middle">2027</text><text x="60" y="96" font-family="Arial Black,Arial" font-size="36" font-weight="900" fill="#E8472B" text-anchor="middle">/</text></svg>
+</template>
+<doc-page size="a4" orientation="landscape" margin="0">
+<section data-document-role="page" class="page dark">
+  <img class="coverimg" src="assets/youth/cover-2027.png" alt="">
+  <div class="coverwash"></div>
+  <div class="blob" style="width:620px;height:620px;background:#2E6FB7;opacity:.34;top:-250px;right:-180px;mix-blend-mode:screen"></div>
+  <div class="blob" style="width:400px;height:400px;background:#E5487F;opacity:.30;bottom:-190px;left:-130px;mix-blend-mode:screen"></div>
+  <div class="blob" style="width:260px;height:260px;background:#F2A93B;opacity:.20;top:120px;left:46%;mix-blend-mode:screen"></div>
+  <div class="edge" style="background:linear-gradient(#4FC3E8,#E5487F,#F2A93B)"></div>
+  <div class="pad">
+    <img src="assets/CentreStage-Solid-White.png" alt="CentreStage" style="height:24px;align-self:flex-start">
+    <div style="flex:1"></div>
+    <span class="eyebrow" style="color:#4FC3E8">CentreStage Performing Arts Academy</span>
+    <h1 style="font-size:152px;color:#fff;margin:6px 0 0;letter-spacing:-.055em">2027</h1>
+    <div style="font-family:'Arial Black',Arial;font-weight:900;font-size:44px;letter-spacing:-.04em;line-height:1;color:#fff;margin-top:2px">Student Calendar.</div>
+    <p class="lede" style="color:#C9C6BF;max-width:64ch;margin:16px 0 0">Every term date, every public holiday, every performance. Stick it on the fridge — this is the year your young one steps into the light.</p>
+    <div style="flex:1"></div>
+    <div class="keyrow">
+      <span class="ki"><i style="background:#2E9E72"></i>Classes & terms</span><span class="ki"><i style="background:#2E6FB7"></i>Productions</span><span class="ki"><i style="background:#7A4FB5"></i>Major events</span><span class="ki"><i style="background:#E8472B"></i>No classes</span><span class="ki"><i style="background:#B57B12"></i>Fees & admin</span><span class="ki"><i style="background:#6B6B68"></i>Public holidays</span><span class="ki"><i style="background:#9A9488"></i>Theatre & fun days</span>
+    </div>
+    <div class="cft"><span>Saturday classes &middot; Vines Road Community Centre</span><span>centrestage.org.au/satcpaa</span></div>
+  </div>
+</section>
+<section data-document-role="page" class="page" style="background:#F4F1EA">
+  <div class="blob" style="width:460px;height:460px;background:#4FC3E8;opacity:.13;top:-240px;right:-140px"></div>
+  <div class="edge" style="background:linear-gradient(#4FC3E8,#2E9E72)"></div>
+  <div class="pad">
+    <div class="mhd" style="margin-bottom:16px">
+      <div><span class="eyebrow" style="color:#E8472B">The year ahead</span><h1 style="font-size:56px;margin-top:8px">2027 at a glance.</h1></div>
+      <div class="mright"><img class="lg" src="assets/CentreStage-Solid-Black.png" alt="CentreStage"></div>
+    </div>
+    <div class="tgrid">
+      <div class="tcard" style="border-top:4px solid #4FC3E8">
+        <h3>Term One</h3><span class="rng" style="color:#4FC3E8">30 Jan – 20 Mar</span>
+        <div class="li"><span>Offices closed</span><span>1 – 18 Jan</span></div><div class="li"><span><b>Australia Day</b> performance</span><span>Tue 26 Jan</span></div><div class="li"><span><b>Term 1 begins</b></span><span>Sat 30 Jan</span></div><div class="li"><span>Permission slips issued</span><span>Sat 6 Feb</span></div><div class="li"><span>Permission slips due</span><span>Sat 20 Feb</span></div><div class="li"><span><b>Pako Festa</b> — we perform</span><span>Sat 27 Feb</span></div><div class="li"><span><b>Frozen excursion</b></span><span>Sat 6 Mar</span></div><div class="li"><span>Labour Day — no classes</span><span>Mon 8 Mar</span></div><div class="li"><span>Last day of term</span><span>Sat 20 Mar</span></div>
+      </div><div class="tcard" style="border-top:4px solid #2E9E72">
+        <h3>Term Two</h3><span class="rng" style="color:#2E9E72">17 Apr – 19 Jun</span>
+        <div class="li"><span><b>Term 2 begins</b></span><span>Sat 17 Apr</span></div><div class="li"><span>ANZAC weekend — no classes</span><span>Sat 24 Apr</span></div><div class="li"><span>ANZAC Day</span><span>Sun 25 Apr</span></div><div class="li"><span>King&rsquo;s Birthday — no classes</span><span>Sat 12 Jun</span></div><div class="li"><span>King&rsquo;s Birthday</span><span>Mon 14 Jun</span></div><div class="li"><span>Last day of term</span><span>Sat 19 Jun</span></div>
+      </div><div class="tcard" style="border-top:4px solid #7A4FB5">
+        <h3>Term Three</h3><span class="rng" style="color:#7A4FB5">17 Jul – 11 Sep</span>
+        <div class="li"><span><b>Term 3 begins</b></span><span>Sat 17 Jul</span></div><div class="li"><span>Rehearsals build for the shows</span><span>Jul – Sep</span></div><div class="li"><span>Last day of term</span><span>Sat 11 Sep</span></div><div class="li"><span>AFL Grand Final Eve</span><span>Sep, TBC</span></div>
+      </div><div class="tcard" style="border-top:4px solid #E8472B">
+        <h3>Term Four</h3><span class="rng" style="color:#E8472B">9 Oct – 4 Dec</span>
+        <div class="li"><span><b>Term 4 begins</b></span><span>Sat 9 Oct</span></div><div class="li"><span><b>Annie Kids</b> — Juniors</span><span>16 – 17 Oct</span></div><div class="li"><span><b>Trolls Jr</b> — Middles</span><span>23 – 31 Oct</span></div><div class="li"><span>Melbourne Cup Day</span><span>Tue 2 Nov</span></div><div class="li"><span><b>Spamalot</b> — Seniors</span><span>13 – 21 Nov</span></div><div class="li"><span>Showcase tech rehearsal</span><span>Sat 27 Nov</span></div><div class="li"><span><b>Be Our Guest</b> — Costa Hall</span><span>Sat 4 Dec</span></div>
+      </div>
+    </div>
+    <div class="mft"><span class="note">All Saturday classes are at Vines Road Community Centre unless a performance venue is listed. Tickets and bookings at centrestage.org.au/tickets. Productions are preliminary approved and on hold — titles may change.</span><span class="pill" style="background:#4FC3E8">At a glance</span></div>
+  </div>
+  <div class="pnum" style="color:#4FC3E8">02</div>
+</section>
+<section data-document-role="page" class="page" style="background:#F4F1EA">
+  <div class="blob" style="width:440px;height:440px;background:#F2A93B;opacity:.14;bottom:-230px;right:-130px"></div>
+  <div class="edge" style="background:linear-gradient(#F2A93B,#E8472B)"></div>
+  <div class="pad">
+    <div class="mhd" style="margin-bottom:16px">
+      <div><span class="eyebrow" style="color:#E8472B">Before term one</span><h1 style="font-size:56px;margin-top:8px">How the year works.</h1></div>
+      <div class="mright"><img class="lg" src="assets/CentreStage-Solid-Black.png" alt="CentreStage"></div>
+    </div>
+    <div class="igrid">
+      <div class="icard"><h4 style="color:#B57B12">Invoices &amp; fees</h4>
+        <p>Term 1 invoices are issued the week beginning <b>Sunday 3 January</b> for continuing students, and <b>Wednesday 27 January</b> for new students.</p>
+        <p>Fees are due on the first Saturday of each term. A <b>10% late fee</b> applies to any account unpaid after the due date.</p>
+        <p>The CentreStage offices are <b>closed 1 &ndash; 18 January</b>. Enquiries sent in that window are answered from Tuesday 19 January.</p>
+        <p>Enrolments for 2028 open Sunday 28 November 2027.</p></div>
+      <div class="icard"><h4 style="color:#E8472B">Attendance &amp; withdrawals</h4>
+        <p>No classes on Victorian public holidays, or on a Saturday inside a long weekend — where the holiday falls on the Friday before or Monday after.</p>
+        <p>Class fees are <b>not refundable</b> for students who withdraw mid-term, and unpaid fees for that term remain payable.</p>
+        <p>This is what holds our rate at an average <b>$5.70 per hour</b> — the lowest in Geelong.</p></div>
+      <div class="icard"><h4 style="color:#2E9E72">Permissions &amp; volunteering</h4>
+        <p>Permission slips for the <b>Frozen excursion</b> and <b>Pako Festa</b> go out Saturday 6 February and are due back Saturday 20 February, by Google Form.</p>
+        <p>Families contribute <b>10+ volunteer hours</b> across the year, with an opt-out available at onboarding.</p>
+        <p>Our program is designed and led by VIT registered teachers and industry professionals. All staff hold a current Working with Children Check.</p></div>
+      <div class="icard"><h4 style="color:#2E6FB7">What to bring</h4>
+        <p>Clothes you can move in, closed-toe shoes, a full drink bottle and a snack. Hair tied back. Your CentreStage shirt on performance days.</p></div>
+      <div class="icard"><h4 style="color:#7A4FB5">Where things live</h4>
+        <p>Class updates, absences and accounts are all in <b>Studio Pro</b>. Tickets for every student production are at <b>centrestage.org.au/tickets</b>.</p></div>
+      <div class="icard"><h4 style="color:#E5487F">Our 2027 shows</h4>
+        <p><b>Annie Kids</b> — Junior Troupe<br><b>Trolls the Musical Jr</b> — Middle Troupes<br><b>Spamalot Youth Edition</b> — Senior Troupes<br><b>Be Our Guest</b> — the whole academy, Costa Hall</p></div>
+    </div>
+    <div class="flagline"><span class="fh">A note on titles.</span> Our 2027 productions are preliminary approved and on hold for CentreStage. If a professional Australian tour of a title is announced, that production may be withdrawn by the licensor and replaced. We will tell families immediately.</div>
+    <div class="mft"><span class="note">Questions at any point in the year? Speak to a teacher on a Saturday, or write to cpaa@centrestage.org.au.</span><span class="pill" style="background:#F2A93B">How it works</span></div>
+  </div>
+  <div class="pnum" style="color:#F2A93B">03</div>
+</section>
+<section data-document-role="page" class="page" style="background:#EAF8FD">
+  <div class="blob" style="width:520px;height:520px;background:#4FC3E8;opacity:.10;top:-260px;right:-160px"></div>
+  <div class="blob" style="width:300px;height:300px;background:#4FC3E8;opacity:.07;bottom:-190px;left:-110px"></div>
+  <div class="edge" style="background:#4FC3E8"></div>
+  <div class="pad">
+    <div class="mhd">
+      <div class="mwrap">
+        <span class="ghost" style="color:#4FC3E8;opacity:.14">2027</span>
+        <h1 class="mname">January</h1>
+      </div>
+      <div class="mright">
+        <img class="lg" src="assets/CentreStage-Solid-Black.png" alt="CentreStage">
+        <span class="chip" style="background:#4FC3E8">Term 1</span>
+      </div>
+    </div>
+    <div class="dow" style="background:#4FC3E8"><div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div></div>
+    <div class="grid" style="grid-template-rows:repeat(6,minmax(0,1fr))"><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c"><span class="n">1</span><span class="e" style="color:#6B6B68">New Year's Day</span><span class="e" style="color:#B57B12">CentreStage offices closed 1–18 Jan</span></div><div class="c sat" style="background:#EAF8FD"><span class="n" style="color:#4FC3E8">2</span></div><div class="c"><span class="n">3</span><span class="e" style="color:#B57B12">Term 1 invoices — current students</span></div><div class="c"><span class="n">4</span></div><div class="c"><span class="n">5</span></div><div class="c"><span class="n">6</span></div><div class="c"><span class="n">7</span></div><div class="c"><span class="n">8</span></div><div class="c sat" style="background:#EAF8FD"><span class="n" style="color:#4FC3E8">9</span></div><div class="c"><span class="n">10</span></div><div class="c"><span class="n">11</span></div><div class="c"><span class="n">12</span></div><div class="c"><span class="n">13</span></div><div class="c"><span class="n">14</span></div><div class="c"><span class="n">15</span></div><div class="c sat" style="background:#EAF8FD"><span class="n" style="color:#4FC3E8">16</span></div><div class="c"><span class="n">17</span></div><div class="c"><span class="n">18</span><span class="e" style="color:#B57B12">Offices reopen</span></div><div class="c"><span class="n">19</span></div><div class="c"><span class="n">20</span></div><div class="c"><span class="n">21</span></div><div class="c"><span class="n">22</span></div><div class="c sat" style="background:#EAF8FD"><span class="n" style="color:#4FC3E8">23</span></div><div class="c"><span class="n">24</span></div><div class="c"><span class="n">25</span></div><div class="c"><span class="n">26</span><span class="e" style="color:#6B6B68">Australia Day</span><span class="e" style="color:#7A4FB5">Performance opportunity — expressions of interest</span></div><div class="c"><span class="n">27</span><span class="e" style="color:#B57B12">Term 1 invoices — new students</span></div><div class="c"><span class="n">28</span></div><div class="c"><span class="n">29</span></div><div class="c sat" style="background:#EAF8FD"><span class="n" style="color:#4FC3E8">30</span><span class="e" style="color:#2E9E72">TERM 1 BEGINS</span><span class="e" style="color:#B57B12">Term 1 fees due · 10% late fee after this date</span></div><div class="c"><span class="n">31</span></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div></div>
+    <div class="mft"><span class="note">Curtain up. An Australia Day performance opportunity on the 26th, then Term 1 begins Saturday 30 January — new shirts, new troupes, new stories.</span><span class="pill" style="background:#4FC3E8">JAN 2027</span></div>
+  </div>
+  <div class="pnum" style="color:#4FC3E8">04</div>
+</section>
+<section data-document-role="page" class="page" style="background:#FDEDF3">
+  <div class="blob" style="width:520px;height:520px;background:#E5487F;opacity:.10;top:-260px;right:-160px"></div>
+  <div class="blob" style="width:300px;height:300px;background:#E5487F;opacity:.07;bottom:-190px;left:-110px"></div>
+  <div class="edge" style="background:#E5487F"></div>
+  <div class="pad">
+    <div class="mhd">
+      <div class="mwrap">
+        <span class="ghost" style="color:#E5487F;opacity:.14">2027</span>
+        <h1 class="mname">February</h1>
+      </div>
+      <div class="mright">
+        <img class="lg" src="assets/CentreStage-Solid-Black.png" alt="CentreStage">
+        <span class="chip" style="background:#E5487F">Term 1</span>
+      </div>
+    </div>
+    <div class="dow" style="background:#E5487F"><div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div></div>
+    <div class="grid" style="grid-template-rows:repeat(5,minmax(0,1fr))"><div class="c off"></div><div class="c"><span class="n">1</span></div><div class="c"><span class="n">2</span></div><div class="c"><span class="n">3</span></div><div class="c"><span class="n">4</span></div><div class="c"><span class="n">5</span></div><div class="c sat" style="background:#FDEDF3"><span class="n" style="color:#E5487F">6</span><span class="e" style="color:#2E9E72">Normal classes</span><span class="e" style="color:#B57B12">Permission slips issued — Frozen &amp; Pako Festa</span></div><div class="c"><span class="n">7</span></div><div class="c"><span class="n">8</span></div><div class="c"><span class="n">9</span></div><div class="c"><span class="n">10</span></div><div class="c"><span class="n">11</span></div><div class="c"><span class="n">12</span></div><div class="c sat" style="background:#FDEDF3"><span class="n" style="color:#E5487F">13</span><span class="e" style="color:#2E9E72">Normal classes</span></div><div class="c"><span class="n">14</span><span class="e" style="color:#9A9488;font-style:italic;font-weight:400">Valentine's Day</span></div><div class="c"><span class="n">15</span></div><div class="c"><span class="n">16</span></div><div class="c"><span class="n">17</span></div><div class="c"><span class="n">18</span></div><div class="c"><span class="n">19</span></div><div class="c sat" style="background:#FDEDF3"><span class="n" style="color:#E5487F">20</span><span class="e" style="color:#2E9E72">Normal classes</span><span class="e" style="color:#B57B12">Permission slips DUE</span></div><div class="c"><span class="n">21</span></div><div class="c"><span class="n">22</span></div><div class="c"><span class="n">23</span></div><div class="c"><span class="n">24</span></div><div class="c"><span class="n">25</span></div><div class="c"><span class="n">26</span></div><div class="c sat" style="background:#FDEDF3"><span class="n" style="color:#E5487F">27</span><span class="e" style="color:#7A4FB5">PAKO FESTA — we perform a song from Frozen</span><span class="e" style="color:#E8472B">No normal classes</span></div><div class="c"><span class="n">28</span></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div></div>
+    <div class="mft"><span class="note">You never whistle in a theatre. Crews once used whistled codes to move scenery, so a stray whistle could drop a sandbag on your head.</span><span class="pill" style="background:#E5487F">FEB 2027</span></div>
+  </div>
+  <div class="pnum" style="color:#E5487F">05</div>
+</section>
+<section data-document-role="page" class="page" style="background:#EAF2FB">
+  <div class="blob" style="width:520px;height:520px;background:#2E6FB7;opacity:.10;top:-260px;right:-160px"></div>
+  <div class="blob" style="width:300px;height:300px;background:#2E6FB7;opacity:.07;bottom:-190px;left:-110px"></div>
+  <div class="edge" style="background:#2E6FB7"></div>
+  <div class="pad">
+    <div class="mhd">
+      <div class="mwrap">
+        <span class="ghost" style="color:#2E6FB7;opacity:.14">2027</span>
+        <h1 class="mname">March</h1>
+      </div>
+      <div class="mright">
+        <img class="lg" src="assets/CentreStage-Solid-Black.png" alt="CentreStage">
+        <span class="chip" style="background:#2E6FB7">Term 1</span>
+      </div>
+    </div>
+    <div class="dow" style="background:#2E6FB7"><div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div></div>
+    <div class="grid" style="grid-template-rows:repeat(5,minmax(0,1fr))"><div class="c off"></div><div class="c"><span class="n">1</span></div><div class="c"><span class="n">2</span></div><div class="c"><span class="n">3</span></div><div class="c"><span class="n">4</span></div><div class="c"><span class="n">5</span><span class="e" style="color:#2E6FB7">Frozen opens — The Playhouse</span></div><div class="c sat" style="background:#EAF2FB"><span class="n" style="color:#2E6FB7">6</span><span class="e" style="color:#7A4FB5">FROZEN EXCURSION — all troupes</span><span class="e" style="color:#E8472B">No normal classes (long weekend)</span></div><div class="c"><span class="n">7</span></div><div class="c"><span class="n">8</span><span class="e" style="color:#6B6B68">Labour Day</span></div><div class="c"><span class="n">9</span></div><div class="c"><span class="n">10</span></div><div class="c"><span class="n">11</span></div><div class="c"><span class="n">12</span></div><div class="c sat" style="background:#EAF2FB"><span class="n" style="color:#2E6FB7">13</span><span class="e" style="color:#2E9E72">Normal classes</span></div><div class="c"><span class="n">14</span></div><div class="c"><span class="n">15</span></div><div class="c"><span class="n">16</span></div><div class="c"><span class="n">17</span></div><div class="c"><span class="n">18</span></div><div class="c"><span class="n">19</span></div><div class="c sat" style="background:#EAF2FB"><span class="n" style="color:#2E6FB7">20</span><span class="e" style="color:#2E9E72">LAST DAY OF TERM 1</span><span class="e" style="color:#2E6FB7">Frozen closes</span></div><div class="c"><span class="n">21</span></div><div class="c"><span class="n">22</span></div><div class="c"><span class="n">23</span></div><div class="c"><span class="n">24</span></div><div class="c"><span class="n">25</span></div><div class="c"><span class="n">26</span><span class="e" style="color:#6B6B68">Good Friday</span></div><div class="c sat" style="background:#EAF2FB"><span class="n" style="color:#2E6FB7">27</span><span class="e" style="color:#6B6B68">Easter Saturday — no classes</span><span class="e" style="color:#9A9488;font-style:italic;font-weight:400">World Theatre Day</span></div><div class="c"><span class="n">28</span><span class="e" style="color:#6B6B68">Easter Sunday</span></div><div class="c"><span class="n">29</span><span class="e" style="color:#6B6B68">Easter Monday</span></div><div class="c"><span class="n">30</span></div><div class="c"><span class="n">31</span></div><div class="c off"></div><div class="c off"></div><div class="c off"></div></div>
+    <div class="mft"><span class="note">World Theatre Day falls on the 27th. Ours falls on the 6th, when the whole academy sees Frozen at The Playhouse.</span><span class="pill" style="background:#2E6FB7">MAR 2027</span></div>
+  </div>
+  <div class="pnum" style="color:#2E6FB7">06</div>
+</section>
+<section data-document-role="page" class="page" style="background:#E8F6F0">
+  <div class="blob" style="width:520px;height:520px;background:#2E9E72;opacity:.10;top:-260px;right:-160px"></div>
+  <div class="blob" style="width:300px;height:300px;background:#2E9E72;opacity:.07;bottom:-190px;left:-110px"></div>
+  <div class="edge" style="background:#2E9E72"></div>
+  <div class="pad">
+    <div class="mhd">
+      <div class="mwrap">
+        <span class="ghost" style="color:#2E9E72;opacity:.14">2027</span>
+        <h1 class="mname">April</h1>
+      </div>
+      <div class="mright">
+        <img class="lg" src="assets/CentreStage-Solid-Black.png" alt="CentreStage">
+        <span class="chip" style="background:#2E9E72">Term 2</span>
+      </div>
+    </div>
+    <div class="dow" style="background:#2E9E72"><div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div></div>
+    <div class="grid" style="grid-template-rows:repeat(5,minmax(0,1fr))"><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c"><span class="n">1</span><span class="e" style="color:#9A9488;font-style:italic;font-weight:400">April Fools' Day</span></div><div class="c"><span class="n">2</span></div><div class="c sat" style="background:#E8F6F0"><span class="n" style="color:#2E9E72">3</span><span class="e" style="color:#E8472B">No classes — school holidays</span></div><div class="c"><span class="n">4</span></div><div class="c"><span class="n">5</span></div><div class="c"><span class="n">6</span></div><div class="c"><span class="n">7</span></div><div class="c"><span class="n">8</span></div><div class="c"><span class="n">9</span></div><div class="c sat" style="background:#E8F6F0"><span class="n" style="color:#2E9E72">10</span><span class="e" style="color:#E8472B">No classes — school holidays</span></div><div class="c"><span class="n">11</span></div><div class="c"><span class="n">12</span></div><div class="c"><span class="n">13</span></div><div class="c"><span class="n">14</span></div><div class="c"><span class="n">15</span></div><div class="c"><span class="n">16</span></div><div class="c sat" style="background:#E8F6F0"><span class="n" style="color:#2E9E72">17</span><span class="e" style="color:#2E9E72">TERM 2 BEGINS</span><span class="e" style="color:#B57B12">Term 2 fees due · 10% late fee after this date</span></div><div class="c"><span class="n">18</span></div><div class="c"><span class="n">19</span></div><div class="c"><span class="n">20</span></div><div class="c"><span class="n">21</span></div><div class="c"><span class="n">22</span></div><div class="c"><span class="n">23</span><span class="e" style="color:#9A9488;font-style:italic;font-weight:400">Shakespeare's birthday</span></div><div class="c sat" style="background:#E8F6F0"><span class="n" style="color:#2E9E72">24</span><span class="e" style="color:#E8472B">No classes — ANZAC long weekend</span></div><div class="c"><span class="n">25</span><span class="e" style="color:#6B6B68">ANZAC Day</span></div><div class="c"><span class="n">26</span><span class="e" style="color:#6B6B68">ANZAC Day holiday</span></div><div class="c"><span class="n">27</span></div><div class="c"><span class="n">28</span></div><div class="c"><span class="n">29</span><span class="e" style="color:#9A9488;font-style:italic;font-weight:400">International Dance Day</span></div><div class="c"><span class="n">30</span></div><div class="c off"></div></div>
+    <div class="mft"><span class="note">“Break a leg” likely comes from the legs — the curtains at the side of a stage. Cross them, and you were on.</span><span class="pill" style="background:#2E9E72">APR 2027</span></div>
+  </div>
+  <div class="pnum" style="color:#2E9E72">07</div>
+</section>
+<section data-document-role="page" class="page" style="background:#F3EEFB">
+  <div class="blob" style="width:520px;height:520px;background:#7A4FB5;opacity:.10;top:-260px;right:-160px"></div>
+  <div class="blob" style="width:300px;height:300px;background:#7A4FB5;opacity:.07;bottom:-190px;left:-110px"></div>
+  <div class="edge" style="background:#7A4FB5"></div>
+  <div class="pad">
+    <div class="mhd">
+      <div class="mwrap">
+        <span class="ghost" style="color:#7A4FB5;opacity:.14">2027</span>
+        <h1 class="mname">May</h1>
+      </div>
+      <div class="mright">
+        <img class="lg" src="assets/CentreStage-Solid-Black.png" alt="CentreStage">
+        <span class="chip" style="background:#7A4FB5">Term 2</span>
+      </div>
+    </div>
+    <div class="dow" style="background:#7A4FB5"><div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div></div>
+    <div class="grid" style="grid-template-rows:repeat(6,minmax(0,1fr))"><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c sat" style="background:#F3EEFB"><span class="n" style="color:#7A4FB5">1</span><span class="e" style="color:#2E9E72">Normal classes</span></div><div class="c"><span class="n">2</span></div><div class="c"><span class="n">3</span></div><div class="c"><span class="n">4</span><span class="e" style="color:#9A9488;font-style:italic;font-weight:400">Star Wars Day</span></div><div class="c"><span class="n">5</span></div><div class="c"><span class="n">6</span></div><div class="c"><span class="n">7</span></div><div class="c sat" style="background:#F3EEFB"><span class="n" style="color:#7A4FB5">8</span><span class="e" style="color:#2E9E72">Normal classes</span></div><div class="c"><span class="n">9</span></div><div class="c"><span class="n">10</span></div><div class="c"><span class="n">11</span></div><div class="c"><span class="n">12</span></div><div class="c"><span class="n">13</span></div><div class="c"><span class="n">14</span></div><div class="c sat" style="background:#F3EEFB"><span class="n" style="color:#7A4FB5">15</span><span class="e" style="color:#2E9E72">Normal classes</span></div><div class="c"><span class="n">16</span></div><div class="c"><span class="n">17</span></div><div class="c"><span class="n">18</span></div><div class="c"><span class="n">19</span></div><div class="c"><span class="n">20</span></div><div class="c"><span class="n">21</span></div><div class="c sat" style="background:#F3EEFB"><span class="n" style="color:#7A4FB5">22</span><span class="e" style="color:#2E9E72">Normal classes</span></div><div class="c"><span class="n">23</span></div><div class="c"><span class="n">24</span></div><div class="c"><span class="n">25</span></div><div class="c"><span class="n">26</span></div><div class="c"><span class="n">27</span></div><div class="c"><span class="n">28</span></div><div class="c sat" style="background:#F3EEFB"><span class="n" style="color:#7A4FB5">29</span><span class="e" style="color:#2E9E72">Normal classes</span></div><div class="c"><span class="n">30</span></div><div class="c"><span class="n">31</span></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div></div>
+    <div class="mft"><span class="note">The Scottish Play. Say the name inside a theatre and tradition says you step outside, spin three times, and knock to be let back in.</span><span class="pill" style="background:#7A4FB5">MAY 2027</span></div>
+  </div>
+  <div class="pnum" style="color:#7A4FB5">08</div>
+</section>
+<section data-document-role="page" class="page" style="background:#EAF8FD">
+  <div class="blob" style="width:520px;height:520px;background:#4FC3E8;opacity:.10;top:-260px;right:-160px"></div>
+  <div class="blob" style="width:300px;height:300px;background:#4FC3E8;opacity:.07;bottom:-190px;left:-110px"></div>
+  <div class="edge" style="background:#4FC3E8"></div>
+  <div class="pad">
+    <div class="mhd">
+      <div class="mwrap">
+        <span class="ghost" style="color:#4FC3E8;opacity:.14">2027</span>
+        <h1 class="mname">June</h1>
+      </div>
+      <div class="mright">
+        <img class="lg" src="assets/CentreStage-Solid-Black.png" alt="CentreStage">
+        <span class="chip" style="background:#4FC3E8">Term 2</span>
+      </div>
+    </div>
+    <div class="dow" style="background:#4FC3E8"><div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div></div>
+    <div class="grid" style="grid-template-rows:repeat(5,minmax(0,1fr))"><div class="c off"></div><div class="c off"></div><div class="c"><span class="n">1</span></div><div class="c"><span class="n">2</span></div><div class="c"><span class="n">3</span></div><div class="c"><span class="n">4</span></div><div class="c sat" style="background:#EAF8FD"><span class="n" style="color:#4FC3E8">5</span><span class="e" style="color:#2E9E72">Normal classes</span></div><div class="c"><span class="n">6</span></div><div class="c"><span class="n">7</span></div><div class="c"><span class="n">8</span></div><div class="c"><span class="n">9</span></div><div class="c"><span class="n">10</span></div><div class="c"><span class="n">11</span></div><div class="c sat" style="background:#EAF8FD"><span class="n" style="color:#4FC3E8">12</span><span class="e" style="color:#E8472B">No classes — King's Birthday long weekend</span></div><div class="c"><span class="n">13</span></div><div class="c"><span class="n">14</span><span class="e" style="color:#6B6B68">King's Birthday</span></div><div class="c"><span class="n">15</span></div><div class="c"><span class="n">16</span></div><div class="c"><span class="n">17</span></div><div class="c"><span class="n">18</span></div><div class="c sat" style="background:#EAF8FD"><span class="n" style="color:#4FC3E8">19</span><span class="e" style="color:#2E9E72">LAST DAY OF TERM 2</span></div><div class="c"><span class="n">20</span></div><div class="c"><span class="n">21</span><span class="e" style="color:#9A9488;font-style:italic;font-weight:400">World Music Day</span></div><div class="c"><span class="n">22</span></div><div class="c"><span class="n">23</span></div><div class="c"><span class="n">24</span></div><div class="c"><span class="n">25</span></div><div class="c sat" style="background:#EAF8FD"><span class="n" style="color:#4FC3E8">26</span><span class="e" style="color:#E8472B">No classes — school holidays</span></div><div class="c"><span class="n">27</span></div><div class="c"><span class="n">28</span></div><div class="c"><span class="n">29</span></div><div class="c"><span class="n">30</span></div><div class="c off"></div><div class="c off"></div><div class="c off"></div></div>
+    <div class="mft"><span class="note">Ghost light: every theatre leaves one lamp burning on the empty stage overnight. Practical, and a little bit magic.</span><span class="pill" style="background:#4FC3E8">JUN 2027</span></div>
+  </div>
+  <div class="pnum" style="color:#4FC3E8">09</div>
+</section>
+<section data-document-role="page" class="page" style="background:#FEF4E4">
+  <div class="blob" style="width:520px;height:520px;background:#F2A93B;opacity:.10;top:-260px;right:-160px"></div>
+  <div class="blob" style="width:300px;height:300px;background:#F2A93B;opacity:.07;bottom:-190px;left:-110px"></div>
+  <div class="edge" style="background:#F2A93B"></div>
+  <div class="pad">
+    <div class="mhd">
+      <div class="mwrap">
+        <span class="ghost" style="color:#F2A93B;opacity:.14">2027</span>
+        <h1 class="mname">July</h1>
+      </div>
+      <div class="mright">
+        <img class="lg" src="assets/CentreStage-Solid-Black.png" alt="CentreStage">
+        <span class="chip" style="background:#F2A93B">Term 3</span>
+      </div>
+    </div>
+    <div class="dow" style="background:#F2A93B"><div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div></div>
+    <div class="grid" style="grid-template-rows:repeat(5,minmax(0,1fr))"><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c"><span class="n">1</span></div><div class="c"><span class="n">2</span></div><div class="c sat" style="background:#FEF4E4"><span class="n" style="color:#F2A93B">3</span><span class="e" style="color:#E8472B">No classes — school holidays</span></div><div class="c"><span class="n">4</span></div><div class="c"><span class="n">5</span></div><div class="c"><span class="n">6</span></div><div class="c"><span class="n">7</span></div><div class="c"><span class="n">8</span></div><div class="c"><span class="n">9</span></div><div class="c sat" style="background:#FEF4E4"><span class="n" style="color:#F2A93B">10</span><span class="e" style="color:#E8472B">No classes — school holidays</span></div><div class="c"><span class="n">11</span></div><div class="c"><span class="n">12</span></div><div class="c"><span class="n">13</span></div><div class="c"><span class="n">14</span></div><div class="c"><span class="n">15</span></div><div class="c"><span class="n">16</span></div><div class="c sat" style="background:#FEF4E4"><span class="n" style="color:#F2A93B">17</span><span class="e" style="color:#2E9E72">TERM 3 BEGINS</span><span class="e" style="color:#B57B12">Term 3 fees due · 10% late fee after this date</span></div><div class="c"><span class="n">18</span></div><div class="c"><span class="n">19</span></div><div class="c"><span class="n">20</span></div><div class="c"><span class="n">21</span></div><div class="c"><span class="n">22</span></div><div class="c"><span class="n">23</span></div><div class="c sat" style="background:#FEF4E4"><span class="n" style="color:#F2A93B">24</span><span class="e" style="color:#2E9E72">Normal classes</span></div><div class="c"><span class="n">25</span></div><div class="c"><span class="n">26</span></div><div class="c"><span class="n">27</span></div><div class="c"><span class="n">28</span></div><div class="c"><span class="n">29</span></div><div class="c"><span class="n">30</span><span class="e" style="color:#9A9488;font-style:italic;font-weight:400">Day of Friendship</span></div><div class="c sat" style="background:#FEF4E4"><span class="n" style="color:#F2A93B">31</span><span class="e" style="color:#2E9E72">Normal classes</span></div></div>
+    <div class="mft"><span class="note">Term 3 is where the shows get built — blocking, harmonies, choreography. The unglamorous weeks that make October look easy.</span><span class="pill" style="background:#F2A93B">JUL 2027</span></div>
+  </div>
+  <div class="pnum" style="color:#F2A93B">10</div>
+</section>
+<section data-document-role="page" class="page" style="background:#FDEDE9">
+  <div class="blob" style="width:520px;height:520px;background:#E8472B;opacity:.10;top:-260px;right:-160px"></div>
+  <div class="blob" style="width:300px;height:300px;background:#E8472B;opacity:.07;bottom:-190px;left:-110px"></div>
+  <div class="edge" style="background:#E8472B"></div>
+  <div class="pad">
+    <div class="mhd">
+      <div class="mwrap">
+        <span class="ghost" style="color:#E8472B;opacity:.14">2027</span>
+        <h1 class="mname">August</h1>
+      </div>
+      <div class="mright">
+        <img class="lg" src="assets/CentreStage-Solid-Black.png" alt="CentreStage">
+        <span class="chip" style="background:#E8472B">Term 3</span>
+      </div>
+    </div>
+    <div class="dow" style="background:#E8472B"><div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div></div>
+    <div class="grid" style="grid-template-rows:repeat(5,minmax(0,1fr))"><div class="c"><span class="n">1</span></div><div class="c"><span class="n">2</span></div><div class="c"><span class="n">3</span></div><div class="c"><span class="n">4</span></div><div class="c"><span class="n">5</span></div><div class="c"><span class="n">6</span></div><div class="c sat" style="background:#FDEDE9"><span class="n" style="color:#E8472B">7</span><span class="e" style="color:#2E9E72">Normal classes</span></div><div class="c"><span class="n">8</span></div><div class="c"><span class="n">9</span></div><div class="c"><span class="n">10</span></div><div class="c"><span class="n">11</span></div><div class="c"><span class="n">12</span></div><div class="c"><span class="n">13</span><span class="e" style="color:#9A9488;font-style:italic;font-weight:400">Left-Handers Day</span></div><div class="c sat" style="background:#FDEDE9"><span class="n" style="color:#E8472B">14</span><span class="e" style="color:#2E9E72">Normal classes</span></div><div class="c"><span class="n">15</span></div><div class="c"><span class="n">16</span></div><div class="c"><span class="n">17</span></div><div class="c"><span class="n">18</span></div><div class="c"><span class="n">19</span></div><div class="c"><span class="n">20</span></div><div class="c sat" style="background:#FDEDE9"><span class="n" style="color:#E8472B">21</span><span class="e" style="color:#2E9E72">Normal classes</span></div><div class="c"><span class="n">22</span></div><div class="c"><span class="n">23</span></div><div class="c"><span class="n">24</span></div><div class="c"><span class="n">25</span></div><div class="c"><span class="n">26</span></div><div class="c"><span class="n">27</span></div><div class="c sat" style="background:#FDEDE9"><span class="n" style="color:#E8472B">28</span><span class="e" style="color:#2E9E72">Normal classes</span></div><div class="c"><span class="n">29</span></div><div class="c"><span class="n">30</span></div><div class="c"><span class="n">31</span></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div></div>
+    <div class="mft"><span class="note">Upstage and downstage come from raked stages that literally sloped up at the back so the audience could see.</span><span class="pill" style="background:#E8472B">AUG 2027</span></div>
+  </div>
+  <div class="pnum" style="color:#E8472B">11</div>
+</section>
+<section data-document-role="page" class="page" style="background:#FDEDF3">
+  <div class="blob" style="width:520px;height:520px;background:#E5487F;opacity:.10;top:-260px;right:-160px"></div>
+  <div class="blob" style="width:300px;height:300px;background:#E5487F;opacity:.07;bottom:-190px;left:-110px"></div>
+  <div class="edge" style="background:#E5487F"></div>
+  <div class="pad">
+    <div class="mhd">
+      <div class="mwrap">
+        <span class="ghost" style="color:#E5487F;opacity:.14">2027</span>
+        <h1 class="mname">September</h1>
+      </div>
+      <div class="mright">
+        <img class="lg" src="assets/CentreStage-Solid-Black.png" alt="CentreStage">
+        <span class="chip" style="background:#E5487F">Term 3</span>
+      </div>
+    </div>
+    <div class="dow" style="background:#E5487F"><div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div></div>
+    <div class="grid" style="grid-template-rows:repeat(5,minmax(0,1fr))"><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c"><span class="n">1</span></div><div class="c"><span class="n">2</span></div><div class="c"><span class="n">3</span></div><div class="c sat" style="background:#FDEDF3"><span class="n" style="color:#E5487F">4</span><span class="e" style="color:#2E9E72">Normal classes</span></div><div class="c"><span class="n">5</span></div><div class="c"><span class="n">6</span></div><div class="c"><span class="n">7</span></div><div class="c"><span class="n">8</span></div><div class="c"><span class="n">9</span></div><div class="c"><span class="n">10</span></div><div class="c sat" style="background:#FDEDF3"><span class="n" style="color:#E5487F">11</span><span class="e" style="color:#2E9E72">LAST DAY OF TERM 3</span></div><div class="c"><span class="n">12</span></div><div class="c"><span class="n">13</span></div><div class="c"><span class="n">14</span></div><div class="c"><span class="n">15</span></div><div class="c"><span class="n">16</span></div><div class="c"><span class="n">17</span></div><div class="c sat" style="background:#FDEDF3"><span class="n" style="color:#E5487F">18</span><span class="e" style="color:#E8472B">No classes — school holidays</span></div><div class="c"><span class="n">19</span><span class="e" style="color:#9A9488;font-style:italic;font-weight:400">Talk Like a Pirate Day</span></div><div class="c"><span class="n">20</span></div><div class="c"><span class="n">21</span></div><div class="c"><span class="n">22</span></div><div class="c"><span class="n">23</span></div><div class="c"><span class="n">24</span><span class="e" style="color:#6B6B68">AFL Grand Final Eve holiday (TBC)</span></div><div class="c sat" style="background:#FDEDF3"><span class="n" style="color:#E5487F">25</span><span class="e" style="color:#E8472B">No classes — school holidays</span></div><div class="c"><span class="n">26</span></div><div class="c"><span class="n">27</span></div><div class="c"><span class="n">28</span></div><div class="c"><span class="n">29</span></div><div class="c"><span class="n">30</span></div><div class="c off"></div><div class="c off"></div></div>
+    <div class="mft"><span class="note">Tech week is a rite of passage. Bring water, snacks, patience and a book.</span><span class="pill" style="background:#E5487F">SEP 2027</span></div>
+  </div>
+  <div class="pnum" style="color:#E5487F">12</div>
+</section>
+<section data-document-role="page" class="page" style="background:#FEF4E4">
+  <div class="blob" style="width:520px;height:520px;background:#F2A93B;opacity:.10;top:-260px;right:-160px"></div>
+  <div class="blob" style="width:300px;height:300px;background:#F2A93B;opacity:.07;bottom:-190px;left:-110px"></div>
+  <div class="edge" style="background:#F2A93B"></div>
+  <div class="pad">
+    <div class="mhd">
+      <div class="mwrap">
+        <span class="ghost" style="color:#F2A93B;opacity:.14">2027</span>
+        <h1 class="mname">October</h1>
+      </div>
+      <div class="mright">
+        <img class="lg" src="assets/CentreStage-Solid-Black.png" alt="CentreStage">
+        <span class="chip" style="background:#F2A93B">Term 4</span>
+      </div>
+    </div>
+    <div class="dow" style="background:#F2A93B"><div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div></div>
+    <div class="grid" style="grid-template-rows:repeat(6,minmax(0,1fr))"><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c"><span class="n">1</span><span class="e" style="color:#9A9488;font-style:italic;font-weight:400">International Music Day</span></div><div class="c sat" style="background:#FEF4E4"><span class="n" style="color:#F2A93B">2</span><span class="e" style="color:#E8472B">No classes — school holidays</span></div><div class="c"><span class="n">3</span></div><div class="c"><span class="n">4</span></div><div class="c"><span class="n">5</span></div><div class="c"><span class="n">6</span></div><div class="c"><span class="n">7</span></div><div class="c"><span class="n">8</span></div><div class="c sat" style="background:#FEF4E4"><span class="n" style="color:#F2A93B">9</span><span class="e" style="color:#2E9E72">TERM 4 BEGINS</span><span class="e" style="color:#B57B12">Term 4 fees due · 10% late fee after this date</span></div><div class="c"><span class="n">10</span></div><div class="c"><span class="n">11</span></div><div class="c"><span class="n">12</span></div><div class="c"><span class="n">13</span></div><div class="c"><span class="n">14</span></div><div class="c"><span class="n">15</span><span class="e" style="color:#2E6FB7">Annie Kids tech run — Junior Troupe</span></div><div class="c sat" style="background:#FEF4E4"><span class="n" style="color:#F2A93B">16</span><span class="e" style="color:#2E6FB7">ANNIE KIDS — Junior Troupe</span><span class="e" style="color:#2E9E72">Normal classes: Middles &amp; Seniors</span></div><div class="c"><span class="n">17</span><span class="e" style="color:#2E6FB7">ANNIE KIDS — Junior Troupe</span></div><div class="c"><span class="n">18</span><span class="e" style="color:#2E6FB7">Trolls Jr tech rehearsal — evening</span></div><div class="c"><span class="n">19</span><span class="e" style="color:#2E6FB7">Trolls Jr tech rehearsal — evening</span></div><div class="c"><span class="n">20</span><span class="e" style="color:#2E6FB7">Trolls Jr tech rehearsal — evening</span></div><div class="c"><span class="n">21</span><span class="e" style="color:#2E6FB7">Trolls Jr tech rehearsal — evening</span></div><div class="c"><span class="n">22</span></div><div class="c sat" style="background:#FEF4E4"><span class="n" style="color:#F2A93B">23</span><span class="e" style="color:#2E6FB7">TROLLS JR opens — Middle Troupes</span><span class="e" style="color:#2E6FB7">Season 23–31 Oct, troupes split across weeks</span></div><div class="c"><span class="n">24</span><span class="e" style="color:#2E6FB7">Trolls Jr performances</span></div><div class="c"><span class="n">25</span><span class="e" style="color:#2E6FB7">Trolls Jr tech rehearsal — evening</span></div><div class="c"><span class="n">26</span><span class="e" style="color:#2E6FB7">Trolls Jr tech rehearsal — evening</span></div><div class="c"><span class="n">27</span><span class="e" style="color:#2E6FB7">Trolls Jr tech rehearsal — evening</span></div><div class="c"><span class="n">28</span><span class="e" style="color:#2E6FB7">Trolls Jr tech rehearsal — evening</span></div><div class="c"><span class="n">29</span></div><div class="c sat" style="background:#FEF4E4"><span class="n" style="color:#F2A93B">30</span><span class="e" style="color:#2E6FB7">Trolls Jr performances</span><span class="e" style="color:#2E9E72">Normal classes: Juniors &amp; Seniors</span></div><div class="c"><span class="n">31</span><span class="e" style="color:#2E6FB7">Trolls Jr — final performances</span><span class="e" style="color:#9A9488;font-style:italic;font-weight:400">Halloween</span></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div></div>
+    <div class="mft"><span class="note">Two shows in one month. Annie Kids and Trolls Jr — tickets and bookings at centrestage.org.au/tickets.</span><span class="pill" style="background:#F2A93B">OCT 2027</span></div>
+  </div>
+  <div class="pnum" style="color:#F2A93B">13</div>
+</section>
+<section data-document-role="page" class="page" style="background:#F3EEFB">
+  <div class="blob" style="width:520px;height:520px;background:#7A4FB5;opacity:.10;top:-260px;right:-160px"></div>
+  <div class="blob" style="width:300px;height:300px;background:#7A4FB5;opacity:.07;bottom:-190px;left:-110px"></div>
+  <div class="edge" style="background:#7A4FB5"></div>
+  <div class="pad">
+    <div class="mhd">
+      <div class="mwrap">
+        <span class="ghost" style="color:#7A4FB5;opacity:.14">2027</span>
+        <h1 class="mname">November</h1>
+      </div>
+      <div class="mright">
+        <img class="lg" src="assets/CentreStage-Solid-Black.png" alt="CentreStage">
+        <span class="chip" style="background:#7A4FB5">Term 4</span>
+      </div>
+    </div>
+    <div class="dow" style="background:#7A4FB5"><div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div></div>
+    <div class="grid" style="grid-template-rows:repeat(5,minmax(0,1fr))"><div class="c off"></div><div class="c"><span class="n">1</span></div><div class="c"><span class="n">2</span><span class="e" style="color:#6B6B68">Melbourne Cup Day</span></div><div class="c"><span class="n">3</span></div><div class="c"><span class="n">4</span></div><div class="c"><span class="n">5</span></div><div class="c sat" style="background:#F3EEFB"><span class="n" style="color:#7A4FB5">6</span><span class="e" style="color:#2E9E72">Normal classes</span></div><div class="c"><span class="n">7</span></div><div class="c"><span class="n">8</span><span class="e" style="color:#2E6FB7">Spamalot tech rehearsal — evening</span></div><div class="c"><span class="n">9</span><span class="e" style="color:#2E6FB7">Spamalot tech rehearsal — evening</span></div><div class="c"><span class="n">10</span><span class="e" style="color:#2E6FB7">Spamalot tech rehearsal — evening</span></div><div class="c"><span class="n">11</span><span class="e" style="color:#2E6FB7">Spamalot tech rehearsal — evening</span></div><div class="c"><span class="n">12</span></div><div class="c sat" style="background:#F3EEFB"><span class="n" style="color:#7A4FB5">13</span><span class="e" style="color:#2E6FB7">SPAMALOT opens — Senior Troupes</span><span class="e" style="color:#9A9488;font-style:italic;font-weight:400">World Kindness Day</span></div><div class="c"><span class="n">14</span><span class="e" style="color:#2E6FB7">Spamalot performances</span></div><div class="c"><span class="n">15</span><span class="e" style="color:#2E6FB7">Spamalot tech rehearsal — evening</span></div><div class="c"><span class="n">16</span><span class="e" style="color:#2E6FB7">Spamalot tech rehearsal — evening</span></div><div class="c"><span class="n">17</span><span class="e" style="color:#2E6FB7">Spamalot tech rehearsal — evening</span></div><div class="c"><span class="n">18</span><span class="e" style="color:#2E6FB7">Spamalot tech rehearsal — evening</span></div><div class="c"><span class="n">19</span></div><div class="c sat" style="background:#F3EEFB"><span class="n" style="color:#7A4FB5">20</span><span class="e" style="color:#2E6FB7">Spamalot performances</span><span class="e" style="color:#2E9E72">Normal classes: Juniors &amp; Middles</span></div><div class="c"><span class="n">21</span><span class="e" style="color:#2E6FB7">Spamalot — final performances</span></div><div class="c"><span class="n">22</span></div><div class="c"><span class="n">23</span></div><div class="c"><span class="n">24</span></div><div class="c"><span class="n">25</span></div><div class="c"><span class="n">26</span></div><div class="c sat" style="background:#F3EEFB"><span class="n" style="color:#7A4FB5">27</span><span class="e" style="color:#7A4FB5">BE OUR GUEST tech rehearsal — Vines Road, all troupes</span></div><div class="c"><span class="n">28</span><span class="e" style="color:#B57B12">2028 enrolments open</span></div><div class="c"><span class="n">29</span></div><div class="c"><span class="n">30</span></div><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c off"></div></div>
+    <div class="mft"><span class="note">Spamalot takes the stage this month. Tickets and bookings at centrestage.org.au/tickets.</span><span class="pill" style="background:#7A4FB5">NOV 2027</span></div>
+  </div>
+  <div class="pnum" style="color:#7A4FB5">14</div>
+</section>
+<section data-document-role="page" class="page" style="background:#FDEDE9">
+  <div class="blob" style="width:520px;height:520px;background:#E8472B;opacity:.10;top:-260px;right:-160px"></div>
+  <div class="blob" style="width:300px;height:300px;background:#E8472B;opacity:.07;bottom:-190px;left:-110px"></div>
+  <div class="edge" style="background:#E8472B"></div>
+  <div class="pad">
+    <div class="mhd">
+      <div class="mwrap">
+        <span class="ghost" style="color:#E8472B;opacity:.14">2027</span>
+        <h1 class="mname">December</h1>
+      </div>
+      <div class="mright">
+        <img class="lg" src="assets/CentreStage-Solid-Black.png" alt="CentreStage">
+        <span class="chip" style="background:#E8472B">Term 4</span>
+      </div>
+    </div>
+    <div class="dow" style="background:#E8472B"><div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div></div>
+    <div class="grid" style="grid-template-rows:repeat(5,minmax(0,1fr))"><div class="c off"></div><div class="c off"></div><div class="c off"></div><div class="c"><span class="n">1</span></div><div class="c"><span class="n">2</span></div><div class="c"><span class="n">3</span></div><div class="c sat" style="background:#FDEDE9"><span class="n" style="color:#E8472B">4</span><span class="e" style="color:#7A4FB5">BE OUR GUEST — Costa Hall</span><span class="e" style="color:#2E9E72">LAST DAY OF TERM 4</span></div><div class="c"><span class="n">5</span></div><div class="c"><span class="n">6</span></div><div class="c"><span class="n">7</span></div><div class="c"><span class="n">8</span></div><div class="c"><span class="n">9</span></div><div class="c"><span class="n">10</span></div><div class="c sat" style="background:#FDEDE9"><span class="n" style="color:#E8472B">11</span></div><div class="c"><span class="n">12</span></div><div class="c"><span class="n">13</span></div><div class="c"><span class="n">14</span></div><div class="c"><span class="n">15</span></div><div class="c"><span class="n">16</span></div><div class="c"><span class="n">17</span></div><div class="c sat" style="background:#FDEDE9"><span class="n" style="color:#E8472B">18</span></div><div class="c"><span class="n">19</span></div><div class="c"><span class="n">20</span></div><div class="c"><span class="n">21</span></div><div class="c"><span class="n">22</span></div><div class="c"><span class="n">23</span></div><div class="c"><span class="n">24</span></div><div class="c sat" style="background:#FDEDE9"><span class="n" style="color:#E8472B">25</span><span class="e" style="color:#6B6B68">Christmas Day</span></div><div class="c"><span class="n">26</span><span class="e" style="color:#6B6B68">Boxing Day</span></div><div class="c"><span class="n">27</span><span class="e" style="color:#6B6B68">Boxing Day holiday</span></div><div class="c"><span class="n">28</span></div><div class="c"><span class="n">29</span></div><div class="c"><span class="n">30</span></div><div class="c"><span class="n">31</span></div><div class="c off"></div></div>
+    <div class="mft"><span class="note">Be Our Guest at Costa Hall — tickets at centrestage.org.au/tickets. Then re-enrol at centrestage.org.au/satcpaa or through Studio Pro.</span><span class="pill" style="background:#E8472B">DEC 2027</span></div>
+  </div>
+  <div class="pnum" style="color:#E8472B">15</div>
+</section>
+<section data-document-role="page" class="page dark">
+  <div class="blob" style="width:560px;height:560px;background:#7A4FB5;opacity:.28;bottom:-260px;right:-160px"></div>
+  <div class="blob" style="width:340px;height:340px;background:#4FC3E8;opacity:.20;top:-150px;left:-100px"></div>
+  <div class="edge" style="background:linear-gradient(#E5487F,#4FC3E8)"></div>
+  <div class="pad">
+    <img src="assets/CentreStage-Solid-White.png" alt="CentreStage" style="height:24px;align-self:flex-start">
+    <div style="flex:1"></div>
+    <span class="eyebrow" style="color:#4FC3E8">See you in 2028</span>
+    <h1 style="font-size:74px;color:#fff;margin:10px 0 0">Same time,<br>same stage.</h1>
+    <p class="lede" style="color:#C9C6BF;max-width:60ch;margin:18px 0 0">Enrolments for 2028 open Sunday 28 November 2027. Re-enrol at centrestage.org.au/satcpaa or through Studio Pro — existing students are placed first.</p>
+    <div style="flex:1"></div>
+    <div class="bgrid">
+      <div><h4 style="color:#4FC3E8">Saturday classes</h4><p>Vines Road Community Centre<br>Vines Road, Hamlyn Heights</p></div>
+      <div><h4 style="color:#E5487F">Tickets &amp; bookings</h4><p>centrestage.org.au/tickets<br>cpaa@centrestage.org.au &middot; (03) 5272 1775</p></div>
+      <div><h4 style="color:#F2A93B">Policies &amp; procedures</h4><p>centrestage.org.au/health<br>Child safety, wellbeing and inclusion</p></div>
+    </div>
+    <div class="cft" style="margin-top:18px"><span>CentreStage Performing Arts Academy</span><span>Geelong &middot; Wadawurrung Country</span></div>
+  </div>
+</section>
+</doc-page>
+<script src="doc-page.js"></script>
+</body>
+</html>
