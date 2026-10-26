@@ -1,4 +1,4 @@
-// Frozen VIP guest codes (189). Stored only as SHA-256 hashes, so codes can't be read from this file.
+// Frozen VIP guest codes (192). Stored only as SHA-256 hashes, so codes can't be read from this file.
 // Key: sha256("cs-vip-2027:" + CODE with punctuation removed, uppercase). n = greeting name, t = tickets allowed.
 export const CODES = {
   "dc595e3b870e0f828084cd6a3c00b322f5a88fb3143b7815ec940a0f2aee64ef": { n: "Jacklyn", t: 2 },
@@ -190,4 +190,7 @@ export const CODES = {
   "cacabb64570530f62ff8c66839c7dbf585e0de93499443740dc5334ecadad016": { n: "Lou", t: 2 },
   "97649ed433555e8b0f42dc41206105cf37cf464dbc9a06ddbb45afc6b5bac5b0": { n: "Steve", t: 2 },
   "5c4dc805d591ef04ddfff3ed1750530d1bb362efa65e1222dc4c9940eaf18805": { n: "Grant", t: 2 },
+  "006d9b73ef525b319a15efb588552d089553855d64ed863fa2cc7b2ed78fa1be": { n: "Hayley", t: 2 },
+  "a21381a51c410bf39a91c35fc378bf09b52b18000a34ebaa665a661fba5d2ec5": { n: "Daniel", t: 2 },
+  "ed31694ac0eccc773f49ef1667df6a5e396c9dbead3bd61cc9bd4daf004dc2b5": { n: "Alex", t: 2 },
 };
