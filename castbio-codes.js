@@ -1,5 +1,23 @@
 // Frozen cast bio portal. Keys are salted SHA-256 hashes of each actor's code; codes themselves are not stored here.
 export const CAST = {
+ "556ec3fef0edde050b6463846c49875617fa6b078689227a36aa0bd331f823bf": {"first":"Emily","last":"Logan","pronouns":"","role":"Choreographer Assistant","tier":"creative"},
+ "4ecf3238f48ddbd1db884a95cc056575da400f01ca4a91cc9cbd611fa54361a8": {"first":"Joel","last":"Lane","pronouns":"","role":"Stage Manager","tier":"creative"},
+ "68abe92eb1a84460274e034b5aa9fd38c4a7a707772e82cb54a667d861044259": {"first":"Daniel","last":"Jow","pronouns":"","role":"Lighting Designer","tier":"creative"},
+ "5db47c41d8d8b726bdb2a170fe7e31a229dc0bdaf95a75e3b838205ad5c8cfa5": {"first":"Marcello","last":"Lo Ricco","pronouns":"","role":"Audio Designer","tier":"creative"},
+ "4d3af6a80d3ad66bcc0f534b3bad8a4b0f9f4e7e594ea895d53ca4c98b817a4d": {"first":"Patrick","last":"Edwards","pronouns":"","role":"Audio Designer","tier":"creative"},
+ "506480d1c19f125ed20fe8391ae65a76dd9b1277d486e7893291e4a10fc14740": {"first":"Liz","last":"Hay","pronouns":"","role":"Costume Support","tier":"creative"},
+ "0df7c179fce9ae78af847e07175f78cc9293c999790c0287cdb26ff71f0e84fd": {"first":"Paul","last":"Lane","pronouns":"","role":"Set Coordinator","tier":"creative"},
+ "fcfe49c224b1c5b8d22a9c7ea9fb1a530dbbd5472e83649880cdb51ecb9c7649": {"first":"David","last":"Greenwood OAM","pronouns":"","role":"Production Manager and Mentor","tier":"creative"},
+ "bfa7f28168838a9c64520a148e0d51c911ce211998fd37338d149a07b6043b8b": {"first":"Andrew","last":"Chandler","pronouns":"","role":"Production Coordination","tier":"creative"},
+ "ea791677caa1dc4943a82ad8a007e3838ccfbc13ce80f95235d60ff953e1a1a3": {"first":"Rachael","last":"McKinnon","pronouns":"","role":"Production Assistant","tier":"creative"},
+ "e499add021daa3c282dd5ece403c3d9541b99d26037b8610697e68950f83d55f": {"first":"Michele","last":"Marcu","pronouns":"she/her","role":"Director","tier":"creative"},
+ "43b0045b4af495cc3915cd77c9a1d150a7d65271d1286d17059cd2da535dd5c8": {"first":"Brittney","last":"Ling","pronouns":"","role":"Musical Director","tier":"creative"},
+ "b2b9365747d70113003d5ed6d405bc33572ff92445edf1dbb31df3ad8bd623a6": {"first":"Hannah","last":"Foster Reeves","pronouns":"","role":"Assistant Musical Director","tier":"creative"},
+ "20cf60af5d739d0477c10225d6f108398a060d512c22ece62fa367c13f4988a1": {"first":"Chloe","last":"Quinney","pronouns":"she/her","role":"Choreographer","tier":"creative"},
+ "d240d26810e19e22f49ce215b3a994502c6c628cb1fc94454f98c5554b75ff37": {"first":"Martin","last":"Nguyen","pronouns":"","role":"Producer","tier":"creative"},
+ "118ffe922f5111a4eea793af4d9d42009bb540c30da7cd1cb5c89447f2bd855d": {"first":"Virginia","last":"Connell","pronouns":"","role":"Costume Designer","tier":"creative"},
+ "e10191b1b8c8a9fc9962b257c748b8d1dec50436ac58745bcd6be1e23d32ebc1": {"first":"Dawn","last":"Murdoch","pronouns":"","role":"Wardrobe Manager","tier":"creative"},
+ "854efb4344ff532ac20e4c9e244f9decccbba6556b245ada73896334da3f5bd1": {"first":"Richelle","last":"White","pronouns":"she/her","role":"Child Safety Officer","tier":"creative"},
  "adef4e442c0be6cbf40f1d417b3fd3f9ba3b94e848cd4dedc08e1bb6a38ce52c": {
   "first": "Jamie",
   "last": "Long",

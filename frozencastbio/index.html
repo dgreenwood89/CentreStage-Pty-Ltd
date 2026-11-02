@@ -75,12 +75,21 @@
         </div>
 
         <div style="display:flex; flex-direction:column; gap:10px; font-size:15px; line-height:1.55; color:#C6DCF2;">
+          <sc-if value="{{ isCreative }}">
+            <div style="display:flex; flex-direction:column; gap:10px; padding:16px 18px; border:1px solid rgba(127,211,255,.35); background:rgba(4,16,31,.45); margin-bottom:4px;">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:#7FD3FF;">Creative team bios, in this order</span>
+              <div style="display:flex; gap:12px;"><span style="color:#7FD3FF; font-weight:700;">1</span><span>Training, qualifications and professional context.</span></div>
+              <div style="display:flex; gap:12px;"><span style="color:#7FD3FF; font-weight:700;">2</span><span>Credits, grouped by the kind of work rather than by date, written as Production · Role · Year, for example PIPPIN · <em>Director</em> · 2024.</span></div>
+              <div style="display:flex; gap:12px;"><span style="color:#7FD3FF; font-weight:700;">3</span><span>A personal note: what you bring to a rehearsal room that a credit list can't show.</span></div>
+              <div style="display:flex; gap:12px;"><span style="color:#7FD3FF; font-weight:700;">4</span><span>Close with something specific to FROZEN, and who you would like to thank.</span></div>
+            </div>
+          </sc-if>
           <div style="display:flex; gap:12px;"><span style="color:#7FD3FF; font-weight:700;">/</span><span>Start with your first name, for example "{{ first }} is thrilled to be making their CentreStage debut".</span></div>
           <div style="display:flex; gap:12px;"><span style="color:#7FD3FF; font-weight:700;">/</span><span>Show titles are set in capitals for you, so Pippin becomes PIPPIN.</span></div>
           <div style="display:flex; gap:12px;"><span style="color:#7FD3FF; font-weight:700;">/</span><span>Roles are set in italics when you write "as Lewis in Pippin". You can also put a role between asterisks, like *Lewis*.</span></div>
           <div style="display:flex; gap:12px;"><span style="color:#7FD3FF; font-weight:700;">/</span><span>Write one paragraph only. Line breaks are joined up automatically.</span></div>
           <div style="display:flex; gap:12px;"><span style="color:#7FD3FF; font-weight:700;">/</span><span>We use UK English, so theater becomes theatre and favorite becomes favourite.</span></div>
-          <div style="display:flex; gap:12px;"><span style="color:#7FD3FF; font-weight:700;">/</span><span>Your name, pronouns and role are added above your bio, so leave them out. Characters include spaces.</span></div>
+          <div style="display:flex; gap:12px;"><span style="color:#7FD3FF; font-weight:700;">/</span><span>Your name, pronouns and role are added above your bio, so leave them out of the bio itself. Characters include spaces.</span></div>
         </div>
 
         <div style="border:1px solid rgba(127,211,255,.35); background:rgba(4,16,31,.45);">
@@ -108,8 +117,8 @@
                   <div style="display:flex; gap:10px; align-items:center;"><span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#7FA9D3; width:22px; flex:none;">{{ c.n }}</span><div style="flex:1; min-width:0;">
                   <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px;">
                     <input type="text" value="{{ c.show }}" onChange="{{ c.onShow }}" placeholder="Show, e.g. Pippin" style="min-height:46px; background:#04101F; border:1px solid rgba(127,211,255,.4); color:#EAF4FF; padding:0 14px; font-size:15px;">
-                    <input type="text" value="{{ c.role }}" onChange="{{ c.onRole }}" placeholder="Role, e.g. Lewis" style="min-height:46px; background:#04101F; border:1px solid rgba(127,211,255,.4); color:#EAF4FF; padding:0 14px; font-size:15px;">
-                    <input type="text" value="{{ c.co }}" onChange="{{ c.onCo }}" placeholder="Company (optional)" style="min-height:46px; background:#04101F; border:1px solid rgba(127,211,255,.4); color:#EAF4FF; padding:0 14px; font-size:15px;">
+                    <input type="text" value="{{ c.role }}" onChange="{{ c.onRole }}" placeholder="{{ creditRolePh }}" style="min-height:46px; background:#04101F; border:1px solid rgba(127,211,255,.4); color:#EAF4FF; padding:0 14px; font-size:15px;">
+                    <input type="text" value="{{ c.co }}" onChange="{{ c.onCo }}" placeholder="{{ creditCoPh }}" style="min-height:46px; background:#04101F; border:1px solid rgba(127,211,255,.4); color:#EAF4FF; padding:0 14px; font-size:15px;">
                   </div>
                   </div></div>
                 </sc-for>
@@ -160,6 +169,16 @@
             <span style="color:{{ countColor }};">{{ countMsg }}</span>
             <span style="color:#9FD9FF;">{{ count }} / {{ maxC }}</span>
           </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <span style="font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">Your preferred pronouns <span style="font-weight:400; text-transform:none; letter-spacing:0; color:#9FD9FF;">Shown next to your name in the program. Leave blank if you'd rather not include them.</span></span>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <sc-for list="{{ pronOpts }}" as="o" hint-placeholder-count="5">
+              <button type="button" onClick="{{ o.pick }}" style="min-height:44px; padding:0 16px; background:{{ o.bg }}; color:{{ o.fg }}; border:1px solid #7FD3FF; font-size:14px; cursor:pointer;">{{ o.label }}</button>
+            </sc-for>
+          </div>
+          <input type="text" value="{{ pron }}" onChange="{{ onPron }}" placeholder="Or type your own, e.g. ze/hir" style="width:100%; min-height:50px; background:#04101F; border:1px solid rgba(127,211,255,.4); color:#EAF4FF; padding:0 16px; font-size:16px;">
         </div>
 
         <label style="display:flex; flex-direction:column; gap:10px;">
@@ -259,7 +278,7 @@ class Component extends DCLogic {
     try { sessionStorage.setItem("cs_bio_code", code); } catch (e) {}
     let d = {};
     try { d = JSON.parse(localStorage.getItem("cs_bio_draft_" + hkey) || "{}"); } catch (e) {}
-    this.setState({ busy: false, who, hkey, step: "write", bio: d.bio || "", agent: d.agent || "", gateErr: "", fails: 0 });
+    this.setState({ busy: false, who, hkey, step: "write", bio: d.bio || "", agent: d.agent || "", pron: d.pron != null ? d.pron : (who.pronouns || ""), gateErr: "", fails: 0 });
   }
 
   check(raw) {
@@ -282,10 +301,11 @@ class Component extends DCLogic {
 
   saveDraft(patch) {
     const s = { ...this.state, ...patch };
-    try { localStorage.setItem("cs_bio_draft_" + s.hkey, JSON.stringify({ bio: s.bio, agent: s.agent })); } catch (e) {}
+    try { localStorage.setItem("cs_bio_draft_" + s.hkey, JSON.stringify({ bio: s.bio, agent: s.agent, pron: s.pron })); } catch (e) {}
   }
 
   tierOf(w) {
+    if (w.tier === "creative") return "creative";
     const r = String(w.role || "");
     if (/^(Elsa|Anna)( understudy)?$/.test(r)) return "principal";
     if (/^(Kristoff|Olaf|Sven|Hans|Duke of Weselton)$/.test(r)) return "supporting";
@@ -300,10 +320,11 @@ class Component extends DCLogic {
       supporting: { words: 120, label: "Supporting" },
       ensemble: { words: 110, label: "Ensemble" },
       youth: { words: 110, label: "Young performer" },
+      creative: { words: 175, minWords: 150, hardMax: 200, label: "Creative team" },
     }[this.tierOf(w)];
     const t = Math.round(T.words * CPW);
     const min = T.minWords ? Math.round(T.minWords * CPW) : Math.ceil(t * 0.85);
-    return { t, min, max: Math.floor(t * 1.05), words: T.minWords ? T.minWords + " to " + T.words : String(T.words), label: T.label };
+    return { t, min, max: T.hardMax ? Math.round(T.hardMax * CPW) : Math.floor(t * 1.05), words: T.minWords ? T.minWords + " to " + T.words + (T.hardMax ? " (" + T.hardMax + " max)" : "") : String(T.words), label: T.label };
   }
 
   fixCS(s, ch) {
@@ -410,16 +431,29 @@ class Component extends DCLogic {
 
   buildDraft() {
     const s = this.state, w = s.who, L = this.limits(w);
-    const F = String(w.first).split(/\s+/)[0], P = this.pron(w);
+    const F = String(w.first).split(/\s+/)[0], P = this.pron({ pronouns: s.pron });
     const clean = (t) => String(t || "").replace(/\s+/g, " ").trim().replace(/[.\s]+$/, "");
-    const rc = this.roleCopy(w.role);
+    const isCr = this.tierOf(w) === "creative";
+    const rc = isCr ? "as " + w.role + " for CentreStage's production of FROZEN" : this.roleCopy(w.role);
     const h = s.hHistory || "returning";
-    const open = h === "debut" ? F + " is thrilled to be making " + P.poss + " CentreStage debut " + rc + "."
+    const open = isCr ? (h === "debut" ? F + " is thrilled to be making " + P.poss + " CentreStage debut " + rc + "." : F + " is thrilled to be back with CentreStage " + rc + ".")
+      : h === "debut" ? F + " is thrilled to be making " + P.poss + " CentreStage debut " + rc + "."
       : h === "first" ? F + " is thrilled to be making " + P.poss + " stage debut " + rc + "."
       : F + " is thrilled to be back on the CentreStage stage " + rc + ".";
     const cr = (s.hCredits || []).map((c) => ({ show: clean(c.show), role: clean(c.role), co: clean(c.co) })).filter((c) => c.show);
     const one = (c) => (c.role ? "*" + c.role.replace(/\*/g, "") + "* in " : "") + c.show.toUpperCase() + (c.co ? " (" + c.co + ")" : "");
     const list = (a) => a.length === 1 ? a[0] : a.slice(0, -1).join(", ") + " and " + a[a.length - 1];
+    const oneCr = (c) => c.show.toUpperCase() + (c.role ? " · *" + c.role.replace(/\*/g, "") + "*" : "") + (c.co ? " · " + c.co : "");
+    if (isCr) {
+      const tr2 = clean(s.hTraining), aw2 = clean(s.hAway), th2 = clean(s.hThanks);
+      const pc = (n, a, b) => [tr2 && a ? F + " trained in " + tr2 + "." : "", open, cr.length && n ? (n === 1 ? "A favourite credit is " : "Credits include ") + cr.slice(0, n).map(oneCr).join("; ") + "." : "", aw2 && b ? "In the rehearsal room, " + F + " " + aw2 + "." : "", th2 ? F + " thanks " + th2 + "." : ""].filter(Boolean).join(" ");
+      let o2 = pc(cr.length, true, true), u2 = cr.length;
+      for (let n = Math.min(15, cr.length); n >= 0; n--) { o2 = pc(n, true, true); u2 = n; if (this.format(o2, w.first).plain.length <= L.max) break; }
+      const l2 = this.format(o2, w.first).plain.length;
+      let m2 = l2 > L.max ? "Your draft is " + (l2 - L.max) + " characters too long. Shorten your answers a little, then build again." : l2 < L.min ? "Draft added below. It needs " + (L.min - l2) + " more characters, so add a detail or another credit and edit it in the box." : "Draft added below. Read it through and make it sound like you.";
+      if (l2 <= L.max && u2 < cr.length) m2 += " We fitted " + u2 + " of your " + cr.length + " credits within your word limit, starting from the top of your list.";
+      return { out: o2, msg: m2 };
+    }
     const credit = (n) => cr.length && n ? (h === "first" ? "" : (n === 1 ? "A favourite past credit is " : "Favourite past credits include ") + list(cr.slice(0, n).map(one)) + ".") : "";
     const tr = clean(s.hTraining), aw = clean(s.hAway), th = clean(s.hThanks);
     const parts = (n, withTr, withAw) => [open, credit(n), withTr && tr ? F + "'s training includes " + tr + "." : "", withAw && aw ? "Away from the stage, " + F + " " + aw + "." : "", th ? F + " thanks " + th + "." : ""].filter(Boolean).join(" ");
@@ -474,10 +508,16 @@ class Component extends DCLogic {
     const fullName = w.first + " " + w.last;
     return {
       ...base,
-      first: firstName, fullName, pronouns: w.pronouns, role: w.role, roleLine: "Your role: " + w.role,
+      first: firstName, fullName, pronouns: s.pron || "", pron: s.pron || "",
+      pronOpts: ["she/her", "he/him", "they/them", "she/they", "he/they"].map((o) => ({ label: o, bg: s.pron === o ? "#7FD3FF" : "transparent", fg: s.pron === o ? "#04101F" : "#EAF4FF", pick: () => { this.setState({ pron: o }); this.saveDraft({ pron: o }); } })),
+      onPron: (e) => { const v = e.target.value.replace(/\s+/g, " ").slice(0, 24); this.setState({ pron: v }); this.saveDraft({ pron: v }); },
+      role: w.role, roleLine: "Your role: " + w.role,
       words: L.words, minC: L.min, maxC: L.max, count: n, countMsg, countColor,
       barW: Math.min(100, (n / L.max) * 100) + "%", minPct: (L.min / L.max) * 100 + "%", okPct: (100 - (L.min / L.max) * 100) + "%",
       bio: s.bio, agent: s.agent, err: s.err, prevSubmitted,
+      isCreative: this.tierOf(w) === "creative",
+      creditRolePh: this.tierOf(w) === "creative" ? "Role, e.g. Director" : "Role, e.g. Lewis",
+      creditCoPh: this.tierOf(w) === "creative" ? "Year, e.g. 2024" : "Company (optional)",
       bioPlaceholder: firstName + " is thrilled to join the cast of Frozen. Previous credits include…",
       agentExample: agentLine || firstName + " is represented by CentreStage Agency.",
       onBio: (e) => { const v = e.target.value.replace(/[ \t]*[\r\n]+[ \t]*/g, " "); this.setState({ bio: v, err: "" }); this.saveDraft({ bio: v }); },
@@ -526,7 +566,7 @@ class Component extends DCLogic {
         const fd = new FormData();
         fd.append("_subject", "Frozen program bio: " + fullName);
         fd.append("Name", fullName);
-        fd.append("Pronouns", w.pronouns || "");
+        fd.append("Pronouns", (s.pron || "").trim());
         fd.append("Role", w.role);
         fd.append("Tier", L.label + " (" + L.words + " words, " + L.min + " to " + L.max + " characters)");
         fd.append("Bio (formatted, *italics*)", marked + (agentLine ? " " + agentLine : ""));
