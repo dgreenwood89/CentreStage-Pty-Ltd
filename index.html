@@ -1301,6 +1301,120 @@
   </div>
   </sc-if>
 
+  <!-- ══════════════ COLOURING COMPETITION ══════════════ -->
+  <sc-if value="{{ isComp }}">
+  <div class="cs-fade">
+    <section style="background:#0A2646; color:#EAF4FF;">
+      <div style="max-width:1100px; margin:0 auto; padding:80px 48px 72px; display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr); gap:56px; align-items:center;">
+        <div>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#7FD3FF;">Competition <span style="color:#6E93BD;">/</span> Ages 1 to 16</span>
+          <img src="assets/frozen/title-white.png" alt="Frozen" style="display:block; width:min(420px,100%); margin:22px 0 0;">
+          <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(34px,5vw,64px); letter-spacing:-.03em; line-height:.95; margin:22px 0 0;">Colour it in. Win opening night.</h1>
+          <p style="font-size:19px; line-height:1.6; max-width:52ch; margin:24px 0 0; color:#C6DCF2;">Four family passes to opening night of the CentreStage Production of FROZEN are up for grabs. Each pass admits two adults and two youth. Winners will be drawn by the cast of FROZEN at 7pm on Wednesday 16 December 2026 and notified by email by Sunday 20 December.</p>
+          <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:30px;">
+            <a class="cs-btn" href="Frozen-Colouring-Competition.html" target="_blank" style="background:#7FD3FF; color:#04101F; border-color:#7FD3FF;">Download the colouring sheet</a>
+            <a class="cs-btn cs-btn--ghost" href="#enter" style="color:#EAF4FF; border-color:#EAF4FF;">Upload an entry</a>
+          </div>
+        </div>
+        <img src="assets/comp/colouring-friends.png" alt="Winter palace colouring scene" style="width:100%; display:block; background:#fff; padding:14px; border:1px solid #7FD3FF;">
+      </div>
+    </section>
+
+    <section style="max-width:1100px; margin:0 auto; padding:64px 48px 24px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:28px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Three ways to enter</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <div style="background:#F4F1EA; padding:30px 26px 34px; display:flex; flex-direction:column; gap:10px;"><span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; color:#1E63AE;">01</span><h3 style="font-size:19px; font-weight:700; margin:0;">Upload online</h3><p style="font-size:15px; line-height:1.55; color:#3A3A37; margin:0;">Take a photo or scan of the finished picture and upload it with the form below. Make sure the whole page is in the shot.</p></div>
+        <div style="background:#F4F1EA; padding:30px 26px 34px; display:flex; flex-direction:column; gap:10px;"><span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; color:#1E63AE;">02</span><h3 style="font-size:19px; font-weight:700; margin:0;">Post or drop off</h3><p style="font-size:15px; line-height:1.55; color:#3A3A37; margin:0;">Fill in the details on the sheet and post or deliver it to CentreStage, Unit 2, 255 Hamilton Highway, Fyansford VIC 3218.</p></div>
+        <div style="background:#F4F1EA; padding:30px 26px 34px; display:flex; flex-direction:column; gap:10px;"><span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; color:#1E63AE;">03</span><h3 style="font-size:19px; font-weight:700; margin:0;">School collection</h3><p style="font-size:15px; line-height:1.55; color:#3A3A37; margin:0;">Primary schools can collect entries from their students and book a free pick-up. We will collect directly from the school office.</p><a class="cs-link-u" href="#school" style="font-size:14px; font-weight:700; color:#0A0A0A; margin-top:4px;">Book a school collection →</a></div>
+      </div>
+      <p style="font-family:'JetBrains Mono',monospace; font-size:13px; line-height:1.6; color:#6B6B68; margin:18px 0 0;">Entries close 5pm Wednesday 16 December 2026. Posted entries must arrive by this time.</p>
+    </section>
+
+    <section id="enter" style="max-width:1100px; margin:0 auto; padding:56px 48px 0;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:28px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Upload an entry</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <sc-if value="{{ compDone }}">
+        <div style="background:#0A2646; color:#EAF4FF; border-top:4px solid #7FD3FF; padding:48px 44px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#7FD3FF;">Entry received</span>
+          <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(26px,3.2vw,40px); letter-spacing:-.02em; line-height:1; margin:16px 0 14px;">Thank you, {{ compKid }}.</h2>
+          <p style="font-size:17px; line-height:1.6; color:#C6DCF2; margin:0; max-width:56ch;">{{ compDoneMsg }}</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ compForm }}">
+      <form onSubmit="{{ compSubmit }}">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;">
+          <label style="display:flex; flex-direction:column; gap:8px;"><span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">Child's first name <span style="color:#E8472B;">*</span></span><input type="text" required="true" value="{{ cKid }}" onChange="{{ cSetKid }}" placeholder="e.g. Ruby" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:Arial,sans-serif;"></label>
+          <label style="display:flex; flex-direction:column; gap:8px;"><span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">Child's surname <span style="color:#E8472B;">*</span></span><input type="text" required="true" value="{{ cKidLast }}" onChange="{{ cSetKidLast }}" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:Arial,sans-serif;"></label>
+          <label style="display:flex; flex-direction:column; gap:8px;"><span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">Age <span style="color:#E8472B;">*</span></span><span style="font-size:13px; line-height:1.5; color:#6B6B68;">Ages 1 to 16.</span><input type="number" required="true" min="1" max="16" value="{{ cAge }}" onChange="{{ cSetAge }}" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:Arial,sans-serif;"></label>
+          <label style="display:flex; flex-direction:column; gap:8px;"><span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">School</span><span style="font-size:13px; line-height:1.5; color:#6B6B68;">Optional.</span><input type="text" value="{{ cSchool }}" onChange="{{ cSetSchool }}" placeholder="e.g. Ashby Primary School" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:Arial,sans-serif;"></label>
+          <label style="display:flex; flex-direction:column; gap:8px;"><span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">Parent or guardian name <span style="color:#E8472B;">*</span></span><input type="text" required="true" value="{{ cParent }}" onChange="{{ cSetParent }}" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:Arial,sans-serif;"></label>
+          <label style="display:flex; flex-direction:column; gap:8px;"><span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">Parent or guardian email <span style="color:#E8472B;">*</span></span><input type="email" required="true" value="{{ cEmail }}" onChange="{{ cSetEmail }}" placeholder="you@example.com" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:Arial,sans-serif;"></label>
+          <label style="display:flex; flex-direction:column; gap:8px;"><span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">Phone <span style="color:#E8472B;">*</span></span><span style="font-size:13px; line-height:1.5; color:#6B6B68;">So we can call the winners.</span><input type="tel" required="true" value="{{ cPhone }}" onChange="{{ cSetPhone }}" placeholder="04XX XXX XXX" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:Arial,sans-serif;"></label>
+          <label style="display:flex; flex-direction:column; gap:8px;"><span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">Suburb</span><input type="text" value="{{ cSuburb }}" onChange="{{ cSetSuburb }}" placeholder="e.g. Belmont" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:Arial,sans-serif;"></label>
+        </div>
+        <label style="display:block; background:#F4F1EA; border:2px dashed #A8A59E; padding:40px 32px; cursor:pointer; text-align:center; margin-top:32px;">
+          <span style="display:block; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:21px; letter-spacing:-.02em; margin-bottom:10px;">{{ cFileLabel }}</span>
+          <span style="display:block; font-size:14px; line-height:1.6; color:#3A3A37;">A clear photo or scan of the whole colouring sheet. JPG, PNG, HEIC or PDF, up to 10MB.</span>
+          <input type="file" accept="image/*,application/pdf" onChange="{{ cSetFile }}" style="position:absolute; width:1px; height:1px; opacity:0; overflow:hidden;">
+        </label>
+        <label style="display:flex; gap:14px; align-items:flex-start; margin-top:24px; cursor:pointer;">
+          <input type="checkbox" checked="{{ cConsent }}" onChange="{{ cToggleConsent }}" style="width:22px; height:22px; accent-color:#0A0A0A; flex:none; margin-top:2px;">
+          <span style="font-size:15px; line-height:1.55;">I am this child's parent or guardian and I give permission for this entry. <span style="color:#E8472B;">*</span></span>
+        </label>
+        <label style="display:flex; gap:14px; align-items:flex-start; margin-top:14px; cursor:pointer;">
+          <input type="checkbox" checked="{{ cShare }}" onChange="{{ cToggleShare }}" style="width:22px; height:22px; accent-color:#0A0A0A; flex:none; margin-top:2px;">
+          <span style="font-size:15px; line-height:1.55;">CentreStage may share the artwork and the child's first name on social media. Optional.</span>
+        </label>
+        <sc-if value="{{ compError }}"><p style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#C2361C; margin:20px 0 0;">{{ compError }}</p></sc-if>
+        <button type="submit" class="cs-btn" style="margin-top:28px;">{{ compBtn }}</button>
+      </form>
+      </sc-if>
+    </section>
+
+    <section id="school" style="max-width:1100px; margin:0 auto; padding:72px 48px 0;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:28px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Schools / Book a collection</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <sc-if value="{{ schoolDone }}">
+        <div style="background:#0A2646; color:#EAF4FF; border-top:4px solid #7FD3FF; padding:44px;">
+          <h2 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(24px,3vw,36px); letter-spacing:-.02em; line-height:1; margin:0 0 14px;">Collection requested.</h2>
+          <p style="font-size:17px; line-height:1.6; color:#C6DCF2; margin:0; max-width:56ch;">Thank you. We will contact you to confirm a pick-up time before entries close at 5pm on Wednesday 16 December 2026.</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ schoolForm }}">
+      <form onSubmit="{{ schoolSubmit }}">
+        <p style="font-size:17px; line-height:1.6; color:#3A3A37; max-width:62ch; margin:0 0 28px;">Download and print the sheet for your students, collect the finished entries at the office, then book a time and we will pick them up. Please make sure each sheet has the child's details filled in.</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;">
+          <label style="display:flex; flex-direction:column; gap:8px;"><span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">School name <span style="color:#E8472B;">*</span></span><input type="text" required="true" value="{{ sName }}" onChange="{{ sSetName }}" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:Arial,sans-serif;"></label>
+          <label style="display:flex; flex-direction:column; gap:8px;"><span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">Contact person <span style="color:#E8472B;">*</span></span><input type="text" required="true" value="{{ sContact }}" onChange="{{ sSetContact }}" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:Arial,sans-serif;"></label>
+          <label style="display:flex; flex-direction:column; gap:8px;"><span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">Email <span style="color:#E8472B;">*</span></span><input type="email" required="true" value="{{ sEmail }}" onChange="{{ sSetEmail }}" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:Arial,sans-serif;"></label>
+          <label style="display:flex; flex-direction:column; gap:8px;"><span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">Phone <span style="color:#E8472B;">*</span></span><input type="tel" required="true" value="{{ sPhone }}" onChange="{{ sSetPhone }}" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:Arial,sans-serif;"></label>
+          <label style="display:flex; flex-direction:column; gap:8px;"><span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">School address <span style="color:#E8472B;">*</span></span><input type="text" required="true" value="{{ sAddr }}" onChange="{{ sSetAddr }}" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:Arial,sans-serif;"></label>
+          <label style="display:flex; flex-direction:column; gap:8px;"><span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">Approximate number of entries</span><input type="number" min="1" value="{{ sCount }}" onChange="{{ sSetCount }}" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:Arial,sans-serif;"></label>
+          <label style="display:flex; flex-direction:column; gap:8px;"><span style="font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;">Preferred collection date <span style="color:#E8472B;">*</span></span><span style="font-size:13px; line-height:1.5; color:#6B6B68;">By Wednesday 16 December 2026.</span><input type="date" required="true" max="2026-12-16" value="{{ sDate }}" onChange="{{ sSetDate }}" class="cs-input" style="width:100%; background:transparent; border:0; border-bottom:1px solid #0A0A0A; color:#0A0A0A; height:48px; padding:0 12px; font-size:17px; font-family:Arial,sans-serif;"></label>
+        </div>
+        <sc-if value="{{ schoolError }}"><p style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#C2361C; margin:20px 0 0;">{{ schoolError }}</p></sc-if>
+        <button type="submit" class="cs-btn" style="margin-top:28px;">{{ schoolBtn }}</button>
+      </form>
+      </sc-if>
+    </section>
+
+    <section style="max-width:1100px; margin:0 auto; padding:72px 48px 104px;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#6B6B68;">Terms</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+      </div>
+      <p style="font-size:14px; line-height:1.7; color:#3A3A37; max-width:80ch; margin:0;">Open to children aged 1 to 16. One entry per child. Entries close 5pm Wednesday 16 December 2026. Four winners will be drawn at random by the cast of FROZEN at 7pm that evening, notified by email by Sunday 20 December 2026 and announced on Facebook @centrestageaus. Each prize is one family pass (two adults and two youth) to opening night of the CentreStage Production of FROZEN, Friday 5 March 2027, 7:30pm, The Playhouse, Geelong Arts Centre. Prizes are not redeemable for cash. Personal details are used only to run this competition. Entries are not returned. Frozen is a registered trademark of Disney.</p>
+    </section>
+  </div>
+  </sc-if>
+
   <!-- ══════════════ WWCC (unlisted) ══════════════ -->
   <sc-if value="{{ isWwcc }}">
   <div class="cs-fade">
@@ -1847,6 +1961,7 @@
             <a class="cs-link-u" href="/blog" style="color:#F4F1EA;">Journal</a>
             <a class="cs-link-u" href="/media" style="color:#F4F1EA;">Media &amp; Press</a>
             <a class="cs-link-u" href="/wwcc" style="color:#F4F1EA;">Volunteer WWCC</a>
+            <a class="cs-link-u" href="/comp" style="color:#F4F1EA;">Colouring competition</a>
             <a class="cs-link-u" href="/frozenvip" style="color:#F4F1EA;">VIP invitations</a>
             <a class="cs-link-u" href="/frozencastbio/" style="color:#F4F1EA;">Frozen cast bios</a>
           </div>
@@ -2144,7 +2259,7 @@ class Component extends DCLogic {
   componentDidMount() {
     this._route = () => {
       let parts = (location.pathname || "/").replace(/^\/+|\/+$/g, "").split("/").filter(function (x) { return x && !/\.html?$/i.test(x); });
-      const known = ["home","tickets","about","education","health","productions","involved","blog","shop","contact","bio","media","weekly","singing","wwcc","frozenvip"];
+      const known = ["home","tickets","about","education","health","productions","involved","blog","shop","contact","bio","media","weekly","singing","wwcc","frozenvip","comp"];
       const pi = parts.lastIndexOf("post");
       if (pi >= 0 && parts[pi + 1]) {
         this.setState({ route: "post", slug: parts[pi + 1], sent: false });
@@ -2187,6 +2302,7 @@ class Component extends DCLogic {
         contact: { t: "Contact CentreStage \u2014 Geelong", d: "Get in touch about tickets, classes, auditions, costume hire or media enquiries. We answer the phone.", i: "assets/og-image.jpg" },
         involved: { t: "Get Involved \u2014 CentreStage, Geelong", d: "Perform, play in the pit, join a production team, volunteer or take on work experience. There is a way in for everyone.", i: "assets/blog/stage-19.png" },
         productions: { t: "Productions \u2014 CentreStage, Geelong", d: "Fifteen years of ambitious musical theatre in Geelong, from Les Mis\u00e9rables to Priscilla to Frozen.", i: "assets/frozen-keyart.png" },
+        comp: { t: "Frozen Colouring Competition \u2014 CentreStage, Geelong", d: "Colour in our FROZEN sheet for the chance to win one of four family passes to opening night. Ages 1 to 16. Entries close 16 December 2026.", i: "assets/comp/colouring-friends.png" },
         wwcc: { t: "Volunteer WWCC Submission \u2014 CentreStage", d: "Working with Children Check submission for CentreStage volunteers.", i: "assets/og-image.jpg" },
         frozenvip: { t: "CentreStage | Private invitation", d: "A private invitation from CentreStage.", i: "assets/og-image.jpg" },
         bio: { t: "David Greenwood OAM \u2014 CentreStage", d: "Managing Director and Senior Talent Agent, CentreStage Pty Ltd.", i: "assets/og-image.jpg" },
@@ -2300,6 +2416,59 @@ class Component extends DCLogic {
     return "https://static.wixstatic.com/media/" + id + "/v1/fill/w_900,h_600,al_c,q_85,enc_avif,quality_auto/file.avif";
   }
 
+  _compVals(r) {
+    const s = this.state;
+    const END = "";
+    const set = (k) => (e) => this.setState({ [k]: e.target.value, compError: "", schoolError: "" });
+    const post = (fd, ok, errKey, mail) => {
+      if (!END) { window.location.href = mail; ok(false); return; }
+      fetch(END, { method: "POST", body: fd, headers: { Accept: "application/json" } })
+        .then((x) => { if (!x.ok) throw 0; ok(true); })
+        .catch(() => this.setState({ [errKey]: "We couldn't send that just now. Please try again, or email david@centrestage.org.au.", compSending: false, schoolSending: false }));
+    };
+    return {
+      isComp: r === "comp",
+      compDone: !!s.compDone, compForm: !s.compDone, compKid: s.cKid || "",
+      compDoneMsg: s.compViaMail ? "An email has opened in your mail app with the entry details. Attach " + (s.cFile || "the photo") + " and press send to complete the entry." : "Your entry is in the draw. Winners will be drawn by the cast of FROZEN at 7pm on Wednesday 16 December 2026 and notified by email by Sunday 20 December.",
+      compError: s.compError || "", compBtn: s.compSending ? "Sending…" : "Submit entry",
+      cKid: s.cKid || "", cKidLast: s.cKidLast || "", cAge: s.cAge || "", cSchool: s.cSchool || "", cParent: s.cParent || "", cEmail: s.cEmail || "", cPhone: s.cPhone || "", cSuburb: s.cSuburb || "",
+      cSetKid: set("cKid"), cSetKidLast: set("cKidLast"), cSetAge: set("cAge"), cSetSchool: set("cSchool"), cSetParent: set("cParent"), cSetEmail: set("cEmail"), cSetPhone: set("cPhone"), cSetSuburb: set("cSuburb"),
+      cConsent: !!s.cConsent, cShare: !!s.cShare,
+      cToggleConsent: () => this.setState({ cConsent: !s.cConsent, compError: "" }), cToggleShare: () => this.setState({ cShare: !s.cShare }),
+      cFileLabel: s.cFile ? "Selected: " + s.cFile : "Choose a photo of the colouring",
+      cSetFile: (e) => { const f = e.target.files && e.target.files[0]; if (!f) return; if (f.size > 10 * 1024 * 1024) { this.setState({ compError: "That file is larger than 10MB. Please choose a smaller photo." }); return; } this.setState({ cFile: f.name, cFileObj: f, compError: "" }); },
+      compSubmit: (e) => {
+        e.preventDefault();
+        const age = parseInt(s.cAge, 10);
+        if (!(age >= 1 && age <= 16)) { this.setState({ compError: "Entrants must be aged 1 to 16." }); return; }
+        if (!s.cFileObj) { this.setState({ compError: "Please choose a photo or scan of the colouring." }); return; }
+        if (!s.cConsent) { this.setState({ compError: "Please confirm you are the parent or guardian." }); return; }
+        const fd = new FormData();
+        const rows = [["Child", (s.cKid || "") + " " + (s.cKidLast || "")], ["Age", s.cAge], ["School", s.cSchool || ""], ["Parent or guardian", s.cParent], ["email", s.cEmail], ["Phone", s.cPhone], ["Suburb", s.cSuburb || ""], ["Share on social media", s.cShare ? "Yes" : "No"], ["Submitted", this.fmtStamp(new Date())]];
+        fd.append("_subject", "Colouring comp entry: " + (s.cKid || "") + " " + (s.cKidLast || "") + ", age " + s.cAge);
+        rows.forEach((x) => fd.append(x[0], x[1] || ""));
+        fd.append("Artwork", s.cFileObj, s.cFile);
+        const mail = "mailto:david@centrestage.org.au?subject=" + encodeURIComponent("Colouring comp entry: " + s.cKid + " " + s.cKidLast) + "&body=" + encodeURIComponent(rows.map((x) => x[0] + ": " + (x[1] || "")).join("\n") + "\n\n(Photo attached)");
+        this.setState({ compSending: true, compError: "" });
+        post(fd, (sent) => this.setState({ compDone: true, compSending: false, compViaMail: !sent }), "compError", mail);
+      },
+      schoolDone: !!s.schoolDone, schoolForm: !s.schoolDone, schoolError: s.schoolError || "", schoolBtn: s.schoolSending ? "Sending…" : "Request a collection",
+      sName: s.sName || "", sContact: s.sContact || "", sEmail: s.sEmail || "", sPhone: s.sPhone || "", sAddr: s.sAddr || "", sCount: s.sCount || "", sDate: s.sDate || "",
+      sSetName: set("sName"), sSetContact: set("sContact"), sSetEmail: set("sEmail"), sSetPhone: set("sPhone"), sSetAddr: set("sAddr"), sSetCount: set("sCount"), sSetDate: set("sDate"),
+      schoolSubmit: (e) => {
+        e.preventDefault();
+        if (s.sDate && s.sDate > "2026-12-16") { this.setState({ schoolError: "Please choose a date on or before Wednesday 16 December 2026." }); return; }
+        const rows = [["School", s.sName], ["Contact", s.sContact], ["email", s.sEmail], ["Phone", s.sPhone], ["Address", s.sAddr], ["Approx. entries", s.sCount || ""], ["Preferred date", s.sDate]];
+        const fd = new FormData();
+        fd.append("_subject", "Colouring comp school collection: " + s.sName);
+        rows.forEach((x) => fd.append(x[0], x[1] || ""));
+        const mail = "mailto:david@centrestage.org.au?subject=" + encodeURIComponent("Colouring comp school collection: " + s.sName) + "&body=" + encodeURIComponent(rows.map((x) => x[0] + ": " + (x[1] || "")).join("\n"));
+        this.setState({ schoolSending: true, schoolError: "" });
+        post(fd, () => this.setState({ schoolDone: true, schoolSending: false }), "schoolError", mail);
+      },
+    };
+  }
+
   renderVals() {
     const r = this.state.route;
     const d = this.state.data;
@@ -2345,6 +2514,7 @@ class Component extends DCLogic {
       isShop: false, isContact: r === "contact", isBio: r === "bio", isMedia: r === "media",
       isWeekly: r === "weekly", isSinging: r === "singing",
       isWwcc: r === "wwcc",
+      ...this._compVals(r),
       ...this._vipVals(r),
       wwccDone: !!this.state.wwccDone, wwccForm: !this.state.wwccDone,
       wwccName: this.state.wwccName || "", wwccStamp: this.state.wwccStamp || "",

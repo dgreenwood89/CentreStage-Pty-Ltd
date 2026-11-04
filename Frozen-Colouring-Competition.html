@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>Frozen Colouring Competition · CentreStage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+doc-page:not(:defined){visibility:hidden}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#0A0A0A;-webkit-font-smoothing:antialiased}
+.page{position:relative;background:#fff;height:297mm;box-sizing:border-box;padding:10mm 11mm 8mm;display:flex;flex-direction:column;overflow:hidden}
+.mono{font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.top{display:flex;align-items:center;justify-content:space-between;gap:6mm;padding-bottom:3mm;border-bottom:1.2pt solid #0A0A0A}
+.cs{display:flex;flex-direction:column;gap:1.4mm}
+.cs img{width:32mm;display:block}
+.cs span{font-size:6.4pt;font-weight:700;letter-spacing:.3em;text-transform:uppercase}
+.top .logo{width:62mm;display:block}
+.top .tag{font-size:7pt;text-align:right;line-height:1.6}
+.hd{font-family:'Arial Black',Arial,sans-serif;font-size:20pt;line-height:1;letter-spacing:-.02em;margin:3mm 0 0}
+.sub{font-size:9.4pt;line-height:1.4;margin:1.6mm 0 0;color:#333}
+.main{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 56mm;gap:5mm;margin-top:3.4mm}
+.left,.side{display:flex;flex-direction:column;gap:4mm;min-height:0}
+.art{border:1.6pt solid #0A0A0A;padding:2mm;aspect-ratio:1442/1872;width:100%;box-sizing:border-box}
+.art img{width:100%;height:100%;object-fit:contain;display:block}
+.box{border:1.2pt solid #0A0A0A;padding:3.4mm 3.6mm}
+.box h3{font-size:6.6pt;margin:0 0 2.4mm}
+.fg{display:grid;grid-template-columns:1fr 1fr;column-gap:5mm;row-gap:2.6mm}
+.f{display:flex;flex-direction:column;gap:.8mm}
+.f span{font-family:'JetBrains Mono',monospace;font-size:6pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.f i{display:block;height:6.4mm;border-bottom:.8pt solid #0A0A0A}
+.how{display:flex;flex-direction:column}
+.side>.box:last-child{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:4mm}
+.side>.box:last-child>*{margin-top:0 !important;margin-bottom:0 !important}
+.side .tix{display:grid;grid-template-columns:1fr;gap:2.4mm}
+.side .tk{padding:3mm 3mm 3mm 6mm;gap:.8mm}
+.side .tk b{font-size:12pt}
+.qr{display:flex;gap:3mm;align-items:center}
+.qr img{width:20mm;height:20mm;display:block;flex:none}
+.qr b{font-size:8.4pt;line-height:1.2}
+.url{display:block;font-family:'JetBrains Mono',monospace;font-size:6.4pt;font-weight:700;margin-top:1.6mm;white-space:nowrap}
+.ways{margin:3mm 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:1.8mm}
+.ways li{font-size:7.8pt;line-height:1.35;padding-left:4mm;position:relative;color:#222}
+.ways li:before{content:'/';position:absolute;left:0;font-weight:700}
+.dates{display:grid;grid-template-columns:1fr 1fr;gap:2mm;margin-top:3.4mm;padding-top:2.4mm;border-top:.7pt solid #0A0A0A}
+.dates div{font-size:7.4pt;line-height:1.3}
+.dates b{display:block;font-family:'JetBrains Mono',monospace;font-size:5.6pt;letter-spacing:.16em;text-transform:uppercase;margin-bottom:.6mm}
+.pbig{display:flex;align-items:center;gap:2.6mm}
+.pbig strong{font-family:'Arial Black',Arial,sans-serif;font-size:56pt;line-height:.85;letter-spacing:-.04em}
+.pbig span{font-family:'Arial Black',Arial,sans-serif;font-size:11.5pt;line-height:1.05}
+.tix{display:grid;grid-template-columns:1fr 1fr;gap:1.8mm;margin-top:3mm}
+.tk{position:relative;border:1pt solid #0A0A0A;padding:1.6mm 2mm 1.6mm 4.2mm;display:flex;flex-direction:column;gap:.4mm;background:repeating-linear-gradient(135deg,#fff 0 1.4mm,#F1F1F1 1.4mm 2.8mm)}
+.tk:before{content:'';position:absolute;left:2.4mm;top:1mm;bottom:1mm;border-left:.7pt dashed #0A0A0A}
+.tk b{font-family:'Arial Black',Arial,sans-serif;font-size:7.4pt;letter-spacing:.06em}
+.tk span{font-family:'JetBrains Mono',monospace;font-size:5.6pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.tk i{font-style:normal;font-size:5.4pt;color:#333}
+.pnote{font-size:7.2pt;line-height:1.4;margin:2.6mm 0 0;color:#222}
+.fine{font-size:6.2pt;line-height:1.45;color:#444;margin:3mm 0 0}
+.p2c{padding:0;background:#0A2646;color:#fff}
+.p2c .bg{position:absolute;left:0;top:0;width:100%;height:68%;object-fit:cover;object-position:center 0%}
+.p2c:before{content:"";position:absolute;left:0;right:0;top:0;height:42mm;background:linear-gradient(180deg,rgba(6,22,52,.7),rgba(6,22,52,0));z-index:1}
+.p2c .shade{position:absolute;left:0;right:0;bottom:0;height:52%;background:linear-gradient(180deg,rgba(6,22,52,0) 0%,rgba(6,22,52,.85) 26%,#04101F 44%,#04101F 100%)}
+.p2c .topl{position:absolute;top:21mm;left:0;right:0;display:flex;justify-content:center;z-index:2}
+.p2c .topl img{width:96mm;display:block}
+.p2c .cs{position:absolute;top:8mm;left:0;right:0;align-items:center;z-index:2}
+.p2c .cs img{width:34mm}
+.p2c .cs span{color:#fff}
+.p2c .lower{position:absolute;left:14mm;right:14mm;bottom:7mm;display:flex;flex-direction:column;align-items:center;text-align:center}
+.p2c .big{width:128mm;display:block}
+.p2c h2{font-family:'Arial Black',Arial,sans-serif;font-size:17pt;line-height:1;letter-spacing:-.02em;margin:0}
+.p2c .info{display:grid;grid-template-columns:minmax(0,1fr) 36mm;gap:7mm;align-items:center;width:100%;margin-top:4mm;text-align:left}
+.p2c .when{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+.p2c .when div{border-left:1.4pt solid #7FD3FF;padding-left:4mm}
+.p2c .when b{display:block;font-size:6.4pt;color:#7FD3FF;margin-bottom:1.4mm}
+.p2c .when strong{display:block;font-family:'Arial Black',Arial,sans-serif;font-size:13pt;line-height:1.1}
+.p2c .when span{display:block;font-size:9pt;margin-top:1mm;color:#D6E8F8}
+.p2c .qrc{background:#fff;color:#0A2646;padding:3mm;display:flex;flex-direction:column;align-items:center;gap:1.2mm}
+.p2c .qrc img{width:30mm;height:30mm;display:block}
+.p2c .qrc b{font-size:9pt}
+.p2c .qrc small{font-family:'JetBrains Mono',monospace;font-size:6.2pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.p2c .billing{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:2mm 3.4mm;width:100%;margin-top:4mm;padding-top:3mm;border-top:.7pt solid rgba(127,211,255,.5)}
+.p2c .billing div{display:flex;flex-direction:column;gap:.6mm}
+.p2c .billing span{font-size:5.6pt;line-height:1.25;color:#B9D3EC}
+.p2c .billing b{font-size:7.2pt;line-height:1.2}
+.p2c .lic{font-size:6.2pt;line-height:1.4;color:#B9D3EC;margin:2.6mm 0 0}
+.p2c .tcs{width:100%;text-align:left;margin-top:3mm;padding-top:2.6mm;border-top:.7pt solid rgba(127,211,255,.5)}
+.p2c .tcs b{font-size:6pt;color:#7FD3FF;display:block}
+.p2c .tcs ol{margin:1.4mm 0 0;padding-left:3.4mm;columns:3;column-gap:5mm}
+.p2c .tcs li{font-size:5.6pt;line-height:1.4;color:#D6E8F8;break-inside:avoid;margin-bottom:.8mm}
+.p2c .fine{color:#B9D3EC;text-align:center}
+.left>.box{flex:1;display:flex;flex-direction:column;justify-content:center}
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="120" fill="#0A0A0A"/><text x="60" y="78" font-family="Arial Black, Arial" font-size="58" font-weight="900" fill="#fff" text-anchor="middle">/</text></svg></template>
+<doc-page size="a4" margin="0">
+<section data-document-role="page" class="page">
+  <div class="top">
+    <div class="cs"><img src="assets/CentreStage-Solid-Black.png" alt="CentreStage"><span>Production of</span></div>
+    <img class="logo" src="assets/frozen/title-full-lightbg.png" alt="Disney's Frozen The Broadway Musical">
+    <div class="tag mono">Colouring<br>competition<br>Ages 1 to 16</div>
+  </div>
+  <h1 class="hd">Colour it in. Win a family pass to opening night.</h1>
+  <p class="sub">Four winners each take home a family pass for two adults and two youth. Winners drawn by the cast of FROZEN at 7pm on Wednesday 16 December 2026.</p>
+  <div class="main">
+    <div class="left">
+      <div class="art"><img src="assets/comp/olaf-colouring.png" alt="Olaf colouring picture"></div>
+      <div class="box"><div class="fg">
+        <div class="f"><span>Child's name</span><i></i></div>
+        <div class="f"><span>Age</span><i></i></div>
+        <div class="f"><span>School</span><i></i></div>
+        <div class="f"><span>Parent or guardian</span><i></i></div>
+        <div class="f"><span>Phone</span><i></i></div>
+        <div class="f"><span>Email</span><i></i></div>
+      </div></div>
+    </div>
+    <div class="side">
+      <div class="box how">
+        <h3 class="mono">How to enter</h3>
+        <div class="qr"><img src="assets/comp/qr-comp.svg" alt="QR code to centrestage.org.au/comp"><b>Scan to enter</b></div>
+        <small class="url">centrestage.org.au/comp</small>
+        <ul class="ways">
+          <li><b>Upload</b> a photo or scan online.</li>
+          <li><b>Post or drop off</b> to CentreStage, Unit 2, 255 Hamilton Highway, Fyansford VIC 3218.</li>
+          <li><b>Schools</b> can book a free collection online.</li>
+        </ul>
+        <div class="dates"><div><b>Entries close</b>Wed 16 Dec 2026, 5pm</div><div><b>Winners drawn</b>Wed 16 Dec 2026, 7pm</div></div>
+      </div>
+      <div class="box">
+        <h3 class="mono">The prize</h3>
+        <div class="pbig"><strong>4</strong><span>family passes to opening night</span></div>
+        <div class="tix">
+          <div class="tk"><b>FROZEN</b><span>Adult</span><i>Opening night</i></div>
+          <div class="tk"><b>FROZEN</b><span>Adult</span><i>Opening night</i></div>
+          <div class="tk"><b>FROZEN</b><span>Youth</span><i>Opening night</i></div>
+          <div class="tk"><b>FROZEN</b><span>Youth</span><i>Opening night</i></div>
+        </div>
+        <p class="pnote">Each pass: <b>2 adults + 2 youth</b>. Friday 5 March 2027, 7:30pm, The Playhouse, Geelong Arts Centre.</p>
+      </div>
+    </div>
+  </div>
+  <p class="fine">Open to children aged 1 to 16. One entry per child. Entries close 5pm Wednesday 16 December 2026. Winners notified by email by Sunday 20 December 2026. Full terms and conditions are on the back of this sheet and at centrestage.org.au/comp. Frozen is a registered trademark of Disney.</p>
+</section>
+<section data-document-role="page" class="page p2c">
+  <img class="bg" src="assets/frozen/keyart-v-blank-new.png" alt="">
+  <div class="shade"></div>
+  <div class="cs"><img src="assets/CentreStage-Solid-White.png" alt="CentreStage"><span>Production of</span></div>
+  <div class="topl"><img src="assets/frozen/title-full-darkbg.png" alt="Disney's Frozen The Broadway Musical"></div>
+  <div class="lower">
+    <h2>Bring the whole family to Arendelle.</h2>
+    <div class="info">
+      <div class="when">
+        <div><b class="mono">Season</b><strong>5 to 20 March 2027</strong><span>Opening night Friday 5 March, 7:30pm</span></div>
+        <div><b class="mono">Venue</b><strong>The Playhouse</strong><span>Geelong Arts Centre, 50 Little Malop Street</span></div>
+      </div>
+      <div class="qrc"><img src="assets/foyer/qr-frozen-tickets.png" alt="QR code for Frozen tickets"><b>Tickets on sale now</b><small>Scan to book</small></div>
+    </div>
+    <div class="billing">
+      <div><span>Music and Lyrics by</span><b>Kristen Anderson-Lopez &amp; Robert Lopez</b></div>
+      <div><span>Book by</span><b>Jennifer Lee</b></div>
+      <div><span>Originally Directed on Broadway by</span><b>Michael Grandage</b></div>
+      <div><span>Based on the Disney film written by Jennifer Lee and directed by</span><b>Chris Buck &amp; Jennifer Lee</b></div>
+      <div><span>Originally produced on Broadway by</span><b>Disney Theatrical Group</b></div>
+    </div>
+    <p class="lic">Licensed exclusively by Music Theatre International (Australasia). All authorised performance materials are also supplied by Music Theatre International (Australasia). www.mtishows.com.au</p>
+    <div class="tcs"><b class="mono">Colouring competition terms and conditions</b>
+      <ol>
+        <li>The competition is run by CentreStage Pty Ltd, Unit 2, 255 Hamilton Highway, Fyansford VIC 3218.</li>
+        <li>Open to children aged 1 to 16 at the time of entry. Entries must be submitted with the permission of a parent or guardian.</li>
+        <li>One entry per child. Entries must be the child's own work, on the official colouring sheet.</li>
+        <li>Enter by uploading at centrestage.org.au/comp, by post or drop-off to the address above, or through a participating school. Entries close 5pm Wednesday 16 December 2026. Late, incomplete or illegible entries are not eligible.</li>
+        <li>Four winners will be drawn at random by the cast of FROZEN at 7pm on Wednesday 16 December 2026 and notified by email by Sunday 20 December 2026. Winners may be announced by first name and suburb on Facebook @centrestageaus.</li>
+        <li>Each prize is one family pass of four tickets (two adults and two youth) to opening night, Friday 5 March 2027, 7:30pm, The Playhouse, Geelong Arts Centre. Youth tickets are for children aged 16 and under, who must be accompanied by an adult. Seats are allocated by CentreStage.</li>
+        <li>Prizes are not transferable, exchangeable or redeemable for cash. If a winner cannot be contacted within 14 days, or cannot attend, a redraw may take place.</li>
+        <li>Entries are not returned. With permission given on entry, artwork and the child's first name may be shared on CentreStage social media. Personal details are used only to run this competition and are not shared.</li>
+      </ol>
+    </div>
+    <p class="fine">CentreStage Production of Frozen. Follow @centrestageaus. Frozen is a registered trademark of Disney. Artwork &copy;Disney.</p>
+  </div>
+</section>
+</doc-page>
+<script src="doc-page.js"></script>
+</body>
+</html>
