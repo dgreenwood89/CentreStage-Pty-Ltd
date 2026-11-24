@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>No Photography Sign · Hadestown: Teen Edition · CentreStage</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+<template id="__bundler_thumbnail"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="120" fill="#17120E"/><text x="60" y="78" font-family="Arial Black, Arial" font-size="56" font-weight="900" fill="#C9B58C" text-anchor="middle">/</text></svg></template>
+<style>
+  @page { size: A3; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #2A2A28; font-family: Arial, Helvetica, sans-serif; color: #EDE3CC; -webkit-font-smoothing: antialiased; }
+  a { color: #EDE3CC; } a:hover { color: #C9B58C; }
+  .page { width: 297mm; height: 420mm; margin: 10mm auto; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 34mm 26mm 24mm; background: #17120E url('assets/shows/hadestown-grit.jpg') center / cover no-repeat; }
+  @media print { html, body { background: none; } .page { margin: 0; } }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  .oz { font-family: 'Oswald', 'Arial Narrow', Arial, sans-serif; text-transform: uppercase; }
+  .frame { position:absolute; inset:9mm; border:1.2mm solid #C9B58C; pointer-events:none; }
+  .frame2 { position:absolute; inset:12.5mm; border:.4mm solid #C9B58C; opacity:.6; pointer-events:none; }
+  .gem { position:absolute; width:5mm; height:5mm; background:#C9B58C; transform:rotate(45deg); }
+  .page > *:not(.frame):not(.frame2):not(.gem) { position: relative; flex-shrink: 0; }
+  .page > div[style*="flex:1"] { flex-shrink: 1; }
+</style>
+</head>
+<body>
+<section class="page" data-document-role="page">
+  <div class="frame"></div><div class="frame2"></div>
+  <span class="gem" style="left:9mm; top:9mm; margin:-2.5mm 0 0 -2.5mm;"></span>
+  <span class="gem" style="right:9mm; top:9mm; margin:-2.5mm -2.5mm 0 0;"></span>
+  <span class="gem" style="left:9mm; bottom:9mm; margin:0 0 -2.5mm -2.5mm;"></span>
+  <span class="gem" style="right:9mm; bottom:9mm; margin:0 -2.5mm -2.5mm 0;"></span>
+
+  <img src="assets/shows/hadestown-clear.png" alt="Hadestown: Teen Edition" style="display:block; width:170mm; height:auto;">
+
+  <svg viewBox="0 0 120 120" style="width:62mm; height:62mm; margin:11mm 0 9mm; display:block;" aria-hidden="true">
+    <circle cx="60" cy="60" r="54" fill="#EDE3CC" stroke="#E3121B" stroke-width="9"/>
+    <rect x="30" y="44" width="60" height="40" rx="5" fill="none" stroke="#17120E" stroke-width="5"/>
+    <path d="M46 44 L50 36 H70 L74 44" fill="none" stroke="#17120E" stroke-width="5" stroke-linejoin="round"/>
+    <circle cx="60" cy="64" r="11" fill="none" stroke="#17120E" stroke-width="5"/>
+    <line x1="22" y1="22" x2="98" y2="98" stroke="#E3121B" stroke-width="9" stroke-linecap="round"/>
+  </svg>
+
+  <div class="oz" style="font-weight:700; font-size:68pt; line-height:.98; letter-spacing:.01em; color:#EDE3CC;">No photos or video<br><span style="color:#C9B58C;">during the show.</span></div>
+
+  <p style="font-size:22pt; line-height:1.45; margin:10mm 0 0; max-width:215mm; color:#DCD0B6; text-wrap:pretty;">Our amazing photographer <b style="color:#EDE3CC;">Hannah</b> has captured every moment for you. The full gallery will be released on the CentreStage Facebook page.</p>
+
+  <div style="display:inline-flex; align-items:center; gap:6mm; background:#C9B58C; color:#17120E; padding:6mm 11mm; margin-top:11mm;">
+    <span class="mono" style="font-size:13pt; letter-spacing:.2em; text-transform:uppercase; font-weight:600;">Facebook</span>
+    <span style="font-weight:700; font-size:27pt; letter-spacing:-.01em;">@centrestageaus</span>
+  </div>
+
+  <div style="flex:1; min-height:10mm;"></div>
+  <div style="width:100%; border-top:.8mm solid #C9B58C; padding-top:9mm;">
+    <div style="font-weight:700; font-size:22pt; line-height:1.4; max-width:215mm; margin:0 auto; text-wrap:balance;">You're welcome to take photos once the show has finished, or in the foyer.</div>
+    <div class="mono" style="font-size:13pt; letter-spacing:.14em; text-transform:uppercase; color:#C9B58C; margin-top:6mm;">Thank you for helping our performers shine</div>
+  </div>
+
+  <img src="assets/CentreStage-Solid-White.png" alt="CentreStage" style="display:block; width:60mm; height:auto; margin-top:10mm;">
+</section>
+</body>
+</html>

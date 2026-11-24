@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>Frozen &mdash; Donation Voucher &middot; Anakie Primary School</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  doc-page:not(:defined){visibility:hidden}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#EAF4FF;-webkit-font-smoothing:antialiased}
+  .page{position:relative;background:#04101F;overflow:hidden;display:flex}
+  .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.34}
+  .wash{position:absolute;inset:0;background:linear-gradient(105deg,rgba(4,16,31,.97) 0%,rgba(6,24,45,.90) 46%,rgba(10,38,70,.62) 100%)}
+  .fil{position:absolute;right:-30mm;top:-24mm;width:150mm;height:150mm;object-fit:contain;opacity:.16;mix-blend-mode:screen}
+
+  .inner{position:relative;flex:1;display:grid;grid-template-columns:1fr 88mm;gap:0;min-height:0}
+
+  /* left */
+  .main{padding:16mm 12mm 14mm 18mm;display:flex;flex-direction:column;min-height:0}
+  .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10mm}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:8.5pt;letter-spacing:.32em;text-transform:uppercase;color:#7FD3FF}
+  .lg{width:40mm;height:auto;flex:none;opacity:.95}
+  .title{width:96mm;height:auto;display:block;margin:11mm 0 0}
+  .hd{font-family:'Arial Black',Arial,sans-serif;font-size:33pt;line-height:.94;letter-spacing:-.03em;margin:9mm 0 0;color:#EAF4FF}
+  .hd em{font-style:normal;color:#7FD3FF}
+  .sub{font-size:11.5pt;line-height:1.6;color:#C6DCF2;max-width:56ch;margin:5mm 0 0}
+  .facts{display:grid;grid-template-columns:repeat(3,auto);gap:0;margin-top:auto;padding-top:10mm;border-top:.7pt solid rgba(127,211,255,.32)}
+  .facts>div{padding-right:12mm}
+  .facts>div+div{border-left:.7pt solid rgba(127,211,255,.32);padding-left:12mm}
+  .k{display:block;font-family:'JetBrains Mono',monospace;font-size:7pt;letter-spacing:.24em;text-transform:uppercase;color:#6E93BD;margin-bottom:2.5mm}
+  .v{font-size:13pt;line-height:1.25;font-weight:700;color:#EAF4FF}
+  .v small{display:block;font-size:9pt;font-weight:400;color:#9FC0DE;margin-top:1.5mm}
+
+  /* right stub */
+  .stub{position:relative;background:#EAF4FF;color:#0A2646;padding:16mm 14mm 14mm;display:flex;flex-direction:column;min-height:0}
+  .perf{position:absolute;left:0;top:0;bottom:0;width:0;border-left:1.4pt dashed rgba(10,38,70,.45)}
+  .stub .k{color:#5E86B3}
+  .stag{font-family:'JetBrains Mono',monospace;font-size:7pt;letter-spacing:.24em;text-transform:uppercase;color:#B9852E}
+  .code{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16pt;letter-spacing:.02em;line-height:1;color:#0A2646;margin:3mm 0 0;white-space:nowrap}
+  .codebox{border:1.2pt solid #0A2646;padding:6mm 3mm;text-align:center;margin-top:3mm}
+  .codebox .cs{display:block;font-family:'JetBrains Mono',monospace;font-size:6.6pt;letter-spacing:.2em;text-transform:uppercase;color:#5E86B3;margin-top:3mm}
+  .how{margin-top:8mm}
+  .how h3{font-family:'JetBrains Mono',monospace;font-size:7pt;letter-spacing:.24em;text-transform:uppercase;color:#5E86B3;margin:0 0 3mm;padding-bottom:2mm;border-bottom:.7pt solid #C3D6E8}
+  ol{margin:0;padding:0;list-style:none;counter-reset:s}
+  ol li{counter-increment:s;position:relative;padding:0 0 3.4mm 8mm;font-size:9.5pt;line-height:1.5;color:#26456B}
+  ol li:before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:.2mm;font-family:'JetBrains Mono',monospace;font-size:8pt;font-weight:700;color:#B9852E}
+  ol li b{color:#0A2646}
+  .deadline{margin-top:auto;background:#0A2646;color:#EAF4FF;padding:5mm 5.5mm}
+  .deadline span{display:block;font-family:'JetBrains Mono',monospace;font-size:6.8pt;letter-spacing:.22em;text-transform:uppercase;color:#7FD3FF;margin-bottom:1.8mm}
+  .deadline b{font-size:12.5pt;line-height:1.2;letter-spacing:-.01em}
+  .deadline p{font-size:8pt;line-height:1.45;color:#A9C6E4;margin:2.5mm 0 0}
+  .fine{font-size:7.2pt;line-height:1.5;color:#5E86B3;margin:4mm 0 0}
+  .sig{display:flex;align-items:flex-end;gap:4mm;margin-top:6mm;padding-top:4mm;border-top:.7pt solid #C3D6E8}
+  .sig img{width:34mm;height:auto}
+  .sig span{font-size:8pt;line-height:1.35;color:#26456B}
+  .sig i{font-style:normal;color:#5E86B3;font-size:7.3pt}
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="120" fill="#0A2646"/><text x="60" y="78" font-family="Arial Black, Arial" font-size="58" font-weight="900" fill="#7FD3FF" text-anchor="middle">/</text></svg>
+</template>
+
+<doc-page size="a4" orientation="landscape" margin="0">
+<section data-document-role="page" class="page">
+  <img class="bg" src="assets/frozen/keyart-h-blank-new.png" alt="">
+  <div class="wash"></div>
+  <img class="fil" src="assets/frozen/filigree.png" alt="">
+
+  <div class="inner">
+    <div class="main">
+      <div class="top">
+        <span class="eyebrow">Donation voucher &middot; Trivia night fundraiser</span>
+        <img class="lg" src="assets/CentreStage-Solid-White.png" alt="CentreStage">
+      </div>
+
+      <div class="eyebrow" style="margin-top:2mm;">Donated to Anakie Primary School</div>
+      <img class="title" src="assets/frozen/title-white.png" alt="Disney's Frozen — The Broadway Musical">
+
+      <h1 class="hd">Two tickets.<br><em>Donated with pride.</em></h1>
+      <p class="sub">Donated with thanks to Anakie Primary School for their trivia night fundraiser. This voucher admits two to the opening night of CentreStage's production of Disney's <em>Frozen</em> &mdash; the Tony-nominated Broadway musical, staged in full at the Geelong Arts Centre.</p>
+
+      <div class="facts">
+        <div>
+          <span class="k">Admits</span>
+          <span class="v">Two<small>One double pass</small></span>
+        </div>
+        <div>
+          <span class="k">Performance</span>
+          <span class="v">Opening night<small>5 March 2027 &middot; 7:30pm</small></span>
+        </div>
+        <div>
+          <span class="k">Venue</span>
+          <span class="v">The Playhouse<small>Geelong Arts Centre</small></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stub">
+      <div class="perf"></div>
+      <span class="stag">Voucher code</span>
+      <div class="codebox">
+        <span class="code">FRZ&middot;ON27&middot;K4M9</span>
+        <span class="cs">Quote this code when claiming</span>
+      </div>
+
+      <div class="how">
+        <h3>How to claim</h3>
+        <ol>
+          <li>Email <b>david@centrestage.org.au</b> quoting the voucher code above.</li>
+          <li>Include the <b>full name and email address</b> of the person collecting the tickets.</li>
+          <li>We will confirm your seats and hold them at the box office under that name.</li>
+        </ol>
+      </div>
+
+      <div class="deadline">
+        <span>Claim by</span>
+        <b>1 January 2027</b>
+        <p>Tickets must be claimed before this date to guarantee availability on opening night.</p>
+      </div>
+
+      <div class="sig">
+        <img src="assets/david-signature.png" alt="David Greenwood OAM signature">
+        <span>David Greenwood OAM<br><i>Managing Director</i></span>
+      </div>
+      <p class="fine">Not redeemable for cash. Not transferable once claimed. Presented by CentreStage Pty Ltd, Geelong &middot; (03) 5272 1775 &middot; centrestage.org.au</p>
+    </div>
+  </div>
+</section>
+</doc-page>
+<script src="doc-page.js"></script>
+</body>
+</html>

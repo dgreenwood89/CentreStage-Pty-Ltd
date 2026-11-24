@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>Stage Door Sign · Hadestown: Teen Edition · CentreStage</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+<template id="__bundler_thumbnail"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="120" fill="#17120E"/><text x="60" y="78" font-family="Arial Black, Arial" font-size="56" font-weight="900" fill="#C9B58C" text-anchor="middle">/</text></svg></template>
+<style>
+  @page { size: A3; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #2A2A28; font-family: Arial, Helvetica, sans-serif; color: #EDE3CC; -webkit-font-smoothing: antialiased; }
+  a { color: #EDE3CC; } a:hover { color: #C9B58C; }
+  .page { width: 297mm; height: 420mm; margin: 10mm auto; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 28mm 26mm 22mm; background: #17120E url('assets/shows/hadestown-grit.jpg') center / cover no-repeat; }
+  @media print { html, body { background: none; } .page { margin: 0; } }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  .oz { font-family: 'Oswald', 'Arial Narrow', Arial, sans-serif; text-transform: uppercase; }
+  .frame { position:absolute; inset:9mm; border:1.2mm solid #C9B58C; pointer-events:none; }
+  .frame2 { position:absolute; inset:12.5mm; border:.4mm solid #C9B58C; opacity:.6; pointer-events:none; }
+  .gem { position:absolute; width:5mm; height:5mm; background:#C9B58C; transform:rotate(45deg); }
+  .page > *:not(.frame):not(.frame2):not(.gem) { position: relative; flex-shrink: 0; }
+  .page > .spacer { flex: 1 1 auto; min-height: 8mm; }
+</style>
+</head>
+<body>
+<section class="page" data-document-role="page">
+  <div class="frame"></div><div class="frame2"></div>
+  <span class="gem" style="left:9mm; top:9mm; margin:-2.5mm 0 0 -2.5mm;"></span>
+  <span class="gem" style="right:9mm; top:9mm; margin:-2.5mm -2.5mm 0 0;"></span>
+  <span class="gem" style="left:9mm; bottom:9mm; margin:0 0 -2.5mm -2.5mm;"></span>
+  <span class="gem" style="right:9mm; bottom:9mm; margin:0 -2.5mm -2.5mm 0;"></span>
+
+  <img src="assets/shows/hadestown-clear.png" alt="Hadestown: Teen Edition" style="display:block; width:150mm; height:auto;">
+
+  <div class="mono" style="font-size:15pt; font-weight:600; letter-spacing:.3em; text-transform:uppercase; color:#C9B58C; margin-top:16mm;">Backstage / Cast entrance</div>
+
+  <div class="oz" style="font-weight:700; font-size:150pt; line-height:.9; letter-spacing:.01em; margin-top:7mm; color:#EDE3CC;">Stage<br><span style="color:#C9B58C;">Door.</span></div>
+
+  <div style="background:#E3121B; color:#FFFFFF; padding:8mm 12mm; margin-top:13mm; width:100%;">
+    <div class="oz" style="font-weight:700; font-size:46pt; line-height:1; letter-spacing:.03em;">Student access only</div>
+  </div>
+
+  <p style="font-size:22pt; line-height:1.45; margin:12mm 0 0; max-width:215mm; color:#DCD0B6; text-wrap:pretty;">This entrance is for Hadestown students and our production team. Parents, family and audience members, please use the main foyer.</p>
+
+  <div class="spacer"></div>
+  <div style="width:100%; border-top:.8mm solid #C9B58C; padding-top:9mm;">
+    <div style="font-weight:700; font-size:21pt; line-height:1.4; max-width:215mm; margin:0 auto; text-wrap:balance;">Students will be signed in and out by our team at this door.</div>
+    <div class="mono" style="font-size:13pt; letter-spacing:.14em; text-transform:uppercase; color:#C9B58C; margin-top:6mm;">Thank you for keeping backstage safe</div>
+  </div>
+
+  <img src="assets/CentreStage-Solid-White.png" alt="CentreStage" style="display:block; width:60mm; height:auto; margin-top:10mm;">
+</section>
+</body>
+</html>

@@ -8,10 +8,6 @@ export const SHOWS = [
     blurb: "It's time to LET IT GO. CentreStage's largest production yet arrives at the Geelong Arts Centre. Tickets available exclusively via the Geelong Arts Centre.",
     cta: "Book at Geelong Arts Centre", href: "https://geelongartscentre.org.au/whats-on/all-events/frozen-centrestage",
     img: "assets/frozen-keyart.png", featured: true },
-  { id: "hadestown", title: "Hadestown: Teen Edition", when: "November 2026", venue: "Senior Troupe · Ages 12–18",
-    blurb: "A journey into the underworld. One of the most ambitious projects undertaken within our training program.",
-    cta: "Tickets via TryBooking", href: "https://www.trybooking.com/DMGCJ", status: "Final seats remaining",
-    img: fill("35cad6_9eb8cd6e51734cc99bbb500892500fa6~mv2.png", 900, 675) },
   { id: "broadwayrocks", title: "Broadway Rocks", when: "5 December 2026 · 6.00pm", venue: "Costa Hall · Geelong Waterfront",
     blurb: "One night only. 300 students, one stage — the rock anthems of musical theatre, performed by the CentreStage student showcase.",
     cta: "Book at Geelong Arts Centre", href: "https://geelongartscentre.org.au/whats-on/all-events/broadway-rocks-centrestage", status: "On sale now",
@@ -46,25 +42,7 @@ export const PRODUCTIONS = [
 ];
 
 // ── Shop ─────────────────────────────────────────────────────
-const CS = "https://www.centrestage.org.au/product-page/";
-export const SHOP = [
-  { t: "CentreStage T-Shirt — Full Colour Range", price: "$27.50", tag: "Limited stock",
-    img: fill("35cad6_4e05861adb8940279154ebd5cdc7a650~mv2.png", 600, 600), href: CS + "centrestage-t-shirt-youth-and-adults" },
-  { t: "Black Hoodie", price: "$50.00",
-    img: fill("8a6446_45a4e4c39e12408690faed92c2e95014~mv2.png", 600, 600), href: CS + "black-hoodie" },
-  { t: "CentreStage Backpack — Blue or Grey", price: "$45.00",
-    img: fill("35cad6_1486191e68304bcfa6f49dfbf63dae72~mv2.jpg", 600, 600), href: CS + "centrestage-back-pack" },
-  { t: "CentreStage Dance Bag", price: "$35.00",
-    img: fill("35cad6_b976ffc0af43436eabbdfbedb78a28e5~mv2.jpg", 600, 600), href: CS + "centrestage-dance-bag" },
-  { t: "CentreStage Bike Shorts", price: "$17.50", href: CS + "centrestage-bike-shorts" },
-  { t: "Shein Basic Leotard (High Cut)", price: "$12.00", href: CS + "shein-basic-leotard-high-cut" },
-  { t: "iEFiEL Tan Leotard", price: "$22.50", href: CS + "iefiel-tan-leotard" },
-  { t: "Red and Black Track Pants", price: "$20.00", was: "$40.00", tag: "On sale", href: CS + "red-and-black-centrestage-track-pants" },
-  { t: "Black CentreStage Jackets", price: "$30.00", was: "$35.00", tag: "On sale",
-    img: fill("35cad6_30a3a3d20fef49a3bbd7b2b81f037520~mv2.jpg", 600, 600), href: CS + "black-centrestage-jackets" },
-  { t: "Name a Seat — 150mm Plaque", price: "$175.00", href: CS + "name-a-seat-150mm-x150mm-plaque" },
-  { t: "Name a Seat — 75mm Plaque", price: "$100.00", href: CS + "name-a-seat-75mm-x45mm-plaque" },
-];
+// The shop catalogue lives in shop.json (read by the site and the Stripe checkout script).
 
 // ── Wellbeing resources ──────────────────────────────────────
 export const HELPLINES = [

@@ -1,0 +1,391 @@
+{
+  "v": 1,
+  "mode": "omelette",
+  "root": "project/",
+  "title": "New website for CentreStage",
+  "entry": "Hadestown-Stage-Door-Sign-A3.html",
+  "pages": [
+    {
+      "path": "Hadestown-Stage-Door-Sign-A3.html",
+      "title": "Stage Door Sign · Hadestown: Teen Edition · CentreStage",
+      "kind": "plain"
+    },
+    {
+      "path": "Hadestown-No-Photos-Sign-A3.html",
+      "title": "No Photography Sign · Hadestown: Teen Edition · CentreStage",
+      "kind": "plain"
+    },
+    {
+      "path": "Hadestown-Teen-Edition-Program.html",
+      "title": "Hadestown: Teen Edition — CentreStage Program",
+      "kind": "plain"
+    },
+    {
+      "path": "Hadestown Teen Edition Foyer Loop.dc.html",
+      "title": "Hadestown Teen Edition Foyer Loop",
+      "kind": "page"
+    },
+    {
+      "path": "404.html",
+      "title": "404",
+      "kind": "page"
+    },
+    {
+      "path": "index.html",
+      "title": "index",
+      "kind": "page"
+    },
+    {
+      "path": "CentreStage.dc.html",
+      "title": "CentreStage",
+      "kind": "page"
+    },
+    {
+      "path": "Frozen-Comp-Drive-Script.html",
+      "title": "Frozen comp Drive script",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Colouring-Competition.html",
+      "title": "Frozen Colouring Competition · CentreStage",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Voucher-Footlight-Productions.html",
+      "title": "Frozen Donation Voucher · Footlight Productions",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen Cast Bio.dc.html",
+      "title": "Frozen Cast Bio",
+      "kind": "page"
+    },
+    {
+      "path": "Frozen-Trailer-Banner.html",
+      "title": "Frozen trailer banner — CentreStage",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Roadside-Sign-1m.html",
+      "title": "Frozen roadside sign — 1000 × 1000 mm (+5 mm bleed)",
+      "kind": "plain"
+    },
+    {
+      "path": "Scimm Agency Pitch Deck.dc.html",
+      "title": "Scimm Agency Pitch Deck",
+      "kind": "page"
+    },
+    {
+      "path": "Scimm Agency Website.dc.html",
+      "title": "Scimm Agency Website",
+      "kind": "page"
+    },
+    {
+      "path": "Matilda-JR-Stage-Door-Sign.html",
+      "title": "Stage Door Sign · Matilda The Musical JR · CentreStage",
+      "kind": "plain"
+    },
+    {
+      "path": "Matilda JR Foyer Loop.dc.html",
+      "title": "Matilda JR Foyer Loop",
+      "kind": "page"
+    },
+    {
+      "path": "Matilda-JR-No-Photos-Sign.html",
+      "title": "No Photography Sign · Matilda The Musical JR · CentreStage",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Voucher-Ashby-Primary.html",
+      "title": "Frozen — Donation Voucher · Ashby Primary School",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Business-Card.html",
+      "title": "Frozen business card — 90 × 55 mm (+3 mm bleed), two sided",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Fridge-Magnet.html",
+      "title": "Frozen fridge magnet — 87 × 49 mm (+3 mm bleed)",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Program-canva.html",
+      "title": "Frozen — CentreStage Theatrical Program",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Lanyards-Canva-2.html",
+      "title": "Frozen Lanyards — CentreStage (editable, part 2 of 2)",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Lanyards-Canva-1.html",
+      "title": "Frozen Lanyards — CentreStage (editable, part 1 of 2)",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Lanyards-Canva.html",
+      "title": "Frozen Lanyards — CentreStage (editable)",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Costume-Measurements.html",
+      "title": "Frozen — Costume Measurement Sheets · CentreStage",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Lanyards.html",
+      "title": "Frozen Lanyards — CentreStage",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Code-of-Conduct-Signing-Packs.html",
+      "title": "Frozen — Code of Conduct Signing Packs · CentreStage",
+      "kind": "plain"
+    },
+    {
+      "path": "Broadway-Rocks-Program.html",
+      "title": "Broadway Rocks! Program — CentreStage",
+      "kind": "plain"
+    },
+    {
+      "path": "Matilda-JR-Program.html",
+      "title": "Roald Dahl's Matilda The Musical JR — CentreStage Program",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Voucher-Happy-Feet.html",
+      "title": "Frozen — Donation Voucher · Happy Feet Early Learning Centre",
+      "kind": "plain"
+    },
+    {
+      "path": "Winnie-the-Pooh-KIDS-Program.html",
+      "title": "Disney's Winnie the Pooh KIDS — CentreStage Program",
+      "kind": "plain"
+    },
+    {
+      "path": "2027-Enrolments-Poster.html",
+      "title": "2027 Enrolments Now Open · CentreStage Performing Arts Academy",
+      "kind": "plain"
+    },
+    {
+      "path": "Winnie-the-Pooh-No-Photos-Sign.html",
+      "title": "No Photography Sign · Winnie the Pooh KIDS · CentreStage",
+      "kind": "plain"
+    },
+    {
+      "path": "2027-Junior-Shows-Announcement.html",
+      "title": "2027 Junior Shows Announcement — CentreStage",
+      "kind": "plain"
+    },
+    {
+      "path": "CentreStage-CPAA-2027.html",
+      "title": "CentreStage — 2027 Education Program",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Company-Code-of-Conduct-Booklet.html",
+      "title": "Frozen — Company Code of Conduct · CentreStage",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Company-Code-of-Conduct.html",
+      "title": "Frozen — Company Code of Conduct · CentreStage",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Program.html",
+      "title": "Frozen — CentreStage Theatrical Program",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Cast-Cards-A-Canva.html",
+      "title": "Frozen Cast Cards A — Leads, Understudies, Young Elsa & Anna",
+      "kind": "plain"
+    },
+    {
+      "path": "Ticket Update Post.dc.html",
+      "title": "Ticket Update Post",
+      "kind": "page"
+    },
+    {
+      "path": "Frozen-Cast-Carousel-Canva.html",
+      "title": "Frozen Cast Carousel — CentreStage",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Voucher-St-Mary-MacKillop.html",
+      "title": "Frozen — Donation Voucher · St Mary MacKillop Catholic Primary School",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Audition-Forms-26Aug.html",
+      "title": "Frozen — Audition Panel Forms · 26 August 2026",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen Cast Announcement.dc.html",
+      "title": "Frozen Cast Announcement",
+      "kind": "page"
+    },
+    {
+      "path": "Frozen-Voucher-Anakie-Primary.html",
+      "title": "Frozen — Donation Voucher · Anakie Primary School",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Cast-Cards-B-Canva.html",
+      "title": "Frozen Cast Cards B — Supporting Roles",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Cast-Cards-C-Canva.html",
+      "title": "Frozen Cast Cards C — Ensemble",
+      "kind": "plain"
+    },
+    {
+      "path": "CentreStage-CPAA-2027-Calendar.html",
+      "title": "CentreStage CPAA — 2027 Student Calendar",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Opening-Night-Voucher.html",
+      "title": "Frozen — Donation Voucher · Anakie Primary School",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Voucher-Lara-Secondary.html",
+      "title": "Frozen — Donation Voucher · Lara Secondary College",
+      "kind": "plain"
+    },
+    {
+      "path": "Be Our Guest Logo.html",
+      "title": "Be Our Guest — Logo",
+      "kind": "plain"
+    },
+    {
+      "path": "Frozen-Cast-Cards-Canva.html",
+      "title": "Frozen Cast Cards — CentreStage",
+      "kind": "plain"
+    },
+    {
+      "path": "Ticket Update Post Square.dc.html",
+      "title": "Ticket Update Post Square",
+      "kind": "page"
+    },
+    {
+      "path": "Singing Lessons Sign.dc.html",
+      "title": "Singing Lessons Sign",
+      "kind": "page"
+    },
+    {
+      "path": "Frozen-Cast-Announcement-Canva.html",
+      "title": "Frozen Cast Announcement — CentreStage",
+      "kind": "plain"
+    },
+    {
+      "path": "CentreStage-Policies.html",
+      "title": "CentreStage — Policy & Safeguarding Library",
+      "kind": "plain"
+    },
+    {
+      "path": "frozencastbio/index.html",
+      "title": "CentreStage | Cast portal",
+      "kind": "page"
+    },
+    {
+      "path": "frozenvip/index.html",
+      "title": "index",
+      "kind": "page"
+    },
+    {
+      "path": "scimm-export/Scimm Agency Pitch Deck.dc.html",
+      "title": "Scimm Agency Pitch Deck",
+      "kind": "page"
+    },
+    {
+      "path": "scimm-export/Scimm Agency Website.dc.html",
+      "title": "Scimm Agency Website",
+      "kind": "page"
+    }
+  ],
+  "migratorVersion": "artifact-migrator (claude-design-backend ed667f7ac9c1)",
+  "createdAt": "2026-11-16T06:11:47.613Z",
+  "source": {
+    "v": 1,
+    "app": "claude-design",
+    "url": "https://claude.ai/design/p/f6e412ad-7bf2-51a7-ad55-ff9b8fa4c5e7",
+    "projectId": "f6e412ad-7bf2-51a7-ad55-ff9b8fa4c5e7",
+    "exportedAt": "2026-11-16T06:11:47.613Z"
+  },
+  "report": {
+    "itemsVersion": 2,
+    "pages": {
+      "total": 61,
+      "ok": 55,
+      "partial": 6,
+      "notMigrated": 0
+    },
+    "items": [
+      {
+        "kind": "external_blocked",
+        "path": "404.html",
+        "text": "https://centrestage.org.au/assets/og-image.jpg\nhttps://www.centrestageagency.org.au\nhttps://static.wixstatic.com/media/35cad6_29eb8dbd9ee34f07b1cb29cd9bc81de9~mv2_d_2048_1365_s_2.jpg/v1/fill/w_2000,h_1333,al_c,q_85,enc_avif,quality_auto/file.avif\nhttps://static.wixstatic.com/media/35cad6_dd683cd9ea004041b4a57aac77f4b5a7~mv2.jpg/v1/fill/w_1200,h_900,al_c,q_85,enc_avif,quality_auto/file.avif\nhttps://static.wixstatic.com/media/35cad6_792ff69df28f4a63b3cbaafa561b7276~mv2.jpg/v1/fill/w_1000,h_1200,al_c,q_85,enc_avif,quality_auto/file.avif\nand 5 more addresses"
+      },
+      {
+        "kind": "external_blocked",
+        "path": "CentreStage.dc.html",
+        "text": "https://centrestage.org.au/assets/og-image.jpg\nhttps://www.centrestageagency.org.au\nhttps://static.wixstatic.com/media/35cad6_29eb8dbd9ee34f07b1cb29cd9bc81de9~mv2_d_2048_1365_s_2.jpg/v1/fill/w_2000,h_1333,al_c,q_85,enc_avif,quality_auto/file.avif\nhttps://static.wixstatic.com/media/35cad6_dd683cd9ea004041b4a57aac77f4b5a7~mv2.jpg/v1/fill/w_1200,h_900,al_c,q_85,enc_avif,quality_auto/file.avif\nhttps://static.wixstatic.com/media/35cad6_792ff69df28f4a63b3cbaafa561b7276~mv2.jpg/v1/fill/w_1000,h_1200,al_c,q_85,enc_avif,quality_auto/file.avif\nand 5 more addresses"
+      },
+      {
+        "kind": "external_blocked",
+        "path": "frozenvip/index.html",
+        "text": "https://centrestage.org.au/assets/og-image.jpg\nhttps://www.centrestageagency.org.au\nhttps://static.wixstatic.com/media/35cad6_29eb8dbd9ee34f07b1cb29cd9bc81de9~mv2_d_2048_1365_s_2.jpg/v1/fill/w_2000,h_1333,al_c,q_85,enc_avif,quality_auto/file.avif\nhttps://static.wixstatic.com/media/35cad6_dd683cd9ea004041b4a57aac77f4b5a7~mv2.jpg/v1/fill/w_1200,h_900,al_c,q_85,enc_avif,quality_auto/file.avif\nhttps://static.wixstatic.com/media/35cad6_792ff69df28f4a63b3cbaafa561b7276~mv2.jpg/v1/fill/w_1000,h_1200,al_c,q_85,enc_avif,quality_auto/file.avif\nand 5 more addresses"
+      },
+      {
+        "kind": "external_blocked",
+        "path": "index.html",
+        "text": "https://centrestage.org.au/assets/og-image.jpg\nhttps://www.centrestageagency.org.au\nhttps://static.wixstatic.com/media/35cad6_29eb8dbd9ee34f07b1cb29cd9bc81de9~mv2_d_2048_1365_s_2.jpg/v1/fill/w_2000,h_1333,al_c,q_85,enc_avif,quality_auto/file.avif\nhttps://static.wixstatic.com/media/35cad6_dd683cd9ea004041b4a57aac77f4b5a7~mv2.jpg/v1/fill/w_1200,h_900,al_c,q_85,enc_avif,quality_auto/file.avif\nhttps://static.wixstatic.com/media/35cad6_792ff69df28f4a63b3cbaafa561b7276~mv2.jpg/v1/fill/w_1000,h_1200,al_c,q_85,enc_avif,quality_auto/file.avif\nand 5 more addresses"
+      },
+      {
+        "kind": "needs_capability",
+        "path": "Scimm Agency Pitch Deck.dc.html",
+        "text": "has speaker notes (8 slides): kept, but not shown while presenting in Claude",
+        "capability": "presenter_view"
+      },
+      {
+        "kind": "needs_capability",
+        "path": "scimm-export/Scimm Agency Pitch Deck.dc.html",
+        "text": "has speaker notes (8 slides): kept, but not shown while presenting in Claude",
+        "capability": "presenter_view"
+      },
+      {
+        "kind": "needs_capability",
+        "path": "animations-v3.jsx",
+        "text": "an animation stage — plays, but video export is not available in a canvas (via “Hadestown Teen Edition Foyer Loop.dc.html”, “Matilda JR Foyer Loop.dc.html”)",
+        "capability": "video_export"
+      },
+      {
+        "kind": "needs_capability",
+        "path": "hadestown-foyer.jsx",
+        "text": "an animation stage — plays, but video export is not available in a canvas (via “Hadestown Teen Edition Foyer Loop.dc.html”)",
+        "capability": "video_export"
+      },
+      {
+        "kind": "needs_capability",
+        "path": "matilda-foyer.jsx",
+        "text": "an animation stage — plays, but video export is not available in a canvas (via “Matilda JR Foyer Loop.dc.html”)",
+        "capability": "video_export"
+      },
+      {
+        "kind": "external_blocked",
+        "path": "content.js",
+        "text": "https://geelongartscentre.org.au/whats-on/all-events/frozen-centrestage\nhttps://www.trybooking.com/DMGCJ\nhttps://geelongartscentre.org.au/whats-on/all-events/broadway-rocks-centrestage\nhttps://www.centrestageagency.org.au\nhttps://timesnewsgroup.com.au/geelongtimes/living/relaxed-performances-challenge-traditional-theatre-expectations/\nand 20 more addresses"
+      }
+    ],
+    "truncated": 0,
+    "truncatedLeftOut": 0
+  }
+}

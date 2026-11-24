@@ -111,6 +111,29 @@
   @media (max-width: 500px) {
     .cs-btn { width: 100%; }
   }
+  .cs-sr { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+  .cs-shop-grid { display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:24px; }
+  .cs-shop-card { transition:box-shadow .3s cubic-bezier(.2,.6,.2,1); }
+  .cs-shop-card:hover { box-shadow:0 24px 48px -28px rgba(10,10,10,.35); }
+  .cs-pill { display:inline-flex; align-items:center; justify-content:center; min-width:56px; height:44px; padding:0 14px; border:1px solid #D9D5CC; background:#FFFFFF; color:#0A0A0A; font-family:Arial, sans-serif; font-size:13px; font-weight:700; letter-spacing:.04em; cursor:pointer; transition:background .2s, color .2s, border-color .2s; }
+  .cs-pill:hover:not(:disabled) { border-color:#0A0A0A; }
+  .cs-btn:disabled { background:#ECE7DB; color:#6B6B68; border-color:#D9D5CC; cursor:not-allowed; }
+  .cs-pill:focus-visible, .cs-qty:focus-visible, .cs-btn:focus-visible { outline:3px solid #2E6FB7; outline-offset:2px; }
+  .cs-swatch { display:inline-block; flex:none; width:14px; height:14px; border-radius:50%; border:1px solid rgba(10,10,10,.35); margin-right:8px; }
+  .cs-qty { width:44px; height:44px; border:0; background:transparent; color:#0A0A0A; font-size:20px; cursor:pointer; }
+  .cs-qty:hover { background:#ECE7DB; }
+  .cs-head-cart { display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px; border:1px solid #0A0A0A; background:#F2D65A; color:#0A0A0A; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; white-space:nowrap; }
+  @media (max-width: 1080px) {
+    .cs-shop-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); gap:14px; }
+    .cs-dialog { grid-template-columns:1fr !important; }
+    .cs-overlay { padding:0 !important; }
+    .cs-dialog { max-height:100vh !important; height:100%; }
+    .cs-dialog #cs-dialog-close { position:fixed !important; top:12px !important; right:12px !important; }
+    .cs-head-right { position:absolute; right:74px; top:12px; }
+  }
+  @media (max-width: 500px) {
+    .cs-shop-card .cs-btn { height:44px; padding:0 10px; font-size:12px; }
+  }
 </style>
 </helmet>
 <div style="min-height:100vh; display:flex; flex-direction:column;">
@@ -129,10 +152,16 @@
         <a class="cs-nav-a" href="/education" style="{{ navEducation }}">Education</a>
         <a class="cs-nav-a" href="/health" style="{{ navHealth }}">Health</a>
         <a class="cs-nav-a" href="/blog" style="{{ navBlog }}">Journal</a>
+        <a class="cs-nav-a" href="/shop" style="{{ navShop }}">Shop</a>
         <a class="cs-nav-a" href="https://www.centrestageagency.org.au/podcast" target="_blank" rel="noopener">Podcast ↗</a>
         <a class="cs-nav-a" href="https://www.centrestageagency.org.au" target="_blank" rel="noopener">Agency ↗</a>
       </nav>
-      <a class="cs-btn cs-btn--sec" href="/contact" style="height:40px; padding:0 18px;">Contact</a>
+      <div class="cs-head-right" style="display:flex; gap:10px; align-items:center;">
+        <sc-if value="{{ cartBadge }}">
+          <button type="button" class="cs-head-cart" onClick="{{ openCart }}" aria-label="{{ cartAria }}">Cart <span style="font-family:'JetBrains Mono',monospace;">{{ cartCount }}</span></button>
+        </sc-if>
+        <a class="cs-btn cs-btn--sec" href="/contact" style="height:40px; padding:0 18px;">Contact</a>
+      </div>
     </div>
   </header>
   </sc-if>
@@ -1106,6 +1135,254 @@
   </div>
   </sc-if>
 
+  <!-- ══════════════ SHOP ══════════════ -->
+  <sc-if value="{{ isShop }}">
+  <div class="cs-fade">
+    <section style="max-width:1600px; margin:0 auto; padding:64px 48px 0;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;">
+        <span style="font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">Shop</span>
+        <div style="flex:1; height:1px; background:#D9D5CC;"></div>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68;">Every purchase supports our programs</span>
+      </div>
+      <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:clamp(64px,10vw,144px); letter-spacing:-.03em; line-height:.9; margin:0;">Shop.</h1>
+      <p style="font-size:19px; line-height:1.55; max-width:56ch; margin:32px 0 0; color:#3A3A37;">CentreStage shirts, hoodies, bags and dancewear, plus Name a Seat plaques. Pick your size, check out securely, then collect from us or have it posted.</p>
+    </section>
+
+    <sc-if value="{{ shopThanks }}">
+      <section style="max-width:1600px; margin:40px auto 0; padding:0 48px;">
+        <div role="status" style="background:#0A0A0A; color:#F4F1EA; padding:32px 36px; display:flex; gap:24px; align-items:center; justify-content:space-between;">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#F2D65A;">Order received</div>
+            <p style="font-size:18px; line-height:1.5; margin:10px 0 0; max-width:60ch;">Thank you for supporting CentreStage. Your receipt is on its way to your inbox, and we'll be in touch when your order is ready.</p>
+          </div>
+          <button type="button" class="cs-btn cs-btn--inv" onClick="{{ shopThanksClose }}">Close</button>
+        </div>
+      </section>
+    </sc-if>
+    <sc-if value="{{ shopCancelled }}">
+      <section style="max-width:1600px; margin:40px auto 0; padding:0 48px;">
+        <div role="status" style="border:1px solid #0A0A0A; padding:20px 24px; display:flex; gap:24px; align-items:center; justify-content:space-between;">
+          <p style="font-size:16px; margin:0;">Checkout was cancelled and you haven't been charged. Your cart is still here.</p>
+          <button type="button" class="cs-btn cs-btn--sec" style="height:40px;" onClick="{{ openCart }}">View cart</button>
+        </div>
+      </section>
+    </sc-if>
+
+    <section style="max-width:1600px; margin:0 auto; padding:48px 48px 0;">
+      <div role="group" aria-label="Filter by category" style="display:flex; flex-wrap:wrap; gap:10px;">
+        <sc-for list="{{ shopCats }}" as="c" hint-placeholder-count="5">
+          <button type="button" class="cs-pill" aria-pressed="{{ c.pressed }}" style="{{ c.style }}" onClick="{{ c.pick }}">{{ c.label }}</button>
+        </sc-for>
+      </div>
+    </section>
+
+    <sc-if value="{{ shopLoading }}">
+      <section style="max-width:1600px; margin:0 auto; padding:48px 48px 96px;"><p style="font-family:'JetBrains Mono',monospace; font-size:14px; color:#6B6B68; margin:0;">Loading the shop</p></section>
+    </sc-if>
+
+    <section style="max-width:1600px; margin:0 auto; padding:32px 48px 64px;">
+      <div class="cs-shop-grid">
+        <sc-for list="{{ shopItems }}" as="p" hint-placeholder-count="8">
+          <article class="cs-shop-card" style="background:#FFFFFF; border:1px solid #D9D5CC; display:flex; flex-direction:column;">
+            <div class="cs-imgz" style="position:relative; aspect-ratio:1/1; background:#ECE7DB;">
+              <sc-if value="{{ p.hasImg }}">
+                <img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%; height:100%; object-fit:cover;">
+              </sc-if>
+              <sc-if value="{{ p.noImg }}">
+                <div aria-hidden="true" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-family:'Arial Black',Arial,sans-serif; font-size:96px; color:#D9D5CC;">/</div>
+              </sc-if>
+              <sc-if value="{{ p.hasTag }}">
+                <span style="position:absolute; top:14px; left:14px; background:{{ p.tagBg }}; color:#FFFFFF; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:6px 10px;">{{ p.tag }}</span>
+              </sc-if>
+            </div>
+            <div style="padding:22px 22px 24px; display:flex; flex-direction:column; gap:8px; flex:1;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">{{ p.cat }}</div>
+              <h2 style="font-size:19px; line-height:1.25; font-weight:700; margin:0;">{{ p.name }}</h2>
+              <div style="display:flex; gap:10px; align-items:baseline; margin-top:2px;">
+                <span style="font-family:'JetBrains Mono',monospace; font-size:17px; font-weight:600;">{{ p.priceLabel }}</span>
+                <sc-if value="{{ p.hasWas }}"><s style="font-family:'JetBrains Mono',monospace; font-size:14px; color:#6B6B68;"><span class="cs-sr">Was </span>{{ p.wasLabel }}</s></sc-if>
+              </div>
+              <sc-if value="{{ p.hasSwatches }}">
+                <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;" role="img" aria-label="{{ p.swatchAria }}">
+                  <sc-for list="{{ p.swatches }}" as="w" hint-placeholder-count="4"><span class="cs-swatch" title="{{ w.label }}" style="margin:0; background:{{ w.c }};"></span></sc-for>
+                </div>
+              </sc-if>
+              <div style="flex:1;"></div>
+              <button type="button" class="cs-btn" style="margin-top:14px; width:100%;" onClick="{{ p.open }}" disabled="{{ p.out }}" aria-label="{{ p.ctaAria }}">{{ p.cta }}</button>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="max-width:1600px; margin:0 auto; padding:0 48px 96px;">
+      <div style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:1px; background:#D9D5CC; border:1px solid #D9D5CC;">
+        <div style="background:#F4F1EA; padding:30px 26px 34px;"><div style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; color:#6B6B68;">01</div><h3 style="font-size:19px; font-weight:700; margin:10px 0 8px;">Collect or post</h3><p style="font-size:15px; line-height:1.55; margin:0; color:#3A3A37;">Collect from CentreStage for free, or have it posted anywhere in Australia for a flat {{ postageLabel }}.</p></div>
+        <div style="background:#F4F1EA; padding:30px 26px 34px;"><div style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; color:#6B6B68;">02</div><h3 style="font-size:19px; font-weight:700; margin:10px 0 8px;">Secure checkout</h3><p style="font-size:15px; line-height:1.55; margin:0; color:#3A3A37;">Payments are processed by Stripe. We accept cards, Apple Pay and Google Pay, and we never see your card details.</p></div>
+        <div style="background:#F4F1EA; padding:30px 26px 34px;"><div style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; color:#6B6B68;">03</div><h3 style="font-size:19px; font-weight:700; margin:10px 0 8px;">Sizing and exchanges</h3><p style="font-size:15px; line-height:1.55; margin:0; color:#3A3A37;">Not sure of a size, or need to swap one? Email <a class="cs-link-u" href="mailto:david@centrestage.org.au" style="font-weight:700;">david@centrestage.org.au</a> and we'll help.</p></div>
+      </div>
+    </section>
+
+    <sc-if value="{{ cartBar }}">
+      <div style="position:sticky; bottom:0; z-index:40; background:#0A0A0A; color:#F4F1EA; border-top:1px solid #1F1F1D;">
+        <div style="max-width:1600px; margin:0 auto; padding:14px 48px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:14px;">{{ cartCountLabel }} · {{ cartSubtotal }}</span>
+          <button type="button" class="cs-btn cs-btn--inv" style="height:44px;" onClick="{{ openCart }}">View cart</button>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <!-- Product options dialog -->
+  <sc-if value="{{ shopModal }}">
+    <div class="cs-overlay" style="position:fixed; inset:0; z-index:200; background:rgba(10,10,10,.55); display:flex; align-items:center; justify-content:center; padding:24px;">
+      <div role="dialog" aria-modal="true" aria-labelledby="cs-prod-title" class="cs-dialog" style="background:#F4F1EA; width:min(980px,100%); max-height:calc(100vh - 48px); overflow:auto; display:grid; grid-template-columns:1fr 1fr; position:relative;">
+        <button type="button" id="cs-dialog-close" aria-label="Close" onClick="{{ shopClose }}" style="position:absolute; top:12px; right:12px; z-index:2; width:44px; height:44px; border:1px solid #0A0A0A; background:#F4F1EA; color:#0A0A0A; font-size:20px; cursor:pointer;">✕</button>
+        <div style="background:#ECE7DB; min-height:320px;">
+          <sc-if value="{{ shopP.hasImg }}"><img src="{{ shopP.img }}" alt="{{ shopP.name }}" style="width:100%; height:100%; object-fit:cover;"></sc-if>
+          <sc-if value="{{ shopP.noImg }}"><div aria-hidden="true" style="width:100%; height:100%; min-height:320px; display:flex; align-items:center; justify-content:center; font-family:'Arial Black',Arial,sans-serif; font-size:140px; color:#D9D5CC;">/</div></sc-if>
+        </div>
+        <div style="padding:40px 36px 36px; display:flex; flex-direction:column; gap:20px;">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68;">{{ shopP.cat }}</div>
+            <h2 id="cs-prod-title" style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:34px; letter-spacing:-.02em; line-height:1; margin:10px 0 12px; padding-right:40px;">{{ shopP.name }}</h2>
+            <div style="display:flex; gap:10px; align-items:baseline;">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:20px; font-weight:600;">{{ shopP.priceLabel }}</span>
+              <sc-if value="{{ shopP.hasWas }}"><s style="font-family:'JetBrains Mono',monospace; font-size:15px; color:#6B6B68;"><span class="cs-sr">Was </span>{{ shopP.wasLabel }}</s></sc-if>
+            </div>
+            <p style="font-size:16px; line-height:1.55; color:#3A3A37; margin:14px 0 0;">{{ shopP.blurb }}</p>
+          </div>
+
+          <sc-if value="{{ shopP.hasSizes }}">
+            <fieldset style="border:0; margin:0; padding:0;">
+              <legend style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68; margin-bottom:10px; padding:0;">Size</legend>
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <sc-for list="{{ shopP.sizes }}" as="s" hint-placeholder-count="6">
+                  <button type="button" class="cs-pill" aria-pressed="{{ s.pressed }}" aria-label="{{ s.aria }}" disabled="{{ s.disabled }}" style="{{ s.style }}" onClick="{{ s.pick }}">{{ s.label }}</button>
+                </sc-for>
+              </div>
+            </fieldset>
+          </sc-if>
+
+          <sc-if value="{{ shopP.hasOpts }}">
+            <fieldset style="border:0; margin:0; padding:0;">
+              <legend style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68; margin-bottom:10px; padding:0;">{{ shopP.optLabel }}</legend>
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <sc-for list="{{ shopP.opts }}" as="o" hint-placeholder-count="2">
+                  <button type="button" class="cs-pill" aria-pressed="{{ o.pressed }}" aria-label="{{ o.aria }}" disabled="{{ o.disabled }}" style="{{ o.style }}" onClick="{{ o.pick }}"><sc-if value="{{ o.hasSwatch }}"><span aria-hidden="true" class="cs-swatch" style="background:{{ o.swatch }};"></span></sc-if>{{ o.label }}</button>
+                </sc-for>
+              </div>
+            </fieldset>
+          </sc-if>
+
+          <sc-if value="{{ shopP.hasText }}">
+            <div>
+              <label for="cs-prod-text" style="display:block; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68; margin-bottom:8px;">{{ shopP.textLabel }}</label>
+              <input id="cs-prod-text" class="cs-input" value="{{ shopP.textVal }}" onChange="{{ shopP.onText }}" maxLength="{{ shopP.textMax }}" placeholder="{{ shopP.textPh }}" style="width:100%; height:48px; padding:0 12px; background:#FFFFFF; border:1px solid #0A0A0A; font-family:Arial; font-size:16px;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B68; margin-top:6px;">{{ shopP.textCount }}</div>
+            </div>
+          </sc-if>
+
+          <div>
+            <div style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68; margin-bottom:8px;" id="cs-qty-label">Quantity</div>
+            <div role="group" aria-labelledby="cs-qty-label" style="display:inline-flex; align-items:center; border:1px solid #0A0A0A; background:#FFFFFF;">
+              <button type="button" class="cs-qty" aria-label="Decrease quantity" onClick="{{ shopP.dec }}">−</button>
+              <span aria-live="polite" style="min-width:44px; text-align:center; font-family:'JetBrains Mono',monospace; font-size:16px;">{{ shopP.qty }}</span>
+              <button type="button" class="cs-qty" aria-label="Increase quantity" onClick="{{ shopP.inc }}">+</button>
+            </div>
+          </div>
+
+          <sc-if value="{{ shopP.collectOnly }}">
+            <p style="font-size:14px; line-height:1.5; color:#3A3A37; margin:0; padding:12px 14px; background:#ECE7DB;">This item isn't posted. There's no delivery charge.</p>
+          </sc-if>
+
+          <sc-if value="{{ shopP.hasErr }}"><p role="alert" style="font-size:14px; font-weight:700; color:#B8321A; margin:0;">{{ shopP.err }}</p></sc-if>
+
+          <sc-if value="{{ shopP.inStock }}"><button type="button" class="cs-btn" style="width:100%;" onClick="{{ shopP.add }}">{{ shopP.addLabel }}</button></sc-if>
+          <sc-if value="{{ shopP.soldOut }}"><p style="font-size:15px; font-weight:700; margin:0; padding:14px; background:#ECE7DB;">Sold out. Email <a class="cs-link-u" href="mailto:david@centrestage.org.au">david@centrestage.org.au</a> to ask about restocks.</p></sc-if>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- Cart drawer -->
+  <sc-if value="{{ cartOpen }}">
+    <div class="cs-overlay" style="position:fixed; inset:0; z-index:200; background:rgba(10,10,10,.55); display:flex; justify-content:flex-end;">
+      <div role="dialog" aria-modal="true" aria-labelledby="cs-cart-title" style="background:#F4F1EA; width:min(480px,100%); height:100%; overflow:auto; display:flex; flex-direction:column;">
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:22px 24px; border-bottom:1px solid #D9D5CC;">
+          <h2 id="cs-cart-title" style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:28px; letter-spacing:-.02em; margin:0;">Your cart</h2>
+          <button type="button" id="cs-dialog-close" aria-label="Close cart" onClick="{{ closeCart }}" style="width:44px; height:44px; border:1px solid #0A0A0A; background:transparent; color:#0A0A0A; font-size:20px; cursor:pointer;">✕</button>
+        </div>
+
+        <sc-if value="{{ cartEmpty }}">
+          <div style="padding:40px 24px; display:flex; flex-direction:column; gap:20px; align-items:flex-start;">
+            <p style="font-size:17px; margin:0; color:#3A3A37;">Your cart is empty.</p>
+            <a class="cs-btn" href="/shop" onClick="{{ closeCart }}">Browse the shop</a>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ cartHas }}">
+          <ul style="list-style:none; margin:0; padding:0 24px;">
+            <sc-for list="{{ cartLines }}" as="l" hint-placeholder-count="2">
+              <li style="padding:20px 0; border-bottom:1px solid #D9D5CC; display:flex; flex-direction:column; gap:10px;">
+                <div style="display:flex; justify-content:space-between; gap:16px; align-items:flex-start;">
+                  <div>
+                    <div style="font-size:16px; font-weight:700; line-height:1.3;">{{ l.name }}</div>
+                    <sc-if value="{{ l.hasVariant }}"><div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B68; margin-top:4px; white-space:pre-line;">{{ l.variant }}</div></sc-if>
+                  </div>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:15px; font-weight:600; white-space:nowrap;">{{ l.totalLabel }}</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <div role="group" aria-label="{{ l.qtyAria }}" style="display:inline-flex; align-items:center; border:1px solid #0A0A0A; background:#FFFFFF;">
+                    <button type="button" class="cs-qty" aria-label="Decrease quantity" onClick="{{ l.dec }}">−</button>
+                    <span style="min-width:40px; text-align:center; font-family:'JetBrains Mono',monospace; font-size:15px;">{{ l.qty }}</span>
+                    <button type="button" class="cs-qty" aria-label="Increase quantity" onClick="{{ l.inc }}">+</button>
+                  </div>
+                  <button type="button" onClick="{{ l.remove }}" aria-label="{{ l.removeAria }}" style="background:none; border:0; padding:8px 0; font-size:13px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; text-decoration:underline; text-underline-offset:3px; color:#0A0A0A; cursor:pointer;">Remove</button>
+                </div>
+              </li>
+            </sc-for>
+          </ul>
+
+          <div style="padding:24px; display:flex; flex-direction:column; gap:18px;">
+            <sc-if value="{{ needsDelivery }}">
+              <fieldset style="border:0; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;">
+                <legend style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6B6B68; margin-bottom:10px; padding:0;">Delivery</legend>
+                <label style="display:flex; gap:12px; align-items:flex-start; padding:14px; border:1px solid {{ delPickupBorder }}; background:#FFFFFF; cursor:pointer;">
+                  <input type="radio" name="cs-delivery" checked="{{ delPickup }}" onChange="{{ setPickup }}" style="margin-top:3px; width:18px; height:18px; accent-color:#0A0A0A;">
+                  <span><span style="display:block; font-weight:700; font-size:15px;">{{ pickupLabel }} · Free</span><span style="display:block; font-size:14px; color:#3A3A37; margin-top:4px; line-height:1.45;">{{ pickupNote }}</span></span>
+                </label>
+                <label style="display:flex; gap:12px; align-items:flex-start; padding:14px; border:1px solid {{ delPostBorder }}; background:#FFFFFF; cursor:pointer;">
+                  <input type="radio" name="cs-delivery" checked="{{ delPost }}" onChange="{{ setPost }}" style="margin-top:3px; width:18px; height:18px; accent-color:#0A0A0A;">
+                  <span><span style="display:block; font-weight:700; font-size:15px;">Postage · {{ postageLabel }}</span><span style="display:block; font-size:14px; color:#3A3A37; margin-top:4px; line-height:1.45;">{{ postageNote }}</span></span>
+                </label>
+              </fieldset>
+            </sc-if>
+
+            <dl style="margin:0; display:flex; flex-direction:column; gap:8px; font-size:15px;">
+              <div style="display:flex; justify-content:space-between;"><dt>Subtotal</dt><dd style="margin:0; font-family:'JetBrains Mono',monospace;">{{ cartSubtotal }}</dd></div>
+              <div style="display:flex; justify-content:space-between;"><dt>Delivery</dt><dd style="margin:0; font-family:'JetBrains Mono',monospace;">{{ deliveryLabel }}</dd></div>
+              <div style="display:flex; justify-content:space-between; font-weight:700; font-size:18px; border-top:1px solid #0A0A0A; padding-top:12px; margin-top:4px;"><dt>Total</dt><dd style="margin:0; font-family:'JetBrains Mono',monospace;">{{ cartTotal }}</dd></div>
+            </dl>
+
+            <sc-if value="{{ hasShopErr }}"><p role="alert" style="font-size:14px; font-weight:700; color:#B8321A; margin:0;">{{ shopErr }}</p></sc-if>
+
+            <sc-if value="{{ shopLive }}">
+              <button type="button" class="cs-btn" style="width:100%; height:56px;" onClick="{{ checkout }}" disabled="{{ checkoutBusy }}">{{ checkoutLabel }}</button>
+              <p style="font-size:13px; line-height:1.5; color:#6B6B68; margin:0;">You'll be taken to Stripe's secure checkout to pay by card, Apple Pay or Google Pay. Your receipt is emailed to you.</p>
+            </sc-if>
+            <sc-if value="{{ shopNotLive }}">
+              <p style="font-size:15px; line-height:1.5; margin:0; padding:14px; background:#ECE7DB;">Online payments are opening soon. In the meantime, send us your order and we'll arrange payment and collection.</p>
+              <a class="cs-btn" href="{{ mailOrder }}" style="width:100%; height:56px;">Email my order</a>
+            </sc-if>
+            <button type="button" class="cs-btn cs-btn--sec" style="width:100%;" onClick="{{ closeCart }}">Keep shopping</button>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
   <!-- ══════════════ CONTACT ══════════════ -->
   <sc-if value="{{ isContact }}">
   <div class="cs-fade">
@@ -1960,10 +2237,10 @@
             <a class="cs-link-u" href="/productions" style="color:#F4F1EA;">Previous Productions</a>
             <a class="cs-link-u" href="/blog" style="color:#F4F1EA;">Journal</a>
             <a class="cs-link-u" href="/media" style="color:#F4F1EA;">Media &amp; Press</a>
+            <a class="cs-link-u" href="/shop" style="color:#F4F1EA;">Shop</a>
             <a class="cs-link-u" href="/wwcc" style="color:#F4F1EA;">Volunteer WWCC</a>
             <a class="cs-link-u" href="/comp" style="color:#F4F1EA;">Colouring competition</a>
             <a class="cs-link-u" href="/frozenvip" style="color:#F4F1EA;">VIP invitations</a>
-            <a class="cs-link-u" href="/frozencastbio/" style="color:#F4F1EA;">Frozen cast bios</a>
           </div>
         </div>
         <div>
@@ -2256,6 +2533,180 @@ class Component extends DCLogic {
     };
   }
 
+  // ── Shop ────────────────────────────────────────────────────
+  // endpoint: paste the deployed Google Apps Script web app URL (shop-stripe-checkout.gs) here.
+  // While it is empty, the cart offers "Email my order" instead of card checkout.
+  SHOP = {
+    endpoint: "https://script.google.com/macros/s/AKfycbye99rLX6ZttvzMgV0tRxydmUN6HybqZ8O9GMYqXDi21YvQ6sfwxrTjM8yjR6zQquUr/exec",
+    email: "david@centrestage.org.au",
+  };
+  _money(c) { return "$" + (Math.round(c) / 100).toFixed(2); }
+  _shopS(st) { return Object.assign({ cat: "All", open: null, sel: {}, err: "", cartOpen: false, delivery: "pickup", busy: false, cErr: "", thanks: false, cancelled: false }, (st || this.state).shop || {}); }
+  _ss(patch) { this.setState((st) => ({ shop: Object.assign({}, this._shopS(st), patch) })); }
+  _cart() { return this.state.cart || []; }
+  _setCart(cart) {
+    this.setState({ cart });
+    try { localStorage.setItem("cs_cart", JSON.stringify(cart)); } catch (e) {}
+  }
+  _catalogue() { const c = this.state.shopData; return c && Array.isArray(c.products) ? c : null; }
+  _prod(id) { const c = this._catalogue(); return c ? c.products.filter((p) => p.id === id && p.active !== false)[0] : null; }
+  // Stock: p.stock maps "Size", "Colour", "Size|Colour" or "default" to units on hand. No stock object = unlimited.
+  _stk(p, size, opt) {
+    if (!p || !p.stock) return 999;
+    const hasS = !!(p.sizes && p.sizes.length), hasO = !!(p.options && p.options.values);
+    const sizes = hasS ? (size ? [size] : p.sizes) : [""], opts = hasO ? (opt ? [opt] : p.options.values) : [""];
+    let n = 0;
+    sizes.forEach((a) => opts.forEach((b) => { n += Math.max(0, parseInt(p.stock[[a, b].filter(Boolean).join("|") || "default"], 10) || 0); }));
+    return n;
+  }
+  _inCart(id, size, opt, skipKey) { return this._cart().filter((l) => l.id === id && l.size === (size || "") && l.opt === (opt || "") && l.key !== skipKey).reduce((n, l) => n + l.qty, 0); }
+  _shopFocus() { setTimeout(() => { const b = document.getElementById("cs-dialog-close"); if (b) b.focus(); }, 40); }
+  _shopOpen(id) { this._ss({ open: id, sel: { qty: 1, size: "", opt: "", text: "" }, err: "", cartOpen: false }); this._shopFocus(); }
+  _shopAdd() {
+    const s = this._shopS(), p = this._prod(s.open), sel = s.sel || {};
+    if (!p) return;
+    if (p.sizes && p.sizes.length && !sel.size) { this._ss({ err: "Please choose a size." }); return; }
+    if (p.options && p.options.values && !sel.opt) { this._ss({ err: "Please choose a " + String(p.options.label || "option").toLowerCase() + "." }); return; }
+    const text = String(sel.text || "").trim();
+    if (p.text && p.text.required && !text) { this._ss({ err: "Please enter the " + String(p.text.label || "details").toLowerCase() + "." }); return; }
+    const key = [p.id, sel.size || "", sel.opt || "", text].join("|");
+    const cart = this._cart().slice(), qty = Math.max(1, Math.min(20, sel.qty || 1));
+    const left = this._stk(p, sel.size, sel.opt) - this._inCart(p.id, sel.size, sel.opt);
+    if (left <= 0) { this._ss({ err: "Sorry, that's sold out" + (this._inCart(p.id, sel.size, sel.opt) ? " (the last ones are already in your cart)." : ".") }); return; }
+    if (qty > left) { this._ss({ err: "Sorry, we only have " + left + " more of those in stock." }); return; }
+    const i = cart.findIndex((l) => l.key === key);
+    if (i >= 0) cart[i] = Object.assign({}, cart[i], { qty: Math.min(20, cart[i].qty + qty) });
+    else cart.push({ key, id: p.id, size: sel.size || "", opt: sel.opt || "", text, qty });
+    this._setCart(cart);
+    this._ss({ open: null, err: "", cartOpen: true, cErr: "" });
+    this._shopFocus();
+  }
+  _cartQty(key, d) {
+    const cart = this._cart().map((l) => {
+      if (l.key !== key) return l;
+      const p = this._prod(l.id), cap = Math.min(20, this._stk(p, l.size, l.opt) - this._inCart(l.id, l.size, l.opt, l.key));
+      return Object.assign({}, l, { qty: Math.max(0, Math.min(cap, l.qty + d)) });
+    }).filter((l) => l.qty > 0);
+    this._setCart(cart);
+  }
+  _cartLines() {
+    return this._cart().map((l) => ({ l, p: this._prod(l.id) })).filter((x) => x.p);
+  }
+  _shopCheckout() {
+    const s = this._shopS(), lines = this._cartLines();
+    if (!lines.length || s.busy) return;
+    const post = lines.some((x) => x.p.post !== false) && s.delivery === "post";
+    this._ss({ busy: true, cErr: "" });
+    const fail = (m) => this._ss({ busy: false, cErr: m || "We couldn't start the checkout. Please try again, or email " + this.SHOP.email + "." });
+    fetch(this.SHOP.endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ action: "checkout", delivery: post ? "post" : "pickup", returnTo: location.origin, items: lines.map((x) => ({ id: x.l.id, size: x.l.size, opt: x.l.opt, text: x.l.text, qty: x.l.qty })) }),
+    })
+      .then((r) => r.json())
+      .then((r) => { if (r && r.ok && r.url) { window.location.href = r.url; } else { fail(r && r.error); } })
+      .catch(() => fail("We couldn't reach the payment service. Please check your connection and try again."));
+  }
+  _shopReturn() {
+    let q; try { q = new URLSearchParams(location.search).get("order"); } catch (e) { q = null; }
+    if (!q) return;
+    try { history.replaceState(null, "", location.pathname); } catch (e) {}
+    if (q === "success") { this._setCart([]); this._ss({ thanks: true, cancelled: false, cartOpen: false }); }
+    else if (q === "cancelled") { this._ss({ cancelled: true, thanks: false }); }
+  }
+  _shopVals(r) {
+    const s = this._shopS(), c = this._catalogue(), m = (x) => this._money(x);
+    const imgBad = this.state.shopImgBad || {};
+    const badImg = (u) => () => { if (u && !(this.state.shopImgBad || {})[u]) this.setState((st) => ({ shopImgBad: Object.assign({}, st.shopImgBad, { [u]: true }) })); };
+    const on = "background:#0A0A0A; color:#F4F1EA; border-color:#0A0A0A;";
+    const cats = ["All"].concat((c && c.categories) || []);
+    const prods = c ? c.products.filter((p) => p.active !== false) : [];
+    const items = prods.filter((p) => s.cat === "All" || p.cat === s.cat).map((p) => {
+      const needsChoice = !!((p.sizes && p.sizes.length) || p.options || p.text);
+      const out = this._stk(p) <= 0;
+      const sws = (p.options && p.options.swatches) ? p.options.values.filter((v) => p.options.swatches[v] && this._stk(p, "", v) > 0).map((v) => ({ label: v, c: p.options.swatches[v] })) : [];
+      return {
+        swatches: sws, hasSwatches: sws.length > 0, swatchAria: sws.length + " colours in stock: " + sws.map((w) => w.label).join(", "),
+        id: p.id, name: p.name, cat: p.cat, img: p.img || "", hasImg: !!p.img && !imgBad[p.img], noImg: !p.img || !!imgBad[p.img], imgErr: badImg(p.img),
+        priceLabel: m(p.price), hasWas: !!p.was, wasLabel: p.was ? m(p.was) : "",
+        hasTag: out || !!p.tag, tag: out ? "Sold out" : (p.tag || ""), tagBg: out ? "#6B6B68" : /sale/i.test(p.tag || "") ? "#B8321A" : "#0A0A0A",
+        out, cta: out ? "Sold out" : needsChoice ? "Choose options" : "Add to cart", ctaAria: (out ? "Sold out: " : needsChoice ? "Choose options for " : "Add to cart: ") + p.name,
+        open: () => this._shopOpen(p.id),
+      };
+    });
+    const lines = this._cartLines();
+    const count = lines.reduce((n, x) => n + x.l.qty, 0);
+    const sub = lines.reduce((n, x) => n + x.l.qty * x.p.price, 0);
+    const postable = lines.some((x) => x.p.post !== false);
+    const postage = (c && c.postage && c.postage.amount) || 0;
+    const isPost = postable && s.delivery === "post";
+    const enc = encodeURIComponent;
+    const mailBody = "Hi CentreStage,\n\nI'd like to order:\n\n" + lines.map((x) => "- " + x.l.qty + " x " + x.p.name + [x.l.size, x.l.opt].filter(Boolean).map((v) => " (" + v + ")").join("") + (x.l.text ? ", " + ((x.p.text && x.p.text.label) || "Note") + ": \"" + x.l.text + "\"" : "") + " = " + m(x.l.qty * x.p.price)).join("\n") +
+      "\n\nDelivery: " + (isPost ? "Postage (" + m(postage) + "). My address is:" : "Collect from CentreStage") + "\nTotal: " + m(sub + (isPost ? postage : 0)) + "\n\nMy name:\nMy phone:\n";
+    let P = {};
+    const p = s.open ? this._prod(s.open) : null;
+    if (p) {
+      const sel = s.sel || {}, t = p.text || null;
+      const off = "background:#ECE7DB; color:#8A8780; border-color:#ECE7DB; text-decoration:line-through; cursor:not-allowed;";
+      const pills = (vals, cur, k) => vals.map((v) => {
+        const n = k === "size" ? this._stk(p, v, sel.opt) : this._stk(p, sel.size, v), dis = n <= 0;
+        const sw = (k === "opt" && p.options && p.options.swatches && p.options.swatches[v]) || "";
+        return { label: v, swatch: sw, hasSwatch: !!sw, aria: v + (dis ? ", sold out" : ""), disabled: dis, pressed: String(cur === v), style: cur === v ? on : dis ? off : "", pick: () => { if (!dis) this._ss({ sel: Object.assign({}, this._shopS().sel, { [k]: v }), err: "" }); } };
+      });
+      P = {
+        name: p.name, cat: p.cat, blurb: p.blurb || "", img: p.img || "", hasImg: !!p.img && !imgBad[p.img], noImg: !p.img || !!imgBad[p.img], imgErr: badImg(p.img),
+        priceLabel: m(p.price), hasWas: !!p.was, wasLabel: p.was ? m(p.was) : "",
+        hasSizes: !!(p.sizes && p.sizes.length), sizes: pills(p.sizes || [], sel.size, "size"),
+        hasOpts: !!(p.options && p.options.values), optLabel: (p.options && p.options.label) || "Option", opts: pills((p.options && p.options.values) || [], sel.opt, "opt"),
+        hasText: !!t, textLabel: t ? t.label + (t.required ? "" : " (optional)") : "", textPh: (t && t.placeholder) || "", textMax: (t && t.max) || 100,
+        textVal: sel.text || "", textCount: t ? String((sel.text || "").length) + " / " + (t.max || 100) + " characters" : "",
+        onText: (e) => this._ss({ sel: Object.assign({}, this._shopS().sel, { text: e.target.value }), err: "" }),
+        qty: sel.qty || 1,
+        inc: () => this._ss({ sel: Object.assign({}, this._shopS().sel, { qty: Math.min(20, (this._shopS().sel.qty || 1) + 1) }) }),
+        dec: () => this._ss({ sel: Object.assign({}, this._shopS().sel, { qty: Math.max(1, (this._shopS().sel.qty || 1) - 1) }) }),
+        collectOnly: p.post === false, err: s.err, hasErr: !!s.err,
+        soldOut: this._stk(p) <= 0, inStock: this._stk(p) > 0,
+        addLabel: "Add to cart · " + m(p.price * (sel.qty || 1)),
+        add: () => this._shopAdd(),
+      };
+    }
+    return {
+      isShop: r === "shop", navShop: this.navStyle("shop"),
+      shopLoading: r === "shop" && !c,
+      shopCats: cats.map((k) => ({ label: k, pressed: String(s.cat === k), style: s.cat === k ? on : "", pick: () => this._ss({ cat: k }) })),
+      shopItems: items,
+      shopThanks: r === "shop" && s.thanks, shopCancelled: r === "shop" && s.cancelled && !s.thanks,
+      shopThanksClose: () => this._ss({ thanks: false }),
+      shopModal: !!p, shopP: P, shopClose: () => this._ss({ open: null, err: "" }),
+      cartOpen: !!s.cartOpen, openCart: () => { this._ss({ cartOpen: true, open: null, cancelled: false }); this._shopFocus(); }, closeCart: () => this._ss({ cartOpen: false }),
+      cartCount: count, cartBadge: count > 0, cartBar: r === "shop" && count > 0 && !s.cartOpen,
+      cartAria: "Open cart, " + count + (count === 1 ? " item" : " items"),
+      cartCountLabel: count + (count === 1 ? " item" : " items"),
+      cartEmpty: !lines.length, cartHas: lines.length > 0,
+      cartLines: lines.map((x) => ({
+        name: x.p.name, qty: x.l.qty,
+        variant: [x.l.size, x.l.opt].filter(Boolean).join(" · ") + (x.l.text ? ((x.l.size || x.l.opt) ? "\n" : "") + ((x.p.text && x.p.text.label) || "Note") + ": “" + x.l.text + "”" : ""),
+        hasVariant: !!(x.l.size || x.l.opt || x.l.text),
+        totalLabel: m(x.l.qty * x.p.price),
+        qtyAria: "Quantity of " + x.p.name, removeAria: "Remove " + x.p.name + " from cart",
+        inc: () => this._cartQty(x.l.key, 1), dec: () => this._cartQty(x.l.key, -1), remove: () => this._cartQty(x.l.key, -999),
+      })),
+      cartSubtotal: m(sub), cartTotal: m(sub + (isPost ? postage : 0)),
+      needsDelivery: postable,
+      delPickup: !isPost, delPost: isPost,
+      delPickupBorder: !isPost ? "#0A0A0A" : "#D9D5CC", delPostBorder: isPost ? "#0A0A0A" : "#D9D5CC",
+      setPickup: () => this._ss({ delivery: "pickup" }), setPost: () => this._ss({ delivery: "post" }),
+      pickupLabel: (c && c.pickup && c.pickup.label) || "Collect from CentreStage", pickupNote: (c && c.pickup && c.pickup.note) || "",
+      postageLabel: m(postage), postageNote: (c && c.postage && c.postage.label) || "Australia-wide",
+      deliveryLabel: isPost ? m(postage) : (postable ? "Collect · Free" : "Free"),
+      shopLive: !!this.SHOP.endpoint, shopNotLive: !this.SHOP.endpoint,
+      mailOrder: "mailto:" + this.SHOP.email + "?subject=" + enc("Shop order") + "&body=" + enc(mailBody),
+      checkout: () => this._shopCheckout(), checkoutBusy: !!s.busy,
+      checkoutLabel: s.busy ? "Opening secure checkout" : "Checkout · " + m(sub + (isPost ? postage : 0)),
+      shopErr: s.cErr, hasShopErr: !!s.cErr,
+    };
+  }
+
   componentDidMount() {
     this._route = () => {
       let parts = (location.pathname || "/").replace(/^\/+|\/+$/g, "").split("/").filter(function (x) { return x && !/\.html?$/i.test(x); });
@@ -2271,6 +2722,8 @@ class Component extends DCLogic {
       this.setState({ menuOpen: false });
       this._meta();
       if ((location.pathname || "").indexOf(this.VIP.slug) > -1) this._vipEnter();
+      if (this.state.route === "shop" || /\/shop\/?$/.test(location.pathname || "")) this._shopReturn();
+      if (this._shopS().open || this._shopS().cartOpen) this._ss({ open: null, cartOpen: false });
     };
     this._click = (e) => {
       const a = e.target.closest && e.target.closest("a");
@@ -2340,13 +2793,20 @@ class Component extends DCLogic {
     document.addEventListener("click", this._click);
     this._route();
     import("./content.js").then((m) => this.setState({ data: m }, () => this._meta()));
+    try { const saved = JSON.parse(localStorage.getItem("cs_cart") || "[]"); if (Array.isArray(saved) && saved.length) this.setState({ cart: saved.filter((l) => l && l.id && l.qty > 0).slice(0, 50) }); } catch (e) {}
+    fetch("shop.json").then((r) => r.json()).then((j) => {
+      this.setState({ shopData: j });
+      (j.products || []).forEach((p) => { if (!p.img) return; const im = new Image(); im.onerror = () => this.setState((st) => ({ shopImgBad: Object.assign({}, st.shopImgBad, { [p.img]: true }) })); im.src = p.img; });
+    }).catch(() => {});
+    this._shopKey = (e) => { if (e.key === "Escape") { const s = this._shopS(); if (s.open || s.cartOpen) this._ss({ open: null, cartOpen: false }); } };
+    document.addEventListener("keydown", this._shopKey);
     this._a11yEl = document.createElement("style");
     this._a11yEl.id = "cs-a11y";
     document.head.appendChild(this._a11yEl);
     this.applyA11y();
     this.lazyImgs();
   }
-  componentDidUpdate() { this.applyA11y(); this.lazyImgs(); }
+  componentDidUpdate() { this.applyA11y(); this.lazyImgs(); if (this._meta) this._meta(); }
   lazyImgs() {
     try {
       document.querySelectorAll("img:not([data-lz])").forEach((i) => {
@@ -2359,6 +2819,7 @@ class Component extends DCLogic {
   componentWillUnmount() {
     window.removeEventListener("popstate", this._route);
     document.removeEventListener("click", this._click);
+    if (this._shopKey) document.removeEventListener("keydown", this._shopKey);
     try { document.body.style.zoom = ""; document.body.style.filter = ""; } catch (e) {}
     if (this._a11yEl) this._a11yEl.remove();
   }
@@ -2522,11 +2983,12 @@ class Component extends DCLogic {
       isHome: r === "home", isTickets: r === "tickets", isAbout: r === "about",
       isEducation: r === "education", isHealth: r === "health", isProductions: r === "productions",
       isInvolved: r === "involved", isBlog: r === "blog", isPost: r === "post",
-      isShop: false, isContact: r === "contact", isBio: r === "bio", isMedia: r === "media",
+      isContact: r === "contact", isBio: r === "bio", isMedia: r === "media",
       isWeekly: r === "weekly", isSinging: r === "singing",
       isWwcc: r === "wwcc",
       ...this._compVals(r),
       ...this._vipVals(r),
+      ...this._shopVals(r),
       wwccDone: !!this.state.wwccDone, wwccForm: !this.state.wwccDone,
       wwccName: this.state.wwccName || "", wwccStamp: this.state.wwccStamp || "",
       wwccFileDone: this.state.wFile || "your card photo",

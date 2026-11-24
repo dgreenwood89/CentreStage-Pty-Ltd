@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  doc-page:not(:defined) { visibility: hidden; }
+  body { margin: 0; }
+</style>
+<script src="./doc-page.js"></script>
+</helmet>
+
+<doc-page size="a4" orientation="portrait" content-width="297mm" content-height="420mm">
+  <section class="page" style="width:297mm; height:420mm; background:#0A0A0A; color:#F4F1EA; font-family:Arial,Helvetica,sans-serif; display:flex; flex-direction:column; padding:28mm 24mm 24mm; box-sizing:border-box; position:relative; overflow:hidden;">
+
+    <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16mm;">
+      <img src="assets/CentreStage-Solid-White.png" alt="CentreStage" style="height:16mm; width:auto; display:block;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11pt; letter-spacing:.28em; text-transform:uppercase; color:#6B6B68; padding-top:3mm;">Performing Arts Academy</span>
+    </div>
+
+    <div style="height:1.5px; background:#F4F1EA; margin:14mm 0 0;"></div>
+
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:13pt; font-weight:600; letter-spacing:.26em; text-transform:uppercase; color:#E8472B;">This way</span>
+      <h1 style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:150pt; letter-spacing:-.04em; line-height:.84; margin:12mm 0 0; text-wrap:balance;">Singing<br>Lessons</h1>
+      <div style="display:flex; align-items:center; gap:10mm; margin-top:20mm;">
+        <svg width="76" height="76" viewBox="0 0 24 24" fill="none" stroke="#E8472B" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" style="flex-shrink:0;"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg>
+        <span style="font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:76pt; letter-spacing:-.03em; line-height:1;">Upstairs</span>
+      </div>
+    </div>
+
+    <div style="height:1px; background:#1F1F1D; margin:0 0 10mm;"></div>
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:16mm;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12pt; letter-spacing:.1em; color:#6B6B68; line-height:1.7;">Please wait quietly<br>if a lesson is in progress</span>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12pt; letter-spacing:.1em; color:#6B6B68;">centrestage.org.au</span>
+    </div>
+
+  </section>
+</doc-page>
+
+</x-dc>
+</body>
+</html>

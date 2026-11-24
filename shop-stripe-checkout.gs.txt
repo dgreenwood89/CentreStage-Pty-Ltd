@@ -1,0 +1,134 @@
+/**
+ * CentreStage shop: Stripe Checkout bridge (Google Apps Script web app)
+ *
+ * The website sends the cart here. This script re-checks every item and price
+ * against the live shop.json on centrestage.org.au (so prices can't be changed
+ * in the browser), creates a Stripe Checkout Session and returns its URL.
+ *
+ * Setup (see Shop-Setup-Guide.md):
+ *  1. Project Settings > Script Properties > add STRIPE_SECRET_KEY = your Stripe restricted key
+ *     (start with the test key rk_test_..., switch to rk_live_... when ready).
+ *  2. Deploy > New deployment > Web app. Execute as: Me. Who has access: Anyone.
+ *  3. Paste the /exec URL into SHOP.endpoint in CentreStage.dc.html.
+ */
+
+var SHOP_JSON_URL = 'https://centrestage.org.au/shop.json';
+var ALLOWED_RETURN = ['https://centrestage.org.au', 'https://www.centrestage.org.au'];
+var MAX_QTY = 20;
+
+function doPost(e) {
+  try {
+    var req = JSON.parse((e && e.postData && e.postData.contents) || '{}');
+    if (req.action !== 'checkout') return out_({ ok: false, error: 'Unknown request.' });
+
+    var key = PropertiesService.getScriptProperties().getProperty('STRIPE_SECRET_KEY');
+    if (!key) return out_({ ok: false, error: 'Online checkout is not set up yet. Please email david@centrestage.org.au to order.' });
+
+    var cat = loadCatalogue_();
+    var byId = {};
+    cat.products.forEach(function (p) { if (p.active !== false) byId[p.id] = p; });
+
+    var items = Array.isArray(req.items) ? req.items.slice(0, 50) : [];
+    if (!items.length) return out_({ ok: false, error: 'Your cart is empty.' });
+
+    var params = {}, n = 0, postable = false, summary = [], used = {};
+    for (var i = 0; i < items.length; i++) {
+      var it = items[i] || {}, p = byId[it.id];
+      if (!p) return out_({ ok: false, error: 'An item in your cart is no longer available. Please remove it and try again.' });
+      var qty = Math.floor(Number(it.qty));
+      if (!(qty >= 1 && qty <= MAX_QTY)) return out_({ ok: false, error: 'Please check the quantities in your cart.' });
+      var size = String(it.size || ''), opt = String(it.opt || ''), text = String(it.text || '').trim();
+      if (p.sizes && p.sizes.length && p.sizes.indexOf(size) < 0) return out_({ ok: false, error: 'Please choose a size for ' + p.name + '.' });
+      if (!(p.sizes && p.sizes.length)) size = '';
+      if (p.options && p.options.values) { if (p.options.values.indexOf(opt) < 0) return out_({ ok: false, error: 'Please choose an option for ' + p.name + '.' }); } else opt = '';
+      if (p.text) {
+        if (p.text.required && !text) return out_({ ok: false, error: 'Please add the ' + String(p.text.label).toLowerCase() + ' for ' + p.name + '.' });
+        text = text.slice(0, p.text.max || 100);
+      } else text = '';
+      if (p.post !== false) postable = true;
+      if (p.stock) {
+        var sk = [size, opt].filter(String).join('|') || 'default', uk = p.id + '#' + sk;
+        used[uk] = (used[uk] || 0) + qty;
+        if (used[uk] > (parseInt(p.stock[sk], 10) || 0)) return out_({ ok: false, error: 'Sorry, ' + p.name + (sk !== 'default' ? ' (' + sk.replace('|', ', ') + ')' : '') + " doesn't have enough stock. Please adjust your cart." });
+      }
+
+      var variant = [size, opt].filter(String).join(', ');
+      var name = p.name + (variant ? ' (' + variant + ')' : '');
+      var pre = 'line_items[' + n + ']';
+      params[pre + '[quantity]'] = String(qty);
+      params[pre + '[price_data][currency]'] = cat.currency || 'aud';
+      params[pre + '[price_data][unit_amount]'] = String(p.price);
+      params[pre + '[price_data][product_data][name]'] = name;
+      if (text) params[pre + '[price_data][product_data][description]'] = (p.text.label || 'Note') + ': ' + text;
+      if (p.img) params[pre + '[price_data][product_data][images][0]'] = /^https?:/.test(p.img) ? p.img : 'https://centrestage.org.au/' + String(p.img).replace(/^\/+/, '');
+      params[pre + '[price_data][product_data][metadata][product_id]'] = p.id;
+      summary.push(qty + 'x ' + name + (text ? ' [' + text + ']' : ''));
+      n++;
+    }
+
+    var post = postable && req.delivery === 'post';
+    var base = ALLOWED_RETURN.indexOf(String(req.returnTo || '')) >= 0 ? req.returnTo : ALLOWED_RETURN[0];
+
+    params['mode'] = 'payment';
+    params['success_url'] = base + '/shop?order=success&session_id={CHECKOUT_SESSION_ID}';
+    params['cancel_url'] = base + '/shop?order=cancelled';
+    params['phone_number_collection[enabled]'] = 'true';
+    params['billing_address_collection'] = 'auto';
+    params['metadata[delivery]'] = post ? 'Postage' : 'Collect from CentreStage';
+    params['metadata[items]'] = summary.join('; ').slice(0, 490);
+    params['payment_intent_data[description]'] = 'CentreStage shop order';
+    params['custom_text[submit][message]'] = post
+      ? 'Your order will be posted by Australia Post.'
+      : "We'll email you when your order is ready to collect from CentreStage.";
+
+    if (post) {
+      params['shipping_address_collection[allowed_countries][0]'] = 'AU';
+      params['shipping_options[0][shipping_rate_data][type]'] = 'fixed_amount';
+      params['shipping_options[0][shipping_rate_data][fixed_amount][amount]'] = String((cat.postage && cat.postage.amount) || 0);
+      params['shipping_options[0][shipping_rate_data][fixed_amount][currency]'] = cat.currency || 'aud';
+      params['shipping_options[0][shipping_rate_data][display_name]'] = (cat.postage && cat.postage.label) || 'Australia Post';
+    }
+
+    var res = UrlFetchApp.fetch('https://api.stripe.com/v1/checkout/sessions', {
+      method: 'post',
+      headers: { Authorization: 'Bearer ' + key },
+      payload: params,
+      muteHttpExceptions: true
+    });
+    var body = JSON.parse(res.getContentText() || '{}');
+    if (res.getResponseCode() >= 300 || !body.url) {
+      console.error('Stripe error', res.getResponseCode(), res.getContentText());
+      return out_({ ok: false, error: 'We could not start the checkout. Please try again, or email david@centrestage.org.au.' });
+    }
+    return out_({ ok: true, url: body.url });
+  } catch (err) {
+    console.error(err);
+    return out_({ ok: false, error: 'We could not start the checkout. Please try again, or email david@centrestage.org.au.' });
+  }
+}
+
+function doGet() {
+  return out_({ ok: true, service: 'CentreStage shop checkout' });
+}
+
+function loadCatalogue_() {
+  var cache = CacheService.getScriptCache();
+  var hit = cache.get('shop_json');
+  if (hit) return JSON.parse(hit);
+  var txt = UrlFetchApp.fetch(SHOP_JSON_URL + '?t=' + Date.now(), { muteHttpExceptions: false }).getContentText();
+  var json = JSON.parse(txt);
+  if (!json || !Array.isArray(json.products)) throw new Error('shop.json is not valid');
+  cache.put('shop_json', txt, 300); // re-read the catalogue every 5 minutes
+  return json;
+}
+
+function out_(obj) {
+  return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
+}
+
+/** Run this once from the editor to check your key and the catalogue are working. */
+function testSetup() {
+  var key = PropertiesService.getScriptProperties().getProperty('STRIPE_SECRET_KEY');
+  Logger.log('Stripe key set: ' + (key ? key.slice(0, 8) + '...' : 'NO'));
+  Logger.log('Products in shop.json: ' + loadCatalogue_().products.length);
+}

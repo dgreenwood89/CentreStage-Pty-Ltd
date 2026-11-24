@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>Be Our Guest — Logo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  body{ margin:0; background:#EDEAE2; font-family:Arial,sans-serif; display:flex; flex-direction:column; align-items:center; gap:34px; padding:44px 30px; }
+  .cap{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#6B6B68; }
+
+  /* ── the lockup ── */
+  .lockup{ width:1000px; padding:76px 60px 68px; display:flex; flex-direction:column; align-items:center; position:relative; overflow:hidden; }
+  .lockup.dark{ background:radial-gradient(120% 130% at 50% 0%, #1B3A6B 0%, #0E2148 45%, #070F26 100%); }
+  .lockup.light{ background:#F4F1EA; }
+
+  .eyebrow{ font-family:'Cinzel', serif; font-size:17px; font-weight:600; letter-spacing:.44em; text-transform:uppercase; margin:0 0 6px; }
+  .flourish{ display:flex; align-items:center; gap:14px; margin:0 0 4px; }
+  .flourish .ln{ width:110px; height:1px; }
+  .flourish .dot{ width:5px; height:5px; transform:rotate(45deg); }
+
+  .be{ font-family:'Great Vibes', cursive; font-size:132px; line-height:.9; margin:0; }
+  .guest{ font-family:'Cinzel Decorative', serif; font-weight:900; font-size:104px; letter-spacing:.06em; line-height:1; margin:-8px 0 0; text-transform:uppercase; }
+
+  .gold{
+    background:linear-gradient(178deg,#FBEFC0 0%,#F2C75C 30%,#D99C2B 56%,#F7DE9B 74%,#C8811C 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .inkfill{ color:#0A0A0A; }
+  .sub{ font-family:'Cinzel', serif; font-size:16px; font-weight:400; letter-spacing:.34em; text-transform:uppercase; margin:20px 0 0; }
+
+  .stars{ position:absolute; inset:0; pointer-events:none; }
+  .stars i{ position:absolute; display:block; background:#FBEFC0; border-radius:50%; }
+</style>
+</head>
+<body>
+
+  <span class="cap">Primary — on midnight</span>
+  <div class="lockup dark" id="logo-dark">
+    <div class="stars">
+      <i style="width:3px;height:3px;top:58px;left:150px;opacity:.85;"></i>
+      <i style="width:2px;height:2px;top:104px;left:236px;opacity:.6;"></i>
+      <i style="width:4px;height:4px;top:78px;right:168px;opacity:.9;"></i>
+      <i style="width:2px;height:2px;top:140px;right:250px;opacity:.55;"></i>
+      <i style="width:3px;height:3px;bottom:96px;left:118px;opacity:.5;"></i>
+      <i style="width:2px;height:2px;bottom:62px;right:140px;opacity:.7;"></i>
+    </div>
+    <p class="eyebrow" style="color:#8FAED6;">CentreStage presents</p>
+    <div class="flourish">
+      <span class="ln" style="background:linear-gradient(90deg,rgba(242,199,92,0) 0%,#F2C75C 100%);"></span>
+      <span class="dot" style="background:#F2C75C;"></span>
+      <span class="ln" style="background:linear-gradient(90deg,#F2C75C 0%,rgba(242,199,92,0) 100%);"></span>
+    </div>
+    <h1 class="be gold">Be Our</h1>
+    <h2 class="guest gold">Guest</h2>
+    <p class="sub" style="color:#8FAED6;">A Disney-inspired showcase &middot; Costa Hall</p>
+  </div>
+
+  <span class="cap">Alternate — on paper</span>
+  <div class="lockup light" id="logo-light">
+    <p class="eyebrow" style="color:#8A7332;">CentreStage presents</p>
+    <div class="flourish">
+      <span class="ln" style="background:linear-gradient(90deg,rgba(196,150,42,0) 0%,#C4962A 100%);"></span>
+      <span class="dot" style="background:#C4962A;"></span>
+      <span class="ln" style="background:linear-gradient(90deg,#C4962A 0%,rgba(196,150,42,0) 100%);"></span>
+    </div>
+    <h1 class="be" style="color:#B8891F;">Be Our</h1>
+    <h2 class="guest inkfill">Guest</h2>
+    <p class="sub" style="color:#6B6B68;">A Disney-inspired showcase &middot; Costa Hall</p>
+  </div>
+
+</body>
+</html>
